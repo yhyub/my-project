@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "deepseek-mcp": {
+      "command": "uvx",
+      "args": [
+        "python",
+        "super_mcp_unified.py"
+      ],
+      "cwd": "c:\\Users\\Administrator\\Desktop\\erthhgfj"
+    }
+  }
+}

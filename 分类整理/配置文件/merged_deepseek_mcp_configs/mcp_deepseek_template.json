@@ -1,0 +1,314 @@
+{
+  "mcpServers": {
+    "pdf-reader-mcp": {
+      "command": "npx",
+      "args": [
+        "@sylphlab/pdf-reader-mcp"
+      ],
+      "env": {},
+      "fromGalleryId": "byted-mcp-volcengine.3rd_party_mcp_server_pdf-reader-mcp"
+    },
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ],
+      "env": {
+        "DEFAULT_MINIMUM_TOKENS": "10000"
+      },
+      "fromGalleryId": "upstash.context7"
+    },
+    "fetch": {
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp_server_fetch"
+      ],
+      "cwd": "c:\Users\Administrator\Desktop\新建文件夹 (10)",
+      "timeout": 600,
+      "autoApprove": [
+        "list_configs",
+        "get_openapi_config",
+        "get_coze_plugin",
+        "execute_automation",
+        "generate_plugin",
+        "generate_workflow",
+        "heal_workflow",
+        "validate_config",
+        "get_txt_content",
+        "manage_prompts",
+        "manage_files",
+        "repair_coze_json",
+        "analyze_industry",
+        "classify_profession",
+        "process_scenario",
+        "fix_workflow",
+        "process_luoyang_cultural_heritage",
+        "create_multi_modal_content",
+        "control_iot_device",
+        "integrate_data",
+        "enhance_with_ai",
+        "optimize_quantum"
+      ]
+    },
+    "Sequential Thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "env": {},
+      "fromGalleryId": "modelcontextprotocol.servers_sequentialthinking"
+    },
+    "IMCP Feedback Enhanced": {
+      "command": "uvx",
+      "args": [
+        "mcp-feedback-enhanced@latest"
+      ],
+      "env": {},
+      "fromGalleryId": "byted-mcp.mcp-feedback-enhanced",
+      "disabled": false
+    },
+    "Browser-Use MCP": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/volcengine/mcp-server#subdirectory=server/mcp_server_vefaas_browser_use",
+        "mcp-server-vefaas-browser-use"
+      ],
+      "env": {
+        "BROWSER_USE_ENDPOINT": "pat_UqdV9mmmiwwXlHmEcvf7zyAp3v55g2XYdwd44ClgsoFN4VT3C5n6kkj40QnGk62q"
+      },
+      "fromGalleryId": "byted-mcp-volcengine.mcp_server_vefaas_browser_use"
+    },
+    "web research": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mzxrai/mcp-webresearch@latest"
+      ],
+      "env": {},
+      "fromGalleryId": "byted-mcp-volcengine.3rd_party_mcp_server_web_research"
+    },
+    "DesktopCommander": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@wonderwhy-er/desktop-commander"
+      ],
+      "env": {},
+      "fromGalleryId": "byted-mcp-volcengine.3rd_party_mcp_server_desktopcommander"
+    },
+    "发现报告": {
+      "command": "uvx",
+      "args": [
+        "fxbaogao-mcp@latest"
+      ],
+      "env": {},
+      "fromGalleryId": "byted-mcp-volcengine.3rd_party_mcp_server_fxbaogao_mcp"
+    },
+    "Figma": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "figma-developer-mcp",
+        "--stdio"
+      ],
+      "env": {
+        "FIGMA_API_KEY": "pat_UqdV9mmmiwwXlHmEcvf7zyAp3v55g2XYdwd44ClgsoFN4VT3C5n6kkj40QnGk62q"
+      },
+      "fromGalleryId": "byted-mcp-volcengine.3rd_party_mcp_server_figma"
+    },
+    "hotnews": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@wopal/mcp-server-hotnews"
+      ],
+      "env": {},
+      "fromGalleryId": "byted-mcp-volcengine.3rd_party_mcp_server_hotnews"
+    },
+    "onlyoffice-docspace": {
+      "command": "docker",
+      "args": [
+        "run",
+        "onlyoffice/docspace-mcp",
+        "--interactive",
+        "--rm",
+        "--env",
+        "DOCSPACEBASEURL",
+        "--env",
+        "DOCSPACEAPIKEY"
+      ],
+      "env": {
+        "DOCSPACEBASEURL": "https://your-instance.onlyoffice.com",
+        "DOCSPACEAPIKEY": "your-api-key"
+      }
+    },
+    "edgeone-pages-mcp-server": {
+      "command": "npx",
+      "args": [
+        "edgeone-pages-mcp"
+      ]
+    },
+    "gitlab": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-gitlab"
+      ],
+      "env": {
+        "GITLAB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>",
+        "GITLAB_API_URL": "https://gitlab.com/api/v4"
+      }
+    },
+    "mcpadvisor": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@xiaohui-wang/mcpadvisor"
+      ]
+    },
+    "claude-context": {
+      "command": " npx ",
+      "args": [
+        " @zilliz/claude-context-mcp@latest "
+      ],
+      "env": {
+        "OPENAI_API_KEY": " your-openai-api-key ",
+        "MILVUS_TOKEN": " your-zilliz-cloud-api-key "
+      }
+    },
+    "fetcher": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "fetcher-mcp"
+      ]
+    },
+    "Filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/path/to/allowed/directory"
+      ],
+      "env": {},
+      "fromGalleryId": "modelcontextprotocol.servers_filesystem"
+    },
+    "arxiv-mcp-server": {
+      "command": "uv",
+      "args": [
+        "tool",
+        "run",
+        "arxiv-mcp-server",
+        "--storage-path",
+        "替换为你自己的本机目录"
+      ]
+    },
+    "vchart-mcp-server": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@visactor/vchart-mcp-server"
+      ]
+    },
+    "Bright Data": {
+      "command": "npx",
+      "args": [
+        "@brightdata/mcp"
+      ],
+      "env": {
+        "API_TOKEN": "<your-api-token-here>"
+      }
+    },
+    "ai-humanizer": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "ai-humanizer-mcp-server"
+      ]
+    },
+    "dollhousemcp": {
+      "command": "npx",
+      "args": [
+        "@dollhousemcp/mcp-server@latest"
+      ]
+    },
+    "mcp-db": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@amusphere/mcp-db"
+      ]
+    },
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    },
+    "llm-context": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "llm-context",
+        "lc-mcp"
+      ]
+    },
+    "workflows-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcpn@latest server"
+      ]
+    },
+    "ollama": {
+      "command": "node",
+      "args": [
+        "/Users/bard/Code/mcp-ollama/dist/index.js"
+      ],
+      "env": {
+        "OLLAMA_BASE_URL": "http://localhost:11434"
+      }
+    },
+    "vscode-mcp-server": {
+      "command": "npx",
+      "args": [
+        "vscode-mcp-server"
+      ],
+      "env": {}
+    },
+    "structured-workflow": {
+      "command": "npx",
+      "args": [
+        "structured-workflow-mcp@latest"
+      ],
+      "env": {}
+    },
+    "deepseek-complete-mcp": {
+      "command": "python",
+      "args": [
+        "main.py",
+        "--start"
+      ],
+      "cwd": "c:\\Users\\Administrator\\Desktop\\erthhgfj\\SuperMCP",
+      "timeout": 600,
+      "autoApprove": [
+        "get_all_files",
+        "get_file_content",
+        "get_file_info",
+        "search_content",
+        "extract_zip",
+        "export_content",
+        "validate_content",
+        "analyze_conversations",
+        "generate_report"
+      ]
+    }
+  }
+}

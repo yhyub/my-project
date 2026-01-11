@@ -1,0 +1,48 @@
+{
+    "schema_version": "1.0",
+    "name": "Trae CN 集成项目",
+    "description": "保留所有需求和完整功能的小内存完美超级项目，支持多语言分类融合",
+    "version": "1.0.0",
+    "plugin_id": "trae_cn_integrated",
+    "author": {
+        "name": "Trae CN",
+        "email": "trae_cn@example.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "license": "MIT",
+    "keywords": ["trae-cn", "integrated", "multi-language", "file-organizer", "translator"],
+    "categories": ["utility", "productivity", "development"],
+    "main": "main.py",
+    "entry_points": {
+        "console_scripts": [
+            "trae-cn-integrated=main:main"
+        ]
+    },
+    "requirements": [],
+    "python_requires": ">=3.7",
+    "supported_platforms": ["Windows", "Linux", "macOS"],
+    "trae_cn": {
+        "compatibility": {
+            "min_version": "1.0.0",
+            "max_version": "*"
+        },
+        "features": {
+            "multi_language_support": true,
+            "file_organization": true,
+            "translation": true,
+            "security": true
+        },
+        "configuration": {
+            "default_config": "trae_config.json",
+            "auto_reload": true
+        },
+        "logging": {
+            "level": "INFO",
+            "rotate": true,
+            "max_size": "10MB"
+        }
+    }
+}

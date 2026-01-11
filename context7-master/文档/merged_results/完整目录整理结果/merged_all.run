@@ -1,0 +1,461 @@
+import tkinter as tk
+from tkinter import ttk, scrolledtext, filedialog, messagebox
+import subprocess
+import sys
+import os
+import threading
+import queue
+import time
+from tkinter import font
+
+class PythonEditor(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("Python Editor")
+        self.geometry("1200x600")
+        self.current_file = None
+        self.process = None
+        self.running = False
+        self.output_queue = queue.Queue()
+
+        # 设置字体
+        self.code_font = font.Font(family="Consolas", size=10)
+        self.current_font_size = 10  # 跟踪当前字体大小
+
+        # 获取程序所在目录
+        self.app_dir = os.path.dirname(os.path.abspath(__file__))
+
+        # 用于存储树节点与文件路径的映射
+        self.node_path_map = {}
+
+        # 创建菜单栏
+        self.create_menu()
+
+        # 创建工具栏
+        self.create_toolbar()
+
+        # 创建主布局（包含文件浏览器）
+        self.create_main_layout()
+
+        # 创建右键菜单
+        self.create_context_menu()
+
+        # 绑定事件
+        self.bind_events()
+
+        # 启动输出处理线程
+        self.start_output_thread()
+
+        # 加载程序所在目录的文件
+        self.load_directory(self.app_dir)
+
+    def create_menu(self):
+        menubar = tk.Menu(self)
+
+        # 文件菜单
+        file_menu = tk.Menu(menubar, tearoff=0)
+        file_menu.add_command(label="新建", command=self.new_file, accelerator="Ctrl+N")
+        file_menu.add_command(label="打开", command=self.open_file, accelerator="Ctrl+O")
+        file_menu.add_command(label="保存", command=self.save_file, accelerator="Ctrl+S")
+        file_menu.add_command(label="另存为", command=self.save_as_file)
+        file_menu.add_separator()
+        file_menu.add_command(label="退出", command=self.quit)
+        menubar.add_cascade(label="文件", menu=file_menu)
+
+        # 运行菜单
+        run_menu = tk.Menu(menubar, tearoff=0)
+        run_menu.add_command(label="运行", command=self.run_code, accelerator="F5")
+        run_menu.add_command(label="停止", command=self.stop_code, accelerator="Ctrl+F2")
+        menubar.add_cascade(label="运行", menu=run_menu)
+
+        # 帮助菜单
+        help_menu = tk.Menu(menubar, tearoff=0)
+        help_menu.add_command(label="关于", command=self.show_about)
+        menubar.add_cascade(label="帮助", menu=help_menu)
+
+        self.config(menu=menubar)
+
+    def create_toolbar(self):
+        toolbar = ttk.Frame(self, padding="5")
+        toolbar.pack(side=tk.TOP, fill=tk.X)
+
+        # 运行按钮
+        self.run_btn = ttk.Button(toolbar, text="运行 (F5)", command=self.run_code)
+        self.run_btn.pack(side=tk.LEFT, padx=2)
+
+        # 停止按钮
+        self.stop_btn = ttk.Button(toolbar, text="停止 (Ctrl+F2)", command=self.stop_code, state=tk.DISABLED)
+        self.stop_btn.pack(side=tk.LEFT, padx=2)
+
+        ttk.Separator(toolbar, orient=tk.VERTICAL).pack(side=tk.LEFT, fill=tk.Y, padx=5)
+
+        # 新建按钮
+        ttk.Button(toolbar, text="新建", command=self.new_file).pack(side=tk.LEFT, padx=2)
+
+        # 打开按钮
+        ttk.Button(toolbar, text="打开", command=self.open_file).pack(side=tk.LEFT, padx=2)
+
+        # 保存按钮
+        ttk.Button(toolbar, text="保存", command=self.save_file).pack(side=tk.LEFT, padx=2)
+
+    def create_main_layout(self):
+        # 主水平分隔窗格（左侧文件浏览器，右侧编辑区和输出区）
+        main_paned = ttk.PanedWindow(self, orient=tk.HORIZONTAL)
+        main_paned.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
+
+        # 左侧文件浏览器
+        file_frame = ttk.Frame(main_paned)
+        ttk.Label(file_frame, text="文件浏览器").pack(anchor=tk.W, padx=2, pady=2)
+
+        # 创建树状视图显示文件
+        self.file_tree = ttk.Treeview(file_frame, show='tree')
+        self.file_tree.pack(fill=tk.BOTH, expand=True, padx=2, pady=2)
+
+        # 绑定双击事件打开文件
+        self.file_tree.bind("<Double-1>", self.on_file_double_click)
+
+        main_paned.add(file_frame, weight=1)
+
+        # 右侧编辑区和输出区（垂直分隔）
+        right_paned = ttk.PanedWindow(main_paned, orient=tk.VERTICAL)
+
+        # 代码编辑区域
+        self.code_editor = scrolledtext.ScrolledText(
+            right_paned,
+            wrap=tk.WORD,
+            font=self.code_font,
+            undo=True
+        )
+        right_paned.add(self.code_editor, weight=3)
+
+        # 输出区域标签
+        output_frame = ttk.Frame(right_paned)
+        ttk.Label(output_frame, text="输出:").pack(anchor=tk.W, padx=2, pady=2)
+
+        # 输出区域
+        self.output_area = scrolledtext.ScrolledText(
+            output_frame,
+            wrap=tk.WORD,
+            font=self.code_font,
+            state=tk.DISABLED,
+            height=10
+        )
+        self.output_area.pack(fill=tk.BOTH, expand=True, padx=2)
+
+        right_paned.add(output_frame, weight=1)
+        main_paned.add(right_paned, weight=3)
+
+    def create_context_menu(self):
+        """创建右键菜单"""
+        self.context_menu = tk.Menu(self, tearoff=0)
+
+        # 编辑相关命令
+        self.context_menu.add_command(label="剪切", command=self.cut_text, accelerator="Ctrl+X")
+        self.context_menu.add_command(label="复制", command=self.copy_text, accelerator="Ctrl+C")
+        self.context_menu.add_command(label="粘贴", command=self.paste_text, accelerator="Ctrl+V")
+        self.context_menu.add_separator()
+
+        # 字体大小子菜单
+        self.font_size_menu = tk.Menu(self.context_menu, tearoff=0)
+
+        # 添加字体大小调整命令
+        self.font_size_menu.add_command(label="增大", command=lambda: self.change_font_size(2))
+        self.font_size_menu.add_command(label="减小", command=lambda: self.change_font_size(-2))
+        self.font_size_menu.add_separator()
+
+        # 字体大小数字选择子菜单
+        self.font_size_submenu = tk.Menu(self.font_size_menu, tearoff=0)
+        for size in range(8, 25, 2):  # 8到24之间的偶数字号
+            self.font_size_submenu.add_command(
+                label=str(size),
+                command=lambda s=size: self.set_font_size(s)
+            )
+
+        self.font_size_menu.add_cascade(label="选择大小", menu=self.font_size_submenu)
+        self.context_menu.add_cascade(label="字体大小", menu=self.font_size_menu)
+
+        # 绑定右键菜单到代码编辑器
+        self.code_editor.bind("<Button-3>", self.show_context_menu)
+
+    def show_context_menu(self, event):
+        """显示右键菜单"""
+        self.context_menu.post(event.x_root, event.y_root)
+
+    def cut_text(self):
+        """剪切文本"""
+        self.code_editor.event_generate("<<Cut>>")
+
+    def copy_text(self):
+        """复制文本"""
+        self.code_editor.event_generate("<<Copy>>")
+
+    def paste_text(self):
+        """粘贴文本"""
+        self.code_editor.event_generate("<<Paste>>")
+
+    def change_font_size(self, delta):
+        """调整字体大小"""
+        new_size = self.current_font_size + delta
+        if 6 <= new_size <= 32:  # 限制字体大小范围
+            self.set_font_size(new_size)
+
+    def set_font_size(self, size):
+        """设置具体字体大小"""
+        self.current_font_size = size
+        self.code_font.configure(size=size)
+        # 同时更新输出区域的字体大小
+        self.output_area.configure(font=(self.code_font.actual()["family"], size))
+
+    def bind_events(self):
+        self.bind("<F5>", lambda event: self.run_code())
+        self.bind("<Control-F2>", lambda event: self.stop_code())
+        self.bind("<Control-n>", lambda event: self.new_file())
+        self.bind("<Control-o>", lambda event: self.open_file())
+        self.bind("<Control-s>", lambda event: self.save_file())
+        # 添加编辑快捷键
+        self.bind("<Control-x>", lambda event: self.cut_text())
+        self.bind("<Control-c>", lambda event: self.copy_text())
+        self.bind("<Control-v>", lambda event: self.paste_text())
+
+    def start_output_thread(self):
+        """启动处理输出队列的线程"""
+        def process_output():
+            while True:
+                if not self.output_queue.empty():
+                    output = self.output_queue.get()
+                    self.update_output(output)
+                time.sleep(0.1)
+
+        thread = threading.Thread(target=process_output, daemon=True)
+        thread.start()
+
+    def update_output(self, text):
+        """更新输出区域"""
+        self.output_area.config(state=tk.NORMAL)
+        self.output_area.insert(tk.END, text)
+        self.output_area.see(tk.END)
+        self.output_area.config(state=tk.DISABLED)
+
+    def load_directory(self, path):
+        """加载目录内容，只显示文件夹和.py文件"""
+        # 清空现有内容和映射
+        for item in self.file_tree.get_children():
+            self.file_tree.delete(item)
+        self.node_path_map.clear()
+
+        # 添加根目录
+        root_node = self.file_tree.insert('', tk.END, text=os.path.basename(path), open=True)
+        self.node_path_map[root_node] = path  # 使用字典存储节点与路径的映射
+
+        # 递归加载目录内容
+        self._populate_tree(root_node, path)
+
+    def _populate_tree(self, parent, path):
+        """递归填充树状视图"""
+        try:
+            # 获取目录内容
+            items = os.listdir(path)
+            # 分离文件夹和文件
+            folders = []
+            files = []
+
+            for item in items:
+                item_path = os.path.join(path, item)
+                if os.path.isdir(item_path):
+                    folders.append(item)
+                elif os.path.isfile(item_path) and item.endswith('.py'):
+                    files.append(item)
+
+            # 先添加文件夹，再添加文件，都按字母顺序排序
+            for folder in sorted(folders):
+                folder_path = os.path.join(path, folder)
+                node = self.file_tree.insert(parent, tk.END, text=folder)
+                self.node_path_map[node] = folder_path  # 存储节点与路径的映射
+                # 递归添加子目录
+                self._populate_tree(node, folder_path)
+
+            for file in sorted(files):
+                file_path = os.path.join(path, file)
+                node = self.file_tree.insert(parent, tk.END, text=file)
+                self.node_path_map[node] = file_path  # 存储节点与路径的映射
+
+        except Exception as e:
+            print(f"无法加载目录 {path}: {e}")
+
+    def on_file_double_click(self, event):
+        """双击文件时打开文件"""
+        try:
+            item = self.file_tree.selection()[0]
+            file_path = self.node_path_map.get(item)  # 从字典获取路径
+
+            if file_path and os.path.isfile(file_path) and file_path.endswith('.py'):
+                self.current_file = file_path
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                        self.code_editor.delete(1.0, tk.END)
+                        self.code_editor.insert(tk.END, content)
+                    self.title(f"Python Editor - {os.path.basename(file_path)}")
+                except Exception as e:
+                    messagebox.showerror("错误", f"无法打开文件: {str(e)}")
+        except (IndexError, KeyError):
+            pass  # 忽略无效选择
+
+    def new_file(self):
+        """创建新文件"""
+        self.code_editor.delete(1.0, tk.END)
+        self.current_file = None
+        self.title("Python Editor - 未命名")
+
+    def open_file(self):
+        """打开文件"""
+        file_path = filedialog.askopenfilename(
+            defaultextension=".py",
+            filetypes=[("Python Files", "*.py"), ("All Files", "*.*")]
+        )
+
+        if file_path:
+            try:
+                with open(file_path, "r", encoding="utf-8") as file:
+                    content = file.read()
+                    self.code_editor.delete(1.0, tk.END)
+                    self.code_editor.insert(tk.END, content)
+                self.current_file = file_path
+                self.title(f"Python Editor - {os.path.basename(file_path)}")
+            except Exception as e:
+                messagebox.showerror("错误", f"无法打开文件: {str(e)}")
+
+    def save_file(self):
+        """保存文件"""
+        if self.current_file:
+            try:
+                content = self.code_editor.get(1.0, tk.END)
+                with open(self.current_file, "w", encoding="utf-8") as file:
+                    file.write(content)
+                return True
+            except Exception as e:
+                messagebox.showerror("错误", f"无法保存文件: {str(e)}")
+                return False
+        else:
+            return self.save_as_file()
+
+    def save_as_file(self):
+        """另存为文件"""
+        file_path = filedialog.asksaveasfilename(
+            defaultextension=".py",
+            filetypes=[("Python Files", "*.py"), ("All Files", "*.*")]
+        )
+
+        if file_path:
+            self.current_file = file_path
+            self.title(f"Python Editor - {os.path.basename(file_path)}")
+            return self.save_file()
+        return False
+
+    def run_code(self):
+        """运行代码"""
+        if self.running:
+            return
+
+        # 先保存文件
+        if not self.current_file:
+            if not self.save_as_file():
+                return
+        else:
+            self.save_file()
+
+        # 清空输出区域
+        self.output_area.config(state=tk.NORMAL)
+        self.output_area.delete(1.0, tk.END)
+        self.output_area.config(state=tk.DISABLED)
+
+        # 更新按钮状态
+        self.run_btn.config(state=tk.DISABLED)
+        self.stop_btn.config(state=tk.NORMAL)
+
+        # 启动代码运行线程
+        self.running = True
+        threading.Thread(target=self._execute_code, daemon=True).start()
+
+    def _execute_code(self):
+        """执行代码的实际函数，在单独线程中运行"""
+        try:
+            # 启动子进程运行Python代码
+            self.process = subprocess.Popen(
+                [sys.executable, self.current_file],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                bufsize=1
+            )
+
+            # 读取标准输出
+            def read_stdout():
+                for line in self.process.stdout:
+                    if not self.running:
+                        break
+                    self.output_queue.put(line)
+
+            # 读取标准错误
+            def read_stderr():
+                for line in self.process.stderr:
+                    if not self.running:
+                        break
+                    self.output_queue.put(line)
+
+            # 启动读取输出的线程
+            stdout_thread = threading.Thread(target=read_stdout, daemon=True)
+            stderr_thread = threading.Thread(target=read_stderr, daemon=True)
+
+            stdout_thread.start()
+            stderr_thread.start()
+
+            # 等待进程完成
+            while self.running and self.process.poll() is None:
+                time.sleep(0.1)
+
+            # 如果是正常结束，等待输出线程完成
+            if self.process.poll() is not None:
+                stdout_thread.join()
+                stderr_thread.join()
+                self.output_queue.put(f"\n程序已结束，退出代码: {self.process.returncode}\n")
+
+        except Exception as e:
+            self.output_queue.put(f"错误: {str(e)}\n")
+        finally:
+            # 重置状态
+            self.running = False
+            self.process = None
+            self.after(0, lambda: self.run_btn.config(state=tk.NORMAL))
+            self.after(0, lambda: self.stop_btn.config(state=tk.DISABLED))
+
+    def stop_code(self):
+        """停止代码运行"""
+        if self.running and self.process:
+            try:
+                # 终止进程
+                self.process.terminate()
+                # 等待进程结束
+                time.sleep(0.1)
+                if self.process.poll() is None:
+                    # 如果仍在运行，强制杀死
+                    self.process.kill()
+                self.output_queue.put("\n程序已被强制停止\n")
+            except Exception as e:
+                self.output_queue.put(f"停止程序时出错: {str(e)}\n")
+            finally:
+                self.running = False
+                self.process = None
+                self.run_btn.config(state=tk.NORMAL)
+                self.stop_btn.config(state=tk.DISABLED)
+
+    def show_about(self):
+        """显示关于对话框"""
+        messagebox.showinfo(
+            "关于",
+            "Python Editor\n版本 1.0\n一个简单的仿PyCharm的Python代码编辑器"
+        )
+
+if __name__ == "__main__":
+    app = PythonEditor()
+    app.mainloop()

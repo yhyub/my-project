@@ -1,0 +1,242 @@
+=== PROGRAMMING PROJECTS REPORT ===
+Generated on: 12/19/2025 16:51:08
+
+Total Projects Found: 31
+
+Project Details:
+----------------
+Python Projects (11):
+================
+Name: prompts
+Path: C:\Users\Administrator\Desktop\erthhgfj\?????\prompts
+Size: 0.2 MB
+Created: 2025-12-16
+Modified: 2025-12-16
+
+Name: SuperMCP
+Path: C:\Users\Administrator\Desktop\erthhgfj\SuperMCP
+Size: 0.11 MB
+Created: 2025-12-17
+Modified: 2025-12-17
+
+Name: modules
+Path: C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\modules
+Size: 0.07 MB
+Created: 2025-12-17
+Modified: 2025-12-19
+
+Name: trace_coze_integration
+Path: C:\Users\Administrator\Desktop\erthhgfj\?????\prompts\trace_coze_integration
+Size: 0.04 MB
+Created: 2025-12-16
+Modified: 2025-12-16
+
+Name: mcp_converter
+Path: C:\Users\Administrator\Desktop\erthhgfj\?????\prompts\mcp_converter
+Size: 0.04 MB
+Created: 2025-12-16
+Modified: 2025-12-16
+
+Name: coze_workflow
+Path: C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\modules\coze_workflow
+Size: 0.03 MB
+Created: 2025-12-17
+Modified: 2025-12-19
+
+Name: optimizers
+Path: C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\optimizers
+Size: 0.02 MB
+Created: 2025-12-17
+Modified: 2025-12-19
+
+Name: file_organizer
+Path: C:\Users\Administrator\Desktop\erthhgfj\?????\prompts\file_organizer
+Size: 0.02 MB
+Created: 2025-12-16
+Modified: 2025-12-16
+
+Name: file_organizer
+Path: C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\modules\file_organizer
+Size: 0.02 MB
+Created: 2025-12-17
+Modified: 2025-12-19
+
+Name: mcp_converter
+Path: C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\modules\mcp_converter
+Size: 0.02 MB
+Created: 2025-12-17
+Modified: 2025-12-19
+
+Name: core
+Path: C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\core
+Size: 0.02 MB
+Created: 2025-12-17
+Modified: 2025-12-19
+
+Frontend Projects (1):
+==================
+Name: ?????
+Path: C:\Users\Administrator\Desktop\erthhgfj\?????
+Size: 7.37 MB
+Created: 2025-12-16
+Modified: 2025-12-17
+
+Node.js Projects (19):
+=================
+Name: _npx
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx
+Size: 26.91 MB
+Created: 2025-12-18
+Modified: 2025-12-18
+
+Name: 6555703a77a63457
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\6555703a77a63457
+Size: 26.46 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: 24c761fc465789b8
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\24c761fc465789b8
+Size: 0.06 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: 66c33ad35b35b3e8
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\66c33ad35b35b3e8
+Size: 0.04 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: 0341cd7b8a6b99ff
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\0341cd7b8a6b99ff
+Size: 0.04 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: a970ac28d6f7a0cf
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\a970ac28d6f7a0cf
+Size: 0.04 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: a50edfa03303c0a4
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\a50edfa03303c0a4
+Size: 0.04 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: e05028111420be70
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\e05028111420be70
+Size: 0.04 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: a3241bba59c344f5
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\a3241bba59c344f5
+Size: 0.03 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: 4c2451e90b8ae376
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\4c2451e90b8ae376
+Size: 0.03 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: de2bd410102f5eda
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\de2bd410102f5eda
+Size: 0.02 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: 33123ad4f0439610
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\33123ad4f0439610
+Size: 0.02 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: c35ab75beed40a3c
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\c35ab75beed40a3c
+Size: 0.02 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: 15b07286cbcc3329
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\15b07286cbcc3329
+Size: 0.02 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: e6cc226556739fc3
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\e6cc226556739fc3
+Size: 0.02 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: 3c31ddeb9c3a8a09
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\3c31ddeb9c3a8a09
+Size: 0.02 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: 2d535ed49cc45cca
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\2d535ed49cc45cca
+Size: 0.01 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: bd29c0cb7c2b284c
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\bd29c0cb7c2b284c
+Size: 0 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+Name: 0b83cd9ca5e1325c
+Path: C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\0b83cd9ca5e1325c
+Size: 0 MB
+Created: 2025-12-18
+Modified: 2025-12-19
+
+=== PROJECT SUMMARY ===
+Total Projects: 31
+Total Size: 0.0603232504799962 GB
+
+Project Types Distribution:
+- Node.js: 19 projects
+- Python: 11 projects
+- Frontend: 1 projects
+
+=== C DRIVE ORGANIZATION ===
+
+The following programming projects were found on your C drive:
+- Node.js: _npx (26.91 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx
+- Node.js: 6555703a77a63457 (26.46 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\6555703a77a63457
+- Frontend: ????? (7.37 MB) at C:\Users\Administrator\Desktop\erthhgfj\?????
+- Python: prompts (0.2 MB) at C:\Users\Administrator\Desktop\erthhgfj\?????\prompts
+- Python: SuperMCP (0.11 MB) at C:\Users\Administrator\Desktop\erthhgfj\SuperMCP
+- Python: modules (0.07 MB) at C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\modules
+- Node.js: 24c761fc465789b8 (0.06 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\24c761fc465789b8
+- Node.js: 66c33ad35b35b3e8 (0.04 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\66c33ad35b35b3e8
+- Node.js: 0341cd7b8a6b99ff (0.04 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\0341cd7b8a6b99ff
+- Node.js: a970ac28d6f7a0cf (0.04 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\a970ac28d6f7a0cf
+- Node.js: a50edfa03303c0a4 (0.04 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\a50edfa03303c0a4
+- Node.js: e05028111420be70 (0.04 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\e05028111420be70
+- Python: trace_coze_integration (0.04 MB) at C:\Users\Administrator\Desktop\erthhgfj\?????\prompts\trace_coze_integration
+- Python: mcp_converter (0.04 MB) at C:\Users\Administrator\Desktop\erthhgfj\?????\prompts\mcp_converter
+- Node.js: a3241bba59c344f5 (0.03 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\a3241bba59c344f5
+- Node.js: 4c2451e90b8ae376 (0.03 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\4c2451e90b8ae376
+- Python: coze_workflow (0.03 MB) at C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\modules\coze_workflow
+- Node.js: de2bd410102f5eda (0.02 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\de2bd410102f5eda
+- Node.js: 33123ad4f0439610 (0.02 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\33123ad4f0439610
+- Node.js: c35ab75beed40a3c (0.02 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\c35ab75beed40a3c
+- Python: optimizers (0.02 MB) at C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\optimizers
+- Python: file_organizer (0.02 MB) at C:\Users\Administrator\Desktop\erthhgfj\?????\prompts\file_organizer
+- Python: file_organizer (0.02 MB) at C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\modules\file_organizer
+- Node.js: 15b07286cbcc3329 (0.02 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\15b07286cbcc3329
+- Node.js: e6cc226556739fc3 (0.02 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\e6cc226556739fc3
+- Node.js: 3c31ddeb9c3a8a09 (0.02 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\3c31ddeb9c3a8a09
+- Python: mcp_converter (0.02 MB) at C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\modules\mcp_converter
+- Python: core (0.02 MB) at C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\core
+- Node.js: 2d535ed49cc45cca (0.01 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\2d535ed49cc45cca
+- Node.js: bd29c0cb7c2b284c (0 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\bd29c0cb7c2b284c
+- Node.js: 0b83cd9ca5e1325c (0 MB) at C:\Users\Administrator\Desktop\erthhgfj\npm-cache\_npx\0b83cd9ca5e1325c

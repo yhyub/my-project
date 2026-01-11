@@ -1,0 +1,63 @@
+﻿Comprehensive C Drive Cleaner Report
+==================================
+Generated on: 2025-12-18 20:52:05
+
+Configuration:
+- Delete Threshold: 50 MB
+- Scan Only Mode: False
+- Top Files Shown: 20
+
+Disk Space Information:
+- Initial Free Space: 10.8 GB
+- Final Free Space: 11.37 GB
+- Space Freed: 0.57 GB
+- Total C Drive Size: 80 GB
+
+Top 20 Largest Files:
+1. Windows.edb - 1016 MB (0.99 GB) - Safe to delete: True
+   Path: C:\ProgramData\Microsoft\Search\Data\Applications\Windows\Windows.edb
+2. BootPerfDiagLogger.etl - 200 MB (0.2 GB) - Safe to delete: False
+   Path: C:\Windows\System32\WDI\LogFiles\BootPerfDiagLogger.etl
+3. chrome.dll - 193.8 MB (0.19 GB) - Safe to delete: True
+   Path: C:\Program Files (x86)\2345Soft\2345Explorer\13.8.0.41408\chrome.dll
+4. chrome.dll - 170.68 MB (0.17 GB) - Safe to delete: True
+   Path: C:\Program Files (x86)\2345Soft\2345Explorer\13.7.0.41271\chrome.dll
+5. rust-lld.exe - 98.1 MB (0.1 GB) - Safe to delete: True
+   Path: C:\Users\Administrator\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\x86_64-pc-windows-msvc\bin\rust-lld.exe
+6. rust-lld.exe - 98.1 MB (0.1 GB) - Safe to delete: True
+   Path: C:\Users\Administrator\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib\rustlib\x86_64-pc-windows-msvc\bin\rust-lld.exe
+7. 剪映小助手(客户端) Latest_version.zip - 92.41 MB (0.09 GB) - Safe to delete: True
+   Path: C:\Users\Administrator\Desktop\data\新建文件夹 (13)\temp\剪映小助手(客户端) Latest_version.zip
+8. 剪映小助手(客户端) Latest_version.zip - 92.41 MB (0.09 GB) - Safe to delete: True
+   Path: C:\Users\Administrator\Desktop\阅读\剪映小助手(客户端) Latest_version.zip
+9. 剪映小助手(客户端) Latest_version.zip - 92.41 MB (0.09 GB) - Safe to delete: True
+   Path: C:\Users\Administrator\Desktop\data\新建文件夹 (13)\temp\剪映小助手(客户端) Latest_version.zip
+10. 剪映小助手(客户端) Latest_version.zip - 92.41 MB (0.09 GB) - Safe to delete: True
+   Path: C:\Users\Administrator\Desktop\阅读\剪映小助手(客户端) Latest_version.zip
+11. 2345pcsafe_k617376038.exe - 91.88 MB (0.09 GB) - Safe to delete: True
+   Path: C:\Program Files (x86)\2345pcsafe_k617376038.exe
+12. node.exe - 81.35 MB (0.08 GB) - Safe to delete: True
+   Path: C:\Users\Administrator\Tools\node\node-v23.9.0-win-x64\node.exe
+13. node.exe - 81.35 MB (0.08 GB) - Safe to delete: True
+   Path: C:\Users\Administrator\Tools\node\node-v23.9.0-win-x64\node.exe
+14. node.exe - 81.32 MB (0.08 GB) - Safe to delete: True
+   Path: C:\Users\Administrator\.trae-cn\binaries\node\versions\22.19.0\node.exe
+15. node.exe - 81.32 MB (0.08 GB) - Safe to delete: True
+   Path: C:\Users\Administrator\.trae-cn\binaries\node\versions\22.19.0\node.exe
+16. opencl-clang64.dll - 78.33 MB (0.08 GB) - Safe to delete: False
+   Path: C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_b53c057d22ce6f37\opencl-clang64.dll
+17. MSORES.DLL - 77.88 MB (0.08 GB) - Safe to delete: True
+   Path: C:\Program Files (x86)\Common Files\Microsoft Shared\Office16\MSORES.DLL
+18. libopencl-clang.so.9 - 77.6 MB (0.08 GB) - Safe to delete: False
+   Path: C:\Windows\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_b53c057d22ce6f37\libopencl-clang.so.9
+19. SOFTWARE - 77.25 MB (0.08 GB) - Safe to delete: False
+   Path: C:\Windows\System32\config\SOFTWARE
+20. 文件夹(13)_合并后的完整文本文件.txt - 65.5 MB (0.06 GB) - Safe to delete: True
+   Path: C:\Users\Administrator\Desktop\data\新建文件夹 (13)\文件夹(13)_合并后的完整文本文件.txt
+
+Cleanup Results:
+- Files Scanned: 55
+- Files Deleted: 7
+- Space Freed: 0.57 GB
+
+Log file: C:\Users\Administrator\Desktop\Comprehensive_Cleaner_Log_20251218_204739.log

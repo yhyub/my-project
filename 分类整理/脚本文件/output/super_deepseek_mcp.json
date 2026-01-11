@@ -1,0 +1,97 @@
+{
+  "name": "super_deepseek_mcp",
+  "version": "1.0.0",
+  "description": "完整的DeepSeek MCP工具，整合所有DeepSeek功能",
+  "type": "mcp",
+  "author": "SuperDeepSeekMCP",
+  "created_at": "2025-12-26T15:09:15.376653",
+  "deepseek_files": [
+    "c:\\Users\\Administrator\\Desktop\\项目\\分类整理\\脚本文件\\create_deepseek_mcp.py",
+    "c:\\Users\\Administrator\\Desktop\\项目\\分类整理\\脚本文件\\deepseek_complete_mcp.py",
+    "c:\\Users\\Administrator\\Desktop\\项目\\分类整理\\脚本文件\\deepseek_data_integrated.py",
+    "c:\\Users\\Administrator\\Desktop\\项目\\分类整理\\脚本文件\\super_deepseek_mcp.log",
+    "c:\\Users\\Administrator\\Desktop\\项目\\分类整理\\脚本文件\\super_deepseek_mcp.py",
+    "c:\\Users\\Administrator\\Desktop\\项目\\分类整理\\脚本文件\\test_deepseek_mcp.py",
+    "c:\\Users\\Administrator\\Desktop\\项目\\分类整理\\脚本文件\\output\\super_deepseek_mcp.json"
+  ],
+  "deepseek_results": {
+    "create_deepseek_mcp.py": {
+      "status": "success",
+      "functions": 3,
+      "classes": 0,
+      "size": 9772
+    },
+    "deepseek_complete_mcp.py": {
+      "status": "success",
+      "functions": 11,
+      "classes": 1,
+      "size": 16435
+    },
+    "deepseek_data_integrated.py": {
+      "status": "success",
+      "functions": 17,
+      "classes": 3,
+      "size": 14989
+    },
+    "super_deepseek_mcp.log": {
+      "status": "skipped",
+      "reason": "不支持的文件类型"
+    },
+    "super_deepseek_mcp.py": {
+      "status": "success",
+      "functions": 23,
+      "classes": 2,
+      "size": 23212
+    },
+    "test_deepseek_mcp.py": {
+      "status": "success",
+      "functions": 4,
+      "classes": 0,
+      "size": 3187
+    },
+    "super_deepseek_mcp.json": {
+      "status": "success",
+      "type": "dict",
+      "size": 2832
+    }
+  },
+  "capabilities": [
+    "deepseek_processing",
+    "folder_to_mcp",
+    "webpage_to_mcp",
+    "source_to_mcp",
+    "api_to_mcp",
+    "coze_integration",
+    "document_processing",
+    "prompt_management"
+  ],
+  "security": {
+    "sandbox": true,
+    "resource_limits": {
+      "memory": "512MB",
+      "cpu": "100%"
+    },
+    "network_isolation": false,
+    "encryption": {
+      "storage": true,
+      "transmission": true
+    },
+    "audit_logging": true
+  },
+  "usage": {
+    "command": "python super_deepseek_mcp.py --start",
+    "npx_command": "npx super_deepseek_mcp --start",
+    "uvx_command": "uvx super_deepseek_mcp --start"
+  },
+  "modules": [
+    "deepseek_processor",
+    "mcp_converter",
+    "folder_processor",
+    "webpage_processor",
+    "source_processor",
+    "api_processor",
+    "coze_integrator",
+    "document_processor",
+    "prompt_manager"
+  ]
+}

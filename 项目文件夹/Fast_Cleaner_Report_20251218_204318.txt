@@ -1,0 +1,24 @@
+﻿Fast C Drive Cleaner Report
+==========================
+Generated on: 2025-12-18 20:43:18
+
+Delete Threshold: 100 MB
+
+Disk Space Information:
+- Initial Free Space: 10.82 GB
+- Final Free Space: 10.81 GB
+- Space Freed: -0.01 GB
+- Target: 50 GB
+- Progress: 21.62%
+
+Files Deleted: 0
+
+Top File Types Deleted:
+- Installation files (*.exe, *.msi, *.iso)
+- Model files (*.pt, *.bin, *.safetensors)
+- Archive files (*.zip, *.rar, *.7z)
+- Specific user files (2345pic_*.exe, 鍓槧灏忓姪鎵?.exe, etc.)
+
+Log file: C:\Users\Administrator\Desktop\Fast_Cleaner_Log_20251218_204051.log
+
+Note: This script only deletes files in user directories, not system files or program files.

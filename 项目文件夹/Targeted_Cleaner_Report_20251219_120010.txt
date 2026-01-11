@@ -1,0 +1,20 @@
+﻿Targeted Large File Cleaner Report
+==================================
+Generated on: 2025-12-19 12:00:10
+
+Disk Space Information:
+- Initial Free Space: 11.51 GB
+- Final Free Space: 12.14 GB
+- Space Freed: 0.63 GB
+- Total C Drive Size: 80 GB
+
+Cleanup Actions Performed:
+1. Cleaned Windows Search Index (Windows.edb)
+2. Ran Windows Update Cleanup
+3. Cleaned Recycle Bin
+4. Cleaned User Temp Folders
+5. Cleaned 2345 Series Software Files
+6. Cleaned Large Files in Downloads Folder
+7. Cleaned Large Files on Desktop
+
+Log file: C:\Users\Administrator\Desktop\Targeted_Cleaner_Log_20251219_115913.log

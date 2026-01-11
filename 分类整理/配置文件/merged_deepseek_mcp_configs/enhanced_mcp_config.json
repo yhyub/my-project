@@ -1,0 +1,163 @@
+{
+  "mcpServers": {
+    "fetch": {
+      "command": "python",
+      "args": ["-m", "mcp_server_fetch"],
+      "env": {
+        "MCP_CWD": "c:\\Users\\Administrator\\Desktop\\新建文件夹 (10)",
+        "MCP_TIMEOUT": "600",
+        "MCP_AUTO_APPROVE": "[\"list_configs\", \"get_openapi_config\", \"get_coze_plugin\", \"execute_automation\", \"generate_plugin\", \"generate_workflow\", \"heal_workflow\", \"validate_config\", \"get_txt_content\", \"manage_prompts\", \"manage_files\", \"repair_coze_json\", \"analyze_industry\", \"classify_profession\", \"process_scenario\", \"fix_workflow\", \"process_luoyang_cultural_heritage\", \"create_multi_modal_content\", \"control_iot_device\", \"integrate_data\", \"enhance_with_ai\", \"optimize_quantum\"]"
+      },
+      "description": "基于Python的通用数据获取MCP服务器，用于从各种来源获取数据",
+      "category": "数据获取",
+      "priority": "high"
+    },
+    "fetcher": {
+      "command": "npx",
+      "args": ["-y", "fetcher-mcp"],
+      "description": "基于npx的通用数据获取MCP服务器，用于从各种来源获取数据",
+      "category": "数据获取",
+      "priority": "medium"
+    },
+    "Browser-Use MCP": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/volcengine/mcp-server#subdirectory=server/mcp_server_vefaas_browser_use", "mcp-server-vefaas-browser-use"],
+      "env": {
+        "BROWSER_USE_ENDPOINT": "pat_UqdV9mmmiwwXlHmEcvf7zyAp3v55g2XYdwd44ClgsoFN4VT3C5n6kkj40QnGk62q"
+      },
+      "fromGalleryId": "byted-mcp-volcengine.mcp_server_vefaas_browser_use",
+      "description": "基于uvx的浏览器使用MCP服务器，用于浏览器相关操作和数据获取",
+      "category": "数据获取",
+      "priority": "medium"
+    },
+    "Bright Data": {
+      "command": "npx",
+      "args": ["@brightdata/mcp"],
+      "env": {
+        "API_TOKEN": "<your-api-token-here>"
+      },
+      "description": "基于Bright Data代理服务的数据获取MCP服务器，用于通过代理获取数据",
+      "category": "数据获取",
+      "priority": "medium"
+    },
+    "web research": {
+      "command": "npx",
+      "args": ["-y", "@mzxrai/mcp-webresearch@latest"],
+      "env": {},
+      "description": "基于npx的网页研究MCP服务器，用于网页检索和分析",
+      "category": "数据获取",
+      "priority": "medium"
+    },
+    "IMCP Feedback Enhanced": {
+      "command": "uvx",
+      "args": ["mcp-feedback-enhanced@latest"],
+      "env": {},
+      "fromGalleryId": "byted-mcp.mcp-feedback-enhanced",
+      "disabled": false,
+      "description": "反馈增强型MCP服务器，支持自动修复和优化MCP配置",
+      "category": "MCP优化",
+      "priority": "high"
+    },
+    "mcpadvisor": {
+      "command": "npx",
+      "args": ["-y", "@xiaohui-wang/mcpadvisor"],
+      "description": "MCP服务器顾问，提供MCP配置和使用建议",
+      "category": "MCP优化",
+      "priority": "medium"
+    },
+    "claude-context": {
+      "command": " npx ",
+      "args": [" @zilliz/claude-context-mcp@latest "],
+      "env": {
+        "OPENAI_API_KEY": " your-openai-api-key ",
+        "MILVUS_TOKEN": " your-zilliz-cloud-api-key "
+      },
+      "description": "基于npx的Claude模型上下文管理MCP服务器，用于管理Claude模型的上下文",
+      "category": "上下文管理",
+      "priority": "medium"
+    },
+    "llm-context": {
+      "command": "uvx",
+      "args": ["--from", "llm-context", "lc-mcp"],
+      "description": "基于uvx的通用LLM上下文管理MCP服务器，用于管理各种LLM模型的上下文",
+      "category": "上下文管理",
+      "priority": "medium"
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "env": {
+        "DEFAULT_MINIMUM_TOKENS": "10000"
+      },
+      "description": "基于npx的Context7上下文管理MCP服务器，提供高级上下文管理功能",
+      "category": "上下文管理",
+      "priority": "high"
+    },
+    "workflows-mcp": {
+      "command": "npx",
+      "args": ["-y", "mcpn@latest server"],
+      "description": "基于npx的工作流管理MCP服务器，用于创建和管理工作流",
+      "category": "工作流管理",
+      "priority": "medium"
+    },
+    "structured-workflow": {
+      "command": "npx",
+      "args": ["structured-workflow-mcp@latest"],
+      "env": {},
+      "description": "基于npx的结构化工作流管理MCP服务器，用于创建和管理结构化工作流",
+      "category": "工作流管理",
+      "priority": "high"
+    },
+    "发现报告": {
+      "command": "uvx",
+      "args": ["fxbaogao-mcp@latest"],
+      "env": {},
+      "fromGalleryId": "byted-mcp-volcengine.3rd_party_mcp_server_fxbaogao_mcp",
+      "description": "生成发现报告的MCP服务器，用于分析和生成报告",
+      "category": "报告生成",
+      "priority": "medium"
+    },
+    "Figma": {
+      "command": "npx",
+      "args": ["-y", "figma-developer-mcp", "--stdio"],
+      "env": {
+        "FIGMA_API_KEY": "pat_UqdV9mmmiwwXlHmEcvf7zyAp3v55g2XYdwd44ClgsoFN4VT3C5n6kkj40QnGk62q"
+      },
+      "fromGalleryId": "byted-mcp-volcengine.3rd_party_mcp_server_figma",
+      "description": "Figma设计工具集成MCP服务器，用于与Figma设计工具进行交互",
+      "category": "设计工具集成",
+      "priority": "medium"
+    },
+    "hotnews": {
+      "command": "npx",
+      "args": ["-y", "@wopal/mcp-server-hotnews"],
+      "env": {},
+      "fromGalleryId": "byted-mcp-volcengine.3rd_party_mcp_server_hotnews",
+      "description": "热点新闻相关的MCP服务器，用于获取和分析热点新闻",
+      "category": "新闻资讯",
+      "priority": "medium"
+    },
+    "Filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/allowed/directory"],
+      "env": {},
+      "fromGalleryId": "modelcontextprotocol.servers_filesystem",
+      "description": "文件系统操作MCP服务器，用于文件读写和管理",
+      "category": "文件系统",
+      "priority": "high"
+    },
+    "arxiv-mcp-server": {
+      "command": "uv",
+      "args": ["tool", "run", "arxiv-mcp-server", "--storage-path", "替换为你自己的本机目录"],
+      "description": "arXiv论文检索和管理MCP服务器，用于获取和管理arXiv论文",
+      "category": "学术资源",
+      "priority": "medium"
+    },
+    "vchart-mcp-server": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@visactor/vchart-mcp-server"],
+      "description": "VChart图表生成和管理MCP服务器，用于创建和管理图表",
+      "category": "图表生成",
+      "priority": "medium"
+    },
+    "ai-humanizer": {

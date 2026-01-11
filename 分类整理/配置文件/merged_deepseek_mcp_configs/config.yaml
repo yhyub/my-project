@@ -1,0 +1,33 @@
+# IntelliTrain AI 配置文件
+# 可以通过命令行参数 --config 指定此文件
+
+# 数据库配置
+database:
+  host: localhost
+  port: 5432
+  username: intellitrain
+  password: password
+  database: ai_training
+  pool_size: 20
+
+# 模型训练配置
+training:
+  default_epochs: 100
+  batch_size: 32
+  learning_rate: 0.001
+  early_stopping_patience: 10
+  validation_split: 0.2
+  max_training_time: 3600
+  min_samples_per_class: 10
+  max_features: 100
+  random_state: 42
+
+# 文件上传配置
+upload:
+  max_file_size: 524288000  # 500MB
+  temp_dir: ./temp
+  allowed_extensions: ['.png', '.jpg', '.jpeg', '.csv', '.json', '.txt', '.xlsx', '.xls', '.parquet']
+
+# 系统配置
+debug: false
+environment: production

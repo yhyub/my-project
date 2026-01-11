@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "deepseek-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "python",
+        "super_mcp_unified.py"
+      ],
+      "cwd": "c:\\Users\\Administrator\\Desktop\\erthhgfj"
+    }
+  }
+}

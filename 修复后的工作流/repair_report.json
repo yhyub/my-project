@@ -1,0 +1,271 @@
+{
+  "report_title": "ZIP文件修复报告",
+  "report_version": "1.0.0",
+  "timestamp": "2025-01-01T00:00:00Z",
+  "summary": {
+    "total_files": 36,
+    "success_count": 36,
+    "failed_count": 0,
+    "total_workflows_fixed": 72,
+    "duplicate_files_removed": 0
+  },
+  "details": [
+    {
+      "zip_file": "Chatflow-fghjkl-draft-5670.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Chatflow-deepseek-draft-5720.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Chatflow-paper_search_1-draft-5955.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-AI_Automated_Workflow_Processo-draft-5651.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-Automated_operations_create-draft-5592.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-awesdfgjhkjt-draft-5840.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-coze_workflow_auto_doctor-draft-5747.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-bing_sou_1-draft-6156.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-deepseek-draft-5923.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-dffffhgdgc-draft-5873.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-create_module_code_128k_1_1_1-draft-6172.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-douyin_video_to_text_summary_10-draft-5990.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-draw_a_picture_1-draft-6085.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-douyin_video_to_text_summary_8-draft-6011.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-DY_video_to_text_1-draft-6028.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-ff4656ffjhg-draft-5774.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-dsfdgfhghjhj-draft-5795.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-fkdjgshgdfsd-draft-5789.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-jhgfduyp-draft-6145.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-gufengyangshengshipingon-draft-5821.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-jieshu_2-draft-6052.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-gzxcvbbbb-draft-6089.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-jjhgzrersyg-draft-5813.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-LG501_link_or_text_to_treeMind_1-draft-6165.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-LG501_link_or_text_to_treeMind_2-draft-6069.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-Model_Version_Recommendations-draft-5734.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-Polish_Long_Text_5000_1w_5-draft-6004.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-sdewfrgbtrv_1-draft-6130.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-lishigushi-draft-5886.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-sdewfrgbtrv_1_1-draft-6123.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-sfhggc-draft-6140.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-trdyuyfgh-draft-5718.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-wenzishengchengtupiangaoxiao-draft-5860.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-wz_yy_1-draft-5977.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-xfxj-draft-5943.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    },
+    {
+      "zip_file": "Workflow-yehass-draft-5909.zip",
+      "success": true,
+      "workflows_fixed": 2,
+      "duplicates_removed": 0,
+      "errors": []
+    }
+  ],
+  "errors": [],
+  "statistics": {
+    "workflow_types": {},
+    "fixed_issues": {}
+  }
+}

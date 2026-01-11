@@ -1,0 +1,49 @@
+{
+  "word_count": 122742,
+  "sentence_count": 1,
+  "avg_sentence_length": 122742.0,
+  "keywords": [
+    [
+      "import",
+      3423
+    ],
+    [
+      "def",
+      3395
+    ],
+    [
+      "return",
+      2469
+    ],
+    [
+      "if",
+      1723
+    ],
+    [
+      "from",
+      1618
+    ],
+    [
+      "in",
+      1471
+    ],
+    [
+      "as",
+      1362
+    ],
+    [
+      "for",
+      1133
+    ],
+    [
+      "class",
+      709
+    ],
+    [
+      "with",
+      577
+    ]
+  ],
+  "duplicate_count": 0,
+  "timestamp": 1748683082.1236527
+}

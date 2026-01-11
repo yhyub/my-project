@@ -1,0 +1,2778 @@
+{
+  "architectures": [
+    "ChineseCLIPModel"
+  ],
+  "initializer_factor": 1.0,
+  "logit_scale_init_value": 2.6592,
+  "model_type": "chinese_clip",
+  "projection_dim": 512,
+  "text_config": {
+    "architectures": [
+      "ChineseCLIPTextModel"
+    ],
+    "attention_probs_dropout_prob": 0.1,
+    "bos_token_id": 0,
+    "directionality": "bidi",
+    "eos_token_id": 2,
+    "hidden_act": "gelu",
+    "hidden_dropout_prob": 0.1,
+    "hidden_size": 768,
+    "initializer_range": 0.02,
+    "intermediate_size": 3072,
+    "layer_norm_eps": 1e-12,
+    "max_position_embeddings": 512,
+    "model_type": "chinese_clip_text_model",
+    "num_attention_heads": 12,
+    "num_hidden_layers": 12,
+    "output_past": true,
+    "pad_token_id": 0,
+    "pooler_fc_size": 768,
+    "pooler_num_attention_heads": 12,
+    "pooler_num_fc_layers": 3,
+    "pooler_size_per_head": 128,
+    "pooler_type": "first_token_transform",
+    "type_vocab_size": 2,
+    "vocab_size": 21128
+  },
+  "text_config_dict": null,
+  "torch_dtype": "float32",
+  "transformers_version": null,
+  "vision_config": {
+    "_name_or_path": "",
+    "add_cross_attention": false,
+    "architectures": null,
+    "attention_dropout": 0.0,
+    "bad_words_ids": null,
+    "bos_token_id": null,
+    "chunk_size_feed_forward": 0,
+    "decoder_start_token_id": null,
+    "diversity_penalty": 0.0,
+    "do_sample": false,
+    "dropout": 0.0,
+    "early_stopping": false,
+    "encoder_no_repeat_ngram_size": 0,
+    "eos_token_id": null,
+    "finetuning_task": null,
+    "forced_bos_token_id": null,
+    "forced_eos_token_id": null,
+    "hidden_act": "quick_gelu",
+    "hidden_size": 768,
+    "id2label": {
+      "0": "LABEL_0",
+      "1": "LABEL_1"
+    },
+    "image_size": 224,
+    "initializer_factor": 1.0,
+    "initializer_range": 0.02,
+    "intermediate_size": 3072,
+    "is_decoder": false,
+    "is_encoder_decoder": false,
+    "label2id": {
+      "LABEL_0": 0,
+      "LABEL_1": 1
+    },
+    "layer_norm_eps": 1e-05,
+    "length_penalty": 1.0,
+    "max_length": 20,
+    "min_length": 0,
+    "model_type": "chinese_clip_vision_model",
+    "no_repeat_ngram_size": 0,
+    "num_attention_heads": 12,
+    "num_beam_groups": 1,
+    "num_beams": 1,
+    "num_hidden_layers": 12,
+    "num_return_sequences": 1,
+    "output_attentions": false,
+    "output_hidden_states": false,
+    "output_scores": false,
+    "pad_token_id": null,
+    "patch_size": 16,
+    "prefix": null,
+    "problem_type": null,
+    "projection_dim": 512,
+    "pruned_heads": {},
+    "remove_invalid_values": false,
+    "repetition_penalty": 1.0,
+    "return_dict": true,
+    "return_dict_in_generate": false,
+    "sep_token_id": null,
+    "task_specific_params": null,
+    "temperature": 1.0,
+    "tie_encoder_decoder": false,
+    "tie_word_embeddings": true,
+    "tokenizer_class": null,
+    "top_k": 50,
+    "top_p": 1.0,
+    "torch_dtype": null,
+    "torchscript": false,
+    "transformers_version": "4.12.0.dev0",
+    "use_bfloat16": false
+  },
+  "vision_config_dict": {
+    "patch_size": 16
+  },
+  "framework": "pytorch",
+  "task": "others",
+  "allow_remote": true,
+  "do_center_crop": false,
+  "do_normalize": true,
+  "do_resize": true,
+  "feature_extractor_type": "ChineseCLIPFeatureExtractor",
+  "image_mean": [
+    0.48145466,
+    0.4578275,
+    0.40821073
+  ],
+  "image_std": [
+    0.26862954,
+    0.26130258,
+    0.27577711
+  ],
+  "resample": 3,
+  "size": {
+    "height": 224,
+    "width": 224
+  },
+  "attention_probs_dropout_prob": 0.1,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 128,
+  "initializer_range": 0.02,
+  "intermediate_size": 512,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "num_attention_heads": 2,
+  "num_hidden_layers": 2,
+  "pad_token_id": 0,
+  "type_vocab_size": 2,
+  "vocab_size": 30522,
+  "word_count": 122742,
+  "sentence_count": 1,
+  "avg_sentence_length": 122742.0,
+  "keywords": [
+    [
+      "import",
+      3423
+    ],
+    [
+      "def",
+      3395
+    ],
+    [
+      "return",
+      2469
+    ],
+    [
+      "if",
+      1723
+    ],
+    [
+      "from",
+      1618
+    ],
+    [
+      "in",
+      1471
+    ],
+    [
+      "as",
+      1362
+    ],
+    [
+      "for",
+      1133
+    ],
+    [
+      "class",
+      709
+    ],
+    [
+      "with",
+      577
+    ]
+  ],
+  "duplicate_count": 0,
+  "timestamp": 1748683082.1236527,
+  "user_id": "92bc0533-6cb3-4514-bceb-ac2738cdb058",
+  "email": null,
+  "mobile": {
+    "mobile_number": "13783797186",
+    "area_code": "+86"
+  },
+  "oauth_profiles": [
+    {
+      "provider": "WECHAT",
+      "profile_json": "{\"provider\": \"WECHAT\", \"id\": \"888b7de3-86dd-47c0-9883-7f266de715d1\", \"picture\": \"https://static.deepseek.com/user-avatar/mW6LUDgo-iVfax7JBKvECinb\", \"name\": \"c137\", \"locale\": \"zh_CN\", \"email\": null}"
+    }
+  ],
+  "file": "C:\\Users\\Administrator\\Desktop\\新建文件夹 (11)\\新建文件夹 (10)\\DeepSeek数据\\_processed\\user.json.report.json",
+  "processing_time": 0.0024650096893310547,
+  "chunks_processed": 5,
+  "total_divs": 1288,
+  "security_issues": 8,
+  "results": [],
+  "version": "5.0.0",
+  "last_modified": "2024-12-19",
+  "languages": {
+    "chinese": {
+      "name": "中文",
+      "keywords": {
+        "False": "假",
+        "True": "真",
+        "None": "空",
+        "and": "且",
+        "or": "或",
+        "not": "非",
+        "if": "如果",
+        "elif": "否则如果",
+        "else": "否则",
+        "for": "对于",
+        "while": "当",
+        "break": "跳出",
+        "continue": "继续",
+        "def": "定义",
+        "return": "返回",
+        "class": "类",
+        "import": "导入",
+        "from": "从",
+        "as": "作为",
+        "try": "尝试",
+        "except": "捕获",
+        "finally": "最终",
+        "raise": "抛出",
+        "with": "用",
+        "lambda": "匿名函数",
+        "in": "在",
+        "is": "是",
+        "del": "删除",
+        "global": "全局",
+        "nonlocal": "非局部",
+        "pass": "跳过",
+        "assert": "断言",
+        "yield": "生成"
+      },
+      "ui_text": {
+        "window_title": "小白中文可视化Python编辑器",
+        "visual_designer_title": "可视化设计器",
+        "status_ready": "就绪",
+        "run_button": "运行",
+        "stop_button": "停止",
+        "debug_button": "调试窗口",
+        "convert_to_chinese": "转换为中文Python",
+        "convert_to_english": "转换为英文Python",
+        "status_switched_to": "已切换到",
+        "status_mode": "模式"
+      },
+      "menu": {
+        "file": "文件",
+        "new": "新建",
+        "open": "打开",
+        "save": "保存",
+        "save_as": "另存为",
+        "theme_mode": "风格模式",
+        "white_mode": "白色模式",
+        "dark_mode": "黑色模式",
+        "eye_protection_mode": "护眼模式",
+        "blue_mode": "蓝色模式",
+        "green_mode": "绿色模式",
+        "exit": "退出",
+        "edit": "编辑",
+        "undo": "撤销",
+        "redo": "重做",
+        "cut": "剪切",
+        "copy": "复制",
+        "paste": "粘贴",
+        "find_replace": "查找替换",
+        "select_all": "全选",
+        "tools": "工具",
+        "visual_development": "可视化开发",
+        "pet_assistant": "宠物助理",
+        "run_menu": "运行",
+        "run": "运行",
+        "stop": "停止",
+        "debug_window": "调试窗口",
+        "run_idle": "运行IDLE",
+        "run_vscode": "运行VSCode",
+        "run_trae": "运行Trae",
+        "web": "网页",
+        "doubao": "豆包",
+        "deepseek": "DeepSeek",
+        "baidu_ai": "百度AI",
+        "chinese_python": "中文Python",
+        "bilibili": "B站",
+        "csdn": "CSDN",
+        "help": "帮助",
+        "cmd_window": "命令窗口",
+        "download_cloud": "下载云",
+        "about": "关于",
+        "ask": "提问",
+        "learn": "学习",
+        "rest": "休息",
+        "view_status": "查看状态",
+        "change_directory": "改变目录",
+        "new_directory": "新建目录",
+        "new_file": "新建文件",
+        "refresh": "刷新",
+        "properties": "属性",
+        "delete": "删除",
+        "font_size": "字体大小",
+        "foreground_color": "前景色",
+        "background_color": "背景色",
+        "bind_click_event": "绑定点击事件",
+        "language": "语言",
+        "chinese": "中文",
+        "english": "英文",
+        "project": "项目",
+        "window_size": "窗口大小",
+        "generate_code": "生成代码"
+      },
+      "context_menu": {
+        "undo": "撤销",
+        "redo": "重做",
+        "cut": "剪切",
+        "copy": "复制",
+        "paste": "粘贴",
+        "select_all": "全选",
+        "find_replace": "查找替换",
+        "debug_window": "调试窗口",
+        "increase_font": "增大字体",
+        "decrease_font": "减小字体",
+        "select_size": "选择大小"
+      }
+    },
+    "english": {
+      "name": "English",
+      "keywords": {
+        "False": "False",
+        "True": "True",
+        "None": "None",
+        "and": "and",
+        "or": "or",
+        "not": "not",
+        "if": "if",
+        "elif": "elif",
+        "else": "else",
+        "for": "for",
+        "while": "while",
+        "break": "break",
+        "continue": "continue",
+        "def": "def",
+        "return": "return",
+        "class": "class",
+        "import": "import",
+        "from": "from",
+        "as": "as",
+        "try": "try",
+        "except": "except",
+        "finally": "finally",
+        "raise": "raise",
+        "with": "with",
+        "lambda": "lambda",
+        "in": "in",
+        "is": "is",
+        "del": "del",
+        "global": "global",
+        "nonlocal": "nonlocal",
+        "pass": "pass",
+        "assert": "assert",
+        "yield": "yield"
+      },
+      "ui_text": {
+        "window_title": "Beginner Chinese Visual Python Editor",
+        "visual_designer_title": "Visual Designer",
+        "status_ready": "Ready",
+        "run_button": "Run",
+        "stop_button": "Stop",
+        "debug_button": "Debug Window",
+        "convert_to_chinese": "Convert to Chinese Python",
+        "convert_to_english": "Convert to English Python",
+        "status_switched_to": "Switched to",
+        "status_mode": "mode"
+      },
+      "menu": {
+        "file": "File",
+        "new": "New",
+        "open": "Open",
+        "save": "Save",
+        "save_as": "Save As",
+        "theme_mode": "Theme Mode",
+        "white_mode": "White Mode",
+        "dark_mode": "Dark Mode",
+        "eye_protection_mode": "Eye Protection Mode",
+        "blue_mode": "Blue Mode",
+        "green_mode": "Green Mode",
+        "exit": "Exit",
+        "edit": "Edit",
+        "undo": "Undo",
+        "redo": "Redo",
+        "cut": "Cut",
+        "copy": "Copy",
+        "paste": "Paste",
+        "find_replace": "Find & Replace",
+        "select_all": "Select All",
+        "tools": "Tools",
+        "visual_development": "Visual Development",
+        "pet_assistant": "Pet Assistant",
+        "run_menu": "Run",
+        "run": "Run",
+        "stop": "Stop",
+        "debug_window": "Debug Window",
+        "run_idle": "Run IDLE",
+        "run_vscode": "Run VSCode",
+        "run_trae": "Run Trae",
+        "web": "Web",
+        "doubao": "Doubao",
+        "deepseek": "DeepSeek",
+        "baidu_ai": "Baidu AI",
+        "chinese_python": "Chinese Python",
+        "bilibili": "Bilibili",
+        "csdn": "CSDN",
+        "help": "Help",
+        "cmd_window": "Command Window",
+        "download_cloud": "Download Cloud",
+        "about": "About",
+        "ask": "Ask",
+        "learn": "Learn",
+        "rest": "Rest",
+        "view_status": "View Status",
+        "change_directory": "Change Directory",
+        "new_directory": "New Directory",
+        "new_file": "New File",
+        "refresh": "Refresh",
+        "properties": "Properties",
+        "delete": "Delete",
+        "font_size": "Font Size",
+        "foreground_color": "Foreground Color",
+        "background_color": "Background Color",
+        "bind_click_event": "Bind Click Event",
+        "language": "Language",
+        "chinese": "Chinese",
+        "english": "English",
+        "project": "Project",
+        "window_size": "Window Size",
+        "generate_code": "Generate Code"
+      },
+      "context_menu": {
+        "undo": "Undo",
+        "redo": "Redo",
+        "cut": "Cut",
+        "copy": "Copy",
+        "paste": "Paste",
+        "select_all": "Select All",
+        "find_replace": "Find & Replace",
+        "debug_window": "Debug Window",
+        "increase_font": "Increase Font",
+        "decrease_font": "Decrease Font",
+        "select_size": "Select Size"
+      }
+    },
+    "korean": {
+      "name": "한국어",
+      "keywords": {
+        "False": "거짓",
+        "True": "참",
+        "None": "없음",
+        "and": "그리고",
+        "or": "또는",
+        "not": "아님",
+        "if": "만약",
+        "elif": "아니면",
+        "else": "그렇지않으면",
+        "for": "에대해",
+        "while": "동안",
+        "break": "탈출",
+        "continue": "계속",
+        "def": "정의",
+        "return": "반환",
+        "class": "클래스",
+        "import": "가져오기",
+        "from": "에서",
+        "as": "로",
+        "try": "시도",
+        "except": "예외",
+        "finally": "마지막으로",
+        "raise": "발생",
+        "with": "와함께",
+        "lambda": "람다함수",
+        "in": "안에",
+        "is": "이다",
+        "del": "삭제",
+        "global": "전역",
+        "nonlocal": "비지역",
+        "pass": "통과",
+        "assert": "단언",
+        "yield": "생성"
+      },
+      "ui_text": {
+        "window_title": "초보자 한국어 시각적 Python 편집기",
+        "visual_designer_title": "시각적 디자이너",
+        "status_ready": "준비",
+        "run_button": "실행",
+        "stop_button": "중지",
+        "debug_button": "디버그 창",
+        "convert_to_chinese": "중국어 Python으로 변환",
+        "convert_to_english": "영어 Python으로 변환",
+        "status_switched_to": "전환됨",
+        "status_mode": "모드"
+      },
+      "menu": {
+        "file": "파일",
+        "new": "새로만들기",
+        "open": "열기",
+        "save": "저장",
+        "save_as": "다른이름으로저장",
+        "theme_mode": "테마 모드",
+        "white_mode": "화이트 모드",
+        "dark_mode": "다크 모드",
+        "eye_protection_mode": "눈 보호 모드",
+        "blue_mode": "블루 모드",
+        "green_mode": "그린 모드",
+        "exit": "종료",
+        "edit": "편집",
+        "undo": "실행취소",
+        "redo": "다시실행",
+        "cut": "잘라내기",
+        "copy": "복사",
+        "paste": "붙여넣기",
+        "find_replace": "찾기및바꾸기",
+        "select_all": "전체선택",
+        "tools": "도구",
+        "visual_development": "시각적 개발",
+        "pet_assistant": "펫 어시스턴트",
+        "run_menu": "실행",
+        "run": "실행",
+        "stop": "중지",
+        "debug_window": "디버그 창",
+        "run_idle": "IDLE 실행",
+        "run_vscode": "VSCode 실행",
+        "run_trae": "Trae 실행",
+        "web": "웹",
+        "doubao": "Doubao",
+        "deepseek": "DeepSeek",
+        "baidu_ai": "Baidu AI",
+        "chinese_python": "중국어 Python",
+        "bilibili": "Bilibili",
+        "csdn": "CSDN",
+        "help": "도움말",
+        "cmd_window": "명령 창",
+        "download_cloud": "클라우드 다운로드",
+        "about": "정보",
+        "ask": "질문",
+        "learn": "학습",
+        "rest": "휴식",
+        "view_status": "상태 보기",
+        "change_directory": "디렉토리 변경",
+        "new_directory": "새 디렉토리",
+        "new_file": "새 파일",
+        "refresh": "새로고침",
+        "properties": "속성",
+        "delete": "삭제",
+        "font_size": "글꼴 크기",
+        "foreground_color": "전경색",
+        "background_color": "배경색",
+        "bind_click_event": "클릭 이벤트 바인딩",
+        "language": "언어",
+        "chinese": "중국어",
+        "english": "영어",
+        "korean": "한국어",
+        "project": "프로젝트",
+        "window_size": "창 크기",
+        "generate_code": "코드 생성"
+      },
+      "context_menu": {
+        "undo": "실행취소",
+        "redo": "다시실행",
+        "cut": "잘라내기",
+        "copy": "복사",
+        "paste": "붙여넣기",
+        "select_all": "전체선택",
+        "find_replace": "찾기및바꾸기",
+        "debug_window": "디버그 창",
+        "increase_font": "글꼴 크게",
+        "decrease_font": "글꼴 작게",
+        "select_size": "크기 선택"
+      }
+    },
+    "japanese": {
+      "name": "日本語",
+      "keywords": {
+        "False": "偽",
+        "True": "真",
+        "None": "無",
+        "and": "かつ",
+        "or": "または",
+        "not": "ではない",
+        "if": "もし",
+        "elif": "そうでなければ",
+        "else": "それ以外",
+        "for": "に対して",
+        "while": "の間",
+        "break": "抜ける",
+        "continue": "続ける",
+        "def": "定義",
+        "return": "返す",
+        "class": "クラス",
+        "import": "インポート",
+        "from": "から",
+        "as": "として",
+        "try": "試す",
+        "except": "例外",
+        "finally": "最終的に",
+        "raise": "発生",
+        "with": "と一緒に",
+        "lambda": "ラムダ関数",
+        "in": "の中に",
+        "is": "である",
+        "del": "削除",
+        "global": "グローバル",
+        "nonlocal": "非ローカル",
+        "pass": "通過",
+        "assert": "断言",
+        "yield": "生成"
+      },
+      "ui_text": {
+        "window_title": "初心者向け日本語ビジュアルPythonエディタ",
+        "visual_designer_title": "ビジュアルデザイナー",
+        "status_ready": "準備完了",
+        "run_button": "実行",
+        "stop_button": "停止",
+        "debug_button": "デバッグウィンドウ",
+        "convert_to_chinese": "中国語Pythonに変換",
+        "convert_to_english": "英語Pythonに変換",
+        "status_switched_to": "切り替え済み",
+        "status_mode": "モード"
+      },
+      "menu": {
+        "file": "ファイル",
+        "new": "新規作成",
+        "open": "開く",
+        "save": "保存",
+        "save_as": "名前を付けて保存",
+        "theme_mode": "テーマモード",
+        "white_mode": "ホワイトモード",
+        "dark_mode": "ダークモード",
+        "eye_protection_mode": "目保護モード",
+        "blue_mode": "ブルーモード",
+        "green_mode": "グリーンモード",
+        "exit": "終了",
+        "edit": "編集",
+        "undo": "元に戻す",
+        "redo": "やり直し",
+        "cut": "切り取り",
+        "copy": "コピー",
+        "paste": "貼り付け",
+        "find_replace": "検索と置換",
+        "select_all": "すべて選択",
+        "tools": "ツール",
+        "visual_development": "ビジュアル開発",
+        "pet_assistant": "ペットアシスタント",
+        "run_menu": "実行",
+        "run": "実行",
+        "stop": "停止",
+        "debug_window": "デバッグウィンドウ",
+        "run_idle": "IDLE実行",
+        "run_vscode": "VSCode実行",
+        "run_trae": "Trae実行",
+        "web": "ウェブ",
+        "doubao": "Doubao",
+        "deepseek": "DeepSeek",
+        "baidu_ai": "Baidu AI",
+        "chinese_python": "中国語Python",
+        "bilibili": "Bilibili",
+        "csdn": "CSDN",
+        "help": "ヘルプ",
+        "cmd_window": "コマンドウィンドウ",
+        "download_cloud": "クラウドダウンロード",
+        "about": "情報",
+        "ask": "質問",
+        "learn": "学習",
+        "rest": "休憩",
+        "view_status": "ステータス表示",
+        "change_directory": "ディレクトリ変更",
+        "new_directory": "新規ディレクトリ",
+        "new_file": "新規ファイル",
+        "refresh": "更新",
+        "properties": "プロパティ",
+        "delete": "削除",
+        "font_size": "フォントサイズ",
+        "foreground_color": "前景色",
+        "background_color": "背景色",
+        "bind_click_event": "クリックイベントバインド",
+        "language": "言語",
+        "chinese": "中国語",
+        "english": "英語",
+        "korean": "韓国語",
+        "japanese": "日本語",
+        "project": "プロジェクト",
+        "window_size": "ウィンドウサイズ",
+        "generate_code": "コード生成"
+      },
+      "context_menu": {
+        "undo": "元に戻す",
+        "redo": "やり直し",
+        "cut": "切り取り",
+        "copy": "コピー",
+        "paste": "貼り付け",
+        "select_all": "すべて選択",
+        "find_replace": "検索と置換",
+        "debug_window": "デバッグウィンドウ",
+        "increase_font": "フォント拡大",
+        "decrease_font": "フォント縮小",
+        "select_size": "サイズ選択"
+      }
+    },
+    "russian": {
+      "name": "Русский",
+      "keywords": {
+        "False": "Ложь",
+        "True": "Истина",
+        "None": "Ничего",
+        "and": "и",
+        "or": "или",
+        "not": "не",
+        "if": "если",
+        "elif": "иначе если",
+        "else": "иначе",
+        "for": "для",
+        "while": "пока",
+        "break": "прервать",
+        "continue": "продолжить",
+        "def": "определить",
+        "return": "вернуть",
+        "class": "класс",
+        "import": "импортировать",
+        "from": "из",
+        "as": "как",
+        "try": "попробовать",
+        "except": "исключение",
+        "finally": "наконец",
+        "raise": "вызвать",
+        "with": "с",
+        "lambda": "лямбда-функция",
+        "in": "в",
+        "is": "является",
+        "del": "удалить",
+        "global": "глобальный",
+        "nonlocal": "нелокальный",
+        "pass": "пропустить",
+        "assert": "утверждать",
+        "yield": "генерировать"
+      },
+      "ui_text": {
+        "window_title": "Начинающий визуальный Python редактор на русском",
+        "visual_designer_title": "Визуальный дизайнер",
+        "status_ready": "Готов",
+        "run_button": "Запуск",
+        "stop_button": "Остановить",
+        "debug_button": "Окно отладки",
+        "convert_to_chinese": "Преобразовать в китайский Python",
+        "convert_to_english": "Преобразовать в английский Python",
+        "status_switched_to": "Переключено на",
+        "status_mode": "режим"
+      },
+      "menu": {
+        "file": "Файл",
+        "new": "Создать",
+        "open": "Открыть",
+        "save": "Сохранить",
+        "save_as": "Сохранить как",
+        "theme_mode": "Режим темы",
+        "white_mode": "Белый режим",
+        "dark_mode": "Темный режим",
+        "eye_protection_mode": "Режим защиты глаз",
+        "blue_mode": "Синий режим",
+        "green_mode": "Зеленый режим",
+        "exit": "Выход",
+        "edit": "Правка",
+        "undo": "Отменить",
+        "redo": "Повторить",
+        "cut": "Вырезать",
+        "copy": "Копировать",
+        "paste": "Вставить",
+        "find_replace": "Найти и заменить",
+        "select_all": "Выделить все",
+        "tools": "Инструменты",
+        "visual_development": "Визуальная разработка",
+        "pet_assistant": "Помощник-питомец",
+        "run_menu": "Запуск",
+        "run": "Запуск",
+        "stop": "Остановить",
+        "debug_window": "Окно отладки",
+        "run_idle": "Запустить IDLE",
+        "run_vscode": "Запустить VSCode",
+        "run_trae": "Запустить Trae",
+        "web": "Веб",
+        "doubao": "Doubao",
+        "deepseek": "DeepSeek",
+        "baidu_ai": "Baidu AI",
+        "chinese_python": "Китайский Python",
+        "bilibili": "Bilibili",
+        "csdn": "CSDN",
+        "help": "Помощь",
+        "cmd_window": "Командное окно",
+        "download_cloud": "Облачная загрузка",
+        "about": "О программе",
+        "ask": "Спросить",
+        "learn": "Учиться",
+        "rest": "Отдых",
+        "view_status": "Просмотр статуса",
+        "change_directory": "Изменить директорию",
+        "new_directory": "Новая директория",
+        "new_file": "Новый файл",
+        "refresh": "Обновить",
+        "properties": "Свойства",
+        "delete": "Удалить",
+        "font_size": "Размер шрифта",
+        "foreground_color": "Цвет переднего плана",
+        "background_color": "Цвет фона",
+        "bind_click_event": "Привязать событие клика",
+        "language": "Язык",
+        "chinese": "Китайский",
+        "english": "Английский",
+        "korean": "Корейский",
+        "japanese": "Японский",
+        "russian": "Русский",
+        "project": "Проект",
+        "window_size": "Размер окна",
+        "generate_code": "Сгенерировать код"
+      },
+      "context_menu": {
+        "undo": "Отменить",
+        "redo": "Повторить",
+        "cut": "Вырезать",
+        "copy": "Копировать",
+        "paste": "Вставить",
+        "select_all": "Выделить все",
+        "find_replace": "Найти и заменить",
+        "debug_window": "Окно отладки",
+        "increase_font": "Увеличить шрифт",
+        "decrease_font": "Уменьшить шрифт",
+        "select_size": "Выбрать размер"
+      }
+    }
+  },
+  "current_language": "chinese",
+  "info": {
+    "title": "Coze全场景智能自动化超级中枢",
+    "version": "10.1.0",
+    "description": "整合神经意识决策、全维度数据处理、工作流管理等26+核心能力的超级插件，支持工业控制、科研转化、内容创作等场景，适配手机端操作，自动修复[101006]等错误，100%解决Invalid params错误",
+    "contact": {
+      "name": "Coze全自动化团队",
+      "url": "https://coze.com",
+      "email": "support@coze.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "item": [
+    {
+      "name": "生成工作流配置",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"workflow_demand\": \"生成请假流程：1. 提交申请 2. 领导审批 3. 通过→人事备案；不通过→退回 4. 通知\",\n  \"include_branch\": true,\n  \"safety_check_mode\": \"基础校验\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://coze.com/api/v1/workflow/generate",
+          "protocol": "https",
+          "host": [
+            "coze",
+            "com"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "workflow",
+            "generate"
+          ]
+        },
+        "description": "发送工作流需求，生成完整配置"
+      },
+      "response": [
+        {
+          "name": "成功响应",
+          "originalRequest": {
+            "method": "POST",
+            "url": {
+              "raw": "https://coze.com/api/v1/workflow/generate",
+              "protocol": "https",
+              "host": [
+                "coze",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "workflow",
+                "generate"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"full_workflow\": {\n    \"nodes\": [...],\n    \"connections\": [...]\n  },\n  \"import_guide\": \"复制到Coze导入\"\n}"
+        },
+        {
+          "name": "参数错误",
+          "originalRequest": {
+            "method": "POST",
+            "url": {
+              "raw": "https://coze.com/api/v1/workflow/generate",
+              "protocol": "https",
+              "host": [
+                "coze",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "workflow",
+                "generate"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "body": "{\n  \"error\": \"参数不合法\",\n  \"details\": [\"workflow_demand长度不足\"]\n}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://coze.com/api/v1/workflow"
+    }
+  ],
+  "openapi": "3.0.3",
+  "servers": [
+    {
+      "url": "https://api.asi-ace.example.com/v1",
+      "description": "生产环境API服务器"
+    },
+    {
+      "url": "http://localhost:8000/v1",
+      "description": "本地开发环境API服务器"
+    }
+  ],
+  "paths": {
+    "/automation/process": {
+      "post": {
+        "summary": "全场景智能自动化处理",
+        "description": "整合20+核心能力的超级自动化处理接口，支持工业控制、内容创作、错误修复等多种场景",
+        "operationId": "processAutomation",
+        "tags": [
+          "自动化处理"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutomationRequest"
+              },
+              "examples": {
+                "内容创作示例": {
+                  "value": {
+                    "user_demand": "生成唐三彩德语推广视频",
+                    "attachments": [
+                      "https://example.com/tang_figure.jpg"
+                    ],
+                    "config": {
+                      "platform": "tiktok",
+                      "style": "luoyang_dialect",
+                      "output_format": "video"
+                    }
+                  }
+                },
+                "错误修复示例": {
+                  "value": {
+                    "user_demand": "修复[101006]函数导出错误",
+                    "original_code": "export function myHandler() {}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "处理成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AutomationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "参数错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "服务器内部错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-coze-operation": {
+          "timeout": 30000,
+          "rateLimit": {
+            "maxRequests": 100,
+            "windowMs": 60000
+          }
+        }
+      }
+    },
+    "/automation/fix-error": {
+      "post": {
+        "summary": "自动化错误修复",
+        "description": "专门用于修复Coze平台常见错误，如[101006]函数导出错误、Invalid params参数错误等",
+        "operationId": "fixAutomationError",
+        "tags": [
+          "错误修复"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ErrorFixRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "修复成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorFixResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "参数错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/luoyang/heritage": {
+      "post": {
+        "summary": "洛阳非遗电商处理",
+        "description": "专门处理洛阳非遗电商相关任务，包括唐三彩、汉服等内容创作和数据处理",
+        "operationId": "processLuoyangHeritage",
+        "tags": [
+          "洛阳电商"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LuoyangRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "处理成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LuoyangResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AutomationRequest": {
+        "type": "object",
+        "required": [
+          "user_demand"
+        ],
+        "properties": {
+          "user_demand": {
+            "type": "string",
+            "description": "自然语言描述的自动化需求",
+            "minLength": 5,
+            "maxLength": 1000,
+            "example": "生成唐三彩德语推广视频"
+          },
+          "attachments": {
+            "type": "array",
+            "description": "相关资源URL列表",
+            "maxItems": 10,
+            "items": {
+              "type": "string",
+              "format": "uri"
+            },
+            "example": [
+              "https://example.com/tang_figure.jpg"
+            ]
+          },
+          "config": {
+            "type": "object",
+            "description": "扩展配置参数",
+            "properties": {
+              "platform": {
+                "type": "string",
+                "description": "目标平台",
+                "enum": [
+                  "douyin",
+                  "tiktok",
+                  "wechat",
+                  "luoyang_local"
+                ],
+                "example": "tiktok"
+              },
+              "style": {
+                "type": "string",
+                "description": "内容风格",
+                "example": "luoyang_dialect"
+              },
+              "output_format": {
+                "type": "string",
+                "description": "输出格式",
+                "enum": [
+                  "json",
+                  "csv",
+                  "video",
+                  "report"
+                ],
+                "example": "video"
+              }
+            }
+          },
+          "original_code": {
+            "type": "string",
+            "description": "原始问题代码片段(用于错误修复)",
+            "example": "export function myHandler() {}"
+          }
+        }
+      },
+      "AutomationResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "操作是否成功",
+            "example": true
+          },
+          "task_type": {
+            "type": "string",
+            "description": "任务类型标识",
+            "example": "content_creation"
+          },
+          "execution_time": {
+            "type": "number",
+            "description": "执行耗时(毫秒)",
+            "example": 1250
+          },
+          "data": {
+            "type": "object",
+            "description": "处理结果数据",
+            "properties": {
+              "result_content": {
+                "type": "string",
+                "description": "文本处理结果"
+              },
+              "file_urls": {
+                "type": "array",
+                "description": "生成文件URL列表",
+                "items": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            }
+          },
+          "process_log": {
+            "type": "array",
+            "description": "执行步骤日志",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ErrorFixRequest": {
+        "type": "object",
+        "required": [
+          "error_code"
+        ],
+        "properties": {
+          "error_code": {
+            "type": "string",
+            "description": "错误代码",
+            "example": "[101006]"
+          },
+          "plugin_name": {
+            "type": "string",
+            "description": "插件名称",
+            "example": "luoyang_erp_sync"
+          },
+          "original_code": {
+            "type": "string",
+            "description": "原始问题代码片段"
+          }
+        }
+      },
+      "ErrorFixResponse": {
+        "type": "object",
+        "properties": {
+          "error_type": {
+            "type": "string",
+            "description": "错误类型",
+            "example": "函数导出错误"
+          },
+          "diagnosis": {
+            "type": "string",
+            "description": "诊断结果",
+            "example": "未正确导出handler函数"
+          },
+          "fix_suggestion": {
+            "type": "string",
+            "description": "修复建议"
+          },
+          "fixed_code": {
+            "type": "string",
+            "description": "修复后的完整代码"
+          },
+          "test_result": {
+            "type": "string",
+            "description": "测试结果",
+            "example": "通过Coze平台验证"
+          }
+        }
+      },
+      "LuoyangRequest": {
+        "type": "object",
+        "required": [
+          "industry",
+          "action"
+        ],
+        "properties": {
+          "industry": {
+            "type": "string",
+            "description": "非遗产业类型",
+            "enum": [
+              "hanfu",
+              "tang_tri_color"
+            ],
+            "example": "tang_tri_color"
+          },
+          "action": {
+            "type": "string",
+            "description": "操作类型",
+            "enum": [
+              "data_sync",
+              "content_generate",
+              "trend_analysis"
+            ],
+            "example": "content_generate"
+          },
+          "params": {
+            "type": "object",
+            "description": "扩展参数"
+          }
+        }
+      },
+      "LuoyangResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "industry": {
+            "type": "string",
+            "example": "tang_tri_color"
+          },
+          "action": {
+            "type": "string",
+            "example": "content_generate"
+          },
+          "result_content": {
+            "type": "string",
+            "description": "处理结果内容"
+          },
+          "heritage_effect": {
+            "type": "number",
+            "description": "非遗推广效果评分(0-100)",
+            "minimum": 0,
+            "maximum": 100,
+            "example": 85
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer",
+                "description": "错误代码",
+                "example": 40001
+              },
+              "message": {
+                "type": "string",
+                "description": "错误信息",
+                "example": "缺少必要参数: user_demand"
+              },
+              "fix_suggestion": {
+                "type": "string",
+                "description": "修复建议",
+                "example": "请提供自然语言需求描述"
+              },
+              "details": {
+                "type": "object",
+                "description": "错误详情"
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "ContentTypeHeader": {
+        "name": "Content-Type",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "application/json"
+          ],
+          "example": "application/json"
+        },
+        "description": "内容类型"
+      }
+    },
+    "responses": {
+      "InvalidParamsError": {
+        "description": "参数验证失败",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "examples": {
+              "MissingRequiredParam": {
+                "value": {
+                  "error": {
+                    "code": 40001,
+                    "message": "缺少必要参数: user_demand",
+                    "fix_suggestion": "请提供自然语言需求描述"
+                  }
+                }
+              },
+              "InvalidParamType": {
+                "value": {
+                  "error": {
+                    "code": 40002,
+                    "message": "参数类型错误: attachments应为数组",
+                    "fix_suggestion": "请检查参数格式"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "name": "X-API-Key",
+        "in": "header"
+      },
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    },
+    {
+      "BearerAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "自动化处理",
+      "description": "全场景智能自动化处理相关接口"
+    },
+    {
+      "name": "错误修复",
+      "description": "自动化错误诊断与修复接口"
+    },
+    {
+      "name": "洛阳电商",
+      "description": "洛阳非遗电商特色处理接口"
+    }
+  ],
+  "externalDocs": {
+    "description": "Coze完整功能开发文档",
+    "url": "https://docs.coze.com/complete"
+  },
+  "x-coze-plugin": {
+    "name": "Coze全场景智能自动化超级中枢",
+    "description": "整合神经意识决策、全维度数据处理、工作流管理、跨平台创作等26+核心能力的超级插件，支持工业控制、科研转化、内容创作等场景，适配手机端操作，自动修复[101006]等错误",
+    "version": "10.1.0",
+    "author": "Coze全自动化团队",
+    "permissions": [
+      "file:read",
+      "file:write",
+      "web:scrape",
+      "model:train",
+      "github:deploy",
+      "content:generate",
+      "workflow:execute",
+      "device:control",
+      "network"
+    ],
+    "input_parameters": [
+      {
+        "name": "user_demand",
+        "type": "string",
+        "required": true,
+        "description": "自然语言描述的自动化需求",
+        "validation": {
+          "minLength": 5,
+          "maxLength": 1000
+        }
+      },
+      {
+        "name": "attachments",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "required": false,
+        "description": "相关资源URL列表",
+        "validation": {
+          "maxItems": 10
+        }
+      },
+      {
+        "name": "config",
+        "type": "object",
+        "required": false,
+        "description": "扩展配置参数",
+        "properties": {
+          "platform": {
+            "type": "string",
+            "enum": [
+              "douyin",
+              "tiktok",
+              "wechat",
+              "luoyang_local"
+            ]
+          },
+          "style": {
+            "type": "string"
+          },
+          "output_format": {
+            "type": "string",
+            "enum": [
+              "json",
+              "csv",
+              "video",
+              "report"
+            ]
+          }
+        }
+      }
+    ],
+    "output_parameters": [
+      {
+        "name": "success",
+        "type": "boolean",
+        "description": "操作是否成功"
+      },
+      {
+        "name": "task_type",
+        "type": "string",
+        "description": "任务类型标识"
+      },
+      {
+        "name": "execution_time",
+        "type": "number",
+        "description": "执行耗时(毫秒)"
+      },
+      {
+        "name": "data",
+        "type": "object",
+        "description": "处理结果数据",
+        "properties": {
+          "result_content": {
+            "type": "string"
+          },
+          "file_urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      },
+      {
+        "name": "process_log",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "执行日志"
+      }
+    ]
+  },
+  "model_settings": {
+    "default_model_path": "C:\\Bunny-v1_0-3B",
+    "alternative_model_paths": [
+      "C:\\Users\\Administrator\\Documents\\Bunny-v1_0-3B",
+      "D:\\Bunny-v1_0-3B",
+      "./Bunny-v1_0-3B"
+    ],
+    "model_type": "transformers",
+    "auto_download": false
+  },
+  "data_processing": {
+    "supported_formats": [
+      "txt",
+      "json",
+      "csv",
+      "zip"
+    ],
+    "text_encoding": "utf-8",
+    "max_file_size_mb": 100,
+    "auto_extract_archives": true
+  },
+  "training_parameters": {
+    "train_test_split": {
+      "train_ratio": 0.8,
+      "val_ratio": 0.1,
+      "test_ratio": 0.1,
+      "random_state": 42
+    },
+    "training_epochs": 3,
+    "batch_size": 4,
+    "learning_rate": 5e-05,
+    "max_seq_length": 512,
+    "warmup_steps": 500,
+    "weight_decay": 0.01
+  },
+  "data_augmentation": {
+    "text_augmentation": {
+      "enabled": true,
+      "methods": [
+        "synonym_replacement",
+        "back_translation"
+      ],
+      "augmentation_factor": 0.3
+    },
+    "image_augmentation": {
+      "enabled": false,
+      "methods": [
+        "rotation",
+        "cropping",
+        "noise_addition"
+      ]
+    }
+  },
+  "output_settings": {
+    "model_output_dir": "trained_models",
+    "checkpoint_dir": "checkpoints",
+    "log_dir": "logs",
+    "report_format": "json",
+    "save_full_model": true,
+    "export_formats": [
+      "pytorch",
+      "onnx"
+    ]
+  },
+  "incremental_training": {
+    "enabled": true,
+    "checkpoint_frequency": 1000,
+    "resume_from_checkpoint": true,
+    "auto_save_checkpoints": true
+  },
+  "validation_settings": {
+    "eval_strategy": "steps",
+    "eval_steps": 500,
+    "metric_for_best_model": "eval_loss",
+    "early_stopping_patience": 3
+  },
+  "hardware_settings": {
+    "device_priority": [
+      "cuda",
+      "cpu"
+    ],
+    "mixed_precision": "fp16",
+    "gradient_accumulation_steps": 1,
+    "data_parallel": false
+  },
+  "logging_settings": {
+    "log_level": "INFO",
+    "log_file": "auto_ai_trainer.log",
+    "console_output": true,
+    "log_rotation": true
+  },
+  "security_settings": {
+    "validate_input_data": true,
+    "sanitize_filenames": true,
+    "max_recursion_depth": 10,
+    "timeout_seconds": 3600
+  },
+  "x-trae-configuration": {
+    "framework_version": "1.2.0",
+    "validation_strategy": "strict",
+    "auto_cast_types": true,
+    "error_handling": {
+      "include_stack_trace": false,
+      "localization": "zh-CN",
+      "context7_enabled": true
+    },
+    "api_prefix": {
+      "enforced": true,
+      "default_prefix": "/v3",
+      "auto_redirect": true,
+      "validation": "strict"
+    },
+    "content_negotiation": {
+      "supported_formats": [
+        "json",
+        "yaml"
+      ],
+      "default_format": "json",
+      "auto_conversion": true
+    },
+    "context7_integration": {
+      "enabled": true,
+      "validation_rules": "extended",
+      "semantic_analysis": true,
+      "error_recovery": true
+    }
+  },
+  "x-context7-integration": {
+    "enabled": true,
+    "validation_rules": "extended",
+    "semantic_analysis": true,
+    "error_recovery": true,
+    "api_prefix_consistency": {
+      "enabled": true,
+      "required_prefix": "/v3",
+      "validation": "strict"
+    }
+  },
+  "x-coze-global-config": {
+    "param_validation": {
+      "strict_mode": false,
+      "auto_correction": true,
+      "default_strategies": {
+        "missing_required": "use_default",
+        "type_mismatch": "attempt_conversion",
+        "out_of_range": "clamp_to_boundary",
+        "invalid_enum": "nearest_match"
+      }
+    },
+    "error_handling": {
+      "supported_errors": [
+        "HTTP_400",
+        "HTTP_422",
+        "INVALID_PARAMETER",
+        "MISSING_REQUIRED_FIELD",
+        "TYPE_MISMATCH",
+        "VALUE_OUT_OF_RANGE"
+      ]
+    }
+  },
+  "securitySchemes": {
+    "ApiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "API密钥认证"
+    },
+    "BearerAuth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "Bearer令牌认证"
+    }
+  },
+  "schema": "https://schema.coze.com/plugins/v1",
+  "metadata": {
+    "name": "JSON修复与任务执行插件",
+    "version": "1.0.0",
+    "description": "以单一输入框节点为核心，无需依赖外部LLM或第三方工具，实现Coze工作流全流程自动化处理",
+    "author": "Coze智能自动化团队",
+    "email": "support@example.com",
+    "icon": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyNSIgY3k9IjI1IiByPSIyMCIgZmlsbD0iIzEyOWY5OSIvPjxwYXRoIGQ9Ik0zNS43IDE0LjNjLTEuNi0xLjYtNC4yLTEuNi01LjggMC0xLjYuMTYtMS42IDQuMiAwIDUuOHYyLjJjMC44LjgiMTYuMSAxMC4xIDE2LjEgMTAuMXMzLjMtOC40IDQuMi0xMi4yYzEuMi01LjYtNi42LTkuMi0xMi42LTguNXMtMTEuNSA1LjctMTIuNiA4LjhjLTEuMiA1LjYgNi42IDkuMiAxMi42IDguNHMxMS41LTUuNyAxMi42LTguOGMwLjYtMi40IDIuNy0zLjcgNS0zLjcgMi4zIDAgNC4yIDEuNCA1LjggMy4ydjMuN2MxLjQgMS40IDIuMiAzLjUgMi4yIDUuN3YyLjJ6IiBmaWxsPSIjMTI5Zjk5Ii8+PC9zdmc+",
+    "category": "开发工具",
+    "tags": [
+      "JSON",
+      "修复",
+      "工作流",
+      "自动化",
+      "工具"
+    ]
+  },
+  "auth": {
+    "type": "none"
+  },
+  "workflows": [
+    {
+      "name": "json_fix_task_workflow",
+      "description": "JSON修复与任务执行工作流",
+      "nodes": [
+        {
+          "name": "start_node",
+          "type": "start_node",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "parameters": {
+            "task_type": {
+              "type": "string",
+              "description": "任务类型",
+              "default": "json_fix",
+              "enum": [
+                "json_fix",
+                "multi_file_merge",
+                "plugin_adapt",
+                "workflow_fix",
+                "custom_task"
+              ],
+              "enum_labels": [
+                "JSON错误修复",
+                "多文件合并",
+                "插件导入适配",
+                "工作流问题修复",
+                "自定义任务"
+              ]
+            },
+            "fix_level": {
+              "type": "string",
+              "description": "修复级别",
+              "default": "standard",
+              "enum": [
+                "basic",
+                "standard",
+                "comprehensive"
+              ],
+              "enum_labels": [
+                "基础修复",
+                "标准修复",
+                "全面修复"
+              ]
+            }
+          }
+        },
+        {
+          "name": "input_box_node",
+          "type": "code_node",
+          "position": {
+            "x": 200,
+            "y": 0
+          },
+          "parameters": {
+            "input_content": {
+              "type": "string",
+              "description": "输入内容（JSON文本、文件内容或任务描述）",
+              "default": "{\"example\": \"请在此输入需要处理的JSON内容或任务描述\"}"
+            }
+          },
+          "code": "module.exports = async function (params) {\n  const { input_content } = params;\n  // 此节点仅作为输入框，实际处理逻辑在handler中实现\n  return { input_content };\n}"
+        },
+        {
+          "name": "process_node",
+          "type": "function_node",
+          "position": {
+            "x": 400,
+            "y": 0
+          },
+          "parameters": {
+            "function": "processJsonFixTask",
+            "inputs": {
+              "task_type": "{{start_node.task_type}}",
+              "fix_level": "{{start_node.fix_level}}",
+              "input_content": "{{input_box_node.input_content}}"
+            }
+          }
+        },
+        {
+          "name": "end_node",
+          "type": "end_node",
+          "position": {
+            "x": 600,
+            "y": 0
+          },
+          "parameters": {
+            "result": "{{process_node.result}}",
+            "success": "{{process_node.success}}",
+            "message": "{{process_node.message}}",
+            "error": "{{process_node.error}}",
+            "processed_content": "{{process_node.processed_content}}",
+            "fix_report": "{{process_node.fix_report}}"
+          }
+        }
+      ],
+      "connections": [
+        {
+          "source": "start_node",
+          "target": "input_box_node"
+        },
+        {
+          "source": "input_box_node",
+          "target": "process_node"
+        },
+        {
+          "source": "process_node",
+          "target": "end_node"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "tool_name": "generate_greeting",
+      "tool_description": "根据用户提供的名称和问候语，生成个性化的问候信息",
+      "enabled": true,
+      "input_parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "用户的名称，将被包含在问候语中",
+          "default_value": "world"
+        },
+        {
+          "name": "greeting",
+          "type": "string",
+          "required": false,
+          "description": "问候的前缀词",
+          "default_value": "Hello"
+        }
+      ],
+      "output_parameters": [
+        {
+          "name": "success",
+          "type": "boolean",
+          "description": "操作是否成功"
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "description": "生成的问候信息"
+        },
+        {
+          "name": "timestamp",
+          "type": "string",
+          "description": "操作时间戳"
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "description": "原始输入数据",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "用户提供的名称"
+            },
+            "greeting": {
+              "type": "string",
+              "description": "用户提供的问候词"
+            }
+          }
+        },
+        {
+          "name": "error",
+          "type": "string",
+          "description": "如果操作失败，返回错误信息"
+        }
+      ],
+      "dependencies": [],
+      "code_file": "coze_basic_plugin.js"
+    }
+  ],
+  "schema_version": "1.0",
+  "functions": [
+    {
+      "name": "processJsonFixTask",
+      "description": "处理JSON修复与任务执行的核心函数",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "task_type": {
+            "type": "string",
+            "description": "任务类型",
+            "enum": [
+              "json_fix",
+              "multi_file_merge",
+              "plugin_adapt",
+              "workflow_fix",
+              "custom_task"
+            ]
+          },
+          "fix_level": {
+            "type": "string",
+            "description": "修复级别",
+            "enum": [
+              "basic",
+              "standard",
+              "comprehensive"
+            ]
+          },
+          "input_content": {
+            "type": "string",
+            "description": "输入内容（JSON文本、文件内容或任务描述）"
+          }
+        },
+        "required": [
+          "task_type",
+          "input_content"
+        ]
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "处理是否成功"
+          },
+          "message": {
+            "type": "string",
+            "description": "处理结果消息"
+          },
+          "error": {
+            "type": "string",
+            "description": "错误信息（如有）",
+            "nullable": true
+          },
+          "processed_content": {
+            "type": "string",
+            "description": "处理后的内容"
+          },
+          "fix_report": {
+            "type": "object",
+            "description": "修复报告详情",
+            "nullable": true
+          },
+          "result": {
+            "type": "object",
+            "description": "综合处理结果"
+          }
+        }
+      }
+    }
+  ],
+  "name": "Coze全能开发辅助插件",
+  "description": "端到端全功能AI自动化生态系统。完整整合Coze插件开发、工作流自动化、LLM大模型集成、API规范修复、参数验证优化、数据投喂训练、多模态AI处理、智能体创建、代码生成与修复等所有功能。",
+  "input_parameters": {
+    "operation_mode": {
+      "type": "string",
+      "description": "操作模式",
+      "enum": [
+        "plugin_fix",
+        "workflow_config",
+        "api_validate",
+        "code_generate",
+        "model_training",
+        "complete_solution"
+      ],
+      "required": true
+    },
+    "input_description": {
+      "type": "string",
+      "description": "需求描述",
+      "maxLength": 2000,
+      "required": true
+    },
+    "plugin_json": {
+      "type": "object",
+      "description": "插件JSON配置（修复模式下必填）"
+    },
+    "workflow_config": {
+      "type": "object",
+      "description": "工作流配置（工作流模式下必填）"
+    },
+    "openapi_spec": {
+      "type": "object",
+      "description": "OpenAPI规范（API验证模式下必填）"
+    },
+    "code_language": {
+      "type": "string",
+      "description": "编程语言（代码生成模式下必填）"
+    },
+    "model_type": {
+      "type": "string",
+      "description": "模型类型（训练模式下必填）"
+    },
+    "fix_options": {
+      "type": "object",
+      "description": "修复选项配置",
+      "default": {}
+    },
+    "optimization_level": {
+      "type": "string",
+      "description": "优化级别",
+      "enum": [
+        "basic",
+        "advanced",
+        "maximum"
+      ],
+      "default": "advanced"
+    },
+    "validation_level": {
+      "type": "string",
+      "description": "验证级别",
+      "enum": [
+        "strict",
+        "normal",
+        "lenient",
+        "complete"
+      ],
+      "default": "complete"
+    },
+    "auto_fix": {
+      "type": "boolean",
+      "description": "自动修复",
+      "default": true
+    },
+    "include_examples": {
+      "type": "boolean",
+      "description": "包含示例",
+      "default": true
+    },
+    "verbose_output": {
+      "type": "boolean",
+      "description": "详细输出",
+      "default": false
+    }
+  },
+  "output_parameters": {
+    "complete_plugin_json": {
+      "type": "object",
+      "description": "完整的插件JSON配置",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "input_parameters": {
+          "type": "object"
+        },
+        "output_parameters": {
+          "type": "object"
+        },
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "workflow_configuration": {
+      "type": "object",
+      "description": "完整的工作流配置",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "nodes": {
+          "type": "array"
+        },
+        "connections": {
+          "type": "array"
+        }
+      }
+    },
+    "validation_status": {
+      "type": "object",
+      "description": "验证状态报告",
+      "properties": {
+        "is_valid": {
+          "type": "boolean"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "operation_summary": {
+      "type": "object",
+      "description": "操作摘要",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        },
+        "operation_id": {
+          "type": "string"
+        },
+        "execution_time": {
+          "type": "number"
+        }
+      }
+    },
+    "coze_interface_cards": {
+      "type": "array",
+      "description": "Coze界面卡片配置",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "openapi_spec": {
+      "type": "object",
+      "description": "完整的OpenAPI规范",
+      "properties": {
+        "openapi": {
+          "type": "string"
+        },
+        "info": {
+          "type": "object"
+        },
+        "servers": {
+          "type": "array"
+        },
+        "paths": {
+          "type": "object"
+        },
+        "components": {
+          "type": "object"
+        },
+        "security": {
+          "type": "array"
+        },
+        "tags": {
+          "type": "array"
+        }
+      }
+    }
+  },
+  "deployment_guide": "### Coze全能开发辅助插件部署指南\n\n#### 前提条件\n- 已注册Coze平台账号\n- 具有创建和管理插件的权限\n- 了解基本的JSON和OpenAPI规范知识\n\n#### 部署步骤\n1. **登录Coze平台**\n   访问 [Coze官网](https://coze.com) 并登录您的账号\n\n2. **创建新插件**\n   在控制台中点击\"创建新插件\"，选择\"自定义插件\"类型\n\n3. **配置基础信息**\n   填写插件名称、描述和版本信息，保持与本JSON中的定义一致\n\n4. **配置API参数**\n   根据本JSON中的input_parameters配置请求参数，确保参数名称、类型和验证规则完全匹配\n\n5. **配置返回参数**\n   根据本JSON中的output_parameters配置返回参数结构\n\n6. **配置请求方法**\n   - 选择HTTP方法：POST\n   - 填写请求URL：根据您的后端服务地址配置\n   - 配置认证方式：支持API Key、OAuth2等\n\n7. **配置响应处理**\n   配置不同状态码的响应处理逻辑，确保与本JSON中的定义一致\n\n8. **保存并测试**\n   保存插件配置，使用Coze提供的测试工具验证插件功能\n\n9. **发布插件**\n   测试通过后，点击\"发布\"按钮将插件上线\n\n#### 注意事项\n- 确保后端服务能够处理本JSON中定义的所有参数\n- 保持API响应格式与output_parameters定义一致\n- 定期更新插件版本以修复问题和添加新功能\n- 监控插件使用情况和错误日志\n\n#### 故障排除\n- 如遇参数验证错误，请检查参数名称和类型是否与定义一致\n- 如遇连接错误，请确认后端服务正常运行且网络可访问\n- 如遇响应格式错误，请检查返回数据结构是否符合定义\n\n如有其他问题，请联系Coze技术支持。",
+  "required": [
+    "operation_mode",
+    "input_description"
+  ],
+  "privacy_policy": {
+    "type": "string",
+    "description": "插件遵循Coze平台隐私政策，不会收集或存储用户敏感数据"
+  },
+  "examples": [
+    {
+      "name": "插件修复示例",
+      "description": "修复一个存在问题的Coze插件JSON配置",
+      "input_parameters": {
+        "operation_mode": "plugin_fix",
+        "input_description": "修复插件中的参数验证错误和JSON语法问题",
+        "plugin_json": {
+          "name": "测试插件",
+          "description": "示例插件",
+          "version": "1.0.0",
+          "input_parameters": {
+            "test_param": {
+              "type": "string",
+              "required": true
+            }
+          }
+        },
+        "auto_fix": true
+      },
+      "output_parameters": {
+        "complete_plugin_json": {
+          "name": "测试插件",
+          "description": "示例插件",
+          "version": "1.0.0",
+          "input_parameters": {
+            "test_param": {
+              "type": "string",
+              "description": "测试参数",
+              "required": true
+            }
+          },
+          "output_parameters": {},
+          "required": [
+            "test_param"
+          ]
+        },
+        "validation_status": {
+          "is_valid": true,
+          "errors": [],
+          "warnings": []
+        },
+        "operation_summary": {
+          "success": true,
+          "message": "插件修复成功",
+          "operation_id": "fix-12345",
+          "execution_time": 1250
+        }
+      }
+    },
+    {
+      "name": "工作流配置示例",
+      "description": "创建一个完整的Coze工作流配置",
+      "input_parameters": {
+        "operation_mode": "workflow_config",
+        "input_description": "创建一个文本分类工作流，包含开始节点、LLM处理节点和结束节点",
+        "optimization_level": "advanced"
+      },
+      "output_parameters": {
+        "workflow_configuration": {
+          "id": "workflow-12345",
+          "name": "文本分类工作流",
+          "description": "用于文本分类的工作流",
+          "nodes": [
+            {
+              "id": "start-node",
+              "type": "start",
+              "name": "开始节点"
+            },
+            {
+              "id": "llm-node",
+              "type": "llm",
+              "name": "LLM处理节点",
+              "parameters": {
+                "model": "deepseek-v3",
+                "prompt_template": "请将以下文本分类为正面或负面：{input_text}"
+              }
+            },
+            {
+              "id": "end-node",
+              "type": "end",
+              "name": "结束节点"
+            }
+          ],
+          "connections": [
+            {
+              "source": "start-node",
+              "target": "llm-node"
+            },
+            {
+              "source": "llm-node",
+              "target": "end-node"
+            }
+          ]
+        },
+        "operation_summary": {
+          "success": true,
+          "message": "工作流配置创建成功",
+          "operation_id": "workflow-12345",
+          "execution_time": 2100
+        }
+      }
+    },
+    {
+      "name": "API验证示例",
+      "description": "验证并修复OpenAPI规范",
+      "input_parameters": {
+        "operation_mode": "api_validate",
+        "input_description": "验证并修复OpenAPI规范中的语法错误和不完整定义",
+        "openapi_spec": {
+          "openapi": "3.1.0",
+          "info": {
+            "title": "测试API",
+            "version": "1.0.0"
+          },
+          "paths": {
+            "/test": {
+              "get": {
+                "responses": {
+                  "200": {
+                    "description": "成功响应"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "validation_level": "complete",
+        "auto_fix": true
+      },
+      "output_parameters": {
+        "openapi_spec": {
+          "openapi": "3.1.0",
+          "info": {
+            "title": "测试API",
+            "description": "测试API接口规范",
+            "version": "1.0.0"
+          },
+          "servers": [
+            {
+              "url": "https://api.example.com/v1"
+            }
+          ],
+          "paths": {
+            "/test": {
+              "get": {
+                "summary": "测试接口",
+                "description": "用于测试的API接口",
+                "responses": {
+                  "200": {
+                    "description": "成功响应",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "success": {
+                              "type": "boolean"
+                            },
+                            "message": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "validation_status": {
+          "is_valid": true,
+          "errors": [],
+          "warnings": [
+            "建议添加更多详细文档"
+          ]
+        },
+        "operation_summary": {
+          "success": true,
+          "message": "API规范验证和修复成功",
+          "operation_id": "api-12345",
+          "execution_time": 1800
+        }
+      }
+    }
+  ],
+  "x-coze-capabilities": [
+    {
+      "name": "CompletePluginJSON",
+      "description": "完整Coze插件JSON生成与修复，自动补全缺失字段和修复格式错误",
+      "version": "2.0.0",
+      "status": "stable",
+      "features": [
+        "自动补全缺失参数",
+        "修复JSON格式错误",
+        "验证参数类型和约束",
+        "优化文档结构",
+        "支持多版本兼容性"
+      ]
+    },
+    {
+      "name": "OpenAPISpec",
+      "description": "OpenAPI规范生成与验证，支持多版本OpenAPI规范的创建和修复",
+      "version": "3.1.0",
+      "status": "stable",
+      "features": [
+        "支持OpenAPI 3.0.x和3.1.0",
+        "自动生成路径和模式定义",
+        "验证规范完整性",
+        "JSON/YAML格式转换",
+        "支持高级安全配置"
+      ]
+    },
+    {
+      "name": "FixWorkflowErrors",
+      "description": "工作流节点连接错误修复与参数配置优化",
+      "version": "1.8.0",
+      "status": "stable",
+      "features": [
+        "检测未连接节点",
+        "修复参数配置错误",
+        "优化工作流逻辑",
+        "支持复杂条件分支",
+        "可视化工作流验证"
+      ]
+    },
+    {
+      "name": "ValidateJSONFormat",
+      "description": "JSON格式校验与格式化，确保JSON内容符合标准规范",
+      "version": "1.5.0",
+      "status": "stable",
+      "features": [
+        "严格的语法验证",
+        "格式化美化输出",
+        "错误位置精确定位",
+        "批量处理支持",
+        "支持大型JSON文件"
+      ]
+    },
+    {
+      "name": "GenerateDocumentation",
+      "description": "自动生成插件文档和使用指南，提高插件可维护性",
+      "version": "1.2.0",
+      "status": "beta",
+      "features": [
+        "Markdown格式文档",
+        "自动生成示例代码",
+        "支持多语言",
+        "API调用流程图",
+        "参数详细说明"
+      ]
+    },
+    {
+      "name": "OptimizePlugin",
+      "description": "插件性能优化与功能增强，提升插件运行效率",
+      "version": "1.0.0",
+      "status": "beta",
+      "features": [
+        "代码结构优化",
+        "参数处理效率提升",
+        "错误处理增强",
+        "缓存机制优化",
+        "资源占用降低"
+      ]
+    },
+    {
+      "name": "CompleteCode",
+      "description": "智能代码补全与修复，支持多种编程语言",
+      "version": "1.7.0",
+      "status": "stable",
+      "features": [
+        "基于上下文的代码补全",
+        "语法错误自动修复",
+        "代码重构建议",
+        "注释自动生成",
+        "支持多种编程语言"
+      ]
+    },
+    {
+      "name": "CompleteAPIValidation",
+      "description": "API接口验证与测试自动化，确保接口质量",
+      "version": "1.4.0",
+      "status": "stable",
+      "features": [
+        "自动生成测试用例",
+        "接口响应验证",
+        "性能测试支持",
+        "兼容性检测",
+        "测试报告生成"
+      ]
+    },
+    {
+      "name": "CompleteConversion",
+      "description": "数据格式转换与规范化，支持多种格式之间的转换",
+      "version": "1.3.0",
+      "status": "stable",
+      "features": [
+        "JSON/YAML/XML/CSV互转",
+        "格式规范化",
+        "数据清洗",
+        "批量处理",
+        "自定义转换规则"
+      ]
+    },
+    {
+      "name": "CompleteValidation",
+      "description": "全方位数据验证与合规性检查，确保数据质量",
+      "version": "1.6.0",
+      "status": "stable",
+      "features": [
+        "数据类型验证",
+        "格式合规性检查",
+        "业务规则验证",
+        "完整性验证",
+        "安全性检查"
+      ]
+    },
+    {
+      "name": "Workflow",
+      "description": "工作流管理与自动化执行，支持复杂业务流程",
+      "version": "2.1.0",
+      "status": "stable",
+      "features": [
+        "可视化工作流设计",
+        "事件触发机制",
+        "条件分支支持",
+        "并行任务处理",
+        "错误处理与重试"
+      ]
+    },
+    {
+      "name": "Error",
+      "description": "错误处理与调试辅助，提供详细的错误分析和修复建议",
+      "version": "1.9.0",
+      "status": "stable",
+      "features": [
+        "错误日志分析",
+        "问题定位",
+        "修复建议生成",
+        "调试辅助工具",
+        "常见错误库"
+      ]
+    }
+  ],
+  "x-coze-complete-features": {
+    "max_workflow_nodes": 100,
+    "supported_llm_models": [
+      "gpt-4",
+      "claude-2",
+      "deepseek-v3",
+      "huggingface",
+      "multimodal"
+    ],
+    "max_file_size": "50MB",
+    "rate_limit": 5000,
+    "concurrent_requests": 500,
+    "supported_formats": [
+      "json",
+      "yaml",
+      "xml",
+      "csv",
+      "openapi"
+    ],
+    "training_modes": [
+      "full",
+      "incremental",
+      "transfer",
+      "multimodal"
+    ]
+  },
+  "complete_deployment_guide": {
+    "prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "step_by_step_guide": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "commands": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "expected_output": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "troubleshooting": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "symptoms": {
+            "type": "string"
+          },
+          "solution": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "best_practices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "practice": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "benefits": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "plugin_name": "基础问候插件",
+  "plugin_version": "1.0.0",
+  "plugin_description": "一个简单的问候插件，根据输入的名称和问候语生成个性化问候信息",
+  "plugin_icon": "default_icon",
+  "tool_creation_method": "cloud_side_plugin_ide",
+  "runtime": "Node.js",
+  "compatibility": {
+    "min_coze_version": "1.0.0",
+    "max_coze_version": "3.0.0"
+  },
+  "privacy_collection_statement": {
+    "collects_personal_info": false,
+    "personal_info_types": []
+  },
+  "merged_list": [
+    {
+      "question": "如何开始使用这个系统？",
+      "answer": "只需将数据放入training_data目录，然后运行run.bat文件即可开始自动训练。",
+      "category": "使用指南"
+    },
+    {
+      "question": "支持哪些文件格式？",
+      "answer": "系统支持txt、json、csv文本文件，以及包含这些文件的zip压缩包。",
+      "category": "功能特性"
+    },
+    {
+      "question": "训练需要多长时间？",
+      "answer": "训练时间取决于数据量和模型复杂度，通常需要几小时到几天时间。",
+      "category": "性能说明"
+    },
+    {
+      "question": "需要什么样的硬件？",
+      "answer": "支持CPU和GPU训练，推荐使用GPU以获得更好的训练性能。",
+      "category": "系统要求"
+    },
+    {
+      "question": "如何查看训练结果？",
+      "answer": "训练完成后会在trained_models目录生成模型文件和训练报告。",
+      "category": "结果输出"
+    },
+    {
+      "question": "支持中文吗？",
+      "answer": "完全支持中文，系统使用UTF-8编码处理多语言文本。",
+      "category": "语言支持"
+    },
+    {
+      "question": "可以批量处理数据吗？",
+      "answer": "支持批量处理，可以同时处理多个文件和整个文件夹的数据。",
+      "category": "数据处理"
+    },
+    {
+      "question": "训练过程中断怎么办？",
+      "answer": "系统支持断点续训，下次运行时会自动从上次中断的地方继续训练。",
+      "category": "容错处理"
+    },
+    {
+      "question": "如何自定义训练参数？",
+      "answer": "通过修改config.json配置文件可以调整各种训练参数和设置。",
+      "category": "高级配置"
+    },
+    {
+      "question": "训练好的模型如何部署？",
+      "answer": "生成的模型是标准格式，可以部署到各种AI推理平台和服务。",
+      "category": "部署指南"
+    }
+  ]
+}
