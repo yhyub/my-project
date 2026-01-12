@@ -1,0 +1,204 @@
+{
+  "mcpServers": {
+    "fetch": {
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp_server_fetch"
+      ],
+      "env": {
+        "MCP_CWD": "c:\\Users\\Administrator\\Desktop\\新建文件夹 (10)",
+        "MCP_TIMEOUT": "600",
+        "MCP_AUTO_APPROVE": "[\"list_configs\", \"get_openapi_config\", \"get_coze_plugin\", \"execute_automation\", \"generate_plugin\", \"generate_workflow\", \"heal_workflow\", \"validate_config\", \"get_txt_content\", \"manage_prompts\", \"manage_files\", \"repair_coze_json\", \"analyze_industry\", \"classify_profession\", \"process_scenario\", \"fix_workflow\", \"process_luoyang_cultural_heritage\", \"create_multi_modal_content\", \"control_iot_device\", \"integrate_data\", \"enhance_with_ai\", \"optimize_quantum\"]"
+      },
+      "description": "基于Python的通用数据获取MCP服务器，用于从各种来源获取数据",
+      "category": "数据获取",
+      "priority": "high",
+      "disabled": false
+    },
+    "IMCP Feedback Enhanced": {
+      "command": "uvx",
+      "args": [
+        "mcp-feedback-enhanced@latest"
+      ],
+      "env": {},
+      "fromGalleryId": "byted-mcp.mcp-feedback-enhanced",
+      "disabled": false,
+      "description": "反馈增强型MCP服务器，支持自动修复和优化MCP配置",
+      "category": "MCP优化",
+      "priority": "high"
+    },
+    "Browser-Use MCP": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/volcengine/mcp-server#subdirectory=server/mcp_server_vefaas_browser_use",
+        "mcp-server-vefaas-browser-use"
+      ],
+      "env": {
+        "BROWSER_USE_ENDPOINT": "pat_UqdV9mmmiwwXlHmEcvf7zyAp3v55g2XYdwd44ClgsoFN4VT3C5n6kkj40QnGk62q"
+      },
+      "fromGalleryId": "byted-mcp-volcengine.mcp_server_vefaas_browser_use",
+      "description": "浏览器使用MCP服务器，用于在浏览器环境中执行MCP操作",
+      "category": "浏览器扩展",
+      "priority": "medium",
+      "disabled": false
+    },
+    "发现报告": {
+      "command": "uvx",
+      "args": [
+        "fxbaogao-mcp@latest"
+      ],
+      "env": {},
+      "fromGalleryId": "byted-mcp-volcengine.3rd_party_mcp_server_fxbaogao_mcp",
+      "description": "发现报告MCP服务器，用于生成各种分析报告",
+      "category": "报告生成",
+      "priority": "medium",
+      "disabled": false
+    },
+    "Figma": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "figma-developer-mcp",
+        "--stdio"
+      ],
+      "env": {
+        "FIGMA_API_KEY": "pat_UqdV9mmmiwwXlHmEcvf7zyAp3v55g2XYdwd44ClgsoFN4VT3C5n6kkj40QnGk62q"
+      },
+      "fromGalleryId": "byted-mcp-volcengine.3rd_party_mcp_server_figma",
+      "description": "Figma MCP服务器，用于与Figma设计工具集成",
+      "category": "设计工具集成",
+      "priority": "medium",
+      "disabled": false
+    },
+    "mcpadvisor": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@xiaohui-wang/mcpadvisor"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "arxiv-mcp-server": {
+      "command": "uv",
+      "args": [
+        "tool",
+        "run",
+        "arxiv-mcp-server",
+        "--storage-path",
+        "C:\\Users\\Administrator\\Desktop\\erthhgfj\\arxiv_storage"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "llm-context": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "llm-context",
+        "lc-mcp"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "workflows-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcpn@latest",
+        "server"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "vscode-mcp-server": {
+      "command": "npx",
+      "args": [
+        "vscode-mcp-server"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "structured-workflow": {
+      "command": "npx",
+      "args": [
+        "structured-workflow-mcp@latest"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "super-mcp-deepseek": {
+      "command": "python",
+      "args": [
+        "C:\\Users\\Administrator\\Desktop\\erthhgfj\\SuperMCP\\super_mcp_unified.py",
+        "--start"
+      ],
+      "cwd": "C:\\Users\\Administrator\\Desktop\\erthhgfj\\SuperMCP",
+      "disabled": false,
+      "env": {}
+    },
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ],
+      "env": {
+        "DEFAULT_MINIMUM_TOKENS": "10000"
+      },
+      "disabled": false
+    },
+    "pdf-reader-mcp": {
+      "command": "npx",
+      "args": [
+        "@sylphlab/pdf-reader-mcp"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "Sequential Thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "web research": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mzxrai/mcp-webresearch@latest"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "DesktopCommander": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@wonderwhy-er/desktop-commander"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "unified-mcp-tool": {
+      "command": "python",
+      "args": [
+        "C:\\Users\\Administrator\\Desktop\\erthhgfj\\统一MCP工具 (Unified MCP Tool)\\unified_mcp_main.py"
+      ],
+      "env": {
+        "MCP_PORT": "8080",
+        "MCP_HOST": "0.0.0.0",
+        "MCP_LOG_LEVEL": "INFO"
+      },
+      "description": "统一MCP工具，融合19个MCP服务器功能，包括数据获取、上下文管理、工作流引擎等",
+      "category": "统一MCP",
+      "priority": "high",
+      "disabled": false
+    }
+  }
+}

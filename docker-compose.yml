@@ -1,0 +1,215 @@
+name: coze-studio
+version: '3.8'
+
+services:
+  # 核心服务
+  # 1. MySQL 数据库（云端配置）
+  # 注：已将本地MySQL替换为云端MySQL，减少本地资源占用
+  # 无需启动本地MySQL容器，直接使用云端数据库服务
+
+  # 2. Redis 缓存
+  coze-redis:
+    image: docker.io/library/redis:8.0
+    container_name: coze-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: always
+    networks:
+      - coze-network
+
+  # 3. Elasticsearch 搜索引擎
+  coze-elasticsearch:
+    image: docker.io/library/elasticsearch:8.18.0
+    container_name: coze-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    restart: always
+    networks:
+      - coze-network
+
+  # 4. MinIO 对象存储
+  coze-minio:
+    image: docker.io/minio/minio:RELEASE.2025-06-13T11-33-47Z-cpuv1
+    container_name: coze-minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    restart: always
+    networks:
+      - coze-network
+
+  # 5. Etcd 分布式键值存储
+  coze-etcd:
+    image: docker.io/bitnami/etcd:3.5
+    container_name: coze-etcd
+    environment:
+      ETCD_ROOT_PASSWORD: etcd_password
+      ETCD_ADVERTISE_CLIENT_URLS: http://coze-etcd:2379
+      ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+    ports:
+      - "2379:2379"
+      - "2380:2380"
+    volumes:
+      - etcd_data:/bitnami/etcd
+    restart: always
+    networks:
+      - coze-network
+
+  # 6. Milvus 向量数据库
+  coze-milvus:
+    image: docker.io/milvusdb/milvus:v2.5.10
+    container_name: coze-milvus
+    environment:
+      ETCD_ENDPOINTS: coze-etcd:2379
+      ETCD_USERNAME: root
+      ETCD_PASSWORD: etcd_password
+      MINIO_ADDRESS: coze-minio:9000
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+      MINIO_BUCKET_NAME: milvus-bucket
+    ports:
+      - "19530:19530"
+      - "9091:9091"
+    volumes:
+      - milvus_data:/var/lib/milvus
+    depends_on:
+      - coze-etcd
+      - coze-minio
+    restart: always
+    networks:
+      - coze-network
+
+  # 7. NSQ 消息队列
+  coze-nsqlookupd:
+    image: docker.io/nsqio/nsq:v1.2.1
+    container_name: coze-nsqlookupd
+    command: /nsqlookupd
+    ports:
+      - "4160:4160"
+      - "4161:4161"
+    restart: always
+    networks:
+      - coze-network
+
+  coze-nsqd:
+    image: docker.io/nsqio/nsq:v1.2.1
+    container_name: coze-nsqd
+    command: /nsqd --lookupd-tcp-address=coze-nsqlookupd:4160
+    ports:
+      - "4150:4150"
+      - "4151:4151"
+    depends_on:
+      - coze-nsqlookupd
+    restart: always
+    networks:
+      - coze-network
+
+  coze-nsqadmin:
+    image: docker.io/nsqio/nsq:v1.2.1
+    container_name: coze-nsqadmin
+    command: /nsqadmin --lookupd-http-address=coze-nsqlookupd:4161
+    ports:
+      - "4171:4171"
+    depends_on:
+      - coze-nsqlookupd
+    restart: always
+    networks:
+      - coze-network
+
+  # 8. Coze Server 核心服务
+  coze-server:
+    image: cozedev/coze-studio-server:0.5.0.beta.3
+    container_name: coze-server
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      - coze-redis
+      - coze-elasticsearch
+      - coze-minio
+      - coze-milvus
+      - coze-nsqd
+    restart: always
+    networks:
+      - coze-network
+
+  # 9. Coze Web 服务
+  coze-web:
+    image: cozedev/coze-studio-web:0.5.0.beta
+    container_name: coze-web
+    ports:
+      - "8888:8888"
+    depends_on:
+      - coze-server
+    restart: always
+    networks:
+      - coze-network
+
+  # 初始化服务
+  # 1. Elasticsearch 初始化
+  coze-elasticsearch-setup:
+    image: docker.io/library/alpine:latest
+    container_name: coze-elasticsearch-setup
+    command: >
+      sh -c "
+      sleep 10 &&
+      apk add --no-cache curl &&
+      curl -X PUT 'http://coze-elasticsearch:9200/coze_index' -H 'Content-Type: application/json' -d '{\n        "settings": {\n          "number_of_shards": 1,\n          "number_of_replicas": 0\n        }\n      }'
+      "
+    depends_on:
+      - coze-elasticsearch
+    networks:
+      - coze-network
+
+  # 2. MinIO 初始化
+  coze-minio-setup:
+    image: docker.io/minio/mc:latest
+    container_name: coze-minio-setup
+    command: >
+      sh -c "
+      sleep 10 &&
+      mc alias set coze-minio http://coze-minio:9000 minioadmin minioadmin &&
+      mc mb -p coze-minio/milvus-bucket &&
+      mc mb -p coze-minio/coze-data
+      "
+    depends_on:
+      - coze-minio
+    networks:
+      - coze-network
+
+  # 3. MySQL 架构初始化（云端配置）
+  # 注：已将本地MySQL替换为云端MySQL，架构初始化请在云端数据库执行
+  # 建议：使用云端数据库管理工具直接导入schema.hcl或执行相应SQL
+
+  # 4. MySQL 数据初始化（云端配置）
+  # 注：已将本地MySQL替换为云端MySQL，数据初始化请在云端数据库执行
+  # 建议：使用云端数据库管理工具直接导入init.sql或执行相应SQL
+
+# 网络配置
+networks:
+  coze-network:
+    driver: bridge
+
+# 卷配置
+volumes:
+  redis_data:
+  elasticsearch_data:
+  minio_data:
+  etcd_data:
+  milvus_data:

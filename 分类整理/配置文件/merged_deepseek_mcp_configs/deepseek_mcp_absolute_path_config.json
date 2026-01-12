@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "deepseek-mcp": {
+      "command": "python",
+      "args": [
+        "c:\\Users\\Administrator\\Desktop\\erthhgfj\\super_mcp_unified.py",
+        "--port",
+        "5000"
+      ],
+      "cwd": "c:\\Users\\Administrator\\Desktop\\erthhgfj",
+      "timeout": 600
+    }
+  }
+}

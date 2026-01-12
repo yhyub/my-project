@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "unified-mcp-tool": {
+      "command": "python",
+      "args": [
+        "C:\\Users\\Administrator\\Desktop\\erthhgfj\\统一MCP工具 (Unified MCP Tool)\\unified_mcp_main.py"
+      ],
+      "env": {
+        "MCP_PORT": "8080",
+        "MCP_HOST": "0.0.0.0",
+        "MCP_LOG_LEVEL": "INFO"
+      },
+      "description": "统一MCP工具，融合19个MCP服务器功能，包括数据获取、上下文管理、工作流引擎等",
+      "category": "统一MCP",
+      "priority": "high",
+      "disabled": false
+    }
+  }
+}

@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  deepseek-webui:
+    image: deepseek-ai/deepseek-webui:latest
+    container_name: deepseek-webui
+    ports:
+      - "8080:8080"
+    environment:
+      - MODEL_NAME=deepseek-r1-1.5b
+      - MAX_MEMORY=4g
+      - MAX_CPU=1
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 4g
+          cpus: "1.0"
+        reservations:
+          memory: 2g
+          cpus: "0.5"
+    networks:
+      - deepseek-network
+
+networks:
+  deepseek-network:
+    driver: bridge

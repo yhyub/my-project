@@ -1,0 +1,1167 @@
+
+
+=== START OF FILE ===
+文件名: channel-credentials.d.ts
+路径: C:/Users/Administrator/Desktop/整理结果_合并完成_20251226_031726\代码\ts\channel-credentials.d.ts
+分类: 代码
+=== CONTENT ===
+
+import { PeerCertificate, SecureContext } from 'tls';
+import { CallCredentials } from './call-credentials';
+import { CertificateProvider } from './certificate-provider';
+import { Socket } from 'net';
+import { ChannelOptions } from './channel-options';
+import { GrpcUri } from './uri-parser';
+/**
+ * A callback that will receive the expected hostname and presented peer
+ * certificate as parameters. The callback should return an error to
+ * indicate that the presented certificate is considered invalid and
+ * otherwise returned undefined.
+ */
+export type CheckServerIdentityCallback = (hostname: string, cert: PeerCertificate) => Error | undefined;
+/**
+ * Additional peer verification options that can be set when creating
+ * SSL credentials.
+ */
+export interface VerifyOptions {
+    /**
+     * If set, this callback will be invoked after the usual hostname verification
+     * has been performed on the peer certificate.
+     */
+    checkServerIdentity?: CheckServerIdentityCallback;
+    rejectUnauthorized?: boolean;
+}
+export interface SecureConnectResult {
+    socket: Socket;
+    secure: boolean;
+}
+export interface SecureConnector {
+    connect(socket: Socket): Promise<SecureConnectResult>;
+    waitForReady(): Promise<void>;
+    getCallCredentials(): CallCredentials;
+    destroy(): void;
+}
+/**
+ * A class that contains credentials for communicating over a channel, as well
+ * as a set of per-call credentials, which are applied to every method call made
+ * over a channel initialized with an instance of this class.
+ */
+export declare abstract class ChannelCredentials {
+    /**
+     * Returns a copy of this object with the included set of per-call credentials
+     * expanded to include callCredentials.
+     * @param callCredentials A CallCredentials object to associate with this
+     * instance.
+     */
+    compose(callCredentials: CallCredentials): ChannelCredentials;
+    /**
+     * Indicates whether this credentials object creates a secure channel.
+     */
+    abstract _isSecure(): boolean;
+    /**
+     * Check whether two channel credentials objects are equal. Two secure
+     * credentials are equal if they were constructed with the same parameters.
+     * @param other The other ChannelCredentials Object
+     */
+    abstract _equals(other: ChannelCredentials): boolean;
+    abstract _createSecureConnector(channelTarget: GrpcUri, options: ChannelOptions, callCredentials?: CallCredentials): SecureConnector;
+    /**
+     * Return a new ChannelCredentials instance with a given set of credentials.
+     * The resulting instance can be used to construct a Channel that communicates
+     * over TLS.
+     * @param rootCerts The root certificate data.
+     * @param privateKey The client certificate private key, if available.
+     * @param certChain The client certificate key chain, if available.
+     * @param verifyOptions Additional options to modify certificate verification
+     */
+    static createSsl(rootCerts?: Buffer | null, privateKey?: Buffer | null, certChain?: Buffer | null, verifyOptions?: VerifyOptions): ChannelCredentials;
+    /**
+     * Return a new ChannelCredentials instance with credentials created using
+     * the provided secureContext. The resulting instances can be used to
+     * construct a Channel that communicates over TLS. gRPC will not override
+     * anything in the provided secureContext, so the environment variables
+     * GRPC_SSL_CIPHER_SUITES and GRPC_DEFAULT_SSL_ROOTS_FILE_PATH will
+     * not be applied.
+     * @param secureContext The return value of tls.createSecureContext()
+     * @param verifyOptions Additional options to modify certificate verification
+     */
+    static createFromSecureContext(secureContext: SecureContext, verifyOptions?: VerifyOptions): ChannelCredentials;
+    /**
+     * Return a new ChannelCredentials instance with no credentials.
+     */
+    static createInsecure(): ChannelCredentials;
+}
+declare class CertificateProviderChannelCredentialsImpl extends ChannelCredentials {
+    private caCertificateProvider;
+    private identityCertificateProvider;
+    private verifyOptions;
+    private refcount;
+    /**
+     * `undefined` means that the certificates have not yet been loaded. `null`
+     * means that an attempt to load them has completed, and has failed.
+     */
+    private latestCaUpdate;
+    /**
+     * `undefined` means that the certificates have not yet been loaded. `null`
+     * means that an attempt to load them has completed, and has failed.
+     */
+    private latestIdentityUpdate;
+    private caCertificateUpdateListener;
+    private identityCertificateUpdateListener;
+    private secureContextWatchers;
+    private static SecureConnectorImpl;
+    constructor(caCertificateProvider: CertificateProvider, identityCertificateProvider: CertificateProvider | null, verifyOptions: VerifyOptions);
+    _isSecure(): boolean;
+    _equals(other: ChannelCredentials): boolean;
+    private ref;
+    private unref;
+    _createSecureConnector(channelTarget: GrpcUri, options: ChannelOptions, callCredentials?: CallCredentials): SecureConnector;
+    private maybeUpdateWatchers;
+    private handleCaCertificateUpdate;
+    private handleIdentityCertitificateUpdate;
+    private hasReceivedUpdates;
+    private getSecureContext;
+    private getLatestSecureContext;
+}
+export declare function createCertificateProviderChannelCredentials(caCertificateProvider: CertificateProvider, identityCertificateProvider: CertificateProvider | null, verifyOptions?: VerifyOptions): CertificateProviderChannelCredentialsImpl;
+export {};
+
+
+=== END OF FILE ===
+
+
+=== START OF FILE ===
+文件名: channel-credentials.ts
+路径: C:/Users/Administrator/Desktop/整理结果_合并完成_20251226_031726\代码\ts\channel-credentials.ts
+分类: 代码
+=== CONTENT ===
+
+/*
+ * Copyright 2019 gRPC authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+import {
+  ConnectionOptions,
+  createSecureContext,
+  PeerCertificate,
+  SecureContext,
+  checkServerIdentity,
+  connect as tlsConnect
+} from 'tls';
+
+import { CallCredentials } from './call-credentials';
+import { CIPHER_SUITES, getDefaultRootsData } from './tls-helpers';
+import { CaCertificateUpdate, CaCertificateUpdateListener, CertificateProvider, IdentityCertificateUpdate, IdentityCertificateUpdateListener } from './certificate-provider';
+import { Socket } from 'net';
+import { ChannelOptions } from './channel-options';
+import { GrpcUri, parseUri, splitHostPort } from './uri-parser';
+import { getDefaultAuthority } from './resolver';
+import { log } from './logging';
+import { LogVerbosity } from './constants';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function verifyIsBufferOrNull(obj: any, friendlyName: string): void {
+  if (obj && !(obj instanceof Buffer)) {
+    throw new TypeError(`${friendlyName}, if provided, must be a Buffer.`);
+  }
+}
+
+/**
+ * A callback that will receive the expected hostname and presented peer
+ * certificate as parameters. The callback should return an error to
+ * indicate that the presented certificate is considered invalid and
+ * otherwise returned undefined.
+ */
+export type CheckServerIdentityCallback = (
+  hostname: string,
+  cert: PeerCertificate
+) => Error | undefined;
+
+/**
+ * Additional peer verification options that can be set when creating
+ * SSL credentials.
+ */
+export interface VerifyOptions {
+  /**
+   * If set, this callback will be invoked after the usual hostname verification
+   * has been performed on the peer certificate.
+   */
+  checkServerIdentity?: CheckServerIdentityCallback;
+  rejectUnauthorized?: boolean;
+}
+
+export interface SecureConnectResult {
+  socket: Socket;
+  secure: boolean;
+}
+
+export interface SecureConnector {
+  connect(socket: Socket): Promise<SecureConnectResult>;
+  waitForReady(): Promise<void>;
+  getCallCredentials(): CallCredentials;
+  destroy(): void;
+}
+
+/**
+ * A class that contains credentials for communicating over a channel, as well
+ * as a set of per-call credentials, which are applied to every method call made
+ * over a channel initialized with an instance of this class.
+ */
+export abstract class ChannelCredentials {
+  /**
+   * Returns a copy of this object with the included set of per-call credentials
+   * expanded to include callCredentials.
+   * @param callCredentials A CallCredentials object to associate with this
+   * instance.
+   */
+  compose(callCredentials: CallCredentials): ChannelCredentials {
+    return new ComposedChannelCredentialsImpl(this, callCredentials);
+  }
+
+  /**
+   * Indicates whether this credentials object creates a secure channel.
+   */
+  abstract _isSecure(): boolean;
+
+  /**
+   * Check whether two channel credentials objects are equal. Two secure
+   * credentials are equal if they were constructed with the same parameters.
+   * @param other The other ChannelCredentials Object
+   */
+  abstract _equals(other: ChannelCredentials): boolean;
+
+  abstract _createSecureConnector(channelTarget: GrpcUri, options: ChannelOptions, callCredentials?: CallCredentials): SecureConnector;
+
+  /**
+   * Return a new ChannelCredentials instance with a given set of credentials.
+   * The resulting instance can be used to construct a Channel that communicates
+   * over TLS.
+   * @param rootCerts The root certificate data.
+   * @param privateKey The client certificate private key, if available.
+   * @param certChain The client certificate key chain, if available.
+   * @param verifyOptions Additional options to modify certificate verification
+   */
+  static createSsl(
+    rootCerts?: Buffer | null,
+    privateKey?: Buffer | null,
+    certChain?: Buffer | null,
+    verifyOptions?: VerifyOptions
+  ): ChannelCredentials {
+    verifyIsBufferOrNull(rootCerts, 'Root certificate');
+    verifyIsBufferOrNull(privateKey, 'Private key');
+    verifyIsBufferOrNull(certChain, 'Certificate chain');
+    if (privateKey && !certChain) {
+      throw new Error(
+        'Private key must be given with accompanying certificate chain'
+      );
+    }
+    if (!privateKey && certChain) {
+      throw new Error(
+        'Certificate chain must be given with accompanying private key'
+      );
+    }
+    const secureContext = createSecureContext({
+      ca: rootCerts ?? getDefaultRootsData() ?? undefined,
+      key: privateKey ?? undefined,
+      cert: certChain ?? undefined,
+      ciphers: CIPHER_SUITES,
+    });
+    return new SecureChannelCredentialsImpl(secureContext, verifyOptions ?? {});
+  }
+
+  /**
+   * Return a new ChannelCredentials instance with credentials created using
+   * the provided secureContext. The resulting instances can be used to
+   * construct a Channel that communicates over TLS. gRPC will not override
+   * anything in the provided secureContext, so the environment variables
+   * GRPC_SSL_CIPHER_SUITES and GRPC_DEFAULT_SSL_ROOTS_FILE_PATH will
+   * not be applied.
+   * @param secureContext The return value of tls.createSecureContext()
+   * @param verifyOptions Additional options to modify certificate verification
+   */
+  static createFromSecureContext(
+    secureContext: SecureContext,
+    verifyOptions?: VerifyOptions
+  ): ChannelCredentials {
+    return new SecureChannelCredentialsImpl(secureContext, verifyOptions ?? {});
+  }
+
+  /**
+   * Return a new ChannelCredentials instance with no credentials.
+   */
+  static createInsecure(): ChannelCredentials {
+    return new InsecureChannelCredentialsImpl();
+  }
+}
+
+class InsecureChannelCredentialsImpl extends ChannelCredentials {
+  constructor() {
+    super();
+  }
+
+  override compose(callCredentials: CallCredentials): never {
+    throw new Error('Cannot compose insecure credentials');
+  }
+  _isSecure(): boolean {
+    return false;
+  }
+  _equals(other: ChannelCredentials): boolean {
+    return other instanceof InsecureChannelCredentialsImpl;
+  }
+  _createSecureConnector(channelTarget: GrpcUri, options: ChannelOptions, callCredentials?: CallCredentials): SecureConnector {
+    return {
+      connect(socket) {
+        return Promise.resolve({
+          socket,
+          secure: false
+        });
+      },
+      waitForReady: () => {
+        return Promise.resolve();
+      },
+      getCallCredentials: () => {
+        return callCredentials ?? CallCredentials.createEmpty();
+      },
+      destroy() {}
+    }
+  }
+}
+
+function getConnectionOptions(secureContext: SecureContext, verifyOptions: VerifyOptions, channelTarget: GrpcUri, options: ChannelOptions): ConnectionOptions {
+  const connectionOptions: ConnectionOptions = {
+    secureContext: secureContext
+  };
+  let realTarget: GrpcUri = channelTarget;
+  if ('grpc.http_connect_target' in options) {
+    const parsedTarget = parseUri(options['grpc.http_connect_target']!);
+    if (parsedTarget) {
+      realTarget = parsedTarget;
+    }
+  }
+  const targetPath = getDefaultAuthority(realTarget);
+  const hostPort = splitHostPort(targetPath);
+  const remoteHost = hostPort?.host ?? targetPath;
+  connectionOptions.host = remoteHost;
+
+  if (verifyOptions.checkServerIdentity) {
+    connectionOptions.checkServerIdentity = verifyOptions.checkServerIdentity;
+  }
+  if (verifyOptions.rejectUnauthorized !== undefined) {
+    connectionOptions.rejectUnauthorized = verifyOptions.rejectUnauthorized;
+  }
+  connectionOptions.ALPNProtocols = ['h2'];
+  if (options['grpc.ssl_target_name_override']) {
+    const sslTargetNameOverride = options['grpc.ssl_target_name_override']!;
+    const originalCheckServerIdentity =
+      connectionOptions.checkServerIdentity ?? checkServerIdentity;
+    connectionOptions.checkServerIdentity = (
+      host: string,
+      cert: PeerCertificate
+    ): Error | undefined => {
+      return originalCheckServerIdentity(sslTargetNameOverride, cert);
+    };
+    connectionOptions.servername = sslTargetNameOverride;
+  } else {
+    connectionOptions.servername = remoteHost;
+  }
+  if (options['grpc-node.tls_enable_trace']) {
+    connectionOptions.enableTrace = true;
+  }
+  return connectionOptions;
+}
+
+class SecureConnectorImpl implements SecureConnector {
+  constructor(private connectionOptions: ConnectionOptions, private callCredentials: CallCredentials) {
+  }
+  connect(socket: Socket): Promise<SecureConnectResult> {
+    const tlsConnectOptions: ConnectionOptions = {
+      socket: socket,
+      ...this.connectionOptions
+    };
+    return new Promise<SecureConnectResult>((resolve, reject) => {
+      const tlsSocket = tlsConnect(tlsConnectOptions, () => {
+        if ((this.connectionOptions.rejectUnauthorized ?? true) && !tlsSocket.authorized) {
+          reject(tlsSocket.authorizationError);
+          return;
+        }
+        resolve({
+          socket: tlsSocket,
+          secure: true
+        })
+      });
+      tlsSocket.on('error', (error: Error) => {
+        reject(error);
+      });
+    });
+  }
+  waitForReady(): Promise<void> {
+    return Promise.resolve();
+  }
+  getCallCredentials(): CallCredentials {
+    return this.callCredentials;
+  }
+  destroy() {}
+}
+
+class SecureChannelCredentialsImpl extends ChannelCredentials {
+  constructor(
+    private secureContext: SecureContext,
+    private verifyOptions: VerifyOptions
+  ) {
+    super();
+  }
+
+  _isSecure(): boolean {
+    return true;
+  }
+  _equals(other: ChannelCredentials): boolean {
+    if (this === other) {
+      return true;
+    }
+    if (other instanceof SecureChannelCredentialsImpl) {
+      return (
+        this.secureContext === other.secureContext &&
+        this.verifyOptions.checkServerIdentity ===
+          other.verifyOptions.checkServerIdentity
+      );
+    } else {
+      return false;
+    }
+  }
+  _createSecureConnector(channelTarget: GrpcUri, options: ChannelOptions, callCredentials?: CallCredentials): SecureConnector {
+    const connectionOptions = getConnectionOptions(this.secureContext, this.verifyOptions, channelTarget, options);
+    return new SecureConnectorImpl(connectionOptions, callCredentials ?? CallCredentials.createEmpty());
+  }
+}
+
+class CertificateProviderChannelCredentialsImpl extends ChannelCredentials {
+  private refcount: number = 0;
+  /**
+   * `undefined` means that the certificates have not yet been loaded. `null`
+   * means that an attempt to load them has completed, and has failed.
+   */
+  private latestCaUpdate: CaCertificateUpdate | null | undefined = undefined;
+  /**
+   * `undefined` means that the certificates have not yet been loaded. `null`
+   * means that an attempt to load them has completed, and has failed.
+   */
+  private latestIdentityUpdate: IdentityCertificateUpdate | null | undefined = undefined;
+  private caCertificateUpdateListener: CaCertificateUpdateListener = this.handleCaCertificateUpdate.bind(this);
+  private identityCertificateUpdateListener: IdentityCertificateUpdateListener = this.handleIdentityCertitificateUpdate.bind(this);
+  private secureContextWatchers: ((context: SecureContext | null) => void)[] = [];
+  private static SecureConnectorImpl = class implements SecureConnector {
+    constructor(private parent: CertificateProviderChannelCredentialsImpl, private channelTarget: GrpcUri, private options: ChannelOptions, private callCredentials: CallCredentials) {}
+
+    connect(socket: Socket): Promise<SecureConnectResult> {
+      return new Promise((resolve, reject) => {
+        const secureContext = this.parent.getLatestSecureContext();
+        if (!secureContext) {
+          reject(new Error('Failed to load credentials'));
+          return;
+        }
+        if (socket.closed) {
+          reject(new Error('Socket closed while loading credentials'));
+        }
+        const connnectionOptions = getConnectionOptions(secureContext, this.parent.verifyOptions, this.channelTarget, this.options);
+        const tlsConnectOptions: ConnectionOptions = {
+          socket: socket,
+          ...connnectionOptions
+        }
+        const closeCallback = () => {
+          reject(new Error('Socket closed'));
+        };
+        const errorCallback = (error: Error) => {
+          reject(error);
+        }
+        const tlsSocket = tlsConnect(tlsConnectOptions, () => {
+          tlsSocket.removeListener('close', closeCallback);
+          tlsSocket.removeListener('error', errorCallback);
+          if ((this.parent.verifyOptions.rejectUnauthorized ?? true) && !tlsSocket.authorized) {
+            reject(tlsSocket.authorizationError);
+            return;
+          }
+          resolve({
+            socket: tlsSocket,
+            secure: true
+          });
+        });
+        tlsSocket.once('close', closeCallback);
+        tlsSocket.once('error', errorCallback);
+      });
+    }
+
+    async waitForReady(): Promise<void> {
+      await this.parent.getSecureContext();
+    }
+
+    getCallCredentials(): CallCredentials {
+      return this.callCredentials;
+    }
+
+    destroy() {
+      this.parent.unref();
+    }
+  }
+  constructor(
+    private caCertificateProvider: CertificateProvider,
+    private identityCertificateProvider: CertificateProvider | null,
+    private verifyOptions: VerifyOptions
+  ) {
+    super();
+  }
+  _isSecure(): boolean {
+    return true;
+  }
+  _equals(other: ChannelCredentials): boolean {
+    if (this === other) {
+      return true;
+    }
+    if (other instanceof CertificateProviderChannelCredentialsImpl) {
+      return this.caCertificateProvider === other.caCertificateProvider &&
+        this.identityCertificateProvider === other.identityCertificateProvider &&
+        this.verifyOptions?.checkServerIdentity === other.verifyOptions?.checkServerIdentity;
+    } else {
+      return false;
+    }
+  }
+  private ref(): void {
+    if (this.refcount === 0) {
+      this.caCertificateProvider.addCaCertificateListener(this.caCertificateUpdateListener);
+      this.identityCertificateProvider?.addIdentityCertificateListener(this.identityCertificateUpdateListener);
+    }
+    this.refcount += 1;
+  }
+  private unref(): void {
+    this.refcount -= 1;
+    if (this.refcount === 0) {
+      this.caCertificateProvider.removeCaCertificateListener(this.caCertificateUpdateListener);
+      this.identityCertificateProvider?.removeIdentityCertificateListener(this.identityCertificateUpdateListener);
+    }
+  }
+  _createSecureConnector(channelTarget: GrpcUri, options: ChannelOptions, callCredentials?: CallCredentials): SecureConnector {
+    this.ref();
+    return new CertificateProviderChannelCredentialsImpl.SecureConnectorImpl(this, channelTarget, options, callCredentials ?? CallCredentials.createEmpty());
+  }
+
+  private maybeUpdateWatchers() {
+    if (this.hasReceivedUpdates()) {
+      for (const watcher of this.secureContextWatchers) {
+        watcher(this.getLatestSecureContext());
+      }
+      this.secureContextWatchers = [];
+    }
+  }
+
+  private handleCaCertificateUpdate(update: CaCertificateUpdate | null) {
+    this.latestCaUpdate = update;
+    this.maybeUpdateWatchers();
+  }
+
+  private handleIdentityCertitificateUpdate(update: IdentityCertificateUpdate | null) {
+    this.latestIdentityUpdate = update;
+    this.maybeUpdateWatchers();
+  }
+
+  private hasReceivedUpdates(): boolean {
+    if (this.latestCaUpdate === undefined) {
+      return false;
+    }
+    if (this.identityCertificateProvider && this.latestIdentityUpdate === undefined) {
+      return false;
+    }
+    return true;
+  }
+
+  private getSecureContext(): Promise<SecureContext | null> {
+    if (this.hasReceivedUpdates()) {
+      return Promise.resolve(this.getLatestSecureContext());
+    } else {
+      return new Promise(resolve => {
+        this.secureContextWatchers.push(resolve);
+      });
+    }
+  }
+
+  private getLatestSecureContext(): SecureContext | null {
+    if (!this.latestCaUpdate) {
+      return null;
+    }
+    if (this.identityCertificateProvider !== null && !this.latestIdentityUpdate) {
+      return null;
+    }
+    try {
+      return createSecureContext({
+        ca: this.latestCaUpdate.caCertificate,
+        key: this.latestIdentityUpdate?.privateKey,
+        cert: this.latestIdentityUpdate?.certificate,
+        ciphers: CIPHER_SUITES
+      });
+    } catch (e) {
+      log(LogVerbosity.ERROR, 'Failed to createSecureContext with error ' + (e as Error).message);
+      return null;
+    }
+  }
+}
+
+export function createCertificateProviderChannelCredentials(caCertificateProvider: CertificateProvider, identityCertificateProvider: CertificateProvider | null, verifyOptions?: VerifyOptions) {
+  return new CertificateProviderChannelCredentialsImpl(caCertificateProvider, identityCertificateProvider, verifyOptions ?? {});
+}
+
+class ComposedChannelCredentialsImpl extends ChannelCredentials {
+  constructor(
+    private channelCredentials: ChannelCredentials,
+    private callCredentials: CallCredentials
+  ) {
+    super();
+    if (!channelCredentials._isSecure()) {
+      throw new Error('Cannot compose insecure credentials');
+    }
+  }
+  compose(callCredentials: CallCredentials) {
+    const combinedCallCredentials =
+      this.callCredentials.compose(callCredentials);
+    return new ComposedChannelCredentialsImpl(
+      this.channelCredentials,
+      combinedCallCredentials
+    );
+  }
+  _isSecure(): boolean {
+    return true;
+  }
+  _equals(other: ChannelCredentials): boolean {
+    if (this === other) {
+      return true;
+    }
+    if (other instanceof ComposedChannelCredentialsImpl) {
+      return (
+        this.channelCredentials._equals(other.channelCredentials) &&
+        this.callCredentials._equals(other.callCredentials)
+      );
+    } else {
+      return false;
+    }
+  }
+  _createSecureConnector(channelTarget: GrpcUri, options: ChannelOptions, callCredentials?: CallCredentials): SecureConnector {
+    const combinedCallCredentials = this.callCredentials.compose(callCredentials ?? CallCredentials.createEmpty());
+    return this.channelCredentials._createSecureConnector(channelTarget, options, combinedCallCredentials);
+  }
+}
+
+
+=== END OF FILE ===
+
+
+=== START OF FILE ===
+文件名: channel-options.d.ts
+路径: C:/Users/Administrator/Desktop/整理结果_合并完成_20251226_031726\代码\ts\channel-options.d.ts
+分类: 代码
+=== CONTENT ===
+
+import { CompressionAlgorithms } from './compression-algorithms';
+/**
+ * An interface that contains options used when initializing a Channel instance.
+ */
+export interface ChannelOptions {
+    'grpc.ssl_target_name_override'?: string;
+    'grpc.primary_user_agent'?: string;
+    'grpc.secondary_user_agent'?: string;
+    'grpc.default_authority'?: string;
+    'grpc.keepalive_time_ms'?: number;
+    'grpc.keepalive_timeout_ms'?: number;
+    'grpc.keepalive_permit_without_calls'?: number;
+    'grpc.service_config'?: string;
+    'grpc.max_concurrent_streams'?: number;
+    'grpc.initial_reconnect_backoff_ms'?: number;
+    'grpc.max_reconnect_backoff_ms'?: number;
+    'grpc.use_local_subchannel_pool'?: number;
+    'grpc.max_send_message_length'?: number;
+    'grpc.max_receive_message_length'?: number;
+    'grpc.enable_http_proxy'?: number;
+    'grpc.http_connect_target'?: string;
+    'grpc.http_connect_creds'?: string;
+    'grpc.default_compression_algorithm'?: CompressionAlgorithms;
+    'grpc.enable_channelz'?: number;
+    'grpc.dns_min_time_between_resolutions_ms'?: number;
+    'grpc.enable_retries'?: number;
+    'grpc.per_rpc_retry_buffer_size'?: number;
+    'grpc.retry_buffer_size'?: number;
+    'grpc.max_connection_age_ms'?: number;
+    'grpc.max_connection_age_grace_ms'?: number;
+    'grpc.max_connection_idle_ms'?: number;
+    'grpc-node.max_session_memory'?: number;
+    'grpc.service_config_disable_resolution'?: number;
+    'grpc.client_idle_timeout_ms'?: number;
+    /**
+     * Set the enableTrace option in TLS clients and servers
+     */
+    'grpc-node.tls_enable_trace'?: number;
+    'grpc.lb.ring_hash.ring_size_cap'?: number;
+    'grpc-node.retry_max_attempts_limit'?: number;
+    'grpc-node.flow_control_window'?: number;
+    'grpc.server_call_metric_recording'?: number;
+    [key: string]: any;
+}
+/**
+ * This is for checking provided options at runtime. This is an object for
+ * easier membership checking.
+ */
+export declare const recognizedOptions: {
+    'grpc.ssl_target_name_override': boolean;
+    'grpc.primary_user_agent': boolean;
+    'grpc.secondary_user_agent': boolean;
+    'grpc.default_authority': boolean;
+    'grpc.keepalive_time_ms': boolean;
+    'grpc.keepalive_timeout_ms': boolean;
+    'grpc.keepalive_permit_without_calls': boolean;
+    'grpc.service_config': boolean;
+    'grpc.max_concurrent_streams': boolean;
+    'grpc.initial_reconnect_backoff_ms': boolean;
+    'grpc.max_reconnect_backoff_ms': boolean;
+    'grpc.use_local_subchannel_pool': boolean;
+    'grpc.max_send_message_length': boolean;
+    'grpc.max_receive_message_length': boolean;
+    'grpc.enable_http_proxy': boolean;
+    'grpc.enable_channelz': boolean;
+    'grpc.dns_min_time_between_resolutions_ms': boolean;
+    'grpc.enable_retries': boolean;
+    'grpc.per_rpc_retry_buffer_size': boolean;
+    'grpc.retry_buffer_size': boolean;
+    'grpc.max_connection_age_ms': boolean;
+    'grpc.max_connection_age_grace_ms': boolean;
+    'grpc-node.max_session_memory': boolean;
+    'grpc.service_config_disable_resolution': boolean;
+    'grpc.client_idle_timeout_ms': boolean;
+    'grpc-node.tls_enable_trace': boolean;
+    'grpc.lb.ring_hash.ring_size_cap': boolean;
+    'grpc-node.retry_max_attempts_limit': boolean;
+    'grpc-node.flow_control_window': boolean;
+    'grpc.server_call_metric_recording': boolean;
+};
+export declare function channelOptionsEqual(options1: ChannelOptions, options2: ChannelOptions): boolean;
+
+
+=== END OF FILE ===
+
+
+=== START OF FILE ===
+文件名: channel-options.ts
+路径: C:/Users/Administrator/Desktop/整理结果_合并完成_20251226_031726\代码\ts\channel-options.ts
+分类: 代码
+=== CONTENT ===
+
+/*
+ * Copyright 2019 gRPC authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+import { CompressionAlgorithms } from './compression-algorithms';
+
+/**
+ * An interface that contains options used when initializing a Channel instance.
+ */
+export interface ChannelOptions {
+  'grpc.ssl_target_name_override'?: string;
+  'grpc.primary_user_agent'?: string;
+  'grpc.secondary_user_agent'?: string;
+  'grpc.default_authority'?: string;
+  'grpc.keepalive_time_ms'?: number;
+  'grpc.keepalive_timeout_ms'?: number;
+  'grpc.keepalive_permit_without_calls'?: number;
+  'grpc.service_config'?: string;
+  'grpc.max_concurrent_streams'?: number;
+  'grpc.initial_reconnect_backoff_ms'?: number;
+  'grpc.max_reconnect_backoff_ms'?: number;
+  'grpc.use_local_subchannel_pool'?: number;
+  'grpc.max_send_message_length'?: number;
+  'grpc.max_receive_message_length'?: number;
+  'grpc.enable_http_proxy'?: number;
+  /* http_connect_target and http_connect_creds are used for passing data
+   * around internally, and should not be documented as public-facing options
+   */
+  'grpc.http_connect_target'?: string;
+  'grpc.http_connect_creds'?: string;
+  'grpc.default_compression_algorithm'?: CompressionAlgorithms;
+  'grpc.enable_channelz'?: number;
+  'grpc.dns_min_time_between_resolutions_ms'?: number;
+  'grpc.enable_retries'?: number;
+  'grpc.per_rpc_retry_buffer_size'?: number;
+  /* This option is pattered like a core option, but the core does not have
+   * this option. It is closely related to the option
+   * grpc.per_rpc_retry_buffer_size, which is in the core. The core will likely
+   * implement this functionality using the ResourceQuota mechanism, so there
+   * will probably not be any collision or other inconsistency. */
+  'grpc.retry_buffer_size'?: number;
+  'grpc.max_connection_age_ms'?: number;
+  'grpc.max_connection_age_grace_ms'?: number;
+  'grpc.max_connection_idle_ms'?: number;
+  'grpc-node.max_session_memory'?: number;
+  'grpc.service_config_disable_resolution'?: number;
+  'grpc.client_idle_timeout_ms'?: number;
+  /**
+   * Set the enableTrace option in TLS clients and servers
+   */
+  'grpc-node.tls_enable_trace'?: number;
+  'grpc.lb.ring_hash.ring_size_cap'?: number;
+  'grpc-node.retry_max_attempts_limit'?: number;
+  'grpc-node.flow_control_window'?: number;
+  'grpc.server_call_metric_recording'?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}
+
+/**
+ * This is for checking provided options at runtime. This is an object for
+ * easier membership checking.
+ */
+export const recognizedOptions = {
+  'grpc.ssl_target_name_override': true,
+  'grpc.primary_user_agent': true,
+  'grpc.secondary_user_agent': true,
+  'grpc.default_authority': true,
+  'grpc.keepalive_time_ms': true,
+  'grpc.keepalive_timeout_ms': true,
+  'grpc.keepalive_permit_without_calls': true,
+  'grpc.service_config': true,
+  'grpc.max_concurrent_streams': true,
+  'grpc.initial_reconnect_backoff_ms': true,
+  'grpc.max_reconnect_backoff_ms': true,
+  'grpc.use_local_subchannel_pool': true,
+  'grpc.max_send_message_length': true,
+  'grpc.max_receive_message_length': true,
+  'grpc.enable_http_proxy': true,
+  'grpc.enable_channelz': true,
+  'grpc.dns_min_time_between_resolutions_ms': true,
+  'grpc.enable_retries': true,
+  'grpc.per_rpc_retry_buffer_size': true,
+  'grpc.retry_buffer_size': true,
+  'grpc.max_connection_age_ms': true,
+  'grpc.max_connection_age_grace_ms': true,
+  'grpc-node.max_session_memory': true,
+  'grpc.service_config_disable_resolution': true,
+  'grpc.client_idle_timeout_ms': true,
+  'grpc-node.tls_enable_trace': true,
+  'grpc.lb.ring_hash.ring_size_cap': true,
+  'grpc-node.retry_max_attempts_limit': true,
+  'grpc-node.flow_control_window': true,
+  'grpc.server_call_metric_recording': true
+};
+
+export function channelOptionsEqual(
+  options1: ChannelOptions,
+  options2: ChannelOptions
+) {
+  const keys1 = Object.keys(options1).sort();
+  const keys2 = Object.keys(options2).sort();
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+  for (let i = 0; i < keys1.length; i += 1) {
+    if (keys1[i] !== keys2[i]) {
+      return false;
+    }
+    if (options1[keys1[i]] !== options2[keys2[i]]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+=== END OF FILE ===
+
+
+=== START OF FILE ===
+文件名: channel.d.ts
+路径: C:/Users/Administrator/Desktop/整理结果_合并完成_20251226_031726\代码\ts\channel.d.ts
+分类: 代码
+=== CONTENT ===
+
+import { ChannelCredentials } from './channel-credentials';
+import { ChannelOptions } from './channel-options';
+import { ServerSurfaceCall } from './server-call';
+import { ConnectivityState } from './connectivity-state';
+import type { ChannelRef } from './channelz';
+import { Call } from './call-interface';
+import { Deadline } from './deadline';
+/**
+ * An interface that represents a communication channel to a server specified
+ * by a given address.
+ */
+export interface Channel {
+    /**
+     * Close the channel. This has the same functionality as the existing
+     * grpc.Client.prototype.close
+     */
+    close(): void;
+    /**
+     * Return the target that this channel connects to
+     */
+    getTarget(): string;
+    /**
+     * Get the channel's current connectivity state. This method is here mainly
+     * because it is in the existing internal Channel class, and there isn't
+     * another good place to put it.
+     * @param tryToConnect If true, the channel will start connecting if it is
+     *     idle. Otherwise, idle channels will only start connecting when a
+     *     call starts.
+     */
+    getConnectivityState(tryToConnect: boolean): ConnectivityState;
+    /**
+     * Watch for connectivity state changes. This is also here mainly because
+     * it is in the existing external Channel class.
+     * @param currentState The state to watch for transitions from. This should
+     *     always be populated by calling getConnectivityState immediately
+     *     before.
+     * @param deadline A deadline for waiting for a state change
+     * @param callback Called with no error when a state change, or with an
+     *     error if the deadline passes without a state change.
+     */
+    watchConnectivityState(currentState: ConnectivityState, deadline: Date | number, callback: (error?: Error) => void): void;
+    /**
+     * Get the channelz reference object for this channel. A request to the
+     * channelz service for the id in this object will provide information
+     * about this channel.
+     */
+    getChannelzRef(): ChannelRef;
+    /**
+     * Create a call object. Call is an opaque type that is used by the Client
+     * class. This function is called by the gRPC library when starting a
+     * request. Implementers should return an instance of Call that is returned
+     * from calling createCall on an instance of the provided Channel class.
+     * @param method The full method string to request.
+     * @param deadline The call deadline
+     * @param host A host string override for making the request
+     * @param parentCall A server call to propagate some information from
+     * @param propagateFlags A bitwise combination of elements of grpc.propagate
+     *     that indicates what information to propagate from parentCall.
+     */
+    createCall(method: string, deadline: Deadline, host: string | null | undefined, parentCall: ServerSurfaceCall | null, propagateFlags: number | null | undefined): Call;
+}
+export declare class ChannelImplementation implements Channel {
+    private internalChannel;
+    constructor(target: string, credentials: ChannelCredentials, options: ChannelOptions);
+    close(): void;
+    getTarget(): string;
+    getConnectivityState(tryToConnect: boolean): ConnectivityState;
+    watchConnectivityState(currentState: ConnectivityState, deadline: Date | number, callback: (error?: Error) => void): void;
+    /**
+     * Get the channelz reference object for this channel. The returned value is
+     * garbage if channelz is disabled for this channel.
+     * @returns
+     */
+    getChannelzRef(): ChannelRef;
+    createCall(method: string, deadline: Deadline, host: string | null | undefined, parentCall: ServerSurfaceCall | null, propagateFlags: number | null | undefined): Call;
+}
+
+
+=== END OF FILE ===
+
+
+=== START OF FILE ===
+文件名: channel.ts
+路径: C:/Users/Administrator/Desktop/整理结果_合并完成_20251226_031726\代码\ts\channel.ts
+分类: 代码
+=== CONTENT ===
+
+/*
+ * Copyright 2019 gRPC authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+import { ChannelCredentials } from './channel-credentials';
+import { ChannelOptions } from './channel-options';
+import { ServerSurfaceCall } from './server-call';
+
+import { ConnectivityState } from './connectivity-state';
+import type { ChannelRef } from './channelz';
+import { Call } from './call-interface';
+import { InternalChannel } from './internal-channel';
+import { Deadline } from './deadline';
+
+/**
+ * An interface that represents a communication channel to a server specified
+ * by a given address.
+ */
+export interface Channel {
+  /**
+   * Close the channel. This has the same functionality as the existing
+   * grpc.Client.prototype.close
+   */
+  close(): void;
+  /**
+   * Return the target that this channel connects to
+   */
+  getTarget(): string;
+  /**
+   * Get the channel's current connectivity state. This method is here mainly
+   * because it is in the existing internal Channel class, and there isn't
+   * another good place to put it.
+   * @param tryToConnect If true, the channel will start connecting if it is
+   *     idle. Otherwise, idle channels will only start connecting when a
+   *     call starts.
+   */
+  getConnectivityState(tryToConnect: boolean): ConnectivityState;
+  /**
+   * Watch for connectivity state changes. This is also here mainly because
+   * it is in the existing external Channel class.
+   * @param currentState The state to watch for transitions from. This should
+   *     always be populated by calling getConnectivityState immediately
+   *     before.
+   * @param deadline A deadline for waiting for a state change
+   * @param callback Called with no error when a state change, or with an
+   *     error if the deadline passes without a state change.
+   */
+  watchConnectivityState(
+    currentState: ConnectivityState,
+    deadline: Date | number,
+    callback: (error?: Error) => void
+  ): void;
+  /**
+   * Get the channelz reference object for this channel. A request to the
+   * channelz service for the id in this object will provide information
+   * about this channel.
+   */
+  getChannelzRef(): ChannelRef;
+  /**
+   * Create a call object. Call is an opaque type that is used by the Client
+   * class. This function is called by the gRPC library when starting a
+   * request. Implementers should return an instance of Call that is returned
+   * from calling createCall on an instance of the provided Channel class.
+   * @param method The full method string to request.
+   * @param deadline The call deadline
+   * @param host A host string override for making the request
+   * @param parentCall A server call to propagate some information from
+   * @param propagateFlags A bitwise combination of elements of grpc.propagate
+   *     that indicates what information to propagate from parentCall.
+   */
+  createCall(
+    method: string,
+    deadline: Deadline,
+    host: string | null | undefined,
+    parentCall: ServerSurfaceCall | null,
+    propagateFlags: number | null | undefined
+  ): Call;
+}
+
+export class ChannelImplementation implements Channel {
+  private internalChannel: InternalChannel;
+
+  constructor(
+    target: string,
+    credentials: ChannelCredentials,
+    options: ChannelOptions
+  ) {
+    if (typeof target !== 'string') {
+      throw new TypeError('Channel target must be a string');
+    }
+    if (!(credentials instanceof ChannelCredentials)) {
+      throw new TypeError(
+        'Channel credentials must be a ChannelCredentials object'
+      );
+    }
+    if (options) {
+      if (typeof options !== 'object') {
+        throw new TypeError('Channel options must be an object');
+      }
+    }
+
+    this.internalChannel = new InternalChannel(target, credentials, options);
+  }
+
+  close() {
+    this.internalChannel.close();
+  }
+
+  getTarget() {
+    return this.internalChannel.getTarget();
+  }
+
+  getConnectivityState(tryToConnect: boolean) {
+    return this.internalChannel.getConnectivityState(tryToConnect);
+  }
+
+  watchConnectivityState(
+    currentState: ConnectivityState,
+    deadline: Date | number,
+    callback: (error?: Error) => void
+  ): void {
+    this.internalChannel.watchConnectivityState(
+      currentState,
+      deadline,
+      callback
+    );
+  }
+
+  /**
+   * Get the channelz reference object for this channel. The returned value is
+   * garbage if channelz is disabled for this channel.
+   * @returns
+   */
+  getChannelzRef() {
+    return this.internalChannel.getChannelzRef();
+  }
+
+  createCall(
+    method: string,
+    deadline: Deadline,
+    host: string | null | undefined,
+    parentCall: ServerSurfaceCall | null,
+    propagateFlags: number | null | undefined
+  ): Call {
+    if (typeof method !== 'string') {
+      throw new TypeError('Channel#createCall: method must be a string');
+    }
+    if (!(typeof deadline === 'number' || deadline instanceof Date)) {
+      throw new TypeError(
+        'Channel#createCall: deadline must be a number or Date'
+      );
+    }
+    return this.internalChannel.createCall(
+      method,
+      deadline,
+      host,
+      parentCall,
+      propagateFlags
+    );
+  }
+}
+
+
+=== END OF FILE ===

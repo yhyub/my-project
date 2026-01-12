@@ -1,0 +1,42 @@
+﻿4.44 GB (4546.73 MB) - C:\Users\Administrator\AppData\Roaming\Trae CN\ModularData\ai-agent\database.db 
+0.92 GB (944.6 MB) - C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\tensorflow\python\_pywrap_tensorflow_common.dll 
+0.7 GB (718.3 MB) - C:\Users\Administrator\Desktop\processed\trthergtwekw\chinese-clip-vit-base-patch16\.git\lfs\objects\59\97\5997ef32c50de18f3ac06eb5d746c324a639053c3bed8f2986f97ebb22b2ecde 
+0.7 GB (718.3 MB) - C:\Users\Administrator\Desktop\processed\trthergtwekw\multimodal_system\chinese-clip-vit-base-patch16\.git\lfs\objects\59\97\5997ef32c50de18f3ac06eb5d746c324a639053c3bed8f2986f97ebb22b2ecde 
+0.7 GB (718.29 MB) - C:\Users\Administrator\Desktop\processed\trthergtwekw\multimodal_system\chinese-clip-vit-base-patch16\.git\lfs\objects\7b\7b\7b7b583c210c867410bc6bdb8a55fe14eec62999e0a9ea31ff222dc501f9cfbe 
+0.7 GB (718.29 MB) - C:\Users\Administrator\Desktop\processed\trthergtwekw\chinese-clip-vit-base-patch16\.git\lfs\objects\7b\7b\7b7b583c210c867410bc6bdb8a55fe14eec62999e0a9ea31ff222dc501f9cfbe 
+0.65 GB (662.09 MB) - C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\lib\dnnl.lib 
+0.58 GB (592 MB) - C:\Users\All Users\Microsoft\Search\Data\Applications\Windows\Windows.edb 
+0.58 GB (592 MB) - C:\ProgramData\Microsoft\Search\Data\Applications\Windows\Windows.edb 
+0.31 GB (316.63 MB) - C:\Users\Administrator\AppData\Local\pip\cache\http-v2\9\a\8\3\f\9a83f92d67a98cc4248874b52eaa3a88b6878c0e09bae4b667f1cd50.body 
+0.3 GB (310.71 MB) - C:\Users\Administrator\AppData\Local\JianyingPro\Apps\8.1.1.12944\VECreator.dll 
+0.25 GB (253.86 MB) - C:\Users\Administrator\AppData\Local\ms-playwright\chromium-1200\chrome-win64\chrome.dll 
+0.24 GB (244.08 MB) - C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\lib\torch_cpu.dll 
+0.24 GB (240.96 MB) - C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\~-rch\lib\torch_cpu.dll 
+0.23 GB (239.62 MB) - C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\~orch\lib\torch_cpu.dll 
+0.22 GB (230.15 MB) - C:\Users\Administrator\AppData\Local\pip\cache\http-v2\a\b\2\a\c\ab2ac2b9559e387bcc4825f44e99d5992b908aa83a3a70ebccb8b04f.body 
+0.2 GB (202.65 MB) - C:\Users\Administrator\AppData\Local\pip\cache\http-v2\6\6\e\4\1\66e41ac1845afdadd21d5ade9f5da90c70050c2278ab2954326516d7.body 
+0.19 GB (197.61 MB) - C:\Users\Administrator\AppData\Local\Programs\Trae CN\Trae CN.exe 
+0.19 GB (193.86 MB) - C:\Users\Administrator\Desktop\erthhgfj\2345Explorer\13.8.0.41597\chrome.dll 
+0.18 GB (186.63 MB) - C:\Users\Administrator\AppData\Local\JianyingPro\Apps\8.1.1.12944\cef\libcef.dll 
+0.18 GB (181.8 MB) - C:\Users\Administrator\AppData\Local\Programs\_\CodeBuddy CN.exe 
+0.18 GB (181.75 MB) - C:\Users\Administrator\AppData\Local\Programs\CodeBuddy CN.exe 
+0.18 GB (179.64 MB) - C:\Users\Administrator\AppData\Local\ms-playwright\chromium_headless_shell-1200\chrome-headless-shell-win64\chrome-headless-shell.exe 
+0.17 GB (174.41 MB) - C:\Users\Administrator\AppData\Roaming\Tencent\WeChat\XPlugin\Plugins\RadiumWMPF\14315\extracted\runtime\flue.dll 
+0.17 GB (174.4 MB) - C:\Users\Administrator\AppData\Roaming\Tencent\WeChat\XPlugin\Plugins\RadiumWMPF\14185\extracted\runtime\flue.dll 
+0.16 GB (162.35 MB) - C:\Users\Administrator\AppData\Local\ride-updater\installer.exe 
+0.16 GB (162.35 MB) - C:\Users\Administrator\AppData\Local\ride-updater\pending\rIDE_3.0.18.exe 
+0.14 GB (146.83 MB) - C:\Users\Administrator\AppData\Local\Yarn\Cache\v6\npm-@next-swc-win32-x64-msvc-15.3.1-df5ceb9c3b97bf0d61cb6e84f79bbf9e91a89d29-integrity\node_modules\@next\swc-win32-x64-msvc\next-swc.win32-x64-msvc.node 
+0.14 GB (141.59 MB) - C:\Users\Administrator\AppData\Local\Yarn\Cache\v6\npm-@next-swc-linux-x64-gnu-15.3.1-f90558d93bc25e01b0b271725e291863286753c4-integrity\node_modules\@next\swc-linux-x64-gnu\next-swc.linux-x64-gnu.node 
+0.14 GB (141.47 MB) - C:\Users\Administrator\AppData\Local\Yarn\Cache\v6\npm-@next-swc-linux-x64-musl-15.3.1-639f143bd0f3fd6e1bde4b383dc6cd8a8ff12628-integrity\node_modules\@next\swc-linux-x64-musl\next-swc.linux-x64-musl.node 
+0.13 GB (133.91 MB) - C:\Users\Administrator\AppData\Local\JianyingPro\Apps\8.1.1.12944\effect.dll 
+0.13 GB (129.39 MB) - C:\Users\Administrator\AppData\Local\Yarn\Cache\v6\npm-@next-swc-linux-arm64-musl-15.3.1-bce27533f9f046800f850a9c20832e8c15b10955-integrity\node_modules\@next\swc-linux-arm64-musl\next-swc.linux-arm64-musl.node 
+0.13 GB (128.99 MB) - C:\Users\Administrator\Desktop\erthhgfj\deepseek_complete_mcp_tool.json 
+0.13 GB (128.75 MB) - C:\Users\Administrator\AppData\Local\Yarn\Cache\v6\npm-@next-swc-darwin-arm64-15.3.1-8f9589aed9f6816687440aa36a86376b3a16af58-integrity\node_modules\@next\swc-darwin-arm64\next-swc.darwin-arm64.node 
+0.12 GB (127.8 MB) - C:\Users\Administrator\AppData\Local\Yarn\Cache\v6\npm-@next-swc-linux-arm64-gnu-15.3.1-d1c4e24b2b27c36a7ebc21ae0573e9e98f794143-integrity\node_modules\@next\swc-linux-arm64-gnu\next-swc.linux-arm64-gnu.node 
+0.12 GB (125.27 MB) - C:\Users\Administrator\Desktop\erthhgfj\deepseek_full_conversations.txt 
+0.12 GB (124.42 MB) - C:\Users\Administrator\AppData\Local\Yarn\Cache\v6\npm-@next-swc-darwin-x64-15.3.1-2df013226d848394ed7307188c141f0e6da4ab3e-integrity\node_modules\@next\swc-darwin-x64\next-swc.darwin-x64.node 
+0.11 GB (116.49 MB) - C:\Users\Administrator\AppData\Roaming\Trae CN\ModularData\ai-agent\snapshot\6940c9c15be12c0ddf229751\v2\.git\objects\0a\fa6f6d3e74d868300d7add9d700393e24e8ce3 
+0.11 GB (115.97 MB) - C:\Users\Administrator\AppData\Roaming\2345Pic\Extension\2345PicDesigner\Application\1.2.0.323\libcef.dll 
+0.11 GB (115.63 MB) - C:\Users\Administrator\AppData\Local\Yarn\Cache\v6\npm-@next-swc-win32-arm64-msvc-15.3.1-52ee1e63b192fec8f0230caf839cfc308d0d44d1-integrity\node_modules\@next\swc-win32-arm64-msvc\next-swc.win32-arm64-msvc.node 
+0.1 GB (106.91 MB) - C:\Users\Administrator\AppData\Roaming\2345Pic\temp\download\2345pic_v13.4.0.12514_x64.up_pure_new.exe 
+0.1 GB (97.88 MB) - C:\Users\Administrator\AppData\Roaming\Trae CN\logs\aha_log\aha_electron_2025.1217.log 

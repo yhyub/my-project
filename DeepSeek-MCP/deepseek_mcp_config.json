@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "deepseek-mcp-server": {
+      "command": "python",
+      "args": [
+        "C:\\Users\\Administrator\\Desktop\\项目\\DeepSeek-MCP\\deepseek_complete_integrated_mcp.py",
+        "--start",
+        "--host",
+        "localhost",
+        "--port",
+        "8000"
+      ],
+      "env": {
+        "PYTHONPATH": "C:\\Users\\Administrator\\Desktop\\项目\\DeepSeek-MCP",
+        "MCP_LOG_LEVEL": "INFO",
+        "MCP_TIMEOUT": "600"
+      }
+    }
+  }
+}

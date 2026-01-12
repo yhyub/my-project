@@ -1,0 +1,1507 @@
+2025-12-31T18:21:51.063+08:00 [info] [mcp.config.usrlocalmcp.semgrep] MCPServerManager#start Connecting with config... {"env":{"MCP_LOG_LEVEL":"INFO"},"url":"https://mcp.semgrep.ai/mcp"}
+2025-12-31T18:21:51.065+08:00 [info] [mcp.config.usrlocalmcp.semgrep] MCPClient#start Start With HttpServerParameters, streamable type {"env":{"MCP_LOG_LEVEL":"INFO"},"url":"https://mcp.semgrep.ai/mcp"}
+2025-12-31T18:21:51.209+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPServerManager#start Connecting with config... {"command":"uvx","args":["mcp-server-docker"],"env":{},"fromGalleryId":"byted-mcp-volcengine.3rd_party_mcp_server_docker"}
+2025-12-31T18:21:51.237+08:00 [info] [mcp.config.usrlocalmcp.Fetch] MCPServerManager#start Connecting with config... {"command":"uvx","args":["mcp-server-fetch"],"env":{},"fromGalleryId":"modelcontextprotocol.servers_fetch"}
+2025-12-31T18:21:51.237+08:00 [info] [mcp.config.usrlocalmcp.deepseek-mcp-server] MCPServerManager#start Connecting with config... {"command":"python","args":["C:\\Users\\Administrator\\Desktop\\项目\\DeepSeek-MCP\\deepseek_complete_integrated_mcp.py","--start","--host","localhost","--port","8000"],"env":{"PYTHONPATH":"C:\\Users\\Administrator\\Desktop\\项目\\DeepSeek-MCP","MCP_LOG_LEVEL":"INFO","MCP_TIMEOUT":"600"},"disabled":false}
+2025-12-31T18:21:51.238+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPServerManager#start Connecting with config... {"command":"uvx","args":["scrapling-fetch-mcp"]}
+2025-12-31T18:21:51.239+08:00 [info] [mcp.config.usrlocalmcp.Chrome DevTools MCP] MCPServerManager#start Connecting with config... {"command":"npx","args":["-y","chrome-devtools-mcp@latest"],"env":{},"fromGalleryId":"byted-mcp.chrome-devtools-mcp"}
+2025-12-31T18:21:51.240+08:00 [info] [mcp.config.usrlocalmcp.Playwright] MCPServerManager#start Connecting with config... {"command":"npx","args":["-y","@executeautomation/playwright-mcp-server"],"env":{},"fromGalleryId":"byted-mcp-volcengine.3rd_party_mcp_server_playwright"}
+2025-12-31T18:21:51.241+08:00 [info] [mcp.config.usrlocalmcp.context7] MCPServerManager#start Connecting with config... {"command":"npx","args":["-y","@upstash/context7-mcp@latest"],"env":{"DEFAULT_MINIMUM_TOKENS":"10000"},"fromGalleryId":"upstash.context7"}
+2025-12-31T18:21:51.278+08:00 [info] [mcp.config.usrlocalmcp.web research] MCPServerManager#start Connecting with config... {"command":"npx","args":["-y","@mzxrai/mcp-webresearch@latest"],"env":{}}
+2025-12-31T18:21:51.279+08:00 [info] [mcp.config.usrlocalmcp.Sequential Thinking] MCPServerManager#start Connecting with config... {"command":"npx","args":["-y","@modelcontextprotocol/server-sequential-thinking"],"env":{}}
+2025-12-31T18:21:51.281+08:00 [info] [mcp.config.usrlocalmcp.pdf-reader-mcp] MCPServerManager#start Connecting with config... {"command":"npx","args":["@sylphlab/pdf-reader-mcp"],"env":{}}
+2025-12-31T18:21:51.285+08:00 [info] [mcp.config.usrlocalmcp.structured-workflow] MCPServerManager#start Connecting with config... {"command":"npx","args":["structured-workflow-mcp@latest"],"env":{}}
+2025-12-31T18:21:51.286+08:00 [info] [mcp.config.usrlocalmcp.vscode-mcp-server] MCPServerManager#start Connecting with config... {"command":"npx","args":["vscode-mcp-server"],"env":{}}
+2025-12-31T18:21:51.287+08:00 [info] [mcp.config.usrlocalmcp.workflows-mcp] MCPServerManager#start Connecting with config... {"command":"npx","args":["-y","mcpn@latest","server"]}
+2025-12-31T18:21:51.287+08:00 [info] [mcp.config.usrlocalmcp.llm-context] MCPServerManager#start Connecting with config... {"command":"uvx","args":["--from","llm-context","lc-mcp"]}
+2025-12-31T18:21:51.288+08:00 [info] [mcp.config.usrlocalmcp.arxiv-mcp-server] MCPServerManager#start Connecting with config... {"command":"uv","args":["tool","run","arxiv-mcp-server","--storage-path","C:\\Users\\Administrator\\Desktop\\erthhgfj\\arxiv_storage"]}
+2025-12-31T18:21:51.288+08:00 [info] [mcp.config.usrlocalmcp.发现报告] MCPServerManager#start Connecting with config... {"command":"uvx","args":["fxbaogao-mcp@latest"],"env":{},"fromGalleryId":"byted-mcp-volcengine.3rd_party_mcp_server_fxbaogao_mcp"}
+2025-12-31T18:21:51.289+08:00 [info] [mcp.config.usrlocalmcp.Browser-Use MCP] MCPServerManager#start Connecting with config... {"command":"uvx","args":["--from","git+https://github.com/volcengine/mcp-server#subdirectory=server/mcp_server_vefaas_browser_use","mcp-server-vefaas-browser-use"],"env":{"BROWSER_USE_ENDPOINT":"pat_UqdV9mmmiwwXlHmEcvf7zyAp3v55g2XYdwd44ClgsoFN4VT3C5n6kkj40QnGk62q"},"fromGalleryId":"byted-mcp-volcengine.mcp_server_vefaas_browser_use"}
+2025-12-31T18:21:51.289+08:00 [info] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPServerManager#start Connecting with config... {"command":"uvx","args":["mcp-feedback-enhanced@latest"],"env":{},"fromGalleryId":"byted-mcp.mcp-feedback-enhanced","disabled":false}
+2025-12-31T18:21:51.290+08:00 [info] [mcp.config.usrlocalmcp.fetch] MCPServerManager#start Connecting with config... {"command":"python","args":["-m","mcp_server_fetch"],"env":{"MCP_CWD":"c:\\Users\\Administrator\\Desktop\\新建文件夹 (10)","MCP_TIMEOUT":"600","MCP_AUTO_APPROVE":"[\"list_configs\", \"get_openapi_config\", \"get_coze_plugin\", \"execute_automation\", \"generate_plugin\", \"generate_workflow\", \"heal_workflow\", \"validate_config\", \"get_txt_content\", \"manage_prompts\", \"manage_files\", \"repair_coze_json\", \"analyze_industry\", \"classify_profession\", \"process_scenario\", \"fix_workflow\", \"process_luoyang_cultural_heritage\", \"create_multi_modal_content\", \"control_iot_device\", \"integrate_data\", \"enhance_with_ai\", \"optimize_quantum\"]"}}
+2025-12-31T18:21:52.391+08:00 [info] detect cmd chcp encoding: cp936
+2025-12-31T18:21:52.395+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#start Start With StdioServerParameters {"command":"uvx","args":["mcp-server-docker"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:21:52.466+08:00 [info] [mcp.config.usrlocalmcp.Fetch] MCPClient#start Start With StdioServerParameters {"command":"uvx","args":["mcp-server-fetch"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:21:52.558+08:00 [info] [mcp.config.usrlocalmcp.deepseek-mcp-server] MCPClient#start Start With StdioServerParameters {"command":"python","args":["C:\\Users\\Administrator\\Desktop\\项目\\DeepSeek-MCP\\deepseek_complete_integrated_mcp.py","--start","--host","localhost","--port","8000"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir","PYTHONPATH","MCP_LOG_LEVEL","MCP_TIMEOUT"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:21:52.610+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPClient#start Start With StdioServerParameters {"command":"uvx","args":["scrapling-fetch-mcp"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:21:52.666+08:00 [info] [mcp.config.usrlocalmcp.llm-context] MCPClient#start Start With StdioServerParameters {"command":"uvx","args":["--from","llm-context","lc-mcp"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:21:52.693+08:00 [info] [mcp.config.usrlocalmcp.arxiv-mcp-server] MCPClient#start Start With StdioServerParameters {"command":"uv","args":["tool","run","arxiv-mcp-server","--storage-path","C:\\Users\\Administrator\\Desktop\\erthhgfj\\arxiv_storage"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:21:54.039+08:00 [info] [mcp.config.usrlocalmcp.发现报告] MCPClient#start Start With StdioServerParameters {"command":"uvx","args":["fxbaogao-mcp@latest"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:21:54.064+08:00 [info] [mcp.config.usrlocalmcp.Browser-Use MCP] MCPClient#start Start With StdioServerParameters {"command":"uvx","args":["--from","git+https://github.com/volcengine/mcp-server#subdirectory=server/mcp_server_vefaas_browser_use","mcp-server-vefaas-browser-use"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir","BROWSER_USE_ENDPOINT"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:21:54.089+08:00 [info] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPClient#start Start With StdioServerParameters {"command":"uvx","args":["mcp-feedback-enhanced@latest"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:21:54.114+08:00 [info] [mcp.config.usrlocalmcp.fetch] MCPClient#start Start With StdioServerParameters {"command":"python","args":["-m","mcp_server_fetch"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir","MCP_CWD","MCP_TIMEOUT","MCP_AUTO_APPROVE"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:22:20.284+08:00 [info] [mcp.config.usrlocalmcp.deepseek-mcp-server] MCPClient#onStderr [Server Internal Log] 2025-12-31 18:22:08,084 - DeepSeek-Complete-MCP - INFO - \U0001f680 DeepSeek 完整整合版 MCP 服务器已启动
+2025-12-31 18:22:08,089 - DeepSeek-Complete-MCP - INFO - \U0001f4e1 监听地址: http://localhost:8000
+2025-12-31 18:22:08,089 - DeepSeek-Complete-MCP - INFO - \U0001f4a1 健康检查: http://localhost:8000/health
+2025-12-31 18:22:08,089 - DeepSeek-Complete-MCP - INFO - \U0001f4c4 服务信息: http://localhost:8000/info
+2025-12-31 18:22:08,089 - DeepSeek-Complete-MCP - INFO - \U0001f4ac 发送消息: POST http://localhost:8000
+2025-12-31 18:22:08,090 - DeepSeek-Complete-MCP - INFO - \U0001f4da 使用指南: http://localhost:8000/guide
+2025-12-31 18:22:08,090 - DeepSeek-Complete-MCP - INFO - \U0001f527 按 Ctrl+C 停止服务器
+
+2025-12-31T18:22:20.302+08:00 [info] [mcp.config.usrlocalmcp.fetch] MCPServerManager#start Connected.
+2025-12-31T18:22:21.118+08:00 [info] [mcp.config.usrlocalmcp.fetch] MCPServerManager#listTools Listing tools...
+2025-12-31T18:22:21.729+08:00 [info] [mcp.config.usrlocalmcp.fetch] MCPServerManager#listTools Got tools: fetch
+2025-12-31T18:22:22.428+08:00 [info] [mcp.config.usrlocalmcp.semgrep] MCPServerManager#start Connected.
+2025-12-31T18:22:24.653+08:00 [info] [mcp.config.usrlocalmcp.semgrep] MCPServerManager#listTools Listing tools...
+2025-12-31T18:22:25.828+08:00 [info] [mcp.config.usrlocalmcp.semgrep] MCPServerManager#listTools Got tools: semgrep_rule_schema, get_supported_languages, semgrep_findings, semgrep_scan_with_custom_rule, semgrep_scan, semgrep_scan_local, security_check, get_abstract_syntax_tree
+2025-12-31T18:22:38.315+08:00 [info] getNpmRegistryEnvConfig: {"registry":"https://registry.npmmirror.com","registryReason":"NpmRc","npmRcPath":"c:\\Users\\Administrator\\.npmrc"}
+2025-12-31T18:22:38.315+08:00 [info] [mcp.config.usrlocalmcp.Chrome DevTools MCP] MCPClient#start Set command environment variables for npx
+2025-12-31T18:22:38.318+08:00 [info] [mcp.config.usrlocalmcp.Chrome DevTools MCP] MCPClient#start Start With StdioServerParameters {"command":"npx","args":["-y","chrome-devtools-mcp@latest"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir","NPM_CONFIG_REGISTRY"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:22:38.545+08:00 [info] getNpmRegistryEnvConfig: {"registry":"https://registry.npmmirror.com","registryReason":"NpmRc","npmRcPath":"c:\\Users\\Administrator\\.npmrc"}
+2025-12-31T18:22:38.545+08:00 [info] [mcp.config.usrlocalmcp.Playwright] MCPClient#start Set command environment variables for npx
+2025-12-31T18:22:38.547+08:00 [info] [mcp.config.usrlocalmcp.Playwright] MCPClient#start Start With StdioServerParameters {"command":"npx","args":["-y","@executeautomation/playwright-mcp-server"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir","NPM_CONFIG_REGISTRY"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:22:38.590+08:00 [info] getNpmRegistryEnvConfig: {"registry":"https://registry.npmmirror.com","registryReason":"NpmRc","npmRcPath":"c:\\Users\\Administrator\\.npmrc"}
+2025-12-31T18:22:38.591+08:00 [info] [mcp.config.usrlocalmcp.context7] MCPClient#start Set command environment variables for npx
+2025-12-31T18:22:38.593+08:00 [info] [mcp.config.usrlocalmcp.context7] MCPClient#start Start With StdioServerParameters {"command":"npx","args":["-y","@upstash/context7-mcp@latest"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir","DEFAULT_MINIMUM_TOKENS","NPM_CONFIG_REGISTRY"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:22:38.617+08:00 [info] getNpmRegistryEnvConfig: {"registry":"https://registry.npmmirror.com","registryReason":"NpmRc","npmRcPath":"c:\\Users\\Administrator\\.npmrc"}
+2025-12-31T18:22:38.617+08:00 [info] [mcp.config.usrlocalmcp.web research] MCPClient#start Set command environment variables for npx
+2025-12-31T18:22:38.621+08:00 [info] [mcp.config.usrlocalmcp.web research] MCPClient#start Start With StdioServerParameters {"command":"npx","args":["-y","@mzxrai/mcp-webresearch@latest"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir","NPM_CONFIG_REGISTRY"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:22:38.652+08:00 [info] getNpmRegistryEnvConfig: {"registry":"https://registry.npmmirror.com","registryReason":"NpmRc","npmRcPath":"c:\\Users\\Administrator\\.npmrc"}
+2025-12-31T18:22:38.653+08:00 [info] [mcp.config.usrlocalmcp.Sequential Thinking] MCPClient#start Set command environment variables for npx
+2025-12-31T18:22:38.655+08:00 [info] [mcp.config.usrlocalmcp.Sequential Thinking] MCPClient#start Start With StdioServerParameters {"command":"npx","args":["-y","@modelcontextprotocol/server-sequential-thinking"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir","NPM_CONFIG_REGISTRY"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:22:38.678+08:00 [info] getNpmRegistryEnvConfig: {"registry":"https://registry.npmmirror.com","registryReason":"NpmRc","npmRcPath":"c:\\Users\\Administrator\\.npmrc"}
+2025-12-31T18:22:38.679+08:00 [info] [mcp.config.usrlocalmcp.pdf-reader-mcp] MCPClient#start Set command environment variables for npx
+2025-12-31T18:22:38.682+08:00 [info] [mcp.config.usrlocalmcp.pdf-reader-mcp] MCPClient#start Start With StdioServerParameters {"command":"npx","args":["@sylphlab/pdf-reader-mcp"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir","NPM_CONFIG_REGISTRY"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:22:38.925+08:00 [info] getNpmRegistryEnvConfig: {"registry":"https://registry.npmmirror.com","registryReason":"NpmRc","npmRcPath":"c:\\Users\\Administrator\\.npmrc"}
+2025-12-31T18:22:38.925+08:00 [info] [mcp.config.usrlocalmcp.structured-workflow] MCPClient#start Set command environment variables for npx
+2025-12-31T18:22:38.927+08:00 [info] [mcp.config.usrlocalmcp.structured-workflow] MCPClient#start Start With StdioServerParameters {"command":"npx","args":["structured-workflow-mcp@latest"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir","NPM_CONFIG_REGISTRY"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:22:39.122+08:00 [info] getNpmRegistryEnvConfig: {"registry":"https://registry.npmmirror.com","registryReason":"NpmRc","npmRcPath":"c:\\Users\\Administrator\\.npmrc"}
+2025-12-31T18:22:39.123+08:00 [info] [mcp.config.usrlocalmcp.vscode-mcp-server] MCPClient#start Set command environment variables for npx
+2025-12-31T18:22:39.126+08:00 [info] [mcp.config.usrlocalmcp.vscode-mcp-server] MCPClient#start Start With StdioServerParameters {"command":"npx","args":["vscode-mcp-server"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir","NPM_CONFIG_REGISTRY"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:22:39.334+08:00 [info] getNpmRegistryEnvConfig: {"registry":"https://registry.npmmirror.com","registryReason":"NpmRc","npmRcPath":"c:\\Users\\Administrator\\.npmrc"}
+2025-12-31T18:22:39.335+08:00 [info] [mcp.config.usrlocalmcp.workflows-mcp] MCPClient#start Set command environment variables for npx
+2025-12-31T18:22:39.337+08:00 [info] [mcp.config.usrlocalmcp.workflows-mcp] MCPClient#start Start With StdioServerParameters {"command":"npx","args":["-y","mcpn@latest","server"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir","NPM_CONFIG_REGISTRY"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:23:28.101+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log] Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 223, in _retrieve_server_version
+    return self.version(api_version=False)["ApiVersion"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\daemon.py", line 181, in version
+    return self._result(self._get(url), json=True)
+                        ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\utils\decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 246, in _get
+    return self.get(url, **self._set_request_timeout(kwargs))
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipeconn.py", line 25, in connect
+    sock.connect(self.npipe_path)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 25, in wrapped
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 76, in connect
+    raise e
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 54, in connect
+    handle = win32file.CreateFile(
+        address,
+    ...<7 lines>...
+        0
+    )
+pywintypes.error: (2, 'CreateFile', '系统找不到指定的文件。')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Scripts\mcp-server-docker.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\mcp_server_docker\__init__.py", line 11, in main
+    asyncio.run(run_stdio(ServerSettings(), docker.from_env()))
+                                            ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 94, in from_env
+    return cls(
+        timeout=timeout,
+    ...<3 lines>...
+        **kwargs_from_env(**kwargs)
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 45, in __init__
+    self.api = APIClient(*args, **kwargs)
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 207, in __init__
+    self._version = self._retrieve_server_version()
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 230, in _retrieve_server_version
+    raise DockerException(
+        f'Error while fetching server API version: {e}'
+    ) from e
+docker.errors.DockerException: Error while fetching server API version: (2, 'CreateFile', '系统找不到指定的文件。')
+
+2025-12-31T18:23:28.603+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPServerManager#start Connected.
+2025-12-31T18:23:28.617+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPServerManager#listTools Listing tools...
+2025-12-31T18:23:28.670+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPClient#onStderr [Server Internal Log] Processing request of type ListToolsRequest
+
+2025-12-31T18:23:28.735+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPServerManager#listTools Got tools: s_fetch_page, s_fetch_pattern
+2025-12-31T18:23:34.124+08:00 [info] [mcp.config.usrlocalmcp.arxiv-mcp-server] MCPServerManager#start Connected.
+2025-12-31T18:23:34.128+08:00 [info] [mcp.config.usrlocalmcp.llm-context] MCPServerManager#start Connected.
+2025-12-31T18:23:34.130+08:00 [info] [mcp.config.usrlocalmcp.arxiv-mcp-server] MCPServerManager#listTools Listing tools...
+2025-12-31T18:23:34.136+08:00 [info] [mcp.config.usrlocalmcp.llm-context] MCPServerManager#listTools Listing tools...
+2025-12-31T18:23:34.138+08:00 [info] [mcp.config.usrlocalmcp.llm-context] MCPClient#onStderr [Server Internal Log] Processing request of type ListToolsRequest
+
+2025-12-31T18:23:34.202+08:00 [info] [mcp.config.usrlocalmcp.llm-context] MCPServerManager#listTools Got tools: lc_changed, lc_outlines, lc_rule_instructions, lc_missing
+2025-12-31T18:23:34.217+08:00 [info] [mcp.config.usrlocalmcp.arxiv-mcp-server] MCPServerManager#listTools Got tools: search_papers, download_paper, list_papers, read_paper
+2025-12-31T18:23:34.590+08:00 [error] [mcp.config.usrlocalmcp.docker] MCPClient#onClose Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 223, in _retrieve_server_version
+    return self.version(api_version=False)["ApiVersion"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\daemon.py", line 181, in version
+    return self._result(self._get(url), json=True)
+                        ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\utils\decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 246, in _get
+    return self.get(url, **self._set_request_timeout(kwargs))
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipeconn.py", line 25, in connect
+    sock.connect(self.npipe_path)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 25, in wrapped
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 76, in connect
+    raise e
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 54, in connect
+    handle = win32file.CreateFile(
+        address,
+    ...<7 lines>...
+        0
+    )
+pywintypes.error: (2, 'CreateFile', '系统找不到指定的文件。')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Scripts\mcp-server-docker.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\mcp_server_docker\__init__.py", line 11, in main
+    asyncio.run(run_stdio(ServerSettings(), docker.from_env()))
+                                            ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 94, in from_env
+    return cls(
+        timeout=timeout,
+    ...<3 lines>...
+        **kwargs_from_env(**kwargs)
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 45, in __init__
+    self.api = APIClient(*args, **kwargs)
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 207, in __init__
+    self._version = self._retrieve_server_version()
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 230, in _retrieve_server_version
+    raise DockerException(
+        f'Error while fetching server API version: {e}'
+    ) from e
+docker.errors.DockerException: Error while fetching server API version: (2, 'CreateFile', '系统找不到指定的文件。')
+
+2025-12-31T18:23:34.592+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPServerManager#onClose Disconnected.
+2025-12-31T18:23:34.597+08:00 [error] [mcp.config.usrlocalmcp.docker] MCPClient#startFailed MCP error -32000: Connection closed
+2025-12-31T18:23:34.599+08:00 [error] [mcp.config.usrlocalmcp.docker] ExtHostMCPService#$start Fail to start
+2025-12-31T18:23:36.688+08:00 [info] [mcp.config.usrlocalmcp.Fetch] MCPServerManager#start Connected.
+2025-12-31T18:23:36.691+08:00 [info] [mcp.config.usrlocalmcp.Fetch] MCPServerManager#listTools Listing tools...
+2025-12-31T18:23:36.700+08:00 [info] [mcp.config.usrlocalmcp.Fetch] MCPServerManager#listTools Got tools: fetch
+2025-12-31T18:23:49.580+08:00 [info] [mcp.config.usrlocalmcp.vscode-mcp-server] MCPClient#onStderr [Server Internal Log] 
+🚀 Starting VS Code MCP Server...
+
+2025-12-31T18:23:49.812+08:00 [info] [mcp.config.usrlocalmcp.发现报告] MCPServerManager#start Connected.
+2025-12-31T18:23:49.814+08:00 [info] [mcp.config.usrlocalmcp.发现报告] MCPServerManager#listTools Listing tools...
+2025-12-31T18:23:49.839+08:00 [info] [mcp.config.usrlocalmcp.发现报告] MCPClient#onStderr [Server Internal Log] [12/31/25 18:23:49] 
+2025-12-31T18:23:49.839+08:00 [info] [mcp.config.usrlocalmcp.发现报告] MCPClient#onStderr [Server Internal Log] INFO     Processing request of type           server.py:713
+                             ListToolsRequest                                  
+
+2025-12-31T18:23:49.849+08:00 [info] [mcp.config.usrlocalmcp.发现报告] MCPServerManager#listTools Got tools: search_reports, get_report_content
+2025-12-31T18:23:50.759+08:00 [info] [mcp.config.usrlocalmcp.vscode-mcp-server] MCPClient#onStderr [Server Internal Log] ✅ VS Code MCP Server started successfully!
+⚠️  Press Ctrl+C to stop the server.
+
+
+2025-12-31T18:23:50.819+08:00 [info] [mcp.config.usrlocalmcp.workflows-mcp] MCPClient#onStderr [Server Internal Log] Available presets: coding, examples, github, thinking
+
+2025-12-31T18:23:50.819+08:00 [info] [mcp.config.usrlocalmcp.workflows-mcp] MCPClient#onStderr [Server Internal Log] Using presets: thinking
+
+2025-12-31T18:23:51.120+08:00 [info] [mcp.config.usrlocalmcp.workflows-mcp] MCPClient#onStderr [Server Internal Log] Loaded 2 tools from presets
+Final configuration contains 2 tools
+Tool thinking_mode input schema: [
+  "thought"
+]
+DevTools MCP server running with presets: thinking
+
+2025-12-31T18:23:51.132+08:00 [info] [mcp.config.usrlocalmcp.vscode-mcp-server] MCPServerManager#start Connected.
+2025-12-31T18:23:51.134+08:00 [info] [mcp.config.usrlocalmcp.vscode-mcp-server] MCPServerManager#listTools Listing tools...
+2025-12-31T18:23:51.325+08:00 [info] [mcp.config.usrlocalmcp.workflows-mcp] MCPServerManager#start Connected.
+2025-12-31T18:23:51.333+08:00 [info] [mcp.config.usrlocalmcp.workflows-mcp] MCPServerManager#listTools Listing tools...
+2025-12-31T18:23:51.496+08:00 [info] [mcp.config.usrlocalmcp.vscode-mcp-server] MCPServerManager#listTools Got tools: execute_shell_command, create_diff, open_file, open_project, check_extension_status, get_extension_port, list_available_projects, get_active_tabs, get_context_tabs
+2025-12-31T18:23:51.549+08:00 [info] [mcp.config.usrlocalmcp.workflows-mcp] MCPServerManager#listTools Got tools: thinking_mode, deep_thinking_mode
+2025-12-31T18:23:52.041+08:00 [info] [mcp.config.usrlocalmcp.structured-workflow] MCPClient#onStderr [Server Internal Log] [Config] Default output directory: structured-workflow
+
+2025-12-31T18:23:52.306+08:00 [info] [mcp.config.usrlocalmcp.structured-workflow] MCPClient#onStderr [Server Internal Log] 🚀 structured-workflow-mcp v0.2.7 running on stdio
+📋 Enhanced Features: Multiple workflow types (refactor, feature, test, TDD)
+🔄 Smart Workflow Selection: Choose the right workflow for your task
+🎯 Entry Points: refactor_workflow, create_feature_workflow, test_workflow, tdd_workflow, or build_custom_workflow
+
+2025-12-31T18:23:52.578+08:00 [info] [mcp.config.usrlocalmcp.structured-workflow] MCPServerManager#start Connected.
+2025-12-31T18:23:52.999+08:00 [info] [mcp.config.usrlocalmcp.structured-workflow] MCPServerManager#listTools Listing tools...
+2025-12-31T18:23:53.160+08:00 [info] [mcp.config.usrlocalmcp.structured-workflow] MCPServerManager#listTools Got tools: refactor_workflow, create_feature_workflow, test_workflow, tdd_workflow, build_custom_workflow, setup_guidance, audit_inventory_guidance, compare_analyze_guidance, question_determine_guidance, refactor_guidance, lint_guidance, iterate_guidance, present_guidance, test_guidance, validate_action, validate_phase_completion, user_input_required_guidance, workflow_status, phase_output, discover_workflow_tools
+2025-12-31T18:23:53.659+08:00 [error] [mcp.config.usrlocalmcp.pdf-reader-mcp] MCPClient#onError Unexpected token 'F', "[Filesystem"... is not valid JSON. Original line: "[Filesystem MCP - pathUtils] Project Root determined from CWD: C:\Users\Administrator"
+2025-12-31T18:23:53.660+08:00 [info] [mcp.config.usrlocalmcp.pdf-reader-mcp] MCPClient#onStderr [Server Internal Log] [Filesystem MCP] Server running on stdio
+
+2025-12-31T18:23:53.662+08:00 [info] [mcp.config.usrlocalmcp.Sequential Thinking] MCPClient#onStderr [Server Internal Log] Sequential Thinking MCP Server running on stdio
+
+2025-12-31T18:23:53.801+08:00 [info] [mcp.config.usrlocalmcp.pdf-reader-mcp] MCPServerManager#start Connected.
+2025-12-31T18:23:53.881+08:00 [info] [mcp.config.usrlocalmcp.pdf-reader-mcp] MCPServerManager#listTools Listing tools...
+2025-12-31T18:23:54.103+08:00 [info] [mcp.config.usrlocalmcp.Sequential Thinking] MCPServerManager#start Connected.
+2025-12-31T18:23:54.106+08:00 [info] [mcp.config.usrlocalmcp.Sequential Thinking] MCPServerManager#listTools Listing tools...
+2025-12-31T18:23:54.125+08:00 [info] [mcp.config.usrlocalmcp.pdf-reader-mcp] MCPServerManager#listTools Got tools: read_pdf
+2025-12-31T18:23:54.459+08:00 [info] [mcp.config.usrlocalmcp.Sequential Thinking] MCPServerManager#listTools Got tools: sequentialthinking
+2025-12-31T18:23:54.467+08:00 [info] [mcp.config.usrlocalmcp.context7] MCPClient#onStderr [Server Internal Log] WARNING: Using default CLIENT_IP_ENCRYPTION_KEY.
+
+2025-12-31T18:23:58.631+08:00 [info] [mcp.config.usrlocalmcp.web research] MCPServerManager#start Connected.
+2025-12-31T18:23:58.965+08:00 [info] [mcp.config.usrlocalmcp.web research] MCPServerManager#listTools Listing tools...
+2025-12-31T18:23:59.027+08:00 [info] [mcp.config.usrlocalmcp.web research] MCPServerManager#listTools Got tools: search_google, visit_page, take_screenshot
+2025-12-31T18:23:59.084+08:00 [info] [mcp.config.usrlocalmcp.context7] MCPClient#onStderr [Server Internal Log] Context7 Documentation MCP Server running on stdio
+
+2025-12-31T18:23:59.243+08:00 [info] [mcp.config.usrlocalmcp.context7] MCPServerManager#start Connected.
+2025-12-31T18:23:59.667+08:00 [info] [mcp.config.usrlocalmcp.context7] MCPServerManager#listTools Listing tools...
+2025-12-31T18:23:59.742+08:00 [info] [mcp.config.usrlocalmcp.context7] MCPServerManager#listTools Got tools: resolve-library-id, query-docs
+2025-12-31T18:24:02.337+08:00 [info] [mcp.config.usrlocalmcp.Playwright] MCPServerManager#start Connected.
+2025-12-31T18:24:02.557+08:00 [info] [mcp.config.usrlocalmcp.Playwright] MCPServerManager#listTools Listing tools...
+2025-12-31T18:24:02.618+08:00 [info] [mcp.config.usrlocalmcp.Playwright] MCPServerManager#listTools Got tools: start_codegen_session, end_codegen_session, get_codegen_session, clear_codegen_session, playwright_navigate, playwright_screenshot, playwright_click, playwright_iframe_click, playwright_iframe_fill, playwright_fill, playwright_select, playwright_hover, playwright_upload_file, playwright_evaluate, playwright_console_logs, playwright_resize, playwright_close, playwright_get, playwright_post, playwright_put, playwright_patch, playwright_delete, playwright_expect_response, playwright_assert_response, playwright_custom_user_agent, playwright_get_visible_text, playwright_get_visible_html, playwright_go_back, playwright_go_forward, playwright_drag, playwright_press_key, playwright_save_as_pdf, playwright_click_and_switch_tab
+2025-12-31T18:24:04.155+08:00 [info] [mcp.config.usrlocalmcp.Chrome DevTools MCP] MCPClient#onStderr [Server Internal Log] chrome-devtools-mcp exposes content of the browser instance to the MCP clients allowing them to inspect,
+debug, and modify any data in the browser or DevTools.
+Avoid sharing sensitive or personal information that you do not want to share with MCP clients.
+
+2025-12-31T18:24:04.191+08:00 [info] [mcp.config.usrlocalmcp.Chrome DevTools MCP] MCPServerManager#start Connected.
+2025-12-31T18:24:04.192+08:00 [info] [mcp.config.usrlocalmcp.Chrome DevTools MCP] MCPServerManager#listTools Listing tools...
+2025-12-31T18:24:04.264+08:00 [info] [mcp.config.usrlocalmcp.Chrome DevTools MCP] MCPServerManager#listTools Got tools: click, close_page, drag, emulate, evaluate_script, fill, fill_form, get_console_message, get_network_request, handle_dialog, hover, list_console_messages, list_network_requests, list_pages, navigate_page, new_page, performance_analyze_insight, performance_start_trace, performance_stop_trace, press_key, resize_page, select_page, take_screenshot, take_snapshot, upload_file, wait_for
+2025-12-31T18:24:14.454+08:00 [info] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPClient#onStderr [Server Internal Log] 
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│                       
+2025-12-31T18:24:14.455+08:00 [info] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPClient#onStderr [Server Internal Log]  ▄▀▀ ▄▀█ █▀▀ ▀█▀ █▀▄▀█ █▀▀ █▀█                        │
+│                        █▀  █▀█ ▄
+2025-12-31T18:24:14.456+08:00 [info] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPClient#onStderr [Server Internal Log] ▄█  █  █ ▀ █ █▄▄ █▀▀                        │
+│                                                                             │
+│                               FastMCP 2.14.1                                │
+2025-12-31T18:24:14.456+08:00 [info] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPClient#onStderr [Server Internal Log] 
+│                                                                             │
+│                                                                             │
+│                    🖥  Server name: 互動式回饋收集 MCP                       
+2025-12-31T18:24:14.457+08:00 [info] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPClient#onStderr [Server Internal Log] │
+│                                                                             │
+│                    📦 Transport:   STDIO                
+2025-12-31T18:24:14.457+08:00 [info] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPClient#onStderr [Server Internal Log]                     │
+│                                                                             │
+│    
+2025-12-31T18:24:14.457+08:00 [info] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPClient#onStderr [Server Internal Log]                 📚 Docs:        https://gofastmcp.com                    │
+│                    🚀 Hosting:    
+2025-12-31T18:24:14.457+08:00 [info] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPClient#onStderr [Server Internal Log]  https://fastmcp.cloud                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+
+
+2025-12-31T18:24:15.314+08:00 [info] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPClient#onStderr [Server Internal Log] [12/31/25 18:24:15] INFO     Starting MCP server '互動式回饋收集 server.py:2527
+                             MCP' with transport 'stdio'                       
+
+2025-12-31T18:24:15.369+08:00 [info] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPServerManager#start Connected.
+2025-12-31T18:24:15.371+08:00 [info] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPServerManager#listTools Listing tools...
+2025-12-31T18:24:15.502+08:00 [info] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPServerManager#listTools Got tools: interactive_feedback, get_system_info
+2025-12-31T18:24:20.091+08:00 [info] [mcp.config.usrlocalmcp.Browser-Use MCP] MCPClient#onStderr [Server Internal Log] 2025-12-31 18:24:20,090 - mcp_server_vefaas_browser_use.server - INFO - Starting veFaaS browser use MCP Server
+
+2025-12-31T18:24:20.199+08:00 [info] [mcp.config.usrlocalmcp.Browser-Use MCP] MCPServerManager#start Connected.
+2025-12-31T18:24:21.878+08:00 [info] [mcp.config.usrlocalmcp.Browser-Use MCP] MCPServerManager#listTools Listing tools...
+2025-12-31T18:24:21.896+08:00 [info] [mcp.config.usrlocalmcp.Browser-Use MCP] MCPClient#onStderr [Server Internal Log] 2025-12-31 18:24:21,881 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+
+2025-12-31T18:24:21.909+08:00 [info] [mcp.config.usrlocalmcp.Browser-Use MCP] MCPServerManager#listTools Got tools: create_browser_use_task, get_browser_use_task_result
+2025-12-31T18:30:54.959+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPServerManager#start Connecting with config... {"command":"uvx","args":["mcp-server-docker"],"env":{},"fromGalleryId":"byted-mcp-volcengine.3rd_party_mcp_server_docker"}
+2025-12-31T18:30:54.963+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#start Start With StdioServerParameters {"command":"uvx","args":["mcp-server-docker"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:31:03.412+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log] Traceback (most recent call last):
+
+2025-12-31T18:31:03.416+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 223, in _retrieve_server_version
+    return self.version(api_version=False)["ApiVersion"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\daemon.py", line 181, in version
+    return self._result(self._get(url), json=True)
+                        ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\utils\decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 246, in _get
+    return self.get(url, **self._set_request_timeout(kwargs))
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+
+2025-12-31T18:31:03.416+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipeconn.py", line 25, in connect
+    sock.connect(self.npipe_path)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 25, in wrapped
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 76, in connect
+    raise e
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 54, in connect
+    handle = win32file.CreateFile(
+        address,
+    ...<7 lines>...
+        0
+    )
+
+2025-12-31T18:31:03.422+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log] pywintypes.error: (2, 'CreateFile', '系统找不到指定的文件。')
+
+2025-12-31T18:31:03.424+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log] 
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Scripts\mcp-server-docker.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\mcp_server_docker\__init__.py", line 11, in main
+    asyncio.run(run_stdio(ServerSettings(), docker.from_env()))
+                                            ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 94, in from_env
+    return cls(
+        timeout=timeout,
+    ...<3 lines>...
+        **kwargs_from_env(**kwargs)
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 45, in __init__
+    self.api = APIClient(*args, **kwargs)
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 207, in __init__
+    self._version = self._retrieve_server_version()
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 230, in _retrieve_server_version
+    raise DockerException(
+        f'Error while fetching server API version: {e}'
+    ) from e
+docker.errors.DockerException: Error while fetching server API version: (2, 'CreateFile', '系统找不到指定的文件。')
+
+2025-12-31T18:31:03.767+08:00 [error] [mcp.config.usrlocalmcp.docker] MCPClient#onClose Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 223, in _retrieve_server_version
+    return self.version(api_version=False)["ApiVersion"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\daemon.py", line 181, in version
+    return self._result(self._get(url), json=True)
+                        ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\utils\decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 246, in _get
+    return self.get(url, **self._set_request_timeout(kwargs))
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipeconn.py", line 25, in connect
+    sock.connect(self.npipe_path)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 25, in wrapped
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 76, in connect
+    raise e
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 54, in connect
+    handle = win32file.CreateFile(
+        address,
+    ...<7 lines>...
+        0
+    )
+pywintypes.error: (2, 'CreateFile', '系统找不到指定的文件。')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Scripts\mcp-server-docker.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\mcp_server_docker\__init__.py", line 11, in main
+    asyncio.run(run_stdio(ServerSettings(), docker.from_env()))
+                                            ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 94, in from_env
+    return cls(
+        timeout=timeout,
+    ...<3 lines>...
+        **kwargs_from_env(**kwargs)
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 45, in __init__
+    self.api = APIClient(*args, **kwargs)
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 207, in __init__
+    self._version = self._retrieve_server_version()
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 230, in _retrieve_server_version
+    raise DockerException(
+        f'Error while fetching server API version: {e}'
+    ) from e
+docker.errors.DockerException: Error while fetching server API version: (2, 'CreateFile', '系统找不到指定的文件。')
+
+2025-12-31T18:31:03.768+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPServerManager#onClose Disconnected.
+2025-12-31T18:31:03.768+08:00 [error] [mcp.config.usrlocalmcp.docker] MCPClient#startFailed MCP error -32000: Connection closed
+2025-12-31T18:31:03.769+08:00 [error] [mcp.config.usrlocalmcp.docker] ExtHostMCPService#$start Fail to start
+2025-12-31T18:31:09.884+08:00 [error] [mcp.config.usrlocalmcp.docker] MCPServerManager#stop No client found.
+2025-12-31T18:31:54.185+08:00 [error] [mcp.config.usrlocalmcp.deepseek-mcp-server] MCPClient#onClose 2025-12-31 18:22:08,084 - DeepSeek-Complete-MCP - INFO - \U0001f680 DeepSeek 完整整合版 MCP 服务器已启动
+2025-12-31 18:22:08,089 - DeepSeek-Complete-MCP - INFO - \U0001f4e1 监听地址: http://localhost:8000
+2025-12-31 18:22:08,089 - DeepSeek-Complete-MCP - INFO - \U0001f4a1 健康检查: http://localhost:8000/health
+2025-12-31 18:22:08,089 - DeepSeek-Complete-MCP - INFO - \U0001f4c4 服务信息: http://localhost:8000/info
+2025-12-31 18:22:08,089 - DeepSeek-Complete-MCP - INFO - \U0001f4ac 发送消息: POST http://localhost:8000
+2025-12-31 18:22:08,090 - DeepSeek-Complete-MCP - INFO - \U0001f4da 使用指南: http://localhost:8000/guide
+2025-12-31 18:22:08,090 - DeepSeek-Complete-MCP - INFO - \U0001f527 按 Ctrl+C 停止服务器
+
+2025-12-31T18:31:54.186+08:00 [info] [mcp.config.usrlocalmcp.deepseek-mcp-server] MCPServerManager#onClose Disconnected.
+2025-12-31T18:31:54.186+08:00 [error] [mcp.config.usrlocalmcp.deepseek-mcp-server] MCPClient#startFailed MCP error -32001: Request timed out
+2025-12-31T18:31:54.187+08:00 [error] [mcp.config.usrlocalmcp.deepseek-mcp-server] ExtHostMCPService#$start Fail to start
+2025-12-31T18:32:50.194+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPServerManager#start Connecting with config... {"command":"uvx","args":["mcp-server-docker"],"env":{},"fromGalleryId":"byted-mcp-volcengine.3rd_party_mcp_server_docker"}
+2025-12-31T18:32:50.197+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#start Start With StdioServerParameters {"command":"uvx","args":["mcp-server-docker"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:32:56.560+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log] Traceback (most recent call last):
+
+2025-12-31T18:32:56.564+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 223, in _retrieve_server_version
+    return self.version(api_version=False)["ApiVersion"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\daemon.py", line 181, in version
+    return self._result(self._get(url), json=True)
+                        ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\utils\decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 246, in _get
+    return self.get(url, **self._set_request_timeout(kwargs))
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+
+2025-12-31T18:32:56.565+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipeconn.py", line 25, in connect
+    sock.connect(self.npipe_path)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 25, in wrapped
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 76, in connect
+    raise e
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 54, in connect
+    handle = win32file.CreateFile(
+        address,
+    ...<7 lines>...
+        0
+    )
+
+2025-12-31T18:32:56.570+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log] pywintypes.error: (2, 'CreateFile', '系统找不到指定的文件。')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+
+2025-12-31T18:32:56.571+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Scripts\mcp-server-docker.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\mcp_server_docker\__init__.py", line 11, in main
+    asyncio.run(run_stdio(ServerSettings(), docker.from_env()))
+                                            ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 94, in from_env
+    return cls(
+        timeout=timeout,
+    ...<3 lines>...
+        **kwargs_from_env(**kwargs)
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 45, in __init__
+    self.api = APIClient(*args, **kwargs)
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 207, in __init__
+    self._version = self._retrieve_server_version()
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 230, in _retrieve_server_version
+    raise DockerException(
+        f'Error while fetching server API version: {e}'
+    ) from e
+
+2025-12-31T18:32:56.571+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log] docker.errors.DockerException: Error while fetching server API version: (2, 'CreateFile', '系统找不到指定的文件。')
+
+2025-12-31T18:32:56.808+08:00 [error] [mcp.config.usrlocalmcp.docker] MCPClient#onClose Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 223, in _retrieve_server_version
+    return self.version(api_version=False)["ApiVersion"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\daemon.py", line 181, in version
+    return self._result(self._get(url), json=True)
+                        ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\utils\decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 246, in _get
+    return self.get(url, **self._set_request_timeout(kwargs))
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipeconn.py", line 25, in connect
+    sock.connect(self.npipe_path)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 25, in wrapped
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 76, in connect
+    raise e
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 54, in connect
+    handle = win32file.CreateFile(
+        address,
+    ...<7 lines>...
+        0
+    )
+pywintypes.error: (2, 'CreateFile', '系统找不到指定的文件。')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Scripts\mcp-server-docker.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\mcp_server_docker\__init__.py", line 11, in main
+    asyncio.run(run_stdio(ServerSettings(), docker.from_env()))
+                                            ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 94, in from_env
+    return cls(
+        timeout=timeout,
+    ...<3 lines>...
+        **kwargs_from_env(**kwargs)
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 45, in __init__
+    self.api = APIClient(*args, **kwargs)
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 207, in __init__
+    self._version = self._retrieve_server_version()
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 230, in _retrieve_server_version
+    raise DockerException(
+        f'Error while fetching server API version: {e}'
+    ) from e
+docker.errors.DockerException: Error while fetching server API version: (2, 'CreateFile', '系统找不到指定的文件。')
+
+2025-12-31T18:32:56.808+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPServerManager#onClose Disconnected.
+2025-12-31T18:32:56.808+08:00 [error] [mcp.config.usrlocalmcp.docker] MCPClient#startFailed MCP error -32000: Connection closed
+2025-12-31T18:32:56.809+08:00 [error] [mcp.config.usrlocalmcp.docker] ExtHostMCPService#$start Fail to start
+2025-12-31T18:34:26.387+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPServerManager#start Connecting with config... {"command":"uvx","args":["mcp-server-docker"],"env":{},"fromGalleryId":"byted-mcp-volcengine.3rd_party_mcp_server_docker"}
+2025-12-31T18:34:26.389+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#start Start With StdioServerParameters {"command":"uvx","args":["mcp-server-docker"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:34:31.828+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log] Traceback (most recent call last):
+
+2025-12-31T18:34:31.834+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 223, in _retrieve_server_version
+    return self.version(api_version=False)["ApiVersion"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\daemon.py", line 181, in version
+    return self._result(self._get(url), json=True)
+                        ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\utils\decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+
+2025-12-31T18:34:31.834+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 246, in _get
+    return self.get(url, **self._set_request_timeout(kwargs))
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipeconn.py", line 25, in connect
+    sock.connect(self.npipe_path)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 25, in wrapped
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 76, in connect
+    raise e
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 54, in connect
+    handle = win32file.CreateFile(
+        address,
+    ...<7 lines>...
+        0
+    )
+
+2025-12-31T18:34:31.835+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log] pywintypes.error: (2, 'CreateFile', '系统找不到指定的文件。')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+
+2025-12-31T18:34:31.837+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Scripts\mcp-server-docker.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+
+2025-12-31T18:34:31.838+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\mcp_server_docker\__init__.py", line 11, in main
+    asyncio.run(run_stdio(ServerSettings(), docker.from_env()))
+                                            ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 94, in from_env
+    return cls(
+        timeout=timeout,
+    ...<3 lines>...
+        **kwargs_from_env(**kwargs)
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 45, in __init__
+    self.api = APIClient(*args, **kwargs)
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 207, in __init__
+    self._version = self._retrieve_server_version()
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 230, in _retrieve_server_version
+    raise DockerException(
+        f'Error while fetching server API version: {e}'
+    ) from e
+docker.errors.DockerException: Error while fetching server API version: (2, 'CreateFile', '系统找不到指定的文件。')
+
+2025-12-31T18:34:32.258+08:00 [error] [mcp.config.usrlocalmcp.docker] MCPClient#onClose Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 223, in _retrieve_server_version
+    return self.version(api_version=False)["ApiVersion"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\daemon.py", line 181, in version
+    return self._result(self._get(url), json=True)
+                        ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\utils\decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 246, in _get
+    return self.get(url, **self._set_request_timeout(kwargs))
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipeconn.py", line 25, in connect
+    sock.connect(self.npipe_path)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 25, in wrapped
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 76, in connect
+    raise e
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 54, in connect
+    handle = win32file.CreateFile(
+        address,
+    ...<7 lines>...
+        0
+    )
+pywintypes.error: (2, 'CreateFile', '系统找不到指定的文件。')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Scripts\mcp-server-docker.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\mcp_server_docker\__init__.py", line 11, in main
+    asyncio.run(run_stdio(ServerSettings(), docker.from_env()))
+                                            ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 94, in from_env
+    return cls(
+        timeout=timeout,
+    ...<3 lines>...
+        **kwargs_from_env(**kwargs)
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 45, in __init__
+    self.api = APIClient(*args, **kwargs)
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 207, in __init__
+    self._version = self._retrieve_server_version()
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 230, in _retrieve_server_version
+    raise DockerException(
+        f'Error while fetching server API version: {e}'
+    ) from e
+docker.errors.DockerException: Error while fetching server API version: (2, 'CreateFile', '系统找不到指定的文件。')
+
+2025-12-31T18:34:32.259+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPServerManager#onClose Disconnected.
+2025-12-31T18:34:32.259+08:00 [error] [mcp.config.usrlocalmcp.docker] MCPClient#startFailed MCP error -32000: Connection closed
+2025-12-31T18:34:32.260+08:00 [error] [mcp.config.usrlocalmcp.docker] ExtHostMCPService#$start Fail to start
+2025-12-31T18:36:08.091+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPServerManager#start Connecting with config... {"command":"uvx","args":["mcp-server-docker"],"env":{},"fromGalleryId":"byted-mcp-volcengine.3rd_party_mcp_server_docker"}
+2025-12-31T18:36:08.092+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#start Start With StdioServerParameters {"command":"uvx","args":["mcp-server-docker"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:36:12.727+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPServerManager#stop Stopped.
+2025-12-31T18:36:13.547+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPServerManager#start Connecting with config... {"command":"uvx","args":["mcp-server-docker"],"env":{},"fromGalleryId":"byted-mcp-volcengine.3rd_party_mcp_server_docker"}
+2025-12-31T18:36:13.549+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#start Start With StdioServerParameters {"command":"uvx","args":["mcp-server-docker"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T18:36:14.002+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log] Traceback (most recent call last):
+
+2025-12-31T18:36:14.009+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 223, in _retrieve_server_version
+    return self.version(api_version=False)["ApiVersion"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\daemon.py", line 181, in version
+    return self._result(self._get(url), json=True)
+                        ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\utils\decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 246, in _get
+    return self.get(url, **self._set_request_timeout(kwargs))
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipeconn.py", line 25, in connect
+    sock.connect(self.npipe_path)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 25, in wrapped
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 76, in connect
+    raise e
+
+2025-12-31T18:36:14.009+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 54, in connect
+    handle = win32file.CreateFile(
+        address,
+    ...<7 lines>...
+        0
+    )
+pywintypes.error: (2, 'CreateFile', '系统找不到指定的文件。')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+
+2025-12-31T18:36:14.010+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Scripts\mcp-server-docker.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\mcp_server_docker\__init__.py", line 11, in main
+    asyncio.run(run_stdio(ServerSettings(), docker.from_env()))
+                                            ~~~~~~~~~~~~~~~^^
+
+2025-12-31T18:36:14.011+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 94, in from_env
+    return cls(
+        timeout=timeout,
+    ...<3 lines>...
+        **kwargs_from_env(**kwargs)
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 45, in __init__
+    self.api = APIClient(*args, **kwargs)
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 207, in __init__
+    self._version = self._retrieve_server_version()
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 230, in _retrieve_server_version
+    raise DockerException(
+        f'Error while fetching server API version: {e}'
+    ) from e
+docker.errors.DockerException: Error while fetching server API version: (2, 'CreateFile', '系统找不到指定的文件。')
+
+2025-12-31T18:36:14.452+08:00 [error] [mcp.config.usrlocalmcp.docker] MCPClient#onClose Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 223, in _retrieve_server_version
+    return self.version(api_version=False)["ApiVersion"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\daemon.py", line 181, in version
+    return self._result(self._get(url), json=True)
+                        ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\utils\decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 246, in _get
+    return self.get(url, **self._set_request_timeout(kwargs))
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipeconn.py", line 25, in connect
+    sock.connect(self.npipe_path)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 25, in wrapped
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 76, in connect
+    raise e
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 54, in connect
+    handle = win32file.CreateFile(
+        address,
+    ...<7 lines>...
+        0
+    )
+pywintypes.error: (2, 'CreateFile', '系统找不到指定的文件。')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Scripts\mcp-server-docker.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\mcp_server_docker\__init__.py", line 11, in main
+    asyncio.run(run_stdio(ServerSettings(), docker.from_env()))
+                                            ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 94, in from_env
+    return cls(
+        timeout=timeout,
+    ...<3 lines>...
+        **kwargs_from_env(**kwargs)
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 45, in __init__
+    self.api = APIClient(*args, **kwargs)
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 207, in __init__
+    self._version = self._retrieve_server_version()
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 230, in _retrieve_server_version
+    raise DockerException(
+        f'Error while fetching server API version: {e}'
+    ) from e
+docker.errors.DockerException: Error while fetching server API version: (2, 'CreateFile', '系统找不到指定的文件。')
+
+2025-12-31T18:36:14.452+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPServerManager#onClose Disconnected.
+2025-12-31T18:36:14.453+08:00 [error] [mcp.config.usrlocalmcp.docker] MCPClient#startFailed MCP error -32000: Connection closed
+2025-12-31T18:36:14.453+08:00 [error] [mcp.config.usrlocalmcp.docker] ExtHostMCPService#$start Fail to start
+2025-12-31T18:36:18.113+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log] Traceback (most recent call last):
+
+2025-12-31T18:36:18.116+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 223, in _retrieve_server_version
+    return self.version(api_version=False)["ApiVersion"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\daemon.py", line 181, in version
+    return self._result(self._get(url), json=True)
+                        ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\utils\decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 246, in _get
+    return self.get(url, **self._set_request_timeout(kwargs))
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+
+2025-12-31T18:36:18.116+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipeconn.py", line 25, in connect
+    sock.connect(self.npipe_path)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 25, in wrapped
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 76, in connect
+    raise e
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 54, in connect
+    handle = win32file.CreateFile(
+        address,
+    ...<7 lines>...
+        0
+    )
+pywintypes.error: (2, 'CreateFile', '系统找不到指定的文件。')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+
+2025-12-31T18:36:18.117+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log]   File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Scripts\mcp-server-docker.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\mcp_server_docker\__init__.py", line 11, in main
+    asyncio.run(run_stdio(ServerSettings(), docker.from_env()))
+                                            ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 94, in from_env
+    return cls(
+        timeout=timeout,
+    ...<3 lines>...
+        **kwargs_from_env(**kwargs)
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 45, in __init__
+    self.api = APIClient(*args, **kwargs)
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 207, in __init__
+    self._version = self._retrieve_server_version()
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 230, in _retrieve_server_version
+    raise DockerException(
+        f'Error while fetching server API version: {e}'
+    ) from e
+
+2025-12-31T18:36:18.118+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPClient#onStderr [Server Internal Log] docker.errors.DockerException: Error while fetching server API version: (2, 'CreateFile', '系统找不到指定的文件。')
+
+2025-12-31T18:36:18.334+08:00 [error] [mcp.config.usrlocalmcp.docker] MCPClient#onClose Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 223, in _retrieve_server_version
+    return self.version(api_version=False)["ApiVersion"]
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\daemon.py", line 181, in version
+    return self._result(self._get(url), json=True)
+                        ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\utils\decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 246, in _get
+    return self.get(url, **self._set_request_timeout(kwargs))
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\urllib3\connection.py", line 500, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipeconn.py", line 25, in connect
+    sock.connect(self.npipe_path)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 25, in wrapped
+    return f(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 76, in connect
+    raise e
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\transport\npipesocket.py", line 54, in connect
+    handle = win32file.CreateFile(
+        address,
+    ...<7 lines>...
+        0
+    )
+pywintypes.error: (2, 'CreateFile', '系统找不到指定的文件。')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Scripts\mcp-server-docker.exe\__main__.py", line 10, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\mcp_server_docker\__init__.py", line 11, in main
+    asyncio.run(run_stdio(ServerSettings(), docker.from_env()))
+                                            ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 94, in from_env
+    return cls(
+        timeout=timeout,
+    ...<3 lines>...
+        **kwargs_from_env(**kwargs)
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\client.py", line 45, in __init__
+    self.api = APIClient(*args, **kwargs)
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 207, in __init__
+    self._version = self._retrieve_server_version()
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\SxxCRaU-IzWp-G_Ez3wkL\Lib\site-packages\docker\api\client.py", line 230, in _retrieve_server_version
+    raise DockerException(
+        f'Error while fetching server API version: {e}'
+    ) from e
+docker.errors.DockerException: Error while fetching server API version: (2, 'CreateFile', '系统找不到指定的文件。')
+
+2025-12-31T18:36:18.334+08:00 [info] [mcp.config.usrlocalmcp.docker] MCPServerManager#onClose Disconnected.
+2025-12-31T18:36:18.335+08:00 [error] [mcp.config.usrlocalmcp.docker] MCPClient#startFailed MCP error -32000: Connection closed
+2025-12-31T18:36:18.335+08:00 [error] [mcp.config.usrlocalmcp.docker] ExtHostMCPService#$start Fail to start
+2025-12-31T18:47:25.805+08:00 [error] [mcp.config.usrlocalmcp.semgrep] MCPClient#onError streamable SSE stream disconnected: TypeError: terminated
+2025-12-31T18:48:49.550+08:00 [error] [mcp.config.usrlocalmcp.semgrep] MCPClient#onError streamable SSE stream disconnected: TypeError: terminated
+2025-12-31T18:48:52.740+08:00 [error] [mcp.config.usrlocalmcp.semgrep] MCPClient#onError streamable Streamable HTTP error: Failed to open SSE stream: Gateway Time-out
+2025-12-31T18:48:52.741+08:00 [error] [mcp.config.usrlocalmcp.semgrep] MCPClient#onError streamable Failed to reconnect SSE stream: Streamable HTTP error: Failed to open SSE stream: Gateway Time-out
+2025-12-31T18:48:54.522+08:00 [error] [mcp.config.usrlocalmcp.semgrep] MCPClient#onError streamable Streamable HTTP error: Failed to open SSE stream: Gateway Time-out
+2025-12-31T18:48:54.523+08:00 [error] [mcp.config.usrlocalmcp.semgrep] MCPClient#onError streamable Failed to reconnect SSE stream: Streamable HTTP error: Failed to open SSE stream: Gateway Time-out
+2025-12-31T18:48:54.523+08:00 [error] [mcp.config.usrlocalmcp.semgrep] MCPClient#onError streamable Maximum reconnection attempts (2) exceeded.
+2025-12-31T19:15:38.019+08:00 [error] [mcp.config.usrlocalmcp.semgrep] MCPClient#onClose streamable
+2025-12-31T19:15:38.022+08:00 [error] [mcp.config.usrlocalmcp.Fetch] MCPClient#onClose 
+2025-12-31T19:15:38.023+08:00 [error] [mcp.config.usrlocalmcp.scrapling-fetch] MCPClient#onClose 
+2025-12-31T19:15:38.024+08:00 [error] [mcp.config.usrlocalmcp.Chrome DevTools MCP] MCPClient#onClose 
+2025-12-31T19:15:38.025+08:00 [error] [mcp.config.usrlocalmcp.Playwright] MCPClient#onClose 
+2025-12-31T19:15:38.026+08:00 [error] [mcp.config.usrlocalmcp.context7] MCPClient#onClose 
+2025-12-31T19:15:38.026+08:00 [error] [mcp.config.usrlocalmcp.web research] MCPClient#onClose 
+2025-12-31T19:15:38.027+08:00 [error] [mcp.config.usrlocalmcp.Sequential Thinking] MCPClient#onClose 
+2025-12-31T19:15:38.029+08:00 [error] [mcp.config.usrlocalmcp.pdf-reader-mcp] MCPClient#onClose 
+2025-12-31T19:15:38.030+08:00 [error] [mcp.config.usrlocalmcp.structured-workflow] MCPClient#onClose 
+2025-12-31T19:15:38.030+08:00 [error] [mcp.config.usrlocalmcp.vscode-mcp-server] MCPClient#onClose 
+2025-12-31T19:15:38.031+08:00 [error] [mcp.config.usrlocalmcp.workflows-mcp] MCPClient#onClose 
+2025-12-31T19:15:38.033+08:00 [error] [mcp.config.usrlocalmcp.llm-context] MCPClient#onClose 
+2025-12-31T19:15:38.034+08:00 [error] [mcp.config.usrlocalmcp.arxiv-mcp-server] MCPClient#onClose 
+2025-12-31T19:15:38.035+08:00 [error] [mcp.config.usrlocalmcp.发现报告] MCPClient#onClose 
+2025-12-31T19:15:38.036+08:00 [error] [mcp.config.usrlocalmcp.Browser-Use MCP] MCPClient#onClose 
+2025-12-31T19:15:38.037+08:00 [error] [mcp.config.usrlocalmcp.IMCP Feedback Enhanced] MCPClient#onClose 
+2025-12-31T19:15:38.037+08:00 [error] [mcp.config.usrlocalmcp.fetch] MCPClient#onClose 
+2025-12-31T20:55:25.290+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPServerManager#start Connecting with config... {"command":"uvx","args":["scrapling-fetch-mcp"]}
+2025-12-31T20:55:25.611+08:00 [info] detect cmd chcp encoding: cp936
+2025-12-31T20:55:25.654+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPClient#start Start With StdioServerParameters {"command":"uvx","args":["scrapling-fetch-mcp"],"cwd":"C:\\Users\\Administrator","stderr":"pipe","env_keys":["AHA_CHROME_CRASHPAD_PIPE_NAME","ALLUSERSPROFILE","APPDATA","COMPUTERNAME","ChocolateyInstall","ChocolateyLastPathUpdate","ComSpec","CommonProgramFiles","CommonProgramFiles(x86)","CommonProgramW6432","DOTNET_MULTILEVEL_LOOKUP","DOTNET_ROOT","DriverData","ELECTRON_FORCE_IS_PACKAGED","ELECTRON_RUN_AS_NODE","HOMEDRIVE","HOMEPATH","ICUBE_APP_VERSION","ICUBE_BUILD_TIME","ICUBE_BUILD_VERSION","ICUBE_CODEMAIN_SESSION","ICUBE_ELECTRON_PATH","ICUBE_ENABLE_MARSCODE_NLS","ICUBE_IS_ELECTRON","ICUBE_MACHINE_ID","ICUBE_MARSCODE_VERSION","ICUBE_PRODUCT_PROVIDER","ICUBE_PROVIDER","ICUBE_PROXY_HOST","ICUBE_QUALITY","ICUBE_USE_IPV6","ICUBE_VSCODE_VERSION","LOCALAPPDATA","LOGONSERVER","NUMBER_OF_PROCESSORS","ORIGINAL_XDG_CURRENT_DESKTOP","OS","PATHEXT","PROCESSOR_ARCHITECTURE","PROCESSOR_IDENTIFIER","PROCESSOR_LEVEL","PROCESSOR_REVISION","PSModulePath","PUBLIC","Path","ProgramData","ProgramFiles","ProgramFiles(x86)","ProgramW6432","SESSIONNAME","SystemDrive","SystemRoot","TEMP","TMP","TRAE_CONFIG_CHANNEL","USERDOMAIN","USERDOMAIN_ROAMINGPROFILE","USERNAME","USERPROFILE","VSCODE_BUILTIN_EXTENSIONS_PATH","VSCODE_CODE_CACHE_PATH","VSCODE_CRASH_REPORTER_PROCESS_TYPE","VSCODE_CWD","VSCODE_ESM_ENTRYPOINT","VSCODE_EXTENSIONS_PATH","VSCODE_HANDLES_UNCAUGHT_ERRORS","VSCODE_IPC_HOOK","VSCODE_L10N_BUNDLE_LOCATION","VSCODE_NLS_CONFIG","VSCODE_PID","VSCODE_RUN_IN_ELECTRON","isArchMatched","windir"],"path":"C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;D:\\Python\\Scripts;D:\\Python\\site-packages\\transformers-4.51.3;D:\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\\\Users\\\\Administrator\\\\Tools\\\\node\\\\node-v24.12.0-win-x64;C:\\Users\\Administrator\\Tools\\dotnet;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python313\\;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Administrator\\AppData\\Local\\Programs\\CodeBuddy CN\\bin;C:\\Users\\Administrator\\.dotnet\\tools;C:\\Users\\Administrator\\AppData\\Local\\Programs\\bin;c:\\Users\\Administrator\\AppData\\Local\\Programs\\Trae CN\\resources\\app\\bin\\lib;C:\\Users\\Administrator\\.trae-cn\\tools\\uv\\latest;C:\\Users\\Administrator\\scoop\\shims;C:\\Program Files\\nodejs;C:\\Program Files (x86)\\nodejs;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python38;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37;C:\\Program Files\\Python;C:\\Users\\Administrator\\Anaconda3"}
+2025-12-31T20:55:38.152+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPServerManager#start Connected.
+2025-12-31T20:55:38.155+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPServerManager#listTools Listing tools...
+2025-12-31T20:55:38.161+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPClient#onStderr [Server Internal Log] Processing request of type ListToolsRequest
+
+2025-12-31T20:55:38.349+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPServerManager#listTools Got tools: s_fetch_page, s_fetch_pattern
+2025-12-31T20:55:38.349+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPServerManager#callTool (s_fetch_page): {"url":"https://github.com/coze-dev/coze-studio/wiki/9.-FAQ","format":"markdown","mode":"basic"}
+2025-12-31T20:55:38.352+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPClient#onStderr [Server Internal Log] Processing request of type CallToolRequest
+
+2025-12-31T20:56:02.250+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPClient#onStderr [Server Internal Log] DETAILED ERROR IN s_fetch_page: [Errno 2] No such file or directory: 'C:\\Users\\Administrator\\AppData\\Local\\uv\\cache\\archive-v0\\wBK6cYCfKVWuOrUf4u1C0\\Lib\\site-packages\\browserforge\\headers\\data\\input-network.zip'
+
+2025-12-31T20:56:02.284+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPClient#onStderr [Server Internal Log] TRACEBACK: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\wBK6cYCfKVWuOrUf4u1C0\Lib\site-packages\scrapling_fetch_mcp\mcp.py", line 32, in s_fetch_page
+    result = await fetch_page_impl(url, mode, format, max_length, start_index)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\wBK6cYCfKVWuOrUf4u1C0\Lib\site-packages\scrapling_fetch_mcp\_fetcher.py", line 78, in fetch_page_impl
+    page = await browse_url(url, mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\wBK6cYCfKVWuOrUf4u1C0\Lib\site-packages\scrapling_fetch_mcp\_scrapling.py", line 8, in browse_url
+    from scrapling.fetchers import AsyncFetcher, StealthyFetcher
+  File "<frozen importlib._bootstrap>", line 1412, in _handle_fromlist
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\wBK6cYCfKVWuOrUf4u1C0\Lib\site-packages\scrapling\fetchers\__init__.py", line 38, in __getattr__
+    module = __import__(module_path, fromlist=[class_name])
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\wBK6cYCfKVWuOrUf4u1C0\Lib\site-packages\scrapling\fetchers\requests.py", line 1, in <module>
+    from scrapling.engines.static import (
+    ...<3 lines>...
+    )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\wBK6cYCfKVWuOrUf4u1C0\Lib\site-packages\scrapling\engines\static.py", line 28, in <module>
+    from .toolbelt.fingerprints import generate_convincing_referer, generate_headers, __default_useragent__
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\wBK6cYCfKVWuOrUf4u1C0\Lib\site-packages\scrapling\engines\toolbelt\fingerprints.py", line 9, in <module>
+    from browserforge.headers import Browser, HeaderGenerator
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\wBK6cYCfKVWuOrUf4u1C0\Lib\site-packages\browserforge\headers\__init__.py", line 5, in <module>
+    from .generator import Browser, HeaderGenerator
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\wBK6cYCfKVWuOrUf4u1C0\Lib\site-packages\browserforge\headers\generator.py", line 80, in <module>
+    class HeaderGenerator:
+    ...<470 lines>...
+            )
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\wBK6cYCfKVWuOrUf4u1C0\Lib\site-packages\browserforge\headers\generator.py", line 86, in HeaderGenerator
+    input_generator_network = BayesianNetwork(DATA_DIR / "input-network.zip")
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\wBK6cYCfKVWuOrUf4u1C0\Lib\site-packages\browserforge\bayesian_network.py", line 103, in __init__
+    network_definition = extract_json(path)
+  File "C:\Users\Administrator\AppData\Local\uv\cache\archive-v0\wBK6cYCfKVWuOrUf4u1C0\Lib\site-packages\browserforge\bayesian_network.py", line 288, in extract_json
+    with zipfile.ZipFile(path, 'r') as zf:
+         ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\zipfile\__init__.py", line 1367, in __init__
+    self.fp = io.open(file, filemode)
+              ~~~~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Administrator\\AppData\\Local\\uv\\cache\\archive-v0\\wBK6cYCfKVWuOrUf4u1C0\\Lib\\site-packages\\browserforge\\headers\\data\\input-network.zip'
+
+
+2025-12-31T20:56:02.297+08:00 [info] [mcp.config.usrlocalmcp.scrapling-fetch] MCPServerManager#callTool (s_fetch_page) result: {"content":[{"type":"text","text":"Error executing tool s_fetch_page: [Errno 2] No such file or directory: 'C:\\\\Users\\\\Administrator\\\\AppData\\\\Local\\\\uv\\\\cache\\\\archive-v0\\\\wBK6cYCfKVWuOrUf4u1C0\\\\Lib\\\\site-packages\\\\browserforge\\\\headers\\\\data\\\\input-network.zip'"}],"isError":true}

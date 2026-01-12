@@ -1,0 +1,22 @@
+{
+  "deepseek-complete-mcp": {
+    "command": "python",
+    "args": [
+      "main.py",
+      "--start"
+    ],
+    "cwd": "c:\\Users\\Administrator\\Desktop\\erthhgfj\\SuperMCP",
+    "timeout": 600,
+    "autoApprove": [
+      "get_all_files",
+      "get_file_content",
+      "get_file_info",
+      "search_content",
+      "extract_zip",
+      "export_content",
+      "validate_content",
+      "analyze_conversations",
+      "generate_report"
+    ]
+  }
+}

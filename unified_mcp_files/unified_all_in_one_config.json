@@ -1,0 +1,80 @@
+{
+  "unified_mcp_config": {
+    "version": "2.0",
+    "description": "统一MCP工具完整配置文件，融合了所有配置项",
+    
+    "core": {
+      "server": {
+        "host": "localhost",
+        "port": 5000,
+        "timeout": 600
+      }
+    },
+    
+    "security": {
+      "enabled": true,
+      "contentFiltering": true,
+      "sensitiveDataDetection": true,
+      "maliciousCodeScanning": true,
+      "urlSafetyCheck": true,
+      "rateLimiting": 30,
+      "command_whitelist": [],
+      "cache_ttl": 300,
+      "max_results": 100
+    },
+    
+    "deepseek": {
+      "api_key": "",
+      "base_url": "",
+      "data_management": {
+        "conversations": true,
+        "backups": true,
+        "samples": true,
+        "reports": true
+      }
+    },
+    
+    "coze": {
+      "api_key": "",
+      "base_url": "",
+      "integration": {
+        "doubao": true,
+        "plugins": true
+      }
+    },
+    
+    "mcp_servers": {
+      "deepseek-complete-mcp": {
+        "command": "python",
+        "args": [
+          "unified_all_in_one.py",
+          "--host",
+          "localhost",
+          "--port",
+          "5000"
+        ],
+        "cwd": "C:\\Users\\Administrator\\Desktop\\项目",
+        "timeout": 600
+      },
+      "perfect-mcp-tool": {
+        "command": "python",
+        "args": [
+          "-u",
+          "unified_all_in_one.py"
+        ],
+        "description": "完美MCP工具 - 零存储、零内存占用、全自动化、高度安全"
+      }
+    },
+    
+    "optimization": {
+      "memory": true,
+      "storage": true,
+      "performance": true
+    },
+    
+    "trae_cn": {
+      "compatibility": true,
+      "status_fix": true
+    }
+  }
+}

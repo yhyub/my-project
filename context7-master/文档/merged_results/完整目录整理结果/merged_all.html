@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coze插件全自动化生成工具</title>
+    <style>
+        body { font-family: 'Microsoft YaHei', sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+        .container { background-color: #f5f5f5; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .input-section { margin-bottom: 30px; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        textarea { height: 150px; resize: vertical; }
+        button { background-color: #007bff; color: white; border: none; padding: 12px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        .output-section { margin-top: 30px; }
+        .output-card { background-color: white; padding: 20px; border-radius: 5px; margin-bottom: 20px; box-shadow: 0 0 5px rgba(0,0,0,0.05); }
+        .output-card h3 { margin-top: 0; color: #333; }
+        .code-block { background-color: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto; position: relative; }
+        .copy-btn { position: absolute; top: 10px; right: 10px; background-color: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; font-size: 12px; }
+        .copy-btn:hover { background-color: #218838; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .status-message { margin-top: 15px; padding: 10px; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Coze插件全自动化生成工具</h1>
+        <p>只需提供插件名称和功能描述，即可自动生成完整代码和配置，全程零手动操作，生成的代码可一键复制到Coze IDE。</p>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label for="pluginName">插件名称（英文/拼音/中文）：</label>
+                <input type="text" id="pluginName" placeholder="例如：FullAutoProcessor">
+            </div>
+            <div class="input-group">
+                <label for="functionDesc">功能描述（越详细越好）：</label>
+                <textarea id="functionDesc" placeholder="详细说明插件要处理的所有需求，例如：‘接收用户输入的完整文本（包含航班号+日期、城市名等信息），自动查询航班状态（正常/延误）、起降城市、时间，以及城市天气（温度、状况），返回汇总结果、详细数据及处理状态’"></textarea>
+            </div>
+            <button id="generateBtn">生成插件代码和配置</button>
+        </div>
+
+        <div class="output-section">
+            <div class="output-card">
+                <h3>1. 自动推断的输入参数</h3>
+                <div class="code-block" id="inputParams">
+                    <button class="copy-btn" onclick="copyToClipboard('inputParams')">复制到Coze IDE</button>
+                    <pre>等待生成...</pre>
+                </div>
+            </div>
+
+            <div class="output-card">
+                <h3>2. 自动推断的输出参数</h3>
+                <div class="code-block" id="outputParams">
+                    <button class="copy-btn" onclick="copyToClipboard('outputParams')">复制到Coze IDE</button>
+                    <pre>等待生成...</pre>
+                </div>
+            </div>
+
+            <div class="output-card">
+                <h3>3. Coze元数据配置</h3>
+                <div class="code-block" id="metadataConfig">
+                    <button class="copy-btn" onclick="copyToClipboard('metadataConfig')">复制到Coze IDE</button>
+                    <pre>等待生成...</pre>
+                </div>
+            </div>
+
+            <div class="output-card">
+                <h3>4. 完整代码（可直接复制到Coze IDE）</h3>
+                <div class="code-block" id="fullCode">
+                    <button class="copy-btn" onclick="copyToClipboard('fullCode')">复制到Coze IDE</button>
+                    <pre>等待生成...</pre>
+                </div>
+            </div>
+
+            <div class="status-message" id="statusMessage" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        // 定义复制到剪贴板的函数
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).querySelector('pre').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                console.log('复制成功');
+            }).catch((err) => {
+                console.error('复制失败: ', err);
+            });
+        }
+
+        // 定义显示状态消息的函数
+        function showStatus(message, type) {
+            const statusElement = document.getElementById('statusMessage');
+            statusElement.textContent = message;
+            statusElement.className = `status-message ${type}`;
+            statusElement.style.display = 'block';
+        }
+
+        document.getElementById('generateBtn').addEventListener('click', generatePlugin);
+
+        function generatePlugin() {
+            const pluginName = document.getElementById('pluginName').value.trim();
+            const functionDesc = document.getElementById('functionDesc').value.trim();
+            const statusElement = document.getElementById('statusMessage');
+
+            // 验证输入
+            if (!pluginName || !functionDesc) {
+                showStatus('请输入插件名称和功能描述', 'error');
+                return;
+            }
+
+            try {
+                // 生成输入参数
+                const inputParams = generateInputParams(functionDesc);
+                document.getElementById('inputParams').querySelector('pre').textContent = inputParams;
+
+                // 生成输出参数
+                const outputParams = generateOutputParams(functionDesc);
+                document.getElementById('outputParams').querySelector('pre').textContent = outputParams;
+
+                // 生成元数据配置
+                const metadataConfig = generateMetadataConfig(pluginName, functionDesc, inputParams, outputParams);
+                const metadataPre = document.getElementById('metadataConfig').querySelector('pre');
+                metadataPre.textContent = metadataConfig;
+                console.log('元数据配置:', metadataConfig); // 添加日志输出
+
+                // 生成完整代码
+                const fullCode = generateFullCode(pluginName, functionDesc, inputParams, outputParams);
+                const fullCodePre = document.getElementById('fullCode').querySelector('pre');
+                fullCodePre.textContent = fullCode;
+                console.log('完整代码:', fullCode); // 添加日志输出
+
+                showStatus('插件代码生成成功！可以复制使用了。', 'success');
+            } catch (error) {
+                showStatus('生成失败：' + error.message, 'error');
+                console.error('生成错误:', error);
+            }
+        }
+
+        // 基于功能描述推断输入参数
+        function generateInputParams(functionDesc) {
+            return `- inputDemand: string，必填，描述插件需要处理的完整需求信息，包含用户的问题、数据及期望结果`;
+        }
+
+        // 基于功能描述推断输出参数
+        function generateOutputParams(functionDesc) {
+            let outputParams = `- result: object，必填，插件处理后的结果数据
+`;
+            outputParams += `- status: string，必填，处理状态，成功时返回`;
+            return outputParams; // 补充返回语句
+        }
+
+        function generateMetadataConfig(pluginName, functionDesc, inputParams, outputParams) {
+            return '';
+        }
+
+        function generateFullCode(pluginName, functionDesc, inputParams, outputParams) {
+            return '';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{
+  "mcpServers": {
+    "MySQL": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "mysql-mcp-server",
+        "mysql_mcp_server"
+      ],
+      "env": {
+        "MYSQL_HOST": "localhost",
+        "MYSQL_PORT": "3306",
+        "MYSQL_USER": "root",
+        "MYSQL_PASSWORD": "",
+        "MYSQL_DATABASE": ""
+      },
+      "description": "MySQL MCP服务器，用于与MySQL数据库交互",
+      "category": "数据库",
+      "priority": "high",
+      "disabled": false,
+      "autoApprove": [
+        "query",
+        "execute",
+        "get_tables",
+        "get_schema",
+        "insert",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "configurationGuide": {
+    "MySQL": {
+      "description": "MySQL数据库连接配置",
+      "parameters": {
+        "MYSQL_HOST": {
+          "description": "数据库服务器的主机地址",
+          "example": "127.0.0.1",
+          "required": true
+        },
+        "MYSQL_PORT": {
+          "description": "数据库服务器监听的端口号，MySQL默认端口为3306",
+          "example": "3306",
+          "required": true
+        },
+        "MYSQL_USER": {
+          "description": "连接数据库时使用的用户名，常见默认用户有root",
+          "example": "root",
+          "required": true
+        },
+        "MYSQL_PASSWORD": {
+          "description": "连接数据库时使用的密码，用于验证用户身份",
+          "example": "password123",
+          "required": true
+        },
+        "MYSQL_DATABASE": {
+          "description": "要连接的具体数据库名称",
+          "example": "mydatabase",
+          "required": false
+        }
+      },
+      "usage": {
+        "install": "uvx --from mysql-mcp-server mysql_mcp_server",
+        "run": "uvx mysql-mcp-server mysql_mcp_server",
+        "notes": [
+          "确保MySQL服务器已启动并运行",
+          "确保用户具有相应的数据库权限",
+          "建议使用专门的数据库用户，而非root用户",
+          "定期更新数据库密码以提高安全性"
+        ]
+      }
+    }
+  }
+}

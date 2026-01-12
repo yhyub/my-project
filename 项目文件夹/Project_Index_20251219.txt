@@ -1,0 +1,34 @@
+﻿Project Index - 2025-12-19 13:18:26
+=============================
+Total Projects Found: 27
+Organized Shortcuts: C:\Users\Administrator\OrganizedProjects
+
+Project Directories:
+-------------------
+C:\Users\Administrator\Desktop\Automated_File_Manager_Output
+C:\Users\Administrator\Desktop\context7-master
+C:\Users\Administrator\Desktop\context7-master\文档\AI模型整理
+C:\Users\Administrator\Desktop\context7-master\文档\Coze整理
+C:\Users\Administrator\Desktop\context7-master\文档\eertdtfgkkgfxer
+C:\Users\Administrator\Desktop\context7-master\文档\merged_results
+C:\Users\Administrator\Desktop\context7-master\文档\代码文件
+C:\Users\Administrator\Desktop\data\新建文件夹 (13)
+C:\Users\Administrator\Desktop\data\新建文件夹 (13)\python脚本
+C:\Users\Administrator\Desktop\erthhgfj
+C:\Users\Administrator\Desktop\erthhgfj\SuperMCP
+C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\core
+C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\modules
+C:\Users\Administrator\Desktop\erthhgfj\SuperMCP\optimizers
+C:\Users\Administrator\Desktop\erthhgfj\新建文件夹
+C:\Users\Administrator\Desktop\erthhgfj\新建文件夹\prompts
+C:\Users\Administrator\Desktop\processed
+C:\Users\Administrator\Desktop\processed\trthergtwekw
+C:\Users\Administrator\Desktop\processed\trthergtwekw\multimodal_system
+C:\Users\Administrator\Desktop\processed_data
+C:\Users\Administrator\Desktop\processed_data\merged_results
+C:\Users\Administrator\Desktop\processed_data\merged_results\eertdtfgkkgfxer
+C:\Users\Administrator\Desktop\training_data (2)\coze-plugin
+C:\Users\Administrator\Desktop\training_data (2)\coze-plugin\uihugdyftdrsfas
+C:\Users\Administrator\Desktop\合并结果文件夹
+C:\Users\Administrator\Desktop\可执行文件\新建文件夹
+C:\Users\Administrator\Desktop\新建文件夹

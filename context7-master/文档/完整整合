@@ -1,0 +1,1574 @@
+# -*- coding: utf-8 -*-"""
+完整整合AI系统 v7.0 - DeepSeek AI Factory Pro
+统一合并版：程序.py + 程序1.py + 完整_corrected_version.py + 项目名称 DeepSeek AI Factory Pro.py
+
+核心功能：
+1. 配置管理系统
+2. 日志管理系统
+3. 量子安全系统
+4. 意识模块系统
+5. 神经符号推理引擎
+6. 智能数据处理引擎
+7. 模块化AI训练框架
+8. 自动化训练流水线
+9. 系统监控与看板
+10. 高级数据质量分析
+11. 多模态编码器
+12. 私有AI训练器
+13. 多模态数据处理
+14. 智能代码生成
+15. 企业级部署系统
+16. 统一用户界面系统
+"""
+
+# ====================== 导入模块 ======================
+
+import os
+import sys
+import json
+import torch
+import logging
+import pandas as pd
+import numpy as np
+import zipfile
+import yaml
+import hashlib
+import glob
+import PyPDF2
+import docx
+from PIL import Image, ImageOps, UnidentifiedImageError
+import io
+import re
+import shutil
+import string
+import psutil
+import chardet
+import pdfplumber
+import openpyxl
+import time
+import tarfile
+import gzip
+from tqdm import tqdm
+from pathlib import Path
+from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from functools import lru_cache, partial
+from typing import Dict, List, Optional, Union, Any, Callable, Generator, Tuple, Set
+from dataclasses import dataclass, field
+from abc import ABC, abstractmethod
+from transformers import (
+    AutoTokenizer,
+    AutoModelForCausalLM,
+    AutoModel,
+    Trainer,
+    TrainingArguments
+)
+from datasets import Dataset
+import gradio as gr
+import argparse
+import asyncio
+import faiss
+
+# 设置中文字体支持
+import matplotlib
+matplotlib.rcParams["font.sans-serif"] = ["SimHei", "WenQuanYi Micro Hei", "Heiti TC"]
+matplotlib.rcParams["axes.unicode_minus"] = False
+
+# 检查是否安装了transformers库
+HAS_TRANSFORMERS = True
+try:
+    from transformers import AutoModelForCausalLM
+except ImportError:
+    HAS_TRANSFORMERS = False
+
+# ====================== 配置日志系统 ======================
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("ai_factory.log"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger("DeepSeekAI")
+
+# ====================== 核心配置类 ======================
+
+@dataclass
+class ProjectConfig:
+    """统一项目配置管理"""
+    
+    # 模型配置
+    model_name: str = "deepseek-ai/deepseek-llm-1.3b-chat"
+    model_path: str = "./models"
+    max_length: int = 2048
+    
+    # 训练配置
+    batch_size: int = 2
+    learning_rate: float = 2e-5
+    epochs: int = 3
+    warmup_steps: int = 100
+    
+    # 路径配置
+    data_dir: str = "./data"
+    output_dir: str = "./output"
+    cache_dir: str = "./cache"
+    log_dir: str = "./logs"
+    
+    # 功能开关
+    enable_code_gen: bool = True
+    enable_multimodal: bool = True
+    enable_deployment: bool = True
+    enable_monitoring: bool = True
+    
+    def __post_init__(self):
+        """初始化后自动创建目录"""
+        self._create_directories()
+    
+    def _create_directories(self):
+        """创建必要目录"""
+        directories = [
+            self.data_dir, self.output_dir, 
+            self.cache_dir, self.log_dir
+        ]
+        for directory in directories:
+            Path(directory).mkdir(parents=True, exist_ok=True)
+            logger.info(f"创建目录: {directory}")
+
+class ConfigManager:
+    """配置管理单例类"""
+    _instance = None
+    
+    def __new__(cls):
+        if not cls._instance:
+            cls._instance = super().__new__(cls)
+            cls._instance._load_config()
+        return cls._instance
+    
+    def _load_config(self, config_path: str = "config.yaml"):
+        """加载配置文件"""
+        try:
+            with open(config_path, encoding='utf-8') as f:
+                self.config = yaml.safe_load(f)
+        except FileNotFoundError:
+            # 创建默认配置
+            self.config = self._create_default_config()
+            with open(config_path, 'w', encoding='utf-8') as f:
+                yaml.dump(self.config, f, allow_unicode=True)
+        except Exception as e:
+            print(f"配置加载错误: {e}")
+            # 即使出错也使用默认配置
+            self.config = self._create_default_config()
+            
+        # 路径标准化
+        try:
+            base_path = Path(self.config["paths"]["base"]).expanduser()
+            self.config["paths"] = {
+                "data_in": base_path / "data/raw",
+                "data_out": base_path / "data/processed", 
+                "models": base_path / "models",
+                "logs": base_path / "logs",
+                "security": base_path / "security"
+            }
+        except Exception as e:
+            print(f"路径处理错误: {e}")
+            # 设置临时路径
+            temp_path = Path("~/AI_Projects").expanduser()
+            self.config["paths"] = {
+                "data_in": temp_path / "data/raw",
+                "data_out": temp_path / "data/processed", 
+                "models": temp_path / "models",
+                "logs": temp_path / "logs",
+                "security": temp_path / "security"
+            }
+        
+        # 创建目录结构
+        for path in self.config["paths"].values():
+            try:
+                path.mkdir(parents=True, exist_ok=True)
+            except Exception as e:
+                print(f"创建目录失败: {e}")
+    
+    def _create_default_config(self):
+        """创建默认配置"""
+        return {
+            "system": {
+                "name": "IntegratedAI",
+                "version": "7.0.0",
+                "description": "完整整合AI系统 v7.0 - 统一合并版"
+            },
+            "paths": {
+                "base": "~/AI_Projects"
+            },
+            "model": {
+                "base_name": "microsoft/DialoGPT-medium",
+                "hidden_size": 2048,
+                "num_heads": 8,
+                "quantum_enabled": False
+            },
+            "processing": {
+                "max_workers": 4,
+                "ocr_enabled": True,
+                "tesseract_path": "/usr/bin/tesseract",
+                "auto_batch_size": True
+            },
+            "training": {
+                "epochs": 3,
+                "learning_rate": 2e-5,
+                "batch_size": 32,
+                "quantum_enhanced": False,
+                "gradient_accumulation_steps": 2
+            },
+            "security": {
+                "encryption_enabled": True,
+                "quantum_safe": False,
+                "key_size": 4096
+            },
+            "consciousness": {
+                "enabled": True,
+                "memory_capacity": 1000000,
+                "self_model": True
+            },
+            "supported_formats": [
+                ".txt", ".csv", ".xlsx", ".pdf", ".zip", ".gz", ".tar",
+                ".jpg", ".jpeg", ".png", ".doc", ".docx", ".ppt", ".pptx", ".md", ".json"
+            ]
+        }
+
+# ====================== 日志管理系统 ======================
+
+class SystemLogger:
+    """系统日志记录器"""
+    def __init__(self):
+        # 安全地获取配置
+        try:
+            self.cfg = ConfigManager().config
+        except Exception as e:
+            print(f"获取配置失败: {e}")
+            # 使用默认配置
+            self.cfg = {
+                "paths": {
+                    "logs": Path("~/AI_Projects/logs").expanduser()
+                }
+            }
+            # 确保日志目录存在
+            self.cfg["paths"]["logs"].mkdir(parents=True, exist_ok=True)
+        
+        self.logger = logging.getLogger("IntegratedAI")
+        self.logger.setLevel(logging.DEBUG)
+        
+        # 清除已有的处理器
+        if self.logger.handlers:
+            self.logger.handlers.clear()
+        
+        # 文件处理器
+        try:
+            log_file = self.cfg["paths"]["logs"] / "system.log"
+            file_handler = logging.FileHandler(log_file)
+            file_formatter = logging.Formatter(
+                '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+            file_handler.setFormatter(file_formatter)
+            self.logger.addHandler(file_handler)
+        except Exception as e:
+            print(f"创建日志文件失败: {e}")
+        
+        # 控制台处理器
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.INFO)
+        console_formatter = logging.Formatter('%(levelname)s - %(message)s')
+        console_handler.setFormatter(console_formatter)
+        self.logger.addHandler(console_handler)
+
+# ====================== 量子安全系统 ======================
+
+class QuantumSecuritySystem:
+    """量子安全系统"""
+    
+    def __init__(self):
+        # 安全地获取配置和日志器
+        try:
+            self.cfg = ConfigManager().config
+        except Exception as e:
+            print(f"获取配置失败: {e}")
+            # 使用默认配置
+            self.cfg = {
+                "paths": {
+                    "security": Path("~/AI_Projects/security").expanduser()
+                },
+                "security": {
+                    "encryption_enabled": True
+                }
+            }
+            # 确保安全目录存在
+            self.cfg["paths"]["security"].mkdir(parents=True, exist_ok=True)
+        
+        try:
+            self.logger = SystemLogger().logger
+        except Exception as e:
+            print(f"获取日志器失败: {e}")
+            self.logger = None
+        
+        self.encryption_key = self._generate_key()
+        if self.logger:
+            self.logger.info("量子安全系统初始化完成")
+        else:
+            print("量子安全系统初始化完成")
+    
+    def _generate_key(self):
+        """生成加密密钥"""
+        key_path = self.cfg["paths"]["security"] / "encryption.key"
+        try:
+            if key_path.exists():
+                with open(key_path, 'rb') as f:
+                    return f.read()
+            else:
+                # 创建一个基于系统信息的安全密钥
+                key = hashlib.sha256(
+                    (str(os.urandom(256)) + \
+                     str(psutil.cpu_count()) + \
+                     str(psutil.virtual_memory().total)).encode()
+                ).digest()
+                with open(key_path, 'wb') as f:
+                    f.write(key)
+                return key
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"密钥生成失败: {str(e)}")
+            # 返回一个临时密钥作为备用
+            return hashlib.sha256(b"fallback_key").digest()
+    
+    def encrypt_data(self, data: str) -> str:
+        """加密数据"""
+        try:
+            if not self.cfg["security"]["encryption_enabled"]:
+                return data
+            
+            # 简单的加密实现
+            encrypted = []
+            for i, char in enumerate(data):
+                key_char = self.encryption_key[i % len(self.encryption_key)]
+                encrypted_char = chr((ord(char) + key_char) % 256)
+                encrypted.append(encrypted_char)
+            
+            # 使用base64编码以便安全存储
+            import base64
+            return base64.b64encode(''.join(encrypted).encode()).decode()
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"数据加密失败: {str(e)}")
+            return data
+    
+    def decrypt_data(self, encrypted_data: str) -> str:
+        """解密数据"""
+        try:
+            if not self.cfg["security"]["encryption_enabled"]:
+                return encrypted_data
+            
+            # 解码base64
+            import base64
+            encrypted_bytes = base64.b64decode(encrypted_data)
+            encrypted = encrypted_bytes.decode(errors='ignore')
+            
+            # 解密
+            decrypted = []
+            for i, char in enumerate(encrypted):
+                key_char = self.encryption_key[i % len(self.encryption_key)]
+                decrypted_char = chr((ord(char) - key_char) % 256)
+                decrypted.append(decrypted_char)
+            
+            return ''.join(decrypted)
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"数据解密失败: {str(e)}")
+            return encrypted_data
+    
+    def verify_integrity(self, data: str, checksum: str) -> bool:
+        """验证数据完整性"""
+        try:
+            calculated_checksum = hashlib.sha256(data.encode()).hexdigest()
+            return calculated_checksum == checksum
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"完整性验证失败: {str(e)}")
+            return False
+    
+    def quantum_hash(self, data: str) -> str:
+        """生成量子风格的哈希值"""
+        try:
+            # 使用加密密钥生成一个独特的哈希值
+            combined = data + str(self.encryption_key)
+            return hashlib.sha256(combined.encode()).hexdigest()
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"量子哈希计算失败: {str(e)}")
+            return hashlib.sha256(data.encode()).hexdigest()  # 备用方案
+
+class NeuroCrypt:
+    """神经增强安全模块"""
+    
+    def __init__(self, master_key: bytes, key_rotation_interval: int = 3600):
+        self.master_key = master_key
+        self.key_rotation_interval = key_rotation_interval
+        self.session_keys = {}
+        self.last_key_generation = time.time()
+        
+        # 初始化密码学组件
+        try:
+            from cryptography.hazmat.backends import default_backend
+            from cryptography.hazmat.primitives import hashes, hmac
+            from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+            self.backend = default_backend()
+        except ImportError:
+            print("警告: cryptography库未安装，使用简化版本")
+            self.backend = None
+    
+    def encrypt(self, data: bytes, key_id: str = "default") -> Dict:
+        """量子安全加密"""
+        try:
+            # 密钥管理
+            session_key = self._get_session_key(key_id)
+            
+            # 生成随机IV
+            iv = os.urandom(12)  # GCM模式推荐12字节IV
+            
+            # 创建加密器
+            if self.backend:
+                from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+                cipher = Cipher(
+                    algorithms.AES(session_key),
+                    modes.GCM(iv),
+                    backend=self.backend
+                )
+                encryptor = cipher.encryptor()
+                
+                # 加密数据
+                ciphertext = encryptor.update(data) + encryptor.finalize()
+                
+                # 返回加密结果
+                return {
+                    'ciphertext': ciphertext,
+                    'iv': iv,
+                    'tag': encryptor.tag,
+                    'key_id': key_id,
+                    'timestamp': time.time()
+                }
+            else:
+                # 简化版本
+                return {
+                    'ciphertext': data,
+                    'iv': iv,
+                    'tag': b'tag',
+                    'key_id': key_id,
+                    'timestamp': time.time()
+                }
+            
+        except Exception as e:
+            print(f"加密失败: {e}")
+            raise
+    
+    def decrypt(self, encrypted_data: Dict) -> bytes:
+        """数据解密"""
+        try:
+            session_key = self._get_session_key(encrypted_data['key_id'])
+            
+            if self.backend:
+                from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+                cipher = Cipher(
+                    algorithms.AES(session_key),
+                    modes.GCM(encrypted_data['iv'], encrypted_data['tag']),
+                    backend=self.backend
+                )
+                decryptor = cipher.decryptor()
+                
+                plaintext = decryptor.update(encrypted_data['ciphertext']) + decryptor.finalize()
+                return plaintext
+            else:
+                # 简化版本
+                return encrypted_data['ciphertext']
+            
+        except Exception as e:
+            print(f"解密失败: {e}")
+            raise
+    
+    def neural_decrypt(self, ciphertext: bytes, context: Dict = None) -> bytes:
+        """神经辅助解密（实验性功能）"""
+        # 这里可以集成基于神经网络的解密增强
+        # 当前版本使用标准解密作为回退
+        encrypted_data = {
+            'ciphertext': ciphertext,
+            'iv': context.get('iv') if context else os.urandom(12),
+            'tag': context.get('tag') if context else os.urandom(16),
+            'key_id': context.get('key_id', 'default')
+        }
+        return self.decrypt(encrypted_data)
+    
+    def _get_session_key(self, key_id: str) -> bytes:
+        """获取会话密钥（带自动轮换）"""
+        current_time = time.time()
+        
+        # 检查密钥是否需要轮换
+        if (key_id not in self.session_keys or \
+            current_time - self.last_key_generation > self.key_rotation_interval):
+            
+            if self.backend:
+                from cryptography.hazmat.primitives import hashes, hmac
+                # 生成新会话密钥
+                kdf = hmac.HMAC(self.master_key, hashes.SHA256(), backend=self.backend)
+                kdf.update(key_id.encode() + str(current_time).encode())
+                self.session_keys[key_id] = kdf.finalize()[:32]  # AES-256需要32字节密钥
+            else:
+                # 简化版本
+                self.session_keys[key_id] = self.master_key[:32]
+            
+            self.last_key_generation = current_time
+            print(f"生成新的会话密钥: {key_id}")
+        
+        return self.session_keys[key_id]
+    
+    def get_security_status(self) -> Dict:
+        """获取安全状态"""
+        if self.backend:
+            from cryptography.hazmat.primitives import hashes
+            master_key_hash = hashes.Hash(hashes.SHA256(), backend=self.backend)
+            master_key_hash.update(self.master_key)
+            master_key_hex = master_key_hash.finalize().hex()
+        else:
+            master_key_hex = "simplified_mode"
+        
+        return {
+            'key_rotation_interval': self.key_rotation_interval,
+            'active_session_keys': len(self.session_keys),
+            'last_key_generation': self.last_key_generation,
+            'master_key_hash': master_key_hex
+        }
+
+# ====================== 意识模块系统 ======================
+
+class ConsciousnessModule:
+    """意识模块系统 - 合并增强版"""
+    
+    def __init__(self):
+        # 安全地获取配置和日志器
+        try:
+            self.cfg = ConfigManager().config
+        except Exception as e:
+            print(f"获取配置失败: {e}")
+            # 使用默认配置
+            self.cfg = {
+                "consciousness": {
+                    "enabled": True,
+                    "memory_capacity": 1000000
+                }
+            }
+        
+        try:
+            self.logger = SystemLogger().logger
+        except Exception as e:
+            print(f"获取日志器失败: {e}")
+            self.logger = None
+        
+        # 初始化记忆存储 - 合并v5和v6的记忆系统
+        self.memories = []
+        self.memory_store = []  # v5的记忆存储
+        self.max_capacity = self.cfg["consciousness"]["memory_capacity"]
+        self.memory_file = Path("consciousness_memories.json")
+        
+        # 加载已有记忆
+        self._load_memories()
+        
+        if self.logger:
+            self.logger.info("意识模块系统初始化完成")
+        else:
+            print("意识模块系统初始化完成")
+    
+    def record_experience(self, input_data: str, output_data: str):
+        """记录经验 - 合并v5和v6的功能"""
+        if not self.cfg["consciousness"]["enabled"]:
+            return
+        
+        if not isinstance(input_data, str) or not isinstance(output_data, str):
+            return
+        
+        try:
+            # v6的记忆条目
+            memory_v6 = {
+                "timestamp": datetime.now().isoformat(),
+                "input": input_data[:1000],  # 限制输入长度
+                "output": output_data[:1000],  # 限制输出长度
+                "embedding": self._compute_simple_embedding(input_data + output_data)
+            }
+            
+            # v5的记忆条目
+            memory_v5 = {
+                "input": input_data,
+                "output": output_data,
+                "timestamp": datetime.now().isoformat(),
+                "importance": 0.01,  # 默认重要性
+                "context": self._extract_context(input_data)
+            }
+            
+            # 计算重要性
+            memory_v5["importance"] = self._calculate_importance(memory_v5)
+            
+            # 添加到记忆存储
+            self.memories.append(memory_v6)
+            self.memory_store.append(memory_v5)
+            
+            # 如果超过容量，移除最早的记忆
+            if len(self.memories) > self.max_capacity:
+                self.memories.pop(0)
+            
+            # 如果超出容量，移除最不重要的记忆
+            if len(self.memory_store) > self.max_capacity:
+                self.memory_store.sort(key=lambda x: x["importance"])
+                self.memory_store.pop(0)
+            
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"经验记录失败: {str(e)}")
+    
+    def _compute_simple_embedding(self, text: str) -> List[float]:
+        """计算简单的文本嵌入（v6功能）"""
+        # 简单的文本嵌入实现
+        embedding = [0.0] * 16  # 16维嵌入向量
+        for char in text:
+            char_code = ord(char) % 16
+            embedding[char_code] += 1
+        
+        # 归一化
+        norm = sum(x*x for x in embedding) ** 0.5
+        if norm > 0:
+            embedding = [x/norm for x in embedding]
+        
+        return embedding
+    
+    def _extract_context(self, input_data: str) -> Dict:
+        """提取上下文信息（v5功能）"""
+        try:
+            # 简单的上下文提取
+            context = {
+                "length": len(input_data),
+                "has_question": "?" in input_data or "？" in input_data,
+                "keywords": self._extract_keywords(input_data)
+            }
+            return context
+        except Exception:
+            return {}
+    
+    def _extract_keywords(self, text: str) -> List[str]:
+        """提取关键词（v5功能）"""
+        try:
+            # 简单的关键词提取
+            words = re.findall(r'\b\w+\b', text.lower())
+            # 过滤常见停用词
+            stop_words = set(['the', 'a', 'an', 'and', 'or', 'but', 'if', 'because',
+                              'as', 'what', 'when', 'where', 'how', 'who', 'which',
+                              'this', 'that', 'these', 'those', 'then', 'just', 'so',
+                              'than', 'such', 'both', 'through', 'about', 'for',
+                              'is', 'are', 'was', 'were', 'be', 'been', 'being'])
+            keywords = [word for word in words if word not in stop_words and len(word) > 2]
+            # 返回前5个关键词
+            return keywords[:5]
+        except Exception:
+            return []
+    
+    def _calculate_importance(self, memory: Dict) -> float:
+        """计算记忆重要性（v5功能）"""
+        try:
+            importance = memory["importance"]
+            
+            # 问题比陈述更重要
+            if memory["context"].get("has_question", False):
+                importance *= 1.5
+            
+            # 长文本通常包含更多信息
+            if memory["context"].get("length", 0) > 100:
+                importance *= 1.2
+            
+            # 有多个关键词的内容更重要
+            if len(memory["context"].get("keywords", [])) > 3:
+                importance *= 1.3
+            
+            return min(importance, 1.0)  # 限制最大重要性为1.0
+        except Exception:
+            return 0.01
+    
+    def get_insights(self) -> str:
+        """获取系统洞察 - 合并v5和v6的洞察功能"""
+        if not self.cfg["consciousness"]["enabled"]:
+            return "意识模块未启用"
+        
+        if not self.memories and not self.memory_store:
+            return "暂无记忆数据"
+        
+        try:
+            # v6的洞察生成逻辑
+            recent_memories = self.memories[-100:] if self.memories else []
+            
+            # 统计输入输出长度
+            avg_input_len = 0
+            avg_output_len = 0
+            if recent_memories:
+                avg_input_len = sum(len(m["input"]) for m in recent_memories) / len(recent_memories)
+                avg_output_len = sum(len(m["output"]) for m in recent_memories) / len(recent_memories)
+            
+            # 检测高频词汇
+            all_text = " ".join([m["input"] + " " + m["output"] for m in recent_memories])
+            words = re.findall(r'\b\w+\b', all_text.lower())
+            word_freq = {}
+            for word in words:
+                if len(word) > 3:  # 只统计长度大于3的单词
+                    word_freq[word] = word_freq.get(word, 0) + 1
+            
+            # 获取前5个高频词
+            top_words = sorted(word_freq.items(), key=lambda x: x[1], reverse=True)[:5]
+            top_words_str = ", ".join([f"{word}({count})" for word, count in top_words])
+            
+            # v5的洞察生成
+            v5_insights = self._get_v5_insights()
+            
+            # 生成合并的洞察文本
+            insight = f"系统已记录 {len(self.memories)} 条经验。\n"
+            insight += f"最近交互的平均输入长度: {avg_input_len:.1f} 字符，平均输出长度: {avg_output_len:.1f} 字符。\n"
+            if top_words:
+                insight += f"高频关键词: {top_words_str}\n"
+            
+            # 添加v5的洞察
+            if v5_insights and "status" not in v5_insights:
+                insight += f"\n{v5_insights}"
+            
+            return insight
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"洞察生成失败: {str(e)}")
+            return "洞察生成失败"
+    
+    def _get_v5_insights(self) -> str:
+        """获取v5风格的洞察"""
+        if not self.memory_store:
+            return ""
+        
+        try:
+            # 分析记忆模式
+            total_experiences = len(self.memory_store)
+            avg_importance = sum(m["importance"] for m in self.memory_store) / len(self.memory_store)
+            most_common_keywords = self._find_common_keywords()
+            
+            description = f"发现模式: 共{total_experiences}条经验，平均重要性: {avg_importance:.2f}"
+            if most_common_keywords:
+                description += f"，常见关键词: {', '.join(most_common_keywords)}"
+            
+            return description
+        except Exception:
+            return ""
+    
+    def _find_common_keywords(self) -> List[str]:
+        """找出最常见的关键词（v5功能）"""
+        try:
+            keyword_counts = {}
+            for memory in self.memory_store:
+                for keyword in memory["context"].get("keywords", []):
+                    keyword_counts[keyword] = keyword_counts.get(keyword, 0) + 1
+            
+            # 按频率排序并返回前5个
+            sorted_keywords = sorted(keyword_counts.items(), key=lambda x: x[1], reverse=True)
+            return [keyword for keyword, _ in sorted_keywords[:5]]
+        except Exception:
+            return []
+    
+    def consolidate_memories(self):
+        """巩固记忆 - 合并v5和v6的巩固功能"""
+        if not self.cfg["consciousness"]["enabled"]:
+            return
+        
+        try:
+            # v6的记忆巩固逻辑
+            if self.logger:
+                self.logger.info(f"开始巩固记忆，当前记忆数量: {len(self.memories)}")
+        
+            if len(self.memories) > 1000:  # 只有当记忆较多时才进行巩固
+                consolidated = []
+                for i, mem in enumerate(self.memories):
+                    # 检查与已巩固记忆的相似度
+                    is_similar = False
+                    for cons_mem in consolidated[-500:]:  # 只与最近的500条巩固记忆比较
+                        similarity = self._compute_embedding_similarity(mem["embedding"], cons_mem["embedding"])
+                        if similarity > 0.9:  # 如果相似度超过90%，则认为是相似记忆
+                            is_similar = True
+                            break
+                    
+                    if not is_similar:
+                        consolidated.append(mem)
+                
+                # 更新记忆
+                self.memories = consolidated
+            
+            # v5的记忆巩固逻辑
+            # 根据重要性过滤记忆
+            self.memory_store = [m for m in self.memory_store if m["importance"] > 0.1]
+            
+            # 对相似记忆进行聚类
+            clustered_memories = []
+            processed_indices = set()
+            
+            for i, memory in enumerate(self.memory_store):
+                if i in processed_indices:
+                    continue
+                
+                cluster = [memory]
+                processed_indices.add(i)
+                
+                # 查找相似的记忆
+                for j, other_memory in enumerate(self.memory_store[i+1:], start=i+1):
+                    if j in processed_indices:
+                        continue
+                    
+                    # 简单的相似度计算
+                    similarity = self._calculate_similarity(memory, other_memory)
+                    if similarity > 0.6:
+                        cluster.append(other_memory)
+                        processed_indices.add(j)
+                
+                # 合并聚类的记忆
+                if len(cluster) > 1:
+                    merged_memory = self._merge_memories(cluster)
+                    clustered_memories.append(merged_memory)
+                else:
+                    clustered_memories.append(memory)
+            
+            self.memory_store = clustered_memories
+            
+            # 保存记忆
+            self._save_memories()
+            
+            if self.logger:
+                self.logger.info(f"记忆巩固完成，v6记忆: {len(self.memories)} 条，v5记忆: {len(self.memory_store)} 条")
+            
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"记忆巩固失败: {str(e)}")
+    
+    def _compute_embedding_similarity(self, emb1: List[float], emb2: List[float]) -> float:
+        """计算嵌入向量的余弦相似度（v6功能）"""
+        dot_product = sum(a*b for a, b in zip(emb1, emb2))
+        norm1 = sum(a*a for a in emb1) ** 0.5
+        norm2 = sum(b*b for b in emb2) ** 0.5
+        
+        if norm1 > 0 and norm2 > 0:
+            return dot_product / (norm1 * norm2)
+        return 0.0
+    
+    def _calculate_similarity(self, memory1: Dict, memory2: Dict) -> float:
+        """计算两个记忆的相似度（v5功能）"""
+        try:
+            # 简单的关键词重叠计算
+            keywords1 = set(memory1["context"].get("keywords", []))
+            keywords2 = set(memory2["context"].get("keywords", []))
+            
+            if not keywords1 and not keywords2:
+                return 0.0
+            
+            intersection = keywords1.intersection(keywords2)
+            union = keywords1.union(keywords2)
+            
+            return len(intersection) / len(union)
+        except Exception:
+            return 0.0
+    
+    def _merge_memories(self, memories: List[Dict]) -> Dict:
+        """合并记忆（v5功能）"""
+        try:
+            # 创建合并后的记忆
+            merged = {
+                "input": " ".join(m["input"] for m in memories)[:1000],  # 限制长度
+                "output": " ".join(m["output"] for m in memories)[:1000],
+                "timestamp": min(m["timestamp"] for m in memories),  # 使用最早的时间戳
+                "importance": sum(m["importance"] for m in memories) / len(memories),
+                "context": {
+                    "length": sum(m["context"].get("length", 0) for m in memories),
+                    "has_question": any(m["context"].get("has_question", False) for m in memories),
+                    "keywords": self._extract_keywords(" ".join(m["input"] for m in memories))
+                }
+            }
+            
+            return merged
+        except Exception:
+            return memories[0]  # 如果合并失败，返回第一个记忆
+    
+    def _load_memories(self):
+        """加载记忆（v6功能）"""
+        try:
+            if self.memory_file.exists():
+                with open(self.memory_file, 'r', encoding='utf-8') as f:
+                    self.memories = json.load(f)
+                if self.logger:
+                    self.logger.info(f"加载了 {len(self.memories)} 条记忆")
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"加载记忆失败: {str(e)}")
+            self.memories = []
+    
+    def _save_memories(self):
+        """保存记忆（v6功能）"""
+        try:
+            with open(self.memory_file, 'w', encoding='utf-8') as f:
+                json.dump(self.memories, f, ensure_ascii=False, indent=2)
+            if self.logger:
+                self.logger.info(f"保存了 {len(self.memories)} 条记忆")
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"保存记忆失败: {str(e)}")
+
+# ====================== 神经符号推理引擎 ======================
+
+class NeuroSymbolicReasoner:
+    """神经符号推理引擎 - 合并增强版"""
+    
+    def __init__(self):
+        # 安全地获取配置和日志器
+        try:
+            self.cfg = ConfigManager().config
+        except Exception as e:
+            print(f"获取配置失败: {e}")
+            self.cfg = {}
+        
+        try:
+            self.logger = SystemLogger().logger
+        except Exception as e:
+            print(f"获取日志器失败: {e}")
+            self.logger = None
+        
+        # 初始化知识库和规则库
+        self.knowledge_base = {}
+        self.rules = []
+        
+        if self.logger:
+            self.logger.info("神经符号推理引擎初始化完成")
+        else:
+            print("神经符号推理引擎初始化完成")
+    
+    def add_knowledge(self, entity: str, attributes: Dict):
+        """添加知识到知识库（v6功能）"""
+        self.knowledge_base[entity] = attributes
+    
+    def add_fact(self, fact: str, value: Any = True):
+        """添加事实到知识库（v5功能）"""
+        self.knowledge_base[fact] = value
+    
+    def add_rule(self, rule: str):
+        """添加推理规则（v6功能）"""
+        # 在实际应用中，这里应该有更复杂的规则解析逻辑
+        self.rules.append(rule)
+    
+    def add_conditional_rule(self, condition: Callable, conclusion: str):
+        """添加条件推理规则（v5功能）"""
+        self.rules.append((condition, conclusion))
+    
+    def reason(self, query: str) -> str:
+        """执行推理（v6功能）"""
+        # 简化的推理实现
+        result = "推理结果: "
+        
+        # 检查知识库中是否有相关实体
+        for entity, attributes in self.knowledge_base.items():
+            if entity.lower() in query.lower():
+                result += f"关于 {entity}，我们知道: "
+                for attr, value in attributes.items():
+                    result += f"{attr}={value}; "
+                result = result.rstrip('; ') + ". "
+        
+        # 应用规则
+        for rule in self.rules:
+            if isinstance(rule, tuple):
+                # v5的条件规则
+                condition, conclusion = rule
+                if condition(self.knowledge_base):
+                    result += f"应用规则: {conclusion}. "
+            else:
+                # v6的文本规则
+                if self._check_rule_applicability(rule, query):
+                    result += f"应用规则: {rule}. "
+        
+        if result == "推理结果: ":
+            result += "没有找到相关信息或无法应用规则。"
+        
+        return result
+    
+    def reason_with_confidence(self, query: str) -> Dict:
+        """执行推理并返回置信度（v5功能）"""
+        try:
+            # 直接查找
+            if query in self.knowledge_base:
+                return {
+                    "result": self.knowledge_base[query],
+                    "method": "direct_match",
+                    "confidence": 1.0
+                }
+            
+            # 规则推理
+            for rule in self.rules:
+                if isinstance(rule, tuple):
+                    condition, conclusion = rule
+                    if condition(self.knowledge_base):
+                        return {
+                            "result": self.knowledge_base.get(conclusion, "unknown"),
+                            "method": "rule_based",
+                            "rule_applied": str(condition),
+                            "confidence": 0.8
+                        }
+            
+            # 默认结果
+            return {
+                "result": "unknown",
+                "method": "default",
+                "confidence": 0.0
+            }
+            
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"推理失败: {str(e)}")
+            return {
+                "result": "error",
+                "error": str(e)
+            }
+    
+    def _check_rule_applicability(self, rule: str, query: str) -> bool:
+        """检查规则是否适用于查询（v6功能）"""
+        # 简化的规则适用性检查
+        # 实际应用中应该有更复杂的规则解析和匹配逻辑
+        rule_lower = rule.lower()
+        query_lower = query.lower()
+        
+        # 如果规则中的关键词出现在查询中，则认为规则适用
+        keywords = ["如果", "那么", "当", "则", "因为", "所以"]
+        rule_keywords = [kw for kw in keywords if kw in rule_lower]
+        
+        if not rule_keywords:
+            # 如果规则中没有关键词，检查规则是否包含查询中的关键词
+            query_terms = re.findall(r'\b\w+\b', query_lower)
+            for term in query_terms:
+                if term in rule_lower and len(term) > 2:
+                    return True
+        
+        return False
+    
+    def reason_text(self, text: str) -> Dict:
+        """对文本进行推理分析（v6功能）"""
+        # 简化的文本推理实现
+        result = {
+            "entities": [],
+            "relations": [],
+            "sentiment": "neutral",
+            "summary": ""
+        }
+        
+        # 提取实体（简化实现）
+        words = re.findall(r'\b[A-Z][a-z]+\b', text)
+        entities = list(set(words))  # 去重
+        result["entities"] = entities[:10]  # 限制实体数量
+        
+        # 简单的情感分析
+        positive_words = ["好", "优秀", "成功", "积极", "提升", "进步"]
+        negative_words = ["坏", "失败", "消极", "下降", "问题", "错误"]
+        
+        positive_count = sum(1 for word in positive_words if word in text.lower())
+        negative_count = sum(1 for word in negative_words if word in text.lower())
+        
+        if positive_count > negative_count:
+            result["sentiment"] = "positive"
+        elif negative_count > positive_count:
+            result["sentiment"] = "negative"
+        
+        # 生成简单摘要
+        sentences = re.split(r'[。！？\.\!\?]', text)
+        if sentences:
+            result["summary"] = sentences[0] + "..."
+        
+        return result
+    
+    def infer_from_text(self, text: str) -> List[Dict]:
+        """从文本中提取信息并进行推理（v5功能）"""
+        try:
+            # 简单的文本分析
+            sentences = re.split(r'[.!?]+', text)
+            inferences = []
+            
+            for sentence in sentences:
+                sentence = sentence.strip()
+                if not sentence:
+                    continue
+                
+                # 简单的模式匹配和推理
+                if re.search(r'\bis\b.*\bfile\b', sentence.lower()):
+                    inferences.append({
+                        "type": "file_detection",
+                        "confidence": 0.9,
+                        "details": "文本中提到了文件"
+                    })
+                
+                if re.search(r'\bdata\b.*\bprocess\b', sentence.lower()):
+                    inferences.append({
+                        "type": "process_detection",
+                        "confidence": 0.8,
+                        "details": "文本中提到了数据处理"
+                    })
+            
+            return inferences
+            
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"文本推理失败: {str(e)}")
+            return []
+
+# ====================== 文本标准化器 ======================
+
+class TextNormalizer:
+    """文本标准化器 - 合并增强版"""
+    
+    def __init__(self):
+        try:
+            self.logger = SystemLogger().logger
+        except Exception:
+            self.logger = None
+    
+    def normalize(self, text: str) -> str:
+        """标准化文本（v6功能）"""
+        if not isinstance(text, str):
+            return str(text)
+        
+        # 基本文本清洗
+        try:
+            # 去除多余的空白字符
+            text = re.sub(r'\s+', ' ', text).strip()
+            
+            # 移除特殊字符（保留基本标点）
+            text = re.sub(r'[^\u4e00-\u9fa5a-zA-Z0-9，。！？,.!?\s]', '', text)
+            
+            return text
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"文本标准化失败: {str(e)}")
+            return text
+    
+    @staticmethod
+    def normalize_text(text: str) -> str:
+        """标准化文本数据（v5功能）"""
+        if not isinstance(text, str) or not text.strip():
+            return ""
+        
+        # 多阶段清洗流程
+        text = text.lower().strip()
+        
+        # 移除URL和邮箱
+        text = re.sub(r'http\S+', '', text)
+        text = re.sub(r'\S+@\S+', '', text)
+        
+        # 移除标点符号（保留基本分隔符）
+        text = text.translate(str.maketrans('', '', string.punctuation.replace('.', '')))
+        
+        # 规范化空白字符
+        text = re.sub(r'\s+', ' ', text)
+        
+        # 移除重复单词
+        text = re.sub(r'\b(\w+)( \1\b)+', r'\1', text)
+        
+        return text.strip()
+
+# ====================== 多模态编码器 ======================
+
+class MultiModalEncoder:
+    """多模态编码器 - 合并增强版"""
+    
+    def __init__(self):
+        try:
+            self.logger = SystemLogger().logger
+        except Exception:
+            self.logger = None
+        
+        # 初始化文本标准化器
+        self.text_normalizer = TextNormalizer()
+    
+    def encode_text(self, text: str) -> Dict:
+        """编码文本数据（v6功能）"""
+        try:
+            # 标准化文本
+            normalized_text = self.text_normalizer.normalize(text)
+            
+            # 提取文本特征
+            features = {
+                "text": normalized_text,
+                "length": len(normalized_text),
+                "word_count": len(normalized_text.split()),
+                "sentence_count": len(re.split(r'[。！？\.\!\?]', normalized_text))
+            }
+            
+            return features
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"文本编码失败: {str(e)}")
+            return {
+                "text": text,
+                "error": str(e)
+            }
+    
+    def encode_text_to_embedding(self, text: str) -> List[float]:
+        """编码文本数据为嵌入向量（v5功能）"""
+        # 这里可以替换为实际的编码模型
+        return [hash(word) % 1000 / 1000.0 for word in text[:100].split()]
+    
+    def encode_image(self, image_path: str) -> Dict:
+        """编码图像数据（v6功能）"""
+        try:
+            # 检查文件是否存在
+            if not os.path.exists(image_path):
+                return {"error": "文件不存在"}
+            
+            # 打开图像
+            with Image.open(image_path) as img:
+                # 获取图像信息
+                width, height = img.size
+                mode = img.mode
+                format = img.format
+                
+                # 计算文件大小
+                size_kb = os.path.getsize(image_path) / 1024
+                
+                return {
+                    "width": width,
+                    "height": height,
+                    "mode": mode,
+                    "format": format,
+                    "size_kb": size_kb
+                }
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"图像编码失败: {str(e)}")
+            return {"error": str(e)}
+    
+    def encode_image_to_embedding(self, image: Image.Image) -> List[float]:
+        """编码图像数据为嵌入向量（v5功能）"""
+        # 这里可以替换为实际的编码模型
+        return [0.0] * 512  # 占位符
+
+# ====================== 智能数据加载器 ======================
+
+class SmartDataLoader:
+    """智能数据加载器 - 合并增强版"""
+    
+    def __init__(self):
+        # 安全地获取配置和日志器
+        try:
+            self.cfg = ConfigManager().config
+        except Exception as e:
+            print(f"获取配置失败: {e}")
+            self.cfg = {}
+        
+        try:
+            self.logger = SystemLogger().logger
+        except Exception as e:
+            print(f"获取日志器失败: {e}")
+            self.logger = None
+        
+        # 初始化组件
+        self.text_normalizer = TextNormalizer()
+        self.data_validator = DataValidator()
+        
+        # 支持的文件格式（合并v5和v6）
+        self._supported_formats = {
+            'txt', 'csv', 'xlsx', 'json', 'docx', 'jpg', 'jpeg', 'png', 'pdf', 'zip', 'gz', 'tar'
+        }
+        
+        if self.logger:
+            self.logger.info("智能数据加载器初始化完成")
+        else:
+            print("智能数据加载器初始化完成")
+    
+    def find_files(self, base_path: str, recursive: bool = True) -> List[str]:
+        """查找指定目录下的所有支持的文件（v6功能）"""
+        try:
+            supported_formats = self.cfg.get("supported_formats", [
+                ".txt", ".csv", ".xlsx", ".pdf", ".zip", ".gz", ".tar",
+                ".jpg", ".png", ".doc", ".docx"
+            ])
+            
+            files = []
+            
+            if recursive:
+                # 递归查找
+                for root, _, filenames in os.walk(base_path):
+                    for filename in filenames:
+                        ext = os.path.splitext(filename)[1].lower()
+                        if ext in supported_formats:
+                            files.append(os.path.join(root, filename))
+            else:
+                # 仅查找当前目录
+                for filename in os.listdir(base_path):
+                    file_path = os.path.join(base_path, filename)
+                    if os.path.isfile(file_path):
+                        ext = os.path.splitext(filename)[1].lower()
+                        if ext in supported_formats:
+                            files.append(file_path)
+            
+            if self.logger:
+                self.logger.info(f"找到 {len(files)} 个支持的文件")
+            
+            return files
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"查找文件失败: {str(e)}")
+            return []
+    
+    def discover_files(self, base_path: str) -> List[str]:
+        """递归发现支持的文件（v5功能）"""
+        if not os.path.exists(base_path):
+            raise FileNotFoundError(f"路径不存在: {base_path}")
+        
+        discovered_files = []
+        
+        for root, _, files in os.walk(base_path):
+            for file in files:
+                ext = os.path.splitext(file)[1][1:].lower()
+                if ext in self._supported_formats:
+                    discovered_files.append(os.path.join(root, file))
+        
+        if self.logger:
+            self.logger.info(f"发现 {len(discovered_files)} 个可处理文件")
+        return discovered_files
+    
+    def load_file(self, file_path: str) -> Any:
+        """根据文件类型加载文件（v6功能）"""
+        # 获取文件扩展名
+        ext = os.path.splitext(file_path)[1].lower()
+        
+        # 根据文件类型选择对应的加载方法
+        if ext == '.txt':
+            return self.load_text_file(file_path)
+        elif ext == '.csv':
+            return self.load_csv_file(file_path)
+        elif ext in ['.xlsx', '.xls']:
+            return self.load_excel_file(file_path)
+        elif ext == '.json':
+            return self.load_json_file(file_path)
+        elif ext in ['.doc', '.docx']:
+            return self.load_word_file(file_path)
+        elif ext in ['.jpg', '.jpeg', '.png', '.gif', '.bmp']:
+            return self.load_image_file(file_path)
+        elif ext == '.pdf':
+            return self.load_pdf_file(file_path)
+        elif ext in ['.zip', '.rar']:
+            return self.load_zip_file(file_path)
+        elif ext in ['.gz', '.tar']:
+            return self._load_compressed_file(file_path)
+        else:
+            # 对于不支持的文件类型，尝试作为文本文件加载
+            return self.load_text_file(file_path)
+    
+    def _load_compressed_file(self, file_path: str) -> Dict:
+        """加载压缩文件（v5功能增强）"""
+        ext = os.path.splitext(file_path)[1].lower()
+        
+        try:
+            if ext == '.gz':
+                items = self._load_gz(file_path)
+            elif ext == '.tar':
+                items = self._load_tar(file_path)
+            else:
+                raise ValueError(f"不支持的压缩格式: {ext}")
+            
+            # 将列表格式转换为与其他加载方法一致的字典格式
+            return {
+                "path": file_path,
+                "content": items,
+                "type": "compressed",
+                "file_count": len(items),
+                "sub_files": items
+            }
+        except Exception as e:
+            return {
+                "path": file_path,
+                "error": str(e),
+                "type": "compressed"
+            }
+    
+    def load_text_file(self, file_path: str) -> Dict:
+        """加载文本文件"""
+        try:
+            # 检测文件编码
+            with open(file_path, 'rb') as f:
+                raw_data = f.read()
+                result = chardet.detect(raw_data)
+                encoding = result['encoding'] or 'utf-8'
+            
+            # 读取文件内容
+            with open(file_path, 'r', encoding=encoding, errors='replace') as f:
+                content = f.read()
+            
+            # 验证并标准化文本
+            validation = self.data_validator.validate_text(content)
+            normalized_text = self.text_normalizer.normalize(content)
+            
+            return {
+                "path": file_path,
+                "content": normalized_text,
+                "type": "text",
+                "encoding": encoding,
+                "validation": validation
+            }
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"加载文本文件失败 ({file_path}): {str(e)}")
+            return {
+                "path": file_path,
+                "error": str(e),
+                "type": "text"
+            }
+    
+    def load_csv_file(self, file_path: str) -> Dict:
+        """加载CSV文件"""
+        try:
+            # 尝试读取为DataFrame
+            df = pd.read_csv(file_path)
+            
+            return {
+                "path": file_path,
+                "content": df,
+                "type": "csv",
+                "shape": df.shape,
+                "columns": list(df.columns)
+            }
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"加载CSV文件失败 ({file_path}): {str(e)}")
+            return {
+                "path": file_path,
+                "error": str(e),
+                "type": "csv"
+            }
+    
+    def load_excel_file(self, file_path: str) -> Dict:
+        """加载Excel文件"""
+        try:
+            df = pd.read_excel(file_path)
+            
+            return {
+                "path": file_path,
+                "content": df,
+                "type": "excel",
+                "shape": df.shape,
+                "sheets": ["Sheet1"]  # 简化实现，实际应获取所有工作表名
+            }
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"加载Excel文件失败 ({file_path}): {str(e)}")
+            return {
+                "path": file_path,
+                "error": str(e),
+                "type": "excel"
+            }
+    
+    def load_json_file(self, file_path: str) -> Dict:
+        """加载JSON文件"""
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            return {
+                "path": file_path,
+                "content": data,
+                "type": "json"
+            }
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"加载JSON文件失败 ({file_path}): {str(e)}")
+            return {
+                "path": file_path,
+                "error": str(e),
+                "type": "json"
+            }
+    
+    def load_word_file(self, file_path: str) -> Dict:
+        """加载Word文件"""
+        try:
+            doc = docx.Document(file_path)
+            paragraphs = [p.text for p in doc.paragraphs]
+            content = "\n".join(paragraphs)
+            
+            return {
+                "path": file_path,
+                "content": content,
+                "type": "word",
+                "paragraph_count": len(paragraphs)
+            }
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"加载Word文件失败 ({file_path}): {str(e)}")
+            return {
+                "path": file_path,
+                "error": str(e),
+                "type": "word"
+            }
+    
+    def load_image_file(self, file_path: str) -> Dict:
+        """加载图像文件"""
+        try:
+            with Image.open(file_path) as img:
+                width, height = img.size
+                mode = img.mode
+                format = img.format
+                
+                return {
+                    "path": file_path,
+                    "content": img,
+                    "type": "image",
+                    "width": width,
+                    "height": height,
+                    "mode": mode,
+                    "format": format
+                }
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"加载图像文件失败 ({file_path}): {str(e)}")
+            return {
+                "path": file_path,
+                "error": str(e),
+                "type": "image"
+            }
+    
+    def load_pdf_file(self, file_path: str) -> Dict:
+        """加载PDF文件"""
+        try:
+            text_content = ""
+            with open(file_path, 'rb') as f:
+                reader = PyPDF2.PdfReader(f)
+                num_pages = len(reader.pages)
+                for page in reader.pages:
+                    text_content += page.extract_text() or ""
+            
+            return {
+                "path": file_path,
+                "content": text_content,
+                "type": "pdf",
+                "page_count": num_pages
+            }
+        except Exception as e:
+            if self.logger:
+                self.logger.error(f"加载PDF文件失败 ({file_path}): {str(e)}")
+            return {
+                "path": file_path,
+                "error": str(e),
+                "type": "pdf"
+            }
+    
+    def load_zip_file(self, file_path: str) -> Dict:
+        """加载ZIP文件"""
+        try:
+            extracted_files = []
+            
+            with zipfile.ZipFile(file_path, 'r') as zip_ref:
+                # 获取ZIP文件中的所有文件
+                for file_info in zip_ref.infolist():
+                    # 跳过目录
+                    if file_info.is_dir():
+</think_never_used_51bce0c785ca2f68081bfa7d91973934>
+{"toolcall":{"thought":"我将继续完成合并文件的编写，确保所有功能都被正确整合。","name":"Write","params":{
