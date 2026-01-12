@@ -1,0 +1,473 @@
+{
+  "id": "import_fix_node_workflow_001",
+  "name": "Coze 工作流导入修复节点",
+  "description": "一个专门用于修复和导入 Coze 工作流文件的节点示例",
+  "mode": "workflow",
+  "type": "workflow",
+  "version": "1.0.0",
+  "schema_version": "1.0.0",
+  "trigger": {
+    "name": "手动触发",
+    "type": "manual"
+  },
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  },
+  "metadata": {
+    "createdAt": "2026-01-10T12:00:00.000Z",
+    "updatedAt": "2026-01-10T12:00:00.000Z",
+    "creator": "coze_import_expert",
+    "tags": ["import", "fix", "workflow"]
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "name": "开始",
+      "title": "开始",
+      "description": "工作流入口节点",
+      "type": "start",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "config": {},
+      "parameters": {
+        "node_outputs": {
+          "workflow_description": {
+            "required": false,
+            "type": "string",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "import_fix_node",
+      "name": "工作流导入修复节点",
+      "title": "工作流导入修复节点",
+      "description": "一个专门用于修复和导入 Coze 工作流文件的完整节点，具备文件上传、分析、修复和导入处理能力",
+      "type": "code",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Upload.png",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "config": {
+        "support_file_upload": true,
+        "max_file_size": 10,
+        "file_types": ["json", "yaml", "yml"]
+      },
+      "parameters": {
+        "codeParam": [
+          {
+            "name": "language",
+            "input": {
+              "type": "string",
+              "value": "javascript"
+            }
+          },
+          {
+            "name": "code",
+            "input": {
+              "type": "string",
+              "value": "// Coze 工作流导入修复节点核心逻辑
+async function processWorkflowImport(fileContent, fileName) {
+  try {
+    console.log(`开始处理工作流文件: ${fileName}`);
+    
+    // 1. 解析工作流文件
+    let workflowData;
+    try {
+      workflowData = JSON.parse(fileContent);
+      console.log('✓ 文件解析成功');
+    } catch (parseError) {
+      console.error('✗ JSON 解析失败，尝试 YAML 解析');
+      // 尝试 YAML 解析（如果支持）
+      throw new Error(`文件解析失败: ${parseError.message}`);
+    }
+    
+    // 2. 分析工作流结构
+    console.log('开始分析工作流结构');
+    const analysisResult = analyzeWorkflow(workflowData);
+    console.log(`✓ 分析完成: 发现 ${analysisResult.issues.length} 个问题`);
+    
+    // 3. 自动修复问题
+    let fixedWorkflow = workflowData;
+    if (analysisResult.issues.length > 0) {
+      console.log('开始自动修复工作流');
+      fixedWorkflow = fixWorkflow(workflowData, analysisResult.issues);
+      console.log('✓ 修复完成');
+    }
+    
+    // 4. 验证修复结果
+    console.log('开始验证修复结果');
+    const validationResult = validateWorkflow(fixedWorkflow);
+    console.log(`✓ 验证完成: ${validationResult.valid ? '通过' : '失败'}`);
+    
+    // 5. 生成导入命令或建议
+    const importResult = generateImportSolution(fixedWorkflow, validationResult);
+    
+    return {
+      success: true,
+      message: '工作流处理完成',
+      fileName: fileName,
+      analysis: analysisResult,
+      validation: validationResult,
+      fixedWorkflow: fixedWorkflow,
+      importSolution: importResult
+    };
+    
+  } catch (error) {
+    console.error('处理失败:', error);
+    return {
+      success: false,
+      message: `处理失败: ${error.message}`,
+      fileName: fileName,
+      error: error.message
+    };
+  }
+}
+
+// 工作流分析函数
+function analyzeWorkflow(workflow) {
+  const issues = [];
+  
+  // 检查必填字段
+  const requiredFields = ['id', 'name', 'type', 'nodes', 'edges'];
+  requiredFields.forEach(field => {
+    if (!workflow[field]) {
+      issues.push({
+        type: 'missing_field',
+        severity: 'critical',
+        field: field,
+        message: `缺少必填字段: ${field}`
+      });
+    }
+  });
+  
+  // 检查节点结构
+  if (workflow.nodes) {
+    workflow.nodes.forEach((node, index) => {
+      if (!node.id) {
+        issues.push({
+          type: 'invalid_node',
+          severity: 'critical',
+          nodeIndex: index,
+          message: `节点 ${index} 缺少 ID`
+        });
+      }
+      if (!node.type) {
+        issues.push({
+          type: 'invalid_node',
+          severity: 'critical',
+          nodeIndex: index,
+          message: `节点 ${node.id || index} 缺少类型`
+        });
+      }
+    });
+  }
+  
+  // 检查边结构
+  if (workflow.edges) {
+    workflow.edges.forEach((edge, index) => {
+      if (!edge.source_node || !edge.target_node) {
+        issues.push({
+          type: 'invalid_edge',
+          severity: 'critical',
+          edgeIndex: index,
+          message: `边 ${index} 缺少源节点或目标节点`
+        });
+      }
+    });
+  }
+  
+  // 检查节点类型
+  if (workflow.nodes) {
+    workflow.nodes.forEach(node => {
+      const validTypes = ['start', 'end', 'llm', 'api', 'code', 'config', 'merge', 'upload', 'condition', 'loop', 'batch', 'variable', 'memory', 'image', 'audio', 'video', 'component', 'http', 'json', 'session', 'message'];
+      if (node.type && !validTypes.includes(node.type)) {
+        issues.push({
+          type: 'invalid_node_type',
+          severity: 'warning',
+          nodeId: node.id,
+          message: `节点 ${node.id} 使用了无效类型: ${node.type}`
+        });
+      }
+    });
+  }
+  
+  return {
+    valid: issues.length === 0,
+    issues: issues,
+    nodeCount: workflow.nodes ? workflow.nodes.length : 0,
+    edgeCount: workflow.edges ? workflow.edges.length : 0
+  };
+}
+
+// 工作流修复函数
+function fixWorkflow(workflow, issues) {
+  let fixed = JSON.parse(JSON.stringify(workflow));
+  
+  // 修复缺少的必填字段
+  if (!fixed.id) {
+    fixed.id = `workflow_${Date.now()}`;
+  }
+  if (!fixed.name) {
+    fixed.name = `修复后的工作流_${Date.now()}`;
+  }
+  if (!fixed.type) {
+    fixed.type = 'workflow';
+  }
+  if (!fixed.nodes) {
+    fixed.nodes = [];
+  }
+  if (!fixed.edges) {
+    fixed.edges = [];
+  }
+  
+  // 修复节点问题
+  fixed.nodes = fixed.nodes.map((node, index) => {
+    const fixedNode = {...node};
+    if (!fixedNode.id) {
+      fixedNode.id = `node_${index}_${Date.now()}`;
+    }
+    if (!fixedNode.type) {
+      fixedNode.type = 'llm'; // 默认设为 LLM 节点
+    }
+    if (!fixedNode.position) {
+      fixedNode.position = {
+        x: 100 + index * 200,
+        y: 100
+      };
+    }
+    return fixedNode;
+  });
+  
+  // 修复边问题
+  fixed.edges = fixed.edges.filter(edge => edge.source_node && edge.target_node);
+  
+  return fixed;
+}
+
+// 工作流验证函数
+function validateWorkflow(workflow) {
+  const analysis = analyzeWorkflow(workflow);
+  const criticalIssues = analysis.issues.filter(issue => issue.severity === 'critical');
+  
+  return {
+    valid: criticalIssues.length === 0,
+    issueCount: analysis.issues.length,
+    criticalIssueCount: criticalIssues.length,
+    warnings: analysis.issues.filter(issue => issue.severity === 'warning'),
+    errors: criticalIssues,
+    summary: {
+      nodeCount: workflow.nodes ? workflow.nodes.length : 0,
+      edgeCount: workflow.edges ? workflow.edges.length : 0,
+      hasStartNode: workflow.nodes ? workflow.nodes.some(node => node.type === 'start') : false,
+      hasEndNode: workflow.nodes ? workflow.nodes.some(node => node.type === 'end') : false
+    }
+  };
+}
+
+// 生成导入解决方案
+function generateImportSolution(workflow, validation) {
+  if (validation.valid) {
+    return {
+      type: 'direct_import',
+      message: '工作流可以直接导入',
+      steps: [
+        '1. 登录 Coze 平台',
+        '2. 进入工作流页面',
+        '3. 点击导入按钮',
+        '4. 选择修复后的文件',
+        '5. 点击确定完成导入'
+      ],
+      fixedWorkflow: workflow
+    };
+  } else {
+    return {
+      type: 'manual_fix',
+      message: '工作流需要手动修复',
+      criticalIssues: validation.errors,
+      warnings: validation.warnings,
+      recommendedFixes: [
+        '1. 检查并修复所有关键错误',
+        '2. 确保所有节点都有有效的 ID 和类型',
+        '3. 确保所有边都有有效的源节点和目标节点',
+        '4. 验证节点类型是否符合 Coze 要求',
+        '5. 重新运行验证直到所有关键错误解决'
+      ],
+      fixedWorkflow: workflow
+    };
+  }
+}
+
+// 主函数入口
+async function main(params) {
+  try {
+    const { file_content, file_name } = params;
+    
+    if (!file_content) {
+      return {
+        success: false,
+        message: '请上传工作流文件'
+      };
+    }
+    
+    const result = await processWorkflowImport(file_content, file_name);
+    return result;
+    
+  } catch (error) {
+    return {
+      success: false,
+      message: `处理失败: ${error.message}`,
+      error: error.message
+    };
+  }
+}
+
+// 调用主函数
+return main(params);"
+            }
+          }
+        ],
+        "node_inputs": [
+          {
+            "name": "file_content",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "uploaded_file.content",
+                "ref_node": "file_upload"
+              }
+            }
+          },
+          {
+            "name": "file_name",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "uploaded_file.name",
+                "ref_node": "file_upload"
+              }
+            }
+          }
+        ],
+        "node_outputs": {
+          "processing_result": {
+            "type": "object",
+            "value": null
+          },
+          "fixed_workflow": {
+            "type": "string",
+            "value": null
+          },
+          "import_solution": {
+            "type": "object",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "file_upload",
+      "name": "文件上传节点",
+      "title": "文件上传节点",
+      "description": "用于上传需要修复的工作流文件",
+      "type": "upload",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Upload.png",
+      "position": {
+        "x": 400,
+        "y": 250
+      },
+      "config": {},
+      "parameters": {
+        "uploadParam": [
+          {
+            "name": "fileType",
+            "input": {
+              "type": "string",
+              "value": "workflow"
+            }
+          },
+          {
+            "name": "maxFileSize",
+            "input": {
+              "type": "integer",
+              "value": 10
+            }
+          }
+        ],
+        "node_outputs": {
+          "uploaded_file": {
+            "type": "file",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "result_output",
+      "name": "结果输出节点",
+      "title": "结果输出节点",
+      "description": "输出工作流导入修复的结果",
+      "type": "end",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png",
+      "position": {
+        "x": 700,
+        "y": 100
+      },
+      "config": {},
+      "parameters": {
+        "content": {
+          "type": "string",
+          "value": {
+            "content": "## 工作流导入修复结果\n\n{{#if processing_result.success}}\n✅ 处理成功！\n\n### 分析结果\n- 节点数量: {{processing_result.analysis.nodeCount}}\n- 边数量: {{processing_result.analysis.edgeCount}}\n- 发现问题: {{processing_result.analysis.issues.length}}个\n\n### 验证结果\n- 验证状态: {{#if processing_result.validation.valid}}通过{{else}}失败{{/if}}\n- 关键错误: {{processing_result.validation.criticalIssueCount}}个\n- 警告: {{processing_result.validation.warnings.length}}个\n\n### 导入解决方案\n**方案类型**: {{processing_result.importSolution.type}}\n**信息**: {{processing_result.importSolution.message}}\n\n{{#if processing_result.importSolution.steps}}\n**导入步骤**:\n{{#each processing_result.importSolution.steps}}\n- {{this}}\n{{/each}}\n{{else}}\n**需要修复的问题**:\n{{#each processing_result.importSolution.criticalIssues}}\n- {{this.message}}\n{{/each}}\n\n**建议修复步骤**:\n{{#each processing_result.importSolution.recommendedFixes}}\n- {{this}}\n{{/each}}\n{{/if}}\n\n{{else}}\n❌ 处理失败！\n\n### 失败原因\n{{processing_result.message}}\n{{#if processing_result.error}}\n**错误详情**:\n{{processing_result.error}}\n{{/if}}\n{{/if}}",
+            "type": "template"
+          }
+        },
+        "node_inputs": [
+          {
+            "name": "processing_result",
+            "input": {
+              "type": "object",
+              "value": {
+                "path": "processing_result",
+                "ref_node": "import_fix_node"
+              }
+            }
+          }
+        ],
+        "streamingOutput": false,
+        "terminatePlan": "useAnswerContent"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_1",
+      "source_node": "start",
+      "target_node": "file_upload",
+      "from": "start",
+      "to": "file_upload"
+    },
+    {
+      "id": "edge_2",
+      "source_node": "file_upload",
+      "target_node": "import_fix_node",
+      "from": "file_upload",
+      "to": "import_fix_node"
+    },
+    {
+      "id": "edge_3",
+      "source_node": "import_fix_node",
+      "target_node": "result_output",
+      "from": "import_fix_node",
+      "to": "result_output"
+    }
+  ],
+  "outputs": []
+}

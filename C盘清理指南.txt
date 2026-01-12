@@ -1,0 +1,124 @@
+# C盘空间清理指南
+
+## 1. 使用Windows内置磁盘清理工具
+
+### 步骤：
+1. 按Win+R键打开运行对话框
+2. 输入`cleanmgr.exe`并回车
+3. 选择C盘，点击确定
+4. 勾选要清理的项目（建议全选）
+5. 点击确定，然后点击"删除文件"
+
+### 清理系统文件（额外释放空间）：
+1. 在磁盘清理界面，点击"清理系统文件"
+2. 再次选择C盘
+3. 勾选"Windows更新清理"、"Windows Defender Antivirus"等选项
+4. 点击确定，然后点击"删除文件"
+
+## 2. 清理Windows更新文件
+
+### 命令行方式：
+```cmd
+net stop wuauserv
+rd /s /q C:\Windows\SoftwareDistribution\Download
+net start wuauserv
+```
+
+## 3. 清理临时文件夹
+
+### 命令行方式：
+```cmd
+del /f /s /q C:\Windows\Temp\*
+del /f /s /q %TEMP%\*
+```
+
+## 4. 清理系统日志文件
+
+### 命令行方式：
+```cmd
+wevtutil cl Application
+wevtutil cl Security
+wevtutil cl System
+wevtutil cl Setup
+```
+
+## 5. 禁用休眠功能（可释放与内存大小相等的空间）
+
+### 命令行方式（管理员权限）：
+```cmd
+powercfg /h off
+```
+
+## 6. 清理浏览器缓存
+
+### Chrome浏览器：
+1. 打开Chrome
+2. 按Ctrl+Shift+Delete
+3. 选择时间范围"所有时间"
+4. 勾选要清理的项目
+5. 点击"清除数据"
+
+### Edge浏览器：
+1. 打开Edge
+2. 按Ctrl+Shift+Delete
+3. 选择时间范围"所有时间"
+4. 勾选要清理的项目
+5. 点击"清除数据"
+
+## 7. 卸载不常用的大型应用程序
+
+### 步骤：
+1. 按Win+I键打开设置
+2. 点击"应用" > "应用和功能"
+3. 按大小排序，卸载不常用的大型应用程序
+
+## 8. 检查并清理用户文件夹
+
+### 建议检查的文件夹：
+- `C:\Users\用户名\Downloads`（下载文件夹）
+- `C:\Users\用户名\Documents`（文档文件夹）
+- `C:\Users\用户名\Videos`（视频文件夹）
+- `C:\Users\用户名\Music`（音乐文件夹）
+- `C:\Users\用户名\Pictures`（图片文件夹）
+
+## 9. 使用DISM命令清理系统映像
+
+### 命令行方式（管理员权限）：
+```cmd
+dism.exe /Online /Cleanup-Image /StartComponentCleanup /ResetBase
+```
+
+## 10. 移动虚拟内存到其他磁盘
+
+### 步骤：
+1. 右键点击"此电脑"，选择"属性"
+2. 点击"高级系统设置"
+3. 在"性能"栏点击"设置"
+4. 点击"高级"选项卡
+5. 在"虚拟内存"栏点击"更改"
+6. 取消勾选"自动管理所有驱动器的分页文件大小"
+7. 选择C盘，点击"无分页文件"，然后点击"设置"
+8. 选择其他磁盘（如D盘），点击"系统管理的大小"，然后点击"设置"
+9. 点击确定，重启电脑
+
+## 注意事项：
+
+1. **不要删除**以下文件夹中的文件：
+   - `C:\Windows`
+   - `C:\Program Files`
+   - `C:\Program Files (x86)`
+   - `C:\Users\用户名\AppData`（除非你知道具体用途）
+
+2. 在删除任何文件前，请确保你了解该文件的用途
+
+3. 定期清理可以防止C盘再次爆满
+
+4. 如果以上方法仍然无法释放足够空间，考虑扩展C盘或重新安装系统
+
+## 推荐使用的第三方工具（可选）：
+
+- CCleaner（官方网站：https://www.ccleaner.com/）
+- DiskGenius（官方网站：https://www.diskgenius.com/）
+- TreeSize Free（官方网站：https://www.jam-software.com/treesize_free/）
+
+请从官方网站下载这些工具，避免使用破解版或来历不明的软件。

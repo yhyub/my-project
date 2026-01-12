@@ -1,0 +1,7 @@
+{
+  "host": "your-cloud-postgres-host.example.com",
+  "port": 5432,
+  "user": "your-username",
+  "password": "your-secure-password",
+  "database": "your-database-name"
+}

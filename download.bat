@@ -1,0 +1,3 @@
+@echo off
+echo 正在尝试下载文件...
+powershell -ExecutionPolicy Bypass -Command "$url = 'https://github.com/asxez/DockerDesktop-CN/releases/download/4.55.0/app-Windows-x86.asar'; $outputFile = 'app-Windows-x86.asar'; try { $webClient = New-Object System.Net.WebClient; $webClient.Headers.Add('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'); $webClient.DownloadFile($url, $

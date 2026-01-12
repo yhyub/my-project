@@ -1,0 +1,227 @@
+description: 回答问题    多模态工具  编程代码开发  程序制作
+edges:
+- id: edge_0
+  source_node: '100001'
+  target_node: '106635'
+- id: edge_1
+  source_node: '106635'
+  target_node: '100123'
+- id: edge_2
+  source_node: '100123'
+  target_node: '900001'
+icon: plugin_icon/chatflow-icon.png
+id: 7482227437301858354
+metadata:
+  createdAt: '2025-01-01T00:00:00.000Z'
+  creator: coze_workflow_fixer
+  tags: ["deepseek", "chatflow", "multi-modal", "code-development"]
+  updatedAt: '2025-01-01T00:00:00.000Z'
+mode: chatflow
+name: deepseek
+nodes:
+- config: {}
+  description: 工作流的起始节点，用于设定启动工作流需要的信息
+  icon: "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start-v2.jpg"
+  id: '100001'
+  name: 节点_0
+  parameters:
+    node_outputs:
+      CONVERSATION_NAME:
+        default_value: Default
+        description: 本次请求绑定的会话，会自动写入消息、会从该会话读对话历史。
+        type: string
+        value: null
+      USER_INPUT:
+        type: string
+        value: null
+      ATTACHMENTS:
+        description: 用户上传的附件列表
+        items:
+          properties:
+            file_id:
+              type: string
+              value: null
+            file_name:
+              type: string
+              value: null
+            file_size:
+              type: integer
+              value: null
+            file_type:
+              type: string
+              value: null
+          type: object
+          value: null
+        type: list
+        value: null
+  position:
+    x: 0
+    y: 0
+  title: 开始
+  type: start
+- config: {}
+  description: 工作流的最终节点，用于返回工作流运行后的结果信息
+  icon: "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End-v2.jpg"
+  id: '900001'
+  name: 节点_1
+  parameters:
+    content:
+      type: string
+      value:
+        content: '{{output}}'
+        type: literal
+    node_inputs:
+    - input:
+        type: string
+        value:
+          path: output
+          ref_node: '100123'
+      name: output
+    streamingOutput: true
+    terminatePlan: useAnswerContent
+  position:
+    x: 1500
+    y: 0
+  title: 结束
+  type: end
+- config: {}
+  description: 用于处理用户输入，支持多模态内容
+  icon: "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-StrConcat-v2.jpg"
+  id: '106635'
+  name: 节点_2
+  parameters:
+    concatParams:
+    - input:
+        type: string
+        value: ''
+      name: concatResult
+    - input:
+        type: string
+        value: ，
+      name: arrayItemConcatChar
+    - input:
+        items:
+          type: object
+          value: null
+        type: list
+        value:
+        - isDefault: true
+          label: 换行
+          value: '\n'
+        - isDefault: true
+          label: 制表符
+          value: "\t"
+        - isDefault: true
+          label: 句号
+          value: 。
+        - isDefault: true
+          label: 逗号
+          value: ，
+        - isDefault: true
+          label: 分号
+          value: ；
+        - isDefault: true
+          label: 空格
+          value: ' '
+      name: allArrayItemConcatChars
+    method: concat
+    node_inputs:
+    - input:
+        value:
+          path: USER_INPUT
+          ref_node: '100001'
+      name: String1
+    node_outputs:
+      processed_input:
+        required: true
+        type: string
+        value: null
+  position:
+    x: 500
+    y: 0
+  title: 文本处理
+  type: string
+- config: {}
+  description: 调用DeepSeek大语言模型，支持回答问题、多模态工具调用、代码开发和程序制作
+  icon: "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-LLM-v2.jpg"
+  id: '100123'
+  name: 节点_3
+  parameters:
+    llmParam:
+    - input:
+        type: string
+        value: deepseek-chat
+      name: modelName
+    - input:
+        type: float
+        value: 0.7
+      name: temperature
+    - input:
+        type: integer
+        value: 4096
+      name: maxTokens
+    - input:
+        type: boolean
+        value: true
+      name: enableChatHistory
+    - input:
+        type: string
+        value: |
+          你是一个全能助手，能够：
+          1. 回答各种类型的问题
+          2. 使用多模态工具处理图像、音频等内容
+          3. 进行编程代码开发，支持多种编程语言
+          4. 帮助制作程序和应用
+          
+          请根据用户的输入，提供高质量的回答。
+          对于代码请求，请提供完整、可运行的代码，并添加适当的注释。
+          对于多模态内容，请正确处理并描述结果。
+      name: systemPrompt
+    node_inputs:
+    - input:
+        value:
+          path: processed_input
+          ref_node: '106635'
+      name: prompt
+    - input:
+        value:
+          path: ATTACHMENTS
+          ref_node: '100001'
+      name: attachments
+    node_outputs:
+      output:
+        description: 模型输出结果
+        type: string
+        value: null
+      tool_calls:
+        description: 模型调用的工具列表
+        items:
+          properties:
+            name:
+              type: string
+              value: null
+            parameters:
+              type: object
+              value: null
+          type: object
+          value: null
+        type: list
+        value: null
+    settingOnError: {}
+  position:
+    x: 1000
+    y: 0
+  title: DeepSeek大模型
+  type: llm
+  version: '3'
+outputs: []
+schema_version: 1.0.0
+trigger:
+  name: 手动触发
+  type: manual
+type: workflow
+version: 1.0.0
+viewport:
+  x: 0
+  y: 0
+  zoom: 1

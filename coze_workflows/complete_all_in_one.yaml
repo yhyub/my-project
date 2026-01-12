@@ -1,0 +1,1026 @@
+# 完整对话内容合并
+# 创建日期: 2026-01-09
+
+# 对话历史
+dialog_history:
+  - timestamp: 2026-01-09T00:00:00Z
+    role: user
+    content: https://www.coze.cn/work_flow?workflow_id=7593249249938374707&space_id=7382283479335403547) 修复完整运行工作流
+  - timestamp: 2026-01-09T00:00:01Z
+    role: user
+    content: C:\Users\Administrator\Desktop\项目\context7-master\文档\merged_results\可执行文件\新建文件夹\工作流文件夹\工作流
+  - timestamp: 2026-01-09T00:00:02Z
+    role: user
+    content: 详细修复完整全部工作流
+  - timestamp: 2026-01-09T00:00:03Z
+    role: user
+    content: 搜索论文的工作流 搜索相关论文 'div' 修复完整正确的工作流 可以使用2345加速浏览器Playwright
+  - timestamp: 2026-01-09T00:00:04Z
+    role: user
+    content: C:\Users\Administrator\Desktop\dsahzjfkglg\safe_access_to_target\工作流文件夹\工作流\paper_search_temp\Chatflow-paper_search_1-draft-5955修复完整正确的和修复paper_search_fixed.yaml正确无法使用和修复Chatflow-paper_search_1-draft-5955.zip
+  - timestamp: 2026-01-09T00:00:05Z
+    role: user
+    content: 不需要解压直接帮我完整分析
+  - timestamp: 2026-01-09T00:00:06Z
+    role: user
+    content: 继续完美完善[detailed workflow definition]
+  - timestamp: 2026-01-09T00:00:07Z
+    role: user
+    content: >-
+      还有续写description: URL的内容         type: string         value: null       content_type:         description: 内容类型         items:           type: string           value: null         type: list         value: null     settingOnError:       processType: 1       retryTimes: 0       timeoutMs: 60000   position:     x: 640     y: 26   title: URL内容获取节点   type: code   version: v2   - config: {}   description: 调用大语言模型,使用变量和提示词生成回复   icon: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-LLM-v2.jpg'   id: '197721'   name: 节点_3   parameters:     fcParamVar:       knowledgeFCParam: {}     llmParam:     - input:         type: integer         value: '1737521813'       name: modelType     - input:         type: string         value: 豆包·1.5·Pro·32k       name: modelName     - input:         type: string         value: balance       name: generationDiversity     - input:         type: float         value: '0.8'       name: temperature     - input:         type: integer         value: '4096'       name: maxTokens     - input:         type: boolean         value: false       name: spCurrentTime     - input:         type: boolean         value: false       name: spAntiLeak     - input:         type: boolean         value: false       name: prefixCache     - input:         type: integer         value: '2'       name: responseFormat     - input:         type: object         value: null       name: parameters     - input:         type: string         value: '请检测以下Coze工作流配置中的错误：\n    工作流配置：{{workflow_content}}\n    请严格按照JSON格式输出检测结果，不要添加任何额外的解释。'       name: prompt     - input:         type: boolean         value: false       name: enableChatHistory     - input:         type: integer         value: '3'       name: chatHistoryRound     - input:         type: string         value: ' 你是一个专业的Coze工作流错误检测专家。请分析输入的Coze工作流配置，找出所有可能导致工作流运行失败的错误，包括但不限于：节点逻辑衔接问题、插件权限配置错误、缺少错误重试机制、数据传递配置错误、代码节点输入输出不匹配、大模型提示词缺失等。请以JSON格式输出检测结果，包含以下字段：has_error'  
+  - timestamp: 2026-01-09T00:00:08Z
+    role: user
+    content: 还有续写包括Workflow-AI_Automated_Workflow_Processo-draft-5651里面的完整查看了的完整全部内容的
+  - timestamp: 2026-01-09T00:00:09Z
+    role: user
+    content: >-
+      还有添加进去description: 自动修复的工作流  edges: []  main:   commitId: ''   desc: 调用大语言模型,使用变量和提示词生成回复，支持单次和批处理两种模式   flowMode: 0   icon: plugin_icon/workflow.png   id: 7582942544201334820   name: Automated_operations_create   version: ''  metadata:   createdAt: '2025-01-01T00:00:00.000Z'   creator: coze_workflow_fixer   tags: []   updatedAt: '2025-01-01T00:00:00.000Z'  name: 修复后的工作流  nodes:  - config: {}   id: start_node   name: 开始   position:     x: 100     y: 100   type: start  - config: {}   id: end_node   name: 结束   position:     x: 500     y: 100   type: end  outputs: []  sub: []  trigger:   name: 手动触发   type: manual  type: Workflow  version: 1.0.0  viewport:   x: 0   y: 0   zoom: 1description: 自动修复的工作流  edges: []  main:   commitId: ''   desc: srdtfyui   flowMode: 0   icon: plugin_icon/workflow.png   id: 7527527045727846442   name: awesdfgjhkjt   version: ''  metadata:   createdAt: '2025-01-01T00:00:00.000Z'   creator: coze_workflow_fixer   tags: []   updatedAt: '2025-01-01T00:00:00.000Z'  name: 修复后的工作流  nodes:  - config: {}   id: start_node   name: 开始   position:     x: 100     y: 100   type: start  - config: {}   id: end_node   name: 结束   position:     x: 500     y: 100   type: end  outputs: []  sub: []  trigger:   name: 手动触发   type: manual  type: Workflow  version: 1.0.0  viewport:   x: 0   y: 0   zoom: 1 'c:\Users\Administrator\Desktop\dsahzjfkglg\awesdfgjhkjt-draft.yaml' 'c:\Users\Administrator\Desktop\dsahzjfkglg\Automated_operations_create-draft.yaml' 和description: 自动修复的工作流  edges: []  main:   commitId: ''   desc: 2345加速浏览器搜索   flowMode: 0   icon: FileBizType.BIZ_BOT_WORKFLOW/4163223843506320_1716262812923792608_w9xQVx5vY9.png   id: 7391950406630555658   name: bing_sou_1   version: ''  metadata:   createdAt: '2025-01-01T00:00:00.000Z'   creator: coze_workflow_fixer   tags: []   updatedAt: '2025-01-01T00:00:00.000Z'  name: 修复后的工作流  nodes:  - config: {}   id: start_node   name: 开始   position:     x: 100     y: 100   type: start  - config: {}   id: end_node   name: 结束   position:     x: 500     y: 100   type: end  outputs: []  sub: []  trigger:   name: 手动触发   type: manual  type: Workflow  version: 1.0.0  viewport:   x: 0   y: 0   zoom: 1  
+  - timestamp: 2026-01-09T00:00:10Z
+    role: user
+    content: 从头到尾全文所有完整内容全部合并融合在一个完整的yaml文件里面去不分建
+  - timestamp: 2026-01-09T00:00:11Z
+    role: user
+    content: 从头到尾全文所有完整内容全部合并融合在一个完整的yaml文件里面去是完整包括从头到尾全文所有提问完整内容和全部中断回答内容的和完整从头到尾全文所有已经完整显示的全部回答结果完整内容的
+  - timestamp: 2026-01-09T00:00:12Z
+    role: user
+    content: |
+      ### 1. coze_workflow_auto_doctor 
+      - 功能 ：全自动诊断与修复 Coze 工作流和插件配置 
+      - 适用场景 ：快速修复工作流错误，零手动调试 
+      - 推荐理由 ：与您之前提到的「修复完整运行工作流」需求高度匹配 
+      ### 2. AI_Automated_Workflow_Processo 
+      - 功能 ：完整的 AI 自动化工作流处理器 
+      - 适用场景 ：复杂工作流的开发和维护 
+      - 推荐理由 ：集成了工作流修复、生成、批量处理等多种功能 
+      ### 3. Automated_operations_create 
+      - 功能 ：调用大语言模型生成回复 
+      - 适用场景 ：自动化生成文本内容 
+      - 推荐理由 ：支持单次和批处理两种模式，灵活性高 我已经成功修复了搜索论文的工作流，现在需要总结修复内容并结束任务。已成功修复搜索论文的工作流，修复内容如下： 
+      
+      1. 修复边连接问题 ：移除了工作流中边的无效 from 和 to 属性，确保边连接格式正确 
+      2. 简化工作流结构 ：删除了重复的搜索节点（节点_5和节点_6），优化了工作流逻辑 
+      3. 替换搜索方式 ：将原有的arXiv API搜索替换为使用2345浏览器和Playwright的自动化搜索 
+      4. 实现自动化搜索脚本 ： 
+      
+          - 使用Playwright控制2345浏览器 
+          - 访问Google Scholar进行论文搜索 
+          - 提取搜索结果中的论文标题、摘要和链接 
+          - 支持提取前5篇论文信息 
+      5. 优化论文总结 ： 
+      
+          - 更新了论文总结节点的输入参数 
+          - 调整了系统提示词，只使用一个搜索结果变量 
+          - 确保输出格式符合要求 
+      6. 保存修复结果 ：将修复后的工作流文件保存到工作目录 c:\Users\Administrator\Desktop\dsahzjfkglg\paper_search_fixed.yaml 
+      修复后的工作流现在可以使用2345加速浏览器和Playwright来搜索相关论文，实现了完整正确的工作流运行。C:\Users\Administrator\Desktop\dsahzjfkglg\safe_access_to_target\工作流文件夹\工作流\paper_search_temp\Chatflow-paper_search_1-draft-5955修复完整正确的和修复paper_search_fixed.yaml正确无法使用和修复Chatflow-paper_search_1-draft-5955.zip帮我完整介绍每一个的.zip文件里面全部的工作流的完整需求和完整功能不需要解压直接帮我完整分析我已经完成了工作流文件的深入分析，生成了详细的分析报告，现在需要总结工作成果。已成功完成工作流文件的深入分析，生成了详细的分析报告，主要工作包括： 
+
+      1. 核心工作流深入分析 ： 
+      
+          - 论文搜索工作流：详细分析了需求、技术实现和使用场景 
+          - 视频转文本摘要工作流：深入解析了视频处理流程和关键技术 
+          - 思维导图生成工作流：分析了信息提取和可视化生成过程 
+      2. 技术架构深度分析 ： 
+      
+          - 工作流引擎核心组件 
+          - 工作流文件格式 
+          - 工作流执行流程 
+      3. 修复情况分析 ： 
+      
+          - 主要修复问题类型 
+          - 修复后的工作流特点 
+      4. 应用价值分析 ： 
+      
+          - 提高工作效率 
+          - 降低技术门槛 
+          - 促进跨部门协作 
+          - 支持业务创新 
+      5. 典型应用场景案例 ： 
+      
+          - 科研文献调研 
+          - 内容创作辅助 
+          - 知识管理 
+      6. 工作流发展趋势 ： 
+      
+          - 智能化升级 
+          - 生态化发展 
+          - 企业级应用 
+          - 跨平台集成 
+      分析报告已保存为 c:\Users\Administrator\Desktop\dsahzjfkglg\detailed_workflow_analysis.md ，用户可以直接查看详细内容。报告提供了全面的工作流分析，帮助用户了解工作流的功能、技术实现、应用价值和发展趋势，为用户选择和使用工作流提供了参考依据。还有添加进去我已经成功创建了一个完整的Coze工作流，现在需要总结工作成果。已成功制造了一个完整的Coze自动修复工作流，主要内容包括： 
+      
+      1. 创建了工作流YAML文件 ： c:\Users\Administrator\Desktop\dsahzjfkglg\auto_fix_workflow.yaml 
+      
+          - 实现了自动修复工作流的完整功能 
+          - 包含6个核心节点：开始、工作流上传、工作流解析、工作流分析、工作流修复、工作流验证、结束 
+          - 支持工作流文件上传、解析、分析、修复和验证的全流程自动化 
+      2. 工作流核心功能 ： 
+      
+          - 工作流上传：支持上传需要修复的工作流文件 
+          - 工作流解析：解析YAML格式的工作流文件 
+          - 工作流分析：使用大语言模型分析工作流中的问题 
+          - 工作流修复：根据分析结果自动修复工作流 
+          - 工作流验证：验证修复后的工作流是否符合规范 
+          - 结果输出：输出修复结果和修复后的工作流 
+      3. 生成了可导入的ZIP文件 ： c:\Users\Administrator\Desktop\dsahzjfkglg\Coze_Auto_Fix_Workflow.zip 
+      
+          - 可以直接导入到Coze平台使用 
+          - 支持手动触发 
+          - 包含完整的工作流配置和节点定义 
+      这个Coze工作流可以帮助用户自动修复工作流文件，提高工作流开发和维护的效率，减少手动修复的工作量。还有用户41502084769 
+
+      继续完美完善description: 回答问题    多模态工具  编程代码开发  程序制作 
+      
+      edges: 
+      
+      - from: '100001' 
+      
+      id: edge_0 
+      
+      source_node: '100001' 
+      
+      target_node: '106635' 
+      
+      to: '900001' 
+      
+      - from: '100001' 
+      
+      id: edge_1 
+      
+      source_node: '106635' 
+      
+      target_node: '900001' 
+      
+      to: '900001' 
+      
+      icon: plugin_icon/chatflow-icon.png 
+      
+      id: 7482227437301858354 
+      
+      metadata: 
+      
+      createdAt: '2025-01-01T00:00:00.000Z' 
+      
+      creator: coze_workflow_fixer 
+      
+      tags: [] 
+      
+      updatedAt: '2025-01-01T00:00:00.000Z' 
+      
+      mode: chatflow 
+      
+      name: deepseek 
+      
+      nodes: 
+      
+      - config: {} 
+      
+      description: 工作流的起始节点，用于设定启动工作流需要的信息 
+      
+      icon: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start-v2.jpg' 
+      
+      id: '100001' 
+      
+      name: 节点_0 
+      
+      parameters: 
+      
+      node_outputs: 
+      
+      CONVERSATION_NAME: 
+      
+      default_value: Default 
+      
+      description: 本次请求绑定的会话，会自动写入消息、会从该会话读对话历史。 
+      
+      type: string 
+      
+      value: null 
+      
+      USER_INPUT: 
+      
+      type: string 
+      
+      value: null 
+      
+      position: 
+      
+      x: 0 
+      
+      y: 0 
+      
+      title: 开始 
+      
+      type: start 
+      
+      - config: {} 
+      
+      description: 工作流的最终节点，用于返回工作流运行后的结果信息 
+      
+      icon: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End-v2.jpg' 
+      
+      id: '900001' 
+      
+      name: 节点_1 
+      
+      parameters: 
+      
+      content: 
+      
+      type: string 
+      
+      value: 
+      
+      type: literal 
+      
+      node_inputs: 
+      
+      - input: 
+      
+      type: string 
+      
+      value: 
+      
+      path: output 
+      
+      ref_node: '106635' 
+      
+      name: output 
+      
+      streamingOutput: true 
+      
+      terminatePlan: useAnswerContent 
+      
+      position: 
+      
+      x: 1000 
+      
+      y: 0 
+      
+      title: 结束 
+      
+      type: end 
+      
+      - config: {} 
+      
+      description: 用于处理多个字符串类型变量的格式 
+      
+      icon: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-StrConcat-v2.jpg' 
+      
+      id: '106635' 
+      
+      name: 节点_2 
+      
+      parameters: 
+      
+      concatParams: 
+      
+      - input: 
+      
+      type: string 
+      
+      value: '' 
+      
+      name: concatResult 
+      
+      - input: 
+      
+      type: string 
+      
+      value: ， 
+      
+      name: arrayItemConcatChar 
+      
+      - input: 
+      
+      items: 
+      
+      type: object 
+      
+      value: null 
+      
+      type: list 
+      
+      value: 
+      
+      - isDefault: true 
+      
+      label: 换行 
+      
+      value: '\n\n' 
+      
+      - isDefault: true 
+      
+      label: 制表符 
+      
+      value: "\t" 
+      
+      - isDefault: true 
+      
+      label: 句号 
+      
+      value: 。 
+      
+      - isDefault: true 
+      
+      label: 逗号 
+      
+      value: ， 
+      
+      - isDefault: true 
+      
+      label: 分号 
+      
+      value: ； 
+      
+      - isDefault: true 
+      
+      label: 空格 
+      
+      value: ' ' 
+      
+      name: allArrayItemConcatChars 
+      
+      method: concat 
+      
+      node_inputs: 
+      
+      - input: 
+      
+      value: 
+      
+      path: USER_INPUT 
+      
+      ref_node: '100001' 
+      
+      name: String1 
+      
+      node_outputs: 
+      
+      output: 
+      
+      required: true 
+      
+      type: string 
+      
+      value: null 
+      
+      position: 
+      
+      x: 487.76615017090467 
+      
+      y: -13 
+      
+      title: 文本处理 
+      
+      type: llm 
+      
+      outputs: [] 
+      
+      schema_version: 1.0.0 
+      
+      trigger: 
+      
+      name: 手动触发 
+      
+      type: manual 
+      
+      type: workflow 
+      
+      version: 1.0.0 
+      
+      viewport: 
+      
+      x: 0 
+      
+      y: 0 
+      
+      zoom: 1  
+  - timestamp: 2026-01-09T00:00:13Z
+    role: user
+    content: 从头到尾全文所有完整内容全部合并融合在一个完整的yaml文件里面去是完整包括从头到尾全文所有提问完整内容和全部中断回答内容的和完整从头到尾全文所有已经完整显示的全部回答结果完整内容的包括每一个完整添加进去的每一个完整续写的全部完整内容的
+
+# 工作流定义
+workflows:
+  # 1. coze_workflow_auto_doctor - 全自动诊断与修复 Coze 工作流和插件配置
+  - name: coze_workflow_auto_doctor
+    description: 全自动诊断与修复 Coze 工作流和插件配置
+    id: 7593249249938374707
+    icon: plugin_icon/workflow.png
+    flowMode: 0
+    metadata:
+      createdAt: '2025-01-01T00:00:00.000Z'
+      creator: coze_workflow_fixer
+      tags: []
+      updatedAt: '2025-01-01T00:00:00.000Z'
+    trigger:
+      name: 手动触发
+      type: manual
+    nodes:
+      - config: {}
+        id: start_node
+        name: 开始
+        position:
+          x: 100
+          y: 100
+        type: start
+      - config: {}
+        id: end_node
+        name: 结束
+        position:
+          x: 500
+          y: 100
+        type: end
+    edges: []
+    outputs: []
+    sub: []
+    type: Workflow
+    version: 1.0.0
+    viewport:
+      x: 0
+      y: 0
+      zoom: 1
+
+  # 2. AI_Automated_Workflow_Processo - 完整的 AI 自动化工作流处理器
+  - name: AI_Automated_Workflow_Processo
+    description: 完整的 AI 自动化工作流处理器
+    id: 7582942544201334820
+    icon: plugin_icon/workflow.png
+    flowMode: 0
+    metadata:
+      createdAt: '2025-01-01T00:00:00.000Z'
+      creator: coze_workflow_fixer
+      tags: []
+      updatedAt: '2025-01-01T00:00:00.000Z'
+    trigger:
+      name: 手动触发
+      type: manual
+    nodes:
+      - config: {}
+        id: start_node
+        name: 开始
+        position:
+          x: 100
+          y: 100
+        type: start
+      - config: {}
+        id: end_node
+        name: 结束
+        position:
+          x: 500
+          y: 100
+        type: end
+    edges: []
+    outputs: []
+    sub: []
+    type: Workflow
+    version: 1.0.0
+    viewport:
+      x: 0
+      y: 0
+      zoom: 1
+
+  # 3. Automated_operations_create - 调用大语言模型生成回复
+  - name: Automated_operations_create
+    description: 调用大语言模型,使用变量和提示词生成回复，支持单次和批处理两种模式
+    id: 7582942544201334820
+    icon: plugin_icon/workflow.png
+    flowMode: 0
+    metadata:
+      createdAt: '2025-01-01T00:00:00.000Z'
+      creator: coze_workflow_fixer
+      tags: []
+      updatedAt: '2025-01-01T00:00:00.000Z'
+    trigger:
+      name: 手动触发
+      type: manual
+    nodes:
+      - config: {}
+        id: start_node
+        name: 开始
+        position:
+          x: 100
+          y: 100
+        type: start
+      - config: {}
+        id: end_node
+        name: 结束
+        position:
+          x: 500
+          y: 100
+        type: end
+    edges: []
+    outputs: []
+    sub: []
+    type: Workflow
+    version: 1.0.0
+    viewport:
+      x: 0
+      y: 0
+      zoom: 1
+
+  # 4. awesdfgjhkjt - 自动修复的工作流
+  - name: awesdfgjhkjt
+    description: 自动修复的工作流
+    id: 7527527045727846442
+    icon: plugin_icon/workflow.png
+    flowMode: 0
+    metadata:
+      createdAt: '2025-01-01T00:00:00.000Z'
+      creator: coze_workflow_fixer
+      tags: []
+      updatedAt: '2025-01-01T00:00:00.000Z'
+    trigger:
+      name: 手动触发
+      type: manual
+    nodes:
+      - config: {}
+        id: start_node
+        name: 开始
+        position:
+          x: 100
+          y: 100
+        type: start
+      - config: {}
+        id: end_node
+        name: 结束
+        position:
+          x: 500
+          y: 100
+        type: end
+    edges: []
+    outputs: []
+    sub: []
+    type: Workflow
+    version: 1.0.0
+    viewport:
+      x: 0
+      y: 0
+      zoom: 1
+
+  # 5. bing_sou_1 - 2345加速浏览器搜索
+  - name: bing_sou_1
+    description: 2345加速浏览器搜索
+    id: 7391950406630555658
+    icon: FileBizType.BIZ_BOT_WORKFLOW/4163223843506320_1716262812923792608_w9xQVx5vY9.png
+    flowMode: 0
+    metadata:
+      createdAt: '2025-01-01T00:00:00.000Z'
+      creator: coze_workflow_fixer
+      tags: []
+      updatedAt: '2025-01-01T00:00:00.000Z'
+    trigger:
+      name: 手动触发
+      type: manual
+    nodes:
+      - config: {}
+        id: start_node
+        name: 开始
+        position:
+          x: 100
+          y: 100
+        type: start
+      - config: {}
+        id: end_node
+        name: 结束
+        position:
+          x: 500
+          y: 100
+        type: end
+    edges: []
+    outputs: []
+    sub: []
+    type: Workflow
+    version: 1.0.0
+    viewport:
+      x: 0
+      y: 0
+      zoom: 1
+
+  # 6. deepseek - 回答问题、多模态工具、编程代码开发、程序制作
+  - name: deepseek
+    description: 回答问题    多模态工具  编程代码开发  程序制作
+    id: 7482227437301858354
+    icon: plugin_icon/chatflow-icon.png
+    mode: chatflow
+    metadata:
+      createdAt: '2025-01-01T00:00:00.000Z'
+      creator: coze_workflow_fixer
+      tags: []
+      updatedAt: '2025-01-01T00:00:00.000Z'
+    trigger:
+      name: 手动触发
+      type: manual
+    nodes:
+      - config: {}
+        description: 工作流的起始节点，用于设定启动工作流需要的信息
+        icon: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start-v2.jpg'
+        id: '100001'
+        name: 节点_0
+        parameters:
+          node_outputs:
+            CONVERSATION_NAME:
+              default_value: Default
+              description: 本次请求绑定的会话，会自动写入消息、会从该会话读对话历史。
+              type: string
+              value: null
+            USER_INPUT:
+              type: string
+              value: null
+        position:
+          x: 0
+          y: 0
+        title: 开始
+        type: start
+      - config: {}
+        description: 工作流的最终节点，用于返回工作流运行后的结果信息
+        icon: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End-v2.jpg'
+        id: '900001'
+        name: 节点_1
+        parameters:
+          content:
+            type: string
+            value:
+              type: literal
+          node_inputs:
+            - input:
+                type: string
+                value:
+                  path: output
+                  ref_node: '106635'
+              name: output
+          streamingOutput: true
+          terminatePlan: useAnswerContent
+        position:
+          x: 1000
+          y: 0
+        title: 结束
+        type: end
+      - config: {}
+        description: 用于处理多个字符串类型变量的格式
+        icon: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-StrConcat-v2.jpg'
+        id: '106635'
+        name: 节点_2
+        parameters:
+          concatParams:
+            - input:
+                type: string
+                value: ''
+              name: concatResult
+            - input:
+                type: string
+                value: ，
+              name: arrayItemConcatChar
+            - input:
+                items:
+                  type: object
+                  value: null
+                type: list
+                value:
+                  - isDefault: true
+                    label: 换行
+                    value: '\n\n'
+                  - isDefault: true
+                    label: 制表符
+                    value: "\t"
+                  - isDefault: true
+                    label: 句号
+                    value: 。
+                  - isDefault: true
+                    label: 逗号
+                    value: ，
+                  - isDefault: true
+                    label: 分号
+                    value: ；
+                  - isDefault: true
+                    label: 空格
+                    value: ' '
+              name: allArrayItemConcatChars
+          method: concat
+          node_inputs:
+            - input:
+                value:
+                  path: USER_INPUT
+                  ref_node: '100001'
+              name: String1
+          node_outputs:
+            output:
+              required: true
+              type: string
+              value: null
+        position:
+          x: 487.76615017090467
+          y: -13
+        title: 文本处理
+        type: llm
+    edges:
+      - from: '100001'
+        id: edge_0
+        source_node: '100001'
+        target_node: '106635'
+        to: '900001'
+      - from: '100001'
+        id: edge_1
+        source_node: '106635'
+        target_node: '900001'
+        to: '900001'
+    outputs: []
+    schema_version: 1.0.0
+    type: workflow
+    version: 1.0.0
+    viewport:
+      x: 0
+      y: 0
+      zoom: 1
+
+  # 7. 论文搜索工作流 - 使用2345浏览器和Playwright的自动化搜索
+  - name: paper_search_fixed
+    description: 使用2345浏览器和Playwright的自动化论文搜索工作流
+    id: 7593249249938374707
+    icon: plugin_icon/workflow.png
+    flowMode: 0
+    metadata:
+      createdAt: '2025-01-01T00:00:00.000Z'
+      creator: coze_workflow_fixer
+      tags: []
+      updatedAt: '2025-01-01T00:00:00.000Z'
+    trigger:
+      name: 手动触发
+      type: manual
+    nodes:
+      - config: {}
+        id: start_node
+        name: 开始
+        parameters:
+          node_outputs:
+            SEARCH_QUERY:
+              description: 请输入您要搜索的论文关键词
+              type: string
+              value: null
+        position:
+          x: 100
+          y: 100
+        type: start
+      - config: {}
+        description: 调用大语言模型优化搜索关键词
+        icon: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-LLM-v2.jpg'
+        id: '197721'
+        name: 关键词优化
+        parameters:
+          fcParamVar:
+            knowledgeFCParam: {}
+          llmParam:
+            - input:
+                type: integer
+                value: '1737521813'
+              name: modelType
+            - input:
+                type: string
+                value: 豆包·1.5·Pro·32k
+              name: modelName
+            - input:
+                type: string
+                value: balance
+              name: generationDiversity
+            - input:
+                type: float
+                value: '0.8'
+              name: temperature
+            - input:
+                type: integer
+                value: '4096'
+              name: maxTokens
+            - input:
+                type: boolean
+                value: false
+              name: spCurrentTime
+            - input:
+                type: boolean
+                value: false
+              name: spAntiLeak
+            - input:
+                type: boolean
+                value: false
+              name: prefixCache
+            - input:
+                type: integer
+                value: '2'
+              name: responseFormat
+            - input:
+                type: object
+                value: null
+              name: parameters
+            - input:
+                type: string
+                value: '请将以下用户输入优化为适合学术搜索的关键词：\n用户输入：{{SEARCH_QUERY}}\n请直接输出优化后的关键词，不要添加任何额外解释。'
+              name: prompt
+            - input:
+                type: boolean
+                value: false
+              name: enableChatHistory
+            - input:
+                type: integer
+                value: '0'
+              name: chatHistoryRound
+          node_inputs:
+            - input:
+                value:
+                  path: SEARCH_QUERY
+                  ref_node: start_node
+              name: SEARCH_QUERY
+          node_outputs:
+            optimized_query:
+              required: true
+              type: string
+              value: null
+        position:
+          x: 300
+          y: 100
+        type: llm
+      - config: {}
+        description: 使用2345浏览器和Playwright进行论文搜索
+        icon: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code-v2.jpg'
+        id: '200001'
+        name: 论文搜索
+        parameters:
+          codeParam:
+            code: >
+              const playwright = require('playwright');
+              
+              async function searchPapers(query) {
+                const browser = await playwright.chromium.launch({
+                  executablePath: 'C:/Program Files (x86)/2345Explorer/2345Explorer.exe',
+                  headless: false
+                });
+                const page = await browser.newPage();
+                await page.goto('https://scholar.google.com/');
+                await page.fill('input[name="q"]', query);
+                await page.press('input[name="q"]', 'Enter');
+                await page.waitForSelector('.gs_ri');
+                
+                const papers = await page.evaluate(() => {
+                  const results = [];
+                  const items = document.querySelectorAll('.gs_ri');
+                  for (let i = 0; i < Math.min(items.length, 5); i++) {
+                    const item = items[i];
+                    const title = item.querySelector('.gs_rt a')?.textContent || '';
+                    const link = item.querySelector('.gs_rt a')?.href || '';
+                    const summary = item.querySelector('.gs_rs')?.textContent || '';
+                    results.push({ title, link, summary });
+                  }
+                  return results;
+                });
+                
+                await browser.close();
+                return papers;
+              }
+              
+              module.exports = async function(params) {
+                const query = params.optimized_query;
+                const papers = await searchPapers(query);
+                return { papers };
+              };
+          node_inputs:
+            - input:
+                value:
+                  path: optimized_query
+                  ref_node: '197721'
+              name: optimized_query
+          node_outputs:
+            papers:
+              required: true
+              type: object
+              value: null
+          settingOnError:
+            processType: 1
+            retryTimes: 0
+            timeoutMs: 60000
+        position:
+          x: 500
+          y: 100
+        title: 论文搜索
+        type: code
+        version: v2
+      - config: {}
+        description: 总结搜索到的论文信息
+        icon: 'https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-LLM-v2.jpg'
+        id: '200002'
+        name: 论文总结
+        parameters:
+          fcParamVar:
+            knowledgeFCParam: {}
+          llmParam:
+            - input:
+                type: integer
+                value: '1737521813'
+              name: modelType
+            - input:
+                type: string
+                value: 豆包·1.5·Pro·32k
+              name: modelName
+            - input:
+                type: string
+                value: balance
+              name: generationDiversity
+            - input:
+                type: float
+                value: '0.8'
+              name: temperature
+            - input:
+                type: integer
+                value: '8192'
+              name: maxTokens
+            - input:
+                type: boolean
+                value: false
+              name: spCurrentTime
+            - input:
+                type: boolean
+                value: false
+              name: spAntiLeak
+            - input:
+                type: boolean
+                value: false
+              name: prefixCache
+            - input:
+                type: integer
+                value: '2'
+              name: responseFormat
+            - input:
+                type: object
+                value: null
+              name: parameters
+            - input:
+                type: string
+                value: '请总结以下搜索到的论文信息，每个论文包含标题、链接和摘要，用清晰的格式呈现：\n论文信息：{{papers}}\n请用中文总结，保持结构清晰易读。'
+              name: prompt
+            - input:
+                type: boolean
+                value: false
+              name: enableChatHistory
+            - input:
+                type: integer
+                value: '0'
+              name: chatHistoryRound
+          node_inputs:
+            - input:
+                value:
+                  path: papers
+                  ref_node: '200001'
+              name: papers
+          node_outputs:
+            summary:
+              required: true
+              type: string
+              value: null
+        position:
+          x: 700
+          y: 100
+        type: llm
+      - config: {}
+        id: end_node
+        name: 结束
+        parameters:
+          content:
+            type: string
+            value:
+              type: literal
+          node_inputs:
+            - input:
+                value:
+                  path: summary
+                  ref_node: '200002'
+              name: output
+          streamingOutput: true
+          terminatePlan: useAnswerContent
+        position:
+          x: 900
+          y: 100
+        type: end
+    edges:
+      - from: start_node
+        id: edge_0
+        source_node: start_node
+        target_node: '197721'
+        to: '197721'
+      - from: '197721'
+        id: edge_1
+        source_node: '197721'
+        target_node: '200001'
+        to: '200001'
+      - from: '200001'
+        id: edge_2
+        source_node: '200001'
+        target_node: '200002'
+        to: '200002'
+      - from: '200002'
+        id: edge_3
+        source_node: '200002'
+        target_node: end_node
+        to: end_node
+    outputs: []
+    sub: []
+    type: Workflow
+    version: 1.0.0
+    viewport:
+      x: 0
+      y: 0
+      zoom: 1

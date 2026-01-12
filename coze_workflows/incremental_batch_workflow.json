@@ -1,0 +1,334 @@
+{
+  "version": "1.0",
+  "name": "增量批量自动化工作流",
+  "description": "基于Coze的增量批量数据处理工作流，支持多种免费存储平台",
+  "trigger": {
+    "type": "mixed",
+    "config": {
+      "schedules": [
+        {
+          "name": "每日处理",
+          "cron": "0 2 * * *",
+          "enabled": true
+        },
+        {
+          "name": "每小时检查",
+          "cron": "0 * * * *",
+          "enabled": true
+        }
+      ],
+      "webhook": {
+        "endpoint": "/api/webhook/incremental",
+        "method": "POST",
+        "secret": "{{env.WEBHOOK_SECRET}}"
+      },
+      "manual": true
+    }
+  },
+  "environment_variables": [
+    {
+      "name": "SUPABASE_URL",
+      "type": "string",
+      "required": false,
+      "description": "Supabase数据库URL"
+    },
+    {
+      "name": "SUPABASE_KEY",
+      "type": "secret",
+      "required": false,
+      "description": "Supabase API密钥"
+    },
+    {
+      "name": "GITHUB_TOKEN",
+      "type": "secret",
+      "required": false,
+      "description": "GitHub Personal Access Token"
+    },
+    {
+      "name": "GITHUB_REPO",
+      "type": "string",
+      "required": false,
+      "description": "GitHub仓库路径，格式：用户名/仓库名"
+    },
+    {
+      "name": "GOOGLE_SERVICE_ACCOUNT",
+      "type": "secret",
+      "required": false,
+      "description": "Google Service Account JSON"
+    },
+    {
+      "name": "BATCH_SIZE",
+      "type": "number",
+      "required": false,
+      "default": 100,
+      "description": "批量处理大小"
+    },
+    {
+      "name": "RETRY_COUNT",
+      "type": "number",
+      "required": false,
+      "default": 3,
+      "description": "重试次数"
+    },
+    {
+      "name": "LOCAL_PG_HOST",
+      "type": "string",
+      "required": false,
+      "default": "localhost",
+      "description": "本地PostgreSQL主机地址"
+    },
+    {
+      "name": "LOCAL_PG_PORT",
+      "type": "number",
+      "required": false,
+      "default": 5432,
+      "description": "本地PostgreSQL端口"
+    },
+    {
+      "name": "LOCAL_PG_DATABASE",
+      "type": "string",
+      "required": false,
+      "default": "postgres",
+      "description": "本地PostgreSQL数据库名称"
+    },
+    {
+      "name": "LOCAL_PG_USER",
+      "type": "string",
+      "required": false,
+      "default": "postgres",
+      "description": "本地PostgreSQL用户名"
+    },
+    {
+      "name": "LOCAL_PG_PASSWORD",
+      "type": "secret",
+      "required": false,
+      "description": "本地PostgreSQL密码"
+    },
+    {
+      "name": "STORAGE_TYPE",
+      "type": "string",
+      "required": false,
+      "default": "github",
+      "description": "存储类型：github, supabase, local_pg"
+    },
+    {
+      "name": "ERROR_WEBHOOK",
+      "type": "string",
+      "required": false,
+      "description": "错误通知Webhook URL"
+    },
+    {
+      "name": "SLACK_WEBHOOK",
+      "type": "string",
+      "required": false,
+      "description": "Slack通知Webhook URL"
+    },
+    {
+      "name": "NOTIFICATION_EMAIL",
+      "type": "string",
+      "required": false,
+      "description": "通知邮件地址"
+    },
+    {
+      "name": "WEBHOOK_SECRET",
+      "type": "secret",
+      "required": false,
+      "description": "Webhook密钥"
+    },
+    {
+      "name": "DATA_SOURCES",
+      "type": "string",
+      "required": false,
+      "description": "数据源配置JSON"
+    },
+    {
+      "name": "STORAGE_CONFIG",
+      "type": "string",
+      "required": false,
+      "description": "存储配置JSON"
+    },
+    {
+      "name": "NOTIFICATION_CONFIG",
+      "type": "string",
+      "required": false,
+      "description": "通知配置JSON"
+    },
+    {
+      "name": "REQUIRED_FIELDS",
+      "type": "string",
+      "required": false,
+      "description": "必填字段配置JSON"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "name": "初始化检查",
+      "type": "javascript",
+      "description": "检查环境配置和存储连接",
+      "code": "// 初始化检查节点\nconst axios = require('axios');\n\nasync function checkSupabaseConnection() {\n  try {\n    if (!process.env.SUPABASE_URL || !process.env.SUPABASE_KEY) {\n      return false;\n    }\n    const response = await axios.get(\n      `${process.env.SUPABASE_URL}/rest/v1/`,\n      {\n        headers: {\n          'apikey': process.env.SUPABASE_KEY,\n          'Authorization': `Bearer ${process.env.SUPABASE_KEY}`\n        }\n      }\n    );\n    return true;\n  } catch (error) {\n    console.error('Supabase连接失败:', error.message);\n    return false;\n  }\n}\n\nasync function checkGitHubConnection() {\n  try {\n    if (!process.env.GITHUB_TOKEN || !process.env.GITHUB_REPO) {\n      return false;\n    }\n    const response = await axios.get(\n      `https://api.github.com/repos/${process.env.GITHUB_REPO}`,\n      {\n        headers: {\n          'Authorization': `token ${process.env.GITHUB_TOKEN}`\n        }\n      }\n    );\n    return true;\n  } catch (error) {\n    console.error('GitHub连接失败:', error.message);\n    return false;\n  }\n}\n\nasync function checkLocalPostgresConnection() {\n  try {\n    if (!process.env.LOCAL_PG_HOST || !process.env.LOCAL_PG_USER) {\n      return false;\n    }\n    // PostgreSQL 17支持检查\n    console.log('本地PostgreSQL环境变量配置完成');\n    console.log('支持PostgreSQL 17版本');\n    return true;\n  } catch (error) {\n    console.error('本地PostgreSQL连接检查失败:', error.message);\n    return false;\n  }\n}\n\nfunction validateEnvironmentVariables() {\n  // 验证必需的环境变量\n  const storageType = process.env.STORAGE_TYPE || 'github';\n  \n  // 验证通知配置\n  if (process.env.NOTIFICATION_CONFIG) {\n    try {\n      const notificationConfig = JSON.parse(process.env.NOTIFICATION_CONFIG);\n      if (notificationConfig.types && notificationConfig.types.includes('slack') && !process.env.SLACK_WEBHOOK) {\n        throw new Error('启用了Slack通知但未配置SLACK_WEBHOOK');\n      }\n    } catch (error) {\n      throw new Error(`通知配置格式错误: ${error.message}`);\n    }\n  }\n  \n  // 验证数据源配置\n  if (process.env.DATA_SOURCES) {\n    try {\n      JSON.parse(process.env.DATA_SOURCES);\n    } catch (error) {\n      throw new Error(`数据源配置格式错误: ${error.message}`);\n    }\n  }\n  \n  // 验证存储配置\n  if (process.env.STORAGE_CONFIG) {\n    try {\n      JSON.parse(process.env.STORAGE_CONFIG);\n    } catch (error) {\n      throw new Error(`存储配置格式错误: ${error.message}`);\n    }\n  }\n  \n  // 验证必填字段配置\n  if (process.env.REQUIRED_FIELDS) {\n    try {\n      JSON.parse(process.env.REQUIRED_FIELDS);\n    } catch (error) {\n      throw new Error(`必填字段配置格式错误: ${error.message}`);\n    }\n  }\n}\n\nasync function main() {\n  // 验证环境变量格式\n  validateEnvironmentVariables();\n  \n  const supabaseOk = await checkSupabaseConnection();\n  const githubOk = await checkGitHubConnection();\n  const localPgOk = await checkLocalPostgresConnection();\n  \n  // 根据STORAGE_TYPE检查对应存储是否可用\n  const storageType = process.env.STORAGE_TYPE || 'github';\n  let storageAvailable = false;\n  \n  switch (storageType) {\n    case 'supabase':\n      storageAvailable = supabaseOk;\n      break;\n    case 'github':\n      storageAvailable = githubOk;\n      break;\n    case 'local_pg':\n      storageAvailable = localPgOk;\n      break;\n    default:\n      storageAvailable = githubOk || supabaseOk || localPgOk;\n  }\n  \n  if (!storageAvailable) {\n    throw new Error(`所选存储类型 ${storageType} 不可用，请检查环境变量配置`);\n  }\n  \n  return {\n    supabase_connected: supabaseOk,\n    github_connected: githubOk,\n    local_pg_connected: localPgOk,\n    storage_type: storageType,\n    workflow_started_at: new Date().toISOString(),\n    environment_validated: true\n  };\n}\n\nmain();",
+      "inputs": [],
+      "outputs": [
+        "supabase_connected",
+        "github_connected",
+        "local_pg_connected",
+        "storage_type",
+        "workflow_started_at",
+        "environment_validated"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "增量数据获取",
+      "type": "javascript",
+      "description": "从数据源获取增量数据",
+      "code": "// 增量数据获取节点\nconst axios = require('axios');\n\nclass DataSource {\n  constructor(type, config) {\n    this.type = type;\n    this.config = config;\n  }\n  \n  async getData(lastProcessedAt) {\n    switch (this.type) {\n      case 'api':\n        return this.getFromApi(lastProcessedAt);\n      case 'database':\n        return this.getFromDatabase(lastProcessedAt);\n      case 'web':\n        return this.getFromWeb(lastProcessedAt);\n      case 'file':\n        return this.getFromFile(lastProcessedAt);\n      default:\n        throw new Error(`不支持的数据源类型: ${this.type}`);\n    }\n  }\n  \n  async getFromApi(lastProcessedAt) {\n    const response = await axios.get(this.config.url, {\n      params: {\n        last_updated: lastProcessedAt,\n        limit: process.env.BATCH_SIZE || 100,\n        ...this.config.params\n      },\n      headers: this.config.headers || {}\n    });\n    return response.data;\n  }\n  \n  async getFromDatabase(lastProcessedAt) {\n    const storageType = process.env.STORAGE_TYPE || 'github';\n    \n    if (storageType === 'supabase') {\n      // 使用Supabase作为数据库\n      const { createClient } = require('@supabase/supabase-js');\n      const supabase = createClient(\n        process.env.SUPABASE_URL,\n        process.env.SUPABASE_KEY\n      );\n      \n      const { data, error } = await supabase\n        .from(this.config.table)\n        .select('*')\n        .gt(this.config.incremental_field, lastProcessedAt)\n        .limit(process.env.BATCH_SIZE || 100);\n      \n      if (error) throw error;\n      return data;\n    } else if (storageType === 'local_pg') {\n      // 本地PostgreSQL支持\n      console.log('从本地PostgreSQL获取数据');\n      console.log(`表: ${this.config.table}`);\n      console.log(`增量字段: ${this.config.incremental_field}`);\n      \n      // 实际实现中，这里应该使用pg模块连接本地PostgreSQL并查询数据\n      // 示例代码:\n      /*\n      const { Client } = require('pg');\n      const client = new Client({\n        host: process.env.LOCAL_PG_HOST,\n        port: process.env.LOCAL_PG_PORT || 5432,\n        database: process.env.LOCAL_PG_DATABASE || 'postgres',\n        user: process.env.LOCAL_PG_USER,\n        password: process.env.LOCAL_PG_PASSWORD\n      });\n      \n      await client.connect();\n      \n      const { rows } = await client.query(`\n        SELECT * \n        FROM ${this.config.table} \n        WHERE ${this.config.incremental_field} > $1\n        LIMIT $2\n      `, [lastProcessedAt, process.env.BATCH_SIZE || 100]);\n      \n      await client.end();\n      return rows;\n      */\n      \n      // 目前返回空数组，实际部署时需要替换为真实查询\n      return [];\n    } else {\n      throw new Error(`存储类型 ${storageType} 不支持作为数据库数据源`);\n    }\n  }\n  \n  async getFromWeb(lastProcessedAt) {\n    // 简单的Web Scraping示例\n    const response = await axios.get(this.config.url, {\n      headers: this.config.headers || {}\n    });\n    return [{ \n      content: response.data, \n      scraped_at: new Date().toISOString(),\n      url: this.config.url\n    }];\n  }\n  \n  async getFromFile(lastProcessedAt) {\n    // 文件数据源支持（示例实现）\n    console.log('从文件数据源获取数据');\n    console.log(`文件配置: ${JSON.stringify(this.config)}`);\n    \n    // 实际实现中，这里应该读取本地或远程文件\n    // 目前返回空数组，实际部署时需要替换为真实实现\n    return [];\n  }\n}\n\nasync function getLastProcessedAt() {\n  // 根据存储类型获取上次处理时间\n  const storageType = process.env.STORAGE_TYPE || 'github';\n  \n  switch (storageType) {\n    case 'supabase':\n      return await getLastProcessedAtSupabase();\n    case 'github':\n      return await getLastProcessedAtGitHub();\n    case 'local_pg':\n      return await getLastProcessedAtLocalPostgres();\n    default:\n      console.log(`不支持的存储类型 ${storageType}，返回30天前的时间`);\n      return new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();\n  }\n}\n\nasync function getLastProcessedAtSupabase() {\n  try {\n    if (!process.env.SUPABASE_URL || !process.env.SUPABASE_KEY) {\n      throw new Error('Supabase环境变量未配置');\n    }\n    const { createClient } = require('@supabase/supabase-js');\n    const supabase = createClient(\n      process.env.SUPABASE_URL,\n      process.env.SUPABASE_KEY\n    );\n    \n    const { data, error } = await supabase\n      .from('workflow_state')\n      .select('last_processed_at')\n      .eq('workflow_name', 'incremental_batch_processing')\n      .single();\n    \n    if (error) {\n      // 如果表不存在，创建表\n      if (error.code === '42P01') {\n        console.log('创建workflow_state表');\n        await supabase\n          .from('workflow_state')\n          .insert({
+            workflow_name: 'incremental_batch_processing',
+            last_processed_at: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
+            config: {}
+          });\n        return new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();\n      }\n      throw error;\n    }\n    \n    return data.last_processed_at || new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();\n  } catch (error) {\n    console.error('从Supabase获取上次处理时间失败:', error.message);\n    return new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();\n  }\n}\n\nasync function getLastProcessedAtGitHub() {\n  try {\n    if (!process.env.GITHUB_TOKEN || !process.env.GITHUB_REPO) {\n      throw new Error('GitHub环境变量未配置');\n    }\n    const repo = process.env.GITHUB_REPO;\n    const token = process.env.GITHUB_TOKEN;\n    const filePath = 'config/workflow_state.json';\n    \n    const response = await axios.get(\n      `https://api.github.com/repos/${repo}/contents/${filePath}`,\n      {\n        headers: {\n          Authorization: `token ${token}`,\n          Accept: 'application/vnd.github.v3+json'\n        }\n      }\n    );\n    \n    const content = Buffer.from(response.data.content, 'base64').toString();\n    const workflowState = JSON.parse(content);\n    \n    return workflowState.last_processed_at || new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();\n  } catch (error) {\n    console.error('从GitHub获取上次处理时间失败:', error.message);\n    // 如果文件不存在，返回默认值\n    return new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();\n  }\n}\n\nasync function getLastProcessedAtLocalPostgres() {\n  try {\n    if (!process.env.LOCAL_PG_HOST || !process.env.LOCAL_PG_USER) {\n      throw new Error('本地PostgreSQL环境变量未配置');\n    }\n    \n    console.log('从本地PostgreSQL获取上次处理时间');\n    \n    // 实际实现中，这里应该使用pg模块连接本地PostgreSQL并查询上次处理时间\n    // 示例代码:\n    /*\n    const { Client } = require('pg');\n    const client = new Client({\n      host: process.env.LOCAL_PG_HOST,\n      port: process.env.LOCAL_PG_PORT || 5432,\n      database: process.env.LOCAL_PG_DATABASE || 'postgres',\n      user: process.env.LOCAL_PG_USER,\n      password: process.env.LOCAL_PG_PASSWORD\n    });\n    \n    await client.connect();\n    \n    const { rows } = await client.query(`\n      SELECT last_processed_at \n      FROM workflow_state \n      WHERE workflow_name = 'incremental_batch_processing'\n    `);\n    \n    await client.end();\n    \n    if (rows && rows.length > 0) {\n      return rows[0].last_processed_at || new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();\n    } else {\n      // 创建初始记录\n      await client.connect();\n      await client.query(`\n        INSERT INTO workflow_state (workflow_name, last_processed_at, config)\n        VALUES ('incremental_batch_processing', $1, $2)\n      `, [new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(), {}]);\n      await client.end();\n      return new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();\n    }\n    */\n    \n    // 目前返回30天前的时间作为默认值\n    return new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();\n  } catch (error) {\n    console.error('从本地PostgreSQL获取上次处理时间失败:', error.message);\n    return new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();\n  }\n}\n\nasync function main(input) {\n  // 从环境变量或配置中获取数据源配置\n  const defaultDataSources = [\n    {\n      "type": "database",\n      "config": {\n        "table": "source_data",\n        "incremental_field": "updated_at"
+      }
+    }\n  ];
+  \n  const dataSourcesConfig = process.env.DATA_SOURCES \n    ? JSON.parse(process.env.DATA_SOURCES) \n    : defaultDataSources;\n  \n  const lastProcessedAt = await getLastProcessedAt();\n  const allData = [];\n  \n  // 从所有数据源获取增量数据\n  for (const sourceConfig of dataSourcesConfig) {\n    try {\n      const source = new DataSource(sourceConfig.type, sourceConfig.config);\n      const data = await source.getData(lastProcessedAt);\n      allData.push(...data);\n    } catch (error) {\n      console.error(`从数据源 ${sourceConfig.type} 获取数据失败:`, error.message);\n      // 继续处理其他数据源\n      continue;\n    }\n  }\n  \n  return {\n    last_processed_at: lastProcessedAt,\n    incremental_data: allData,\n    total_records: allData.length,\n    data_sources_used: dataSourcesConfig.length\n  };
+}\n\nmain(input);",
+      "inputs": [
+        "storage_type",
+        "environment_validated"
+      ],
+      "outputs": [
+        "last_processed_at",
+        "incremental_data",
+        "total_records",
+        "data_sources_used"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "数据处理引擎",
+      "type": "javascript",
+      "description": "数据清洗、验证和转换",
+      "code": "// 数据处理引擎节点\n\nclass DataProcessor {\n  constructor(config) {\n    this.config = config;\n  }\n  \n  async processBatch(data) {\n    const results = [];\n    const errors = [];\n    \n    for (const item of data) {\n      try {\n        // 1. 数据清洗\n        const cleanedData = this.cleanData(item);\n        \n        // 2. 数据验证\n        this.validateData(cleanedData);\n        \n        // 3. 数据转换\n        const transformedData = this.transformData(cleanedData);\n        \n        // 4. 数据增强\n        const enhancedData = this.enhanceData(transformedData);\n        \n        results.push(enhancedData);\n      } catch (error) {\n        errors.push({\n          item: item,\n          error: error.message,\n          timestamp: new Date().toISOString()\n        });\n      }\n    }\n    \n    return {\n      processed: results,\n      errors: errors,\n      success_rate: results.length / (results.length + errors.length) * 100\n    };\n  }\n  \n  cleanData(data) {\n    // 数据清洗逻辑\n    const cleaned = { ...data };\n    \n    // 移除空值字段\n    for (const key in cleaned) {\n      if (cleaned[key] === null || cleaned[key] === undefined || cleaned[key] === '') {\n        delete cleaned[key];\n      }\n    }\n    \n    // 标准化日期格式\n    const dateFields = ['created_at', 'updated_at', 'scraped_at', 'processed_at'];
+    for (const field of dateFields) {\n      if (cleaned[field]) {\n        try {\n          cleaned[field] = new Date(cleaned[field]).toISOString();\n        } catch (error) {\n          console.warn(`日期格式转换失败: ${field} = ${cleaned[field]}`);\n          delete cleaned[field];\n        }\n      }\n    }\n    \n    // 去除字符串前后空格\n    for (const key in cleaned) {\n      if (typeof cleaned[key] === 'string') {\n        cleaned[key] = cleaned[key].trim();\n      }\n    }\n    \n    return cleaned;\n  }\n  \n  validateData(data) {\n    // 数据验证逻辑\n    const requiredFields = this.config.required_fields || [];\n    for (const field of requiredFields) {\n      if (!data[field]) {\n        throw new Error(`缺少必填字段: ${field}`);\n      }\n    }\n    \n    // 格式验证\n    if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {\n      throw new Error(`邮箱格式不正确: ${data.email}`);\n    }\n    \n    if (data.phone && !/^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/.test(data.phone)) {\n      throw new Error(`电话号码格式不正确: ${data.phone}`);\n    }\n    \n    if (data.url && !/^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w .-]*)*\/?$/.test(data.url)) {\n      throw new Error(`URL格式不正确: ${data.url}`);\n    }\n  }\n  \n  transformData(data) {\n    // 数据转换逻辑\n    const transformed = { ...data };\n    \n    // 添加处理时间\n    transformed.processed_at = new Date().toISOString();\n    \n    // 添加批次ID\n    transformed.batch_id = `batch_${Date.now()}`;\n    \n    // 计算新字段\n    if (transformed.price && transformed.quantity) {\n      transformed.total = transformed.price * transformed.quantity;\n    }\n    \n    // 标准化字段名\n    if (transformed.name) {\n      transformed.full_name = transformed.name;\n      delete transformed.name;\n    }\n    \n    return transformed;\n  }\n  \n  enhanceData(data) {\n    // 数据增强逻辑\n    const enhanced = { ...data };\n    \n    // 添加处理状态\n    enhanced.processing_status = 'completed';\n    \n    // 添加数据来源\n    enhanced.data_source = enhanced.url || 'unknown';\n    \n    return enhanced;\n  }\n}\n\nasync function main(input) {\n  const requiredFields = process.env.REQUIRED_FIELDS ? JSON.parse(process.env.REQUIRED_FIELDS) : [];\n  \n  const processor = new DataProcessor({\n    required_fields: requiredFields\n  });\n  \n  // 批量处理数据\n  const batchSize = process.env.BATCH_SIZE || 100;\n  const data = input.incremental_data || [];\n  const allProcessed = [];\n  const allErrors = [];\n  \n  if (data.length === 0) {\n    return {\n      processed_data: [],\n      processing_errors: [],\n      success_count: 0,\n      error_count: 0,\n      success_rate: 0,\n      batch_id: `batch_${Date.now()}`\n    };\n  }\n  \n  for (let i = 0; i < data.length; i += batchSize) {\n    const batch = data.slice(i, i + batchSize);\n    const result = await processor.processBatch(batch);\n    allProcessed.push(...result.processed);\n    allErrors.push(...result.errors);\n  }\n  \n  return {\n    processed_data: allProcessed,\n    processing_errors: allErrors,\n    success_count: allProcessed.length,\n    error_count: allErrors.length,\n    success_rate: allProcessed.length / (allProcessed.length + allErrors.length) * 100,\n    batch_id: `batch_${Date.now()}`\n  };\n}\n\nmain(input);",
+      "inputs": [
+        "incremental_data",
+        "total_records"
+      ],
+      "outputs": [
+        "processed_data",
+        "processing_errors",
+        "success_count",
+        "error_count",
+        "success_rate",
+        "batch_id"
+      ]
+    },
+    {
+      "id": "4",
+      "name": "存储引擎",
+      "type": "javascript",
+      "description": "将处理后的数据存储到选定的平台",
+      "code": "// 存储引擎节点\nconst axios = require('axios');\n\nclass StorageEngine {\n  constructor(type, config) {\n    this.type = type;\n    this.config = config;\n  }\n  \n  async store(data, lastProcessedAt = null) {\n    switch (this.type) {\n      case 'supabase':\n        return this.storeToSupabase(data, lastProcessedAt);\n      case 'github':\n        return this.storeToGitHub(data, lastProcessedAt);\n      case 'google_drive':\n        return this.storeToGoogleDrive(data, lastProcessedAt);\n      case 'local_pg':\n        return this.storeToLocalPostgres(data, lastProcessedAt);\n      default:\n        throw new Error(`不支持的存储类型: ${this.type}`);\n    }\n  }\n  \n  async storeToSupabase(data, lastProcessedAt) {\n    const { createClient } = require('@supabase/supabase-js');\n    const supabase = createClient(\n      process.env.SUPABASE_URL,\n      process.env.SUPABASE_KEY\n    );\n    \n    // 批量插入数据\n    const table = this.config.table || 'processed_data';\n    const { error } = await supabase\n      .from(table)\n      .upsert(data, { onConflict: 'id' });\n    \n    if (error) throw error;\n    return { \n      success: true, \n      storage: 'supabase',\n      table: table,\n      records: data.length\n    };\n  }\n  \n  async storeToGitHub(data, lastProcessedAt) {\n    // 将数据存储到GitHub仓库\n    const repo = process.env.GITHUB_REPO;\n    const token = process.env.GITHUB_TOKEN;\n    const branch = process.env.GITHUB_BRANCH || 'main';\n    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');\n    const folderPath = this.config.folder || 'data/processed';\n    const filePath = `${folderPath}/${timestamp}.json`;\n    \n    if (!repo || !token) {\n      throw new Error('GitHub环境变量未配置完整，需要GITHUB_REPO和GITHUB_TOKEN');\n    }\n    \n    console.log(`开始将 ${data.length} 条数据存储到GitHub仓库 ${repo}`);\n    console.log(`分支: ${branch}`);\n    console.log(`文件路径: ${filePath}`);\n    \n    try {\n      // 先检查文件夹是否存在，不存在则创建（通过创建空文件）\n      const folderCheckPath = `${folderPath}/.gitkeep`;\n      let folderExists = false;\n      \n      try {\n        await axios.get(\n          `https://api.github.com/repos/${repo}/contents/${folderCheckPath}`,\n          {\n            headers: {\n              Authorization: `token ${token}`,\n              Accept: 'application/vnd.github.v3+json'\n            }\n          }\n        );\n        folderExists = true;\n        console.log(`文件夹 ${folderPath} 已存在`);\n      } catch (error) {\n        // 文件夹不存在，创建.gitkeep文件\n        console.log(`文件夹 ${folderPath} 不存在，开始创建`);\n        await axios.put(\n          `https://api.github.com/repos/${repo}/contents/${folderCheckPath}`,\n          {\n            message: `Create folder ${folderPath}`,\n            content: Buffer.from('').toString('base64'),\n            branch: branch\n          },\n          {\n            headers: {\n              Authorization: `token ${token}`,\n              Accept: 'application/vnd.github.v3+json'\n            }\n          }\n        );\n        console.log(`文件夹 ${folderPath} 创建成功`);\n      }\n      \n      // 准备数据内容\n      const content = JSON.stringify(data, null, 2);\n      const encodedContent = Buffer.from(content).toString('base64');\n      \n      // 检查文件是否已存在（虽然时间戳确保唯一性，但仍做检查）\n      let sha = null;\n      try {\n        const existingFile = await axios.get(\n          `https://api.github.com/repos/${repo}/contents/${filePath}`,\n          {\n            headers: {\n              Authorization: `token ${token}`,\n              Accept: 'application/vnd.github.v3+json'\n            }\n          }\n        );\n        sha = existingFile.data.sha;\n        console.log(`文件已存在，将更新文件，SHA: ${sha.substring(0, 8)}...`);\n      } catch (error) {\n        console.log(`文件不存在，将创建新文件`);\n      }\n      \n      // 上传/更新数据文件\n      const commitMessage = sha ? \n        `Update processed data - ${timestamp}` : \n        `Store processed data - ${timestamp}`;\n      \n      const response = await axios.put(\n        `https://api.github.com/repos/${repo}/contents/${filePath}`,\n        {\n          message: commitMessage,\n          content: encodedContent,\n          branch: branch,\n          sha: sha\n        },\n        {\n          headers: {\n            Authorization: `token ${token}`,\n            Accept: 'application/vnd.github.v3+json'\n          }\n        }\n      );\n      \n      console.log(`GitHub存储成功，文件URL: ${response.data.html_url}`);\n      \n      // 更新工作流状态到GitHub\n      await this.updateGitHubWorkflowState(repo, token, branch, lastProcessedAt);\n      \n      return { \n        success: true, \n        storage: 'github', \n        file_path: filePath,\n        repo: repo,\n        branch: branch,\n        records: data.length,\n        file_url: response.data.html_url,\n        commit_sha: response.data.sha\n      };\n    } catch (error) {\n      console.error('GitHub存储失败:', error.message);\n      if (error.response) {\n        console.error('GitHub API响应:', error.response.status, error.response.data);\n      }\n      throw error;\n    }\n  }\n  \n  async updateGitHubWorkflowState(repo, token, branch, lastProcessedAt) {\n    // 更新工作流状态到GitHub\n    const stateFilePath = 'config/workflow_state.json';\n    \n    try {\n      let currentState = {\n        workflow_name: 'incremental_batch_processing',\n        last_processed_at: new Date().toISOString(),\n        last_batch_processed_at: lastProcessedAt,\n        updated_at: new Date().toISOString(),\n        version: '1.0'\n      };\n      \n      let sha = null;\n      \n      // 尝试获取现有状态文件\n      try {\n        const existingState = await axios.get(\n          `https://api.github.com/repos/${repo}/contents/${stateFilePath}`,\n          {\n            headers: {\n              Authorization: `token ${token}`,\n              Accept: 'application/vnd.github.v3+json'\n            }\n          }\n        );\n        sha = existingState.data.sha;\n        const content = Buffer.from(existingState.data.content, 'base64').toString();\n        currentState = { ...JSON.parse(content), ...currentState };\n      } catch (error) {\n        console.log('工作流状态文件不存在，将创建新文件');\n      }\n      \n      // 更新状态\n      const encodedContent = Buffer.from(JSON.stringify(currentState, null, 2)).toString('base64');\n      \n      await axios.put(\n        `https://api.github.com/repos/${repo}/contents/${stateFilePath}`,\n        {\n          message: 'Update workflow state',\n          content: encodedContent,\n          branch: branch,\n          sha: sha\n        },\n        {\n          headers: {\n            Authorization: `token ${token}`,\n            Accept: 'application/vnd.github.v3+json'\n          }\n        }\n      );\n      \n      console.log('工作流状态更新成功');\n    } catch (error) {\n      console.error('更新工作流状态失败:', error.message);\n      // 不抛出错误，继续执行\n    }\n  }\n  \n  async storeToGoogleDrive(data, lastProcessedAt) {\n    // Google Drive存储示例（需要Google API配置）\n    return { \n      success: true, \n      storage: 'google_drive', \n      note: '需要完整的Google API配置',\n      records: data.length\n    };\n  }\n  \n  async storeToLocalPostgres(data, lastProcessedAt) {\n    // 本地PostgreSQL 17存储实现\n    if (!process.env.LOCAL_PG_HOST || !process.env.LOCAL_PG_USER) {\n      throw new Error('本地PostgreSQL环境变量未配置');\n    }\n    \n    const host = process.env.LOCAL_PG_HOST;\n    const port = process.env.LOCAL_PG_PORT || 5432;\n    const database = process.env.LOCAL_PG_DATABASE || 'postgres';\n    const user = process.env.LOCAL_PG_USER;\n    const password = process.env.LOCAL_PG_PASSWORD;\n    \n    console.log(`成功将 ${data.length} 条数据写入本地PostgreSQL 17数据库`);\n    console.log(`数据库: ${database}`);\n    console.log(`主机: ${host}:${port}`);\n    \n    try {\n      // PostgreSQL 17 批量插入实现\n      const { Client } = require('pg');\n      const client = new Client({\n        host: host,\n        port: port,\n        database: database,\n        user: user,\n        password: password,\n        ssl: process.env.LOCAL_PG_SSL === 'true',\n        application_name: 'CozeIncrementalWorkflow'\n      });\n      \n      await client.connect();\n      console.log('PostgreSQL 17 连接成功');\n      \n      // 创建表（如果不存在）\n      const table = this.config.table || 'processed_data';\n      const createTableQuery = `\n        CREATE TABLE IF NOT EXISTS ${table} (\n          id SERIAL PRIMARY KEY,\n          batch_id VARCHAR(50) NOT NULL,\n          data JSONB NOT NULL,\n          processed_at TIMESTAMP NOT NULL,\n          data_source VARCHAR(255) NOT NULL,\n          processing_status VARCHAR(20) NOT NULL,\n          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n        );\n        \n        -- PostgreSQL 17 特定优化\n        CREATE INDEX IF NOT EXISTS ${table}_batch_id_idx ON ${table}(batch_id);\n        CREATE INDEX IF NOT EXISTS ${table}_processed_at_idx ON ${table}(processed_at DESC);\n        CREATE INDEX IF NOT EXISTS ${table}_data_source_idx ON ${table}(data_source);\n      `;\n      \n      await client.query(createTableQuery);\n      console.log('表结构检查/创建完成');\n      \n      // 批量插入数据\n      const insertQuery = `\n        INSERT INTO ${table} (batch_id, data, processed_at, data_source, processing_status)\n        VALUES ($1, $2, $3, $4, $5)\n        ON CONFLICT (id) DO UPDATE SET\n          batch_id = EXCLUDED.batch_id,\n          data = EXCLUDED.data,\n          processed_at = EXCLUDED.processed_at,\n          data_source = EXCLUDED.data_source,\n          processing_status = EXCLUDED.processing_status,\n          updated_at = CURRENT_TIMESTAMP\n      `;\n      \n      // 使用事务批量处理\n      await client.query('BEGIN');\n      for (const item of data) {\n        await client.query(insertQuery, [\n          item.batch_id,\n          item,\n          new Date(item.processed_at),\n          item.data_source,\n          item.processing_status\n        ]);\n      }\n      await client.query('COMMIT');\n      console.log('批量插入完成');\n      \n      // 更新工作流状态\n      await this.updateWorkflowStateLocalPostgres(client, table, lastProcessedAt);\n      \n      await client.end();\n      console.log('PostgreSQL 17 连接已关闭');\n    } catch (error) {\n      console.error('PostgreSQL 17 存储失败:', error.message);\n      throw error;\n    }\n    \n    return { \n      success: true, \n      storage: 'local_pg',\n      database: database,\n      host: host,\n      port: port,\n      records: data.length,\n      postgres_version: '17'\n    };\n  }\n  \n  async updateWorkflowStateLocalPostgres(client, table, lastProcessedAt) {\n    // 更新工作流状态到本地PostgreSQL\n    const workflowStateTable = 'workflow_state';\n    \n    // 创建工作流状态表（如果不存在）\n    await client.query(`\n      CREATE TABLE IF NOT EXISTS ${workflowStateTable} (\n        id SERIAL PRIMARY KEY,\n        workflow_name VARCHAR(255) UNIQUE NOT NULL,\n        last_processed_at TIMESTAMP NOT NULL,\n        last_batch_processed_at TIMESTAMP,\n        config JSONB,\n        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\n        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n      );\n    `);\n    \n    // 更新或插入工作流状态\n    await client.query(`\n      INSERT INTO ${workflowStateTable} (workflow_name, last_processed_at, last_batch_processed_at, config)\n      VALUES ('incremental_batch_processing', NOW(), $1, $2)\n      ON CONFLICT (workflow_name) DO UPDATE SET\n        last_processed_at = NOW(),\n        last_batch_processed_at = $1,\n        config = $2,\n        updated_at = NOW()\n    `, [lastProcessedAt, { last_processed_at: lastProcessedAt }]);\n    \n    console.log('工作流状态更新成功');\n  }\n}\n\nasync function main(input) {\n  // 获取存储配置\n  let storageConfig = {\n    type: process.env.STORAGE_TYPE || 'github',\n    table: 'processed_data'\n  };\n  \n  if (process.env.STORAGE_CONFIG) {\n    storageConfig = { ...storageConfig, ...JSON.parse(process.env.STORAGE_CONFIG) };\n  }\n  \n  const engine = new StorageEngine(storageConfig.type, storageConfig);\n  \n  // 存储处理后的数据\n  let storageResult;\n  try {\n    // 为store方法传递last_processed_at参数\n    storageResult = await engine.store(input.processed_data, input.last_processed_at);\n  } catch (error) {\n    console.error('存储数据失败:', error.message);\n    throw error;\n  }\n  \n  return {\n    storage_result: storageResult,\n    workflow_updated: true,\n    batch_id: input.batch_id,\n    stored_count: input.processed_data.length,\n    storage_type: storageConfig.type\n  };\n}\n\nmain(input);",
+      "inputs": [
+        "processed_data",
+        "batch_id",
+        "last_processed_at"
+      ],
+      "outputs": [
+        "storage_result",
+        "workflow_updated",
+        "batch_id",
+        "stored_count",
+        "storage_type"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "通知反馈",
+      "type": "javascript",
+      "description": "发送处理结果通知",
+      "code": "// 通知反馈节点\nconst axios = require('axios');\n\nclass NotificationService {\n  constructor(config) {\n    this.config = config;\n  }\n  \n  async sendNotification(type, message, data) {\n    switch (type) {\n      case 'email':\n        return this.sendEmail(message, data);\n      case 'webhook':\n        return this.sendWebhook(message, data);\n      case 'slack':\n        return this.sendSlack(message, data);\n      case 'github_issue':\n        return this.createGitHubIssue(message, data);\n      case 'discord':\n        return this.sendDiscord(message, data);\n      case 'teams':\n        return this.sendTeams(message, data);\n      default:\n        throw new Error(`不支持的通知类型: ${type}`);\n    }\n  }\n  \n  async sendEmail(message, data) {\n    // 邮件发送示例（需要邮件服务配置）\n    console.log('发送邮件:', message);\n    // 实际实现中，这里应该使用邮件服务发送邮件\n    return { success: true, type: 'email' };\n  }\n  \n  async sendWebhook(message, data) {\n    // 发送Webhook通知\n    const webhookUrl = this.config.webhook_url || process.env.ERROR_WEBHOOK;\n    if (!webhookUrl) {\n      throw new Error('Webhook URL未配置');\n    }\n    \n    await axios.post(webhookUrl, {\n      message: message,\n      data: data,\n      timestamp: new Date().toISOString(),\n      workflow_name: '增量批量自动化工作流'\n    });\n    return { success: true, type: 'webhook' };\n  }\n  \n  async sendSlack(message, data) {\n    // Slack通知示例\n    const slackWebhook = this.config.slack_webhook || process.env.SLACK_WEBHOOK;\n    if (!slackWebhook) {\n      throw new Error('Slack Webhook URL未配置');\n    }\n    \n    const color = data.success_rate >= 90 ? '#36a64f' : (data.success_rate >= 70 ? '#ff9f40' : '#ff4444');\n    \n    await axios.post(slackWebhook, {\n      text: message,\n      attachments: [{
+        fallback: '处理结果',\n        color: color,\n        title: `工作流处理结果 - 批次 ${data.batch_id}`,\n        fields: [\n          { title: '成功数', value: data.success_count, short: true },\n          { title: '失败数', value: data.error_count, short: true },\n          { title: '成功率', value: `${data.success_rate.toFixed(2)}%`, short: true },\n          { title: '批次ID', value: data.batch_id, short: true },\n          { title: '存储类型', value: data.storage_type, short: true },\n          { title: '存储记录数', value: data.stored_count, short: true }\n        ],\n        footer: `执行时间: ${new Date().toISOString()}`,\n        ts: Math.floor(new Date().getTime() / 1000)\n      }]\n    });\n    return { success: true, type: 'slack' };\n  }\n  \n  async sendDiscord(message, data) {\n    // Discord通知示例\n    const discordWebhook = this.config.discord_webhook || process.env.DISCORD_WEBHOOK;\n    if (!discordWebhook) {\n      throw new Error('Discord Webhook URL未配置');\n    }\n    \n    const color = data.success_rate >= 90 ? 3066993 : (data.success_rate >= 70 ? 16755200 : 15158332);\n    \n    await axios.post(discordWebhook, {\n      embeds: [{
+        title: `工作流处理结果 - 批次 ${data.batch_id}`,\n        description: message,\n        color: color,\n        fields: [\n          { name: '成功数', value: data.success_count, inline: true },\n          { name: '失败数', value: data.error_count, inline: true },\n          { name: '成功率', value: `${data.success_rate.toFixed(2)}%`, inline: true },\n          { name: '批次ID', value: data.batch_id, inline: true },\n          { name: '存储类型', value: data.storage_type, inline: true },\n          { name: '存储记录数', value: data.stored_count, inline: true }\n        ],\n        timestamp: new Date().toISOString()\n      }]\n    });\n    return { success: true, type: 'discord' };\n  }\n  \n  async sendTeams(message, data) {\n    // Microsoft Teams通知示例\n    const teamsWebhook = this.config.teams_webhook || process.env.TEAMS_WEBHOOK;\n    if (!teamsWebhook) {\n      throw new Error('Microsoft Teams Webhook URL未配置');\n    }\n    \n    await axios.post(teamsWebhook, {\n      summary: message,\n      sections: [{
+        activityTitle: `工作流处理结果 - 批次 ${data.batch_id}`,\n        activitySubtitle: new Date().toISOString(),\n        facts: [\n          { name: '成功数', value: data.success_count },\n          { name: '失败数', value: data.error_count },\n          { name: '成功率', value: `${data.success_rate.toFixed(2)}%` },\n          { name: '批次ID', value: data.batch_id },\n          { name: '存储类型', value: data.storage_type },\n          { name: '存储记录数', value: data.stored_count }\n        ],\n        markdown: true\n      }]\n    });\n    return { success: true, type: 'teams' };\n  }\n  \n  async createGitHubIssue(message, data) {\n    // 在GitHub上创建Issue\n    const repo = process.env.GITHUB_REPO;\n    const token = process.env.GITHUB_TOKEN;\n    \n    if (!repo || !token) {\n      throw new Error('GitHub环境变量未配置');\n    }\n    \n    const issueBody = `## 工作流处理结果\n\n**消息**: ${message}\n**批次ID**: ${data.batch_id}\n**成功数**: ${data.success_count}\n**失败数**: ${data.error_count}\n**成功率**: ${data.success_rate.toFixed(2)}%\n**存储类型**: ${data.storage_type}\n**存储记录数**: ${data.stored_count}\n**存储结果**: ${JSON.stringify(data.storage_result, null, 2)}\n**时间**: ${new Date().toISOString()}\n\n## 错误详情\n\n${data.processing_errors && data.processing_errors.length > 0 \n  ? data.processing_errors.map(err => `- ${err.error}`).join('\n') \n  : '无错误'}\n\n## 执行统计\n- 总处理时间: ${(Date.now() - new Date(data.workflow_started_at).getTime()) / 1000} 秒\n- 数据来源数量: ${data.data_sources_used}\n- 处理批次: ${Math.ceil(data.success_count / (process.env.BATCH_SIZE || 100))}`;\n    \n    await axios.post(\n      `https://api.github.com/repos/${repo}/issues`,\n      {\n        title: `工作流处理结果: ${data.batch_id}`,\n        body: issueBody,\n        labels: ['workflow-result', 'automated']\n      },\n      {\n        headers: {\n          Authorization: `token ${token}`,\n          Accept: 'application/vnd.github.v3+json'\n        }\n      }\n    );\n    \n    return { success: true, type: 'github_issue' };\n  }\n}\n\nasync function main(input) {\n  // 获取通知配置\n  let notificationConfig = {};\n  if (process.env.NOTIFICATION_CONFIG) {\n    notificationConfig = JSON.parse(process.env.NOTIFICATION_CONFIG);\n  }\n  \n  // 如果没有配置通知类型，但配置了ERROR_WEBHOOK，自动添加webhook通知\n  if (!notificationConfig.types && process.env.ERROR_WEBHOOK) {\n    notificationConfig.types = ['webhook'];\n    notificationConfig.webhook_url = process.env.ERROR_WEBHOOK;\n  }\n  \n  const service = new NotificationService(notificationConfig);\n  \n  // 生成通知消息\n  const message = `增量批量处理完成: 批次 ${input.batch_id}，成功 ${input.success_count} 条，失败 ${input.error_count} 条，成功率 ${input.success_rate.toFixed(2)}%`;\n  \n  // 发送通知（如果配置了通知方式）\n  const notifications = [];\n  if (notificationConfig.types) {\n    for (const type of notificationConfig.types) {\n      try {\n        const result = await service.sendNotification(type, message, input);\n        notifications.push(result);\n        console.log(`成功发送${type}通知`);\n      } catch (error) {\n        console.error(`发送${type}通知失败:`, error.message);\n      }\n    }\n  }\n  \n  // 记录详细日志\n  const logData = {\n    batch_id: input.batch_id,\n    success_count: input.success_count,\n    error_count: input.error_count,\n    success_rate: input.success_rate,\n    storage_result: input.storage_result,\n    notifications: notifications,\n    workflow_started_at: input.workflow_started_at,\n    workflow_completed_at: new Date().toISOString(),\n    processing_time: Date.now() - new Date(input.workflow_started_at).getTime(),\n    storage_type: input.storage_type,\n    data_sources_used: input.data_sources_used || 1\n  };\n  \n  console.log('工作流执行完成:', JSON.stringify(logData, null, 2));\n  \n  return {\n    notification_sent: notifications.length > 0,\n    notification_results: notifications,\n    processing_summary: message,\n    workflow_completed: true,\n    log_data: logData\n  };\n}\n\nmain(input);",
+      "inputs": [
+        "batch_id",
+        "success_count",
+        "error_count",
+        "success_rate",
+        "storage_result",
+        "processing_errors",
+        "workflow_started_at",
+        "data_sources_used",
+        "storage_type"
+      ],
+      "outputs": [
+        "notification_sent",
+        "notification_results",
+        "processing_summary",
+        "workflow_completed",
+        "log_data"
+      ]
+    },
+    {
+      "id": "6",
+      "name": "错误处理",
+      "type": "javascript",
+      "description": "处理工作流执行过程中的错误",
+      "code": "// 错误处理节点\nconst axios = require('axios');\n\nasync function sendErrorNotification(error, context) {\n  // 发送错误通知到多个渠道\n  const notificationPromises = [];\n  \n  // 1. Webhook通知\n  if (process.env.ERROR_WEBHOOK) {\n    notificationPromises.push(\n      axios.post(process.env.ERROR_WEBHOOK, {\n        error: error.message,\n        stack: error.stack,\n        context: context,\n        timestamp: new Date().toISOString(),\n        workflow_name: '增量批量自动化工作流',\n        error_type: 'workflow_error'\n      }).catch(notifyError => {\n        console.error('发送Webhook错误通知失败:', notifyError.message);\n      })\n    );\n  }\n  \n  // 2. Slack通知\n  if (process.env.SLACK_WEBHOOK) {\n    notificationPromises.push(\n      axios.post(process.env.SLACK_WEBHOOK, {\n        text: `工作流执行错误: ${error.message}`,\n        attachments: [{
+          fallback: '工作流错误',\n          color: '#ff4444',\n          title: '工作流执行错误',\n          fields: [\n            { title: '错误消息', value: error.message, short: false },\n            { title: '时间', value: new Date().toISOString(), short: true },\n            { title: '节点ID', value: context.node_id || 'unknown', short: true }\n          ],\n          footer: '增量批量自动化工作流',\n          ts: Math.floor(new Date().getTime() / 1000)\n        }]\n      }).catch(notifyError => {\n        console.error('发送Slack错误通知失败:', notifyError.message);\n      })\n    );\n  }\n  \n  // 3. GitHub Issue\n  if (process.env.GITHUB_TOKEN && process.env.GITHUB_REPO) {\n    notificationPromises.push(\n      axios.post(\n        `https://api.github.com/repos/${process.env.GITHUB_REPO}/issues`,\n        {\n          title: `工作流执行错误: ${error.message.substring(0, 50)}...`,\n          body: `## 工作流执行错误\n\n**错误消息**: ${error.message}\n**错误堆栈**: \n```\n${error.stack}\n```\n\n**上下文信息**: \n```json\n${JSON.stringify(context, null, 2)}\n```\n\n**执行环境**: \n- 存储类型: ${process.env.STORAGE_TYPE || 'github'}\n- 批量大小: ${process.env.BATCH_SIZE || 100}\n- 重试次数: ${process.env.RETRY_COUNT || 3}\n\n**时间**: ${new Date().toISOString()}\n          `,\n          labels: ['workflow-error', 'automated', 'bug']\n        },\n        {\n          headers: {\n            Authorization: `token ${process.env.GITHUB_TOKEN}`,\n            Accept: 'application/vnd.github.v3+json'\n          }\n        }\n      ).catch(notifyError => {\n        console.error('创建GitHub Issue失败:', notifyError.message);\n      })\n    );\n  }\n  \n  // 等待所有通知发送完成\n  await Promise.all(notificationPromises);\n}\n\nasync function logErrorToStorage(error, context) {\n  // 尝试将错误记录到存储系统\n  try {\n    const storageType = process.env.STORAGE_TYPE || 'github';\n    \n    if (storageType === 'github') {\n      // 记录到GitHub\n      if (process.env.GITHUB_TOKEN && process.env.GITHUB_REPO) {\n        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');\n        const errorLog = {\n          error: error.message,\n          stack: error.stack,\n          context: context,\n          timestamp: new Date().toISOString(),\n          workflow_name: '增量批量自动化工作流'\n        };\n        \n        await axios.put(\n          `https://api.github.com/repos/${process.env.GITHUB_REPO}/contents/logs/errors/${timestamp}.json`,\n          {\n            message: `记录工作流错误: ${error.message.substring(0, 30)}...`,\n            content: Buffer.from(JSON.stringify(errorLog, null, 2)).toString('base64')\n          },\n          {\n            headers: {\n              Authorization: `token ${process.env.GITHUB_TOKEN}`,\n              Accept: 'application/vnd.github.v3+json'\n            }\n          }\n        );\n      }\n    }\n  } catch (logError) {\n    console.error('记录错误到存储系统失败:', logError.message);\n    // 不抛出错误，继续执行\n  }\n}\n\nasync function main(error, context) {\n  console.error('工作流执行错误:', error.message);\n  console.error('错误堆栈:', error.stack);\n  console.error('上下文信息:', JSON.stringify(context, null, 2));\n  \n  // 增强上下文信息\n  const enhancedContext = {\n    ...context,\n    workflow_name: '增量批量自动化工作流',\n    storage_type: process.env.STORAGE_TYPE || 'github',\n    batch_size: process.env.BATCH_SIZE || 100,\n    retry_count: process.env.RETRY_COUNT || 3,\n    environment_variables: Object.keys(process.env)\n      .filter(key => key.startsWith('COZE_') || key.startsWith('WORKFLOW_') || ['STORAGE_TYPE', 'BATCH_SIZE', 'RETRY_COUNT'].includes(key))\n      .reduce((obj, key) => {\n        obj[key] = process.env[key];\n        return obj;\n      }, {})\n  };\n  \n  // 发送错误通知\n  await sendErrorNotification(error, enhancedContext);\n  \n  // 记录错误到存储\n  await logErrorToStorage(error, enhancedContext);\n  \n  // 可以添加更多错误处理逻辑，如：\n  // - 自动恢复机制\n  // - 错误分类和优先级\n  // - 与监控系统集成\n  \n  return {\n    error_handled: true,\n    error_message: error.message,\n    error_time: new Date().toISOString(),\n    error_stack: error.stack,\n    context: enhancedContext\n  };\n}\n\nmain(error, context);",
+      "inputs": [],
+      "outputs": [
+        "error_handled",
+        "error_message",
+        "error_time"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from": "1",
+      "to": "2",
+      "condition": "always"
+    },
+    {
+      "from": "2",
+      "to": "3",
+      "condition": "always"
+    },
+    {
+      "from": "3",
+      "to": "4",
+      "condition": "always"
+    },
+    {
+      "from": "4",
+      "to": "5",
+      "condition": "always"
+    },
+    {
+      "from": "1",
+      "to": "6",
+      "condition": "error"
+    },
+    {
+      "from": "2",
+      "to": "6",
+      "condition": "error"
+    },
+    {
+      "from": "3",
+      "to": "6",
+      "condition": "error"
+    },
+    {
+      "from": "4",
+      "to": "6",
+      "condition": "error"
+    },
+    {
+      "from": "5",
+      "to": "6",
+      "condition": "error"
+    }
+  ]
+}

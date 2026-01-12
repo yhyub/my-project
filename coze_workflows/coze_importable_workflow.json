@@ -1,0 +1,164 @@
+{
+  "id": "coze_importable_workflow_001",
+  "name": "可导入的 Coze 工作流",
+  "description": "一个符合 Coze 导入标准的完整工作流示例",
+  "mode": "workflow",
+  "type": "workflow",
+  "version": "1.0.0",
+  "schema_version": "1.0.0",
+  "trigger": {
+    "name": "手动触发",
+    "type": "manual"
+  },
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  },
+  "metadata": {
+    "createdAt": "2026-01-10T00:00:00.000Z",
+    "updatedAt": "2026-01-10T00:00:00.000Z",
+    "creator": "coze_workflow_expert",
+    "tags": ["importable", "example"]
+  },
+  "nodes": [
+    {
+      "id": "start",
+      "name": "开始",
+      "title": "开始",
+      "description": "工作流的起始节点",
+      "type": "start",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "config": {},
+      "parameters": {
+        "node_outputs": {
+          "user_input": {
+            "required": true,
+            "type": "string",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "llm",
+      "name": "大语言模型",
+      "title": "大语言模型",
+      "description": "调用大语言模型生成回复",
+      "type": "llm",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-LLM.png",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "config": {},
+      "parameters": {
+        "llmParam": [
+          {
+            "name": "modelName",
+            "input": {
+              "type": "string",
+              "value": "豆包·Function call模型"
+            }
+          },
+          {
+            "name": "temperature",
+            "input": {
+              "type": "float",
+              "value": 0.7
+            }
+          },
+          {
+            "name": "systemPrompt",
+            "input": {
+              "type": "string",
+              "value": "你是一个有用的助手，请根据用户输入生成友好的回复。"
+            }
+          },
+          {
+            "name": "prompt",
+            "input": {
+              "type": "string",
+              "value": "{{user_input}}"
+            }
+          }
+        ],
+        "node_inputs": [
+          {
+            "name": "user_input",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "user_input",
+                "ref_node": "start"
+              }
+            }
+          }
+        ],
+        "node_outputs": {
+          "output": {
+            "type": "string",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "end",
+      "name": "结束",
+      "title": "结束",
+      "description": "工作流的结束节点",
+      "type": "end",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png",
+      "position": {
+        "x": 700,
+        "y": 100
+      },
+      "config": {},
+      "parameters": {
+        "content": {
+          "type": "string",
+          "value": {
+            "content": "{{output}}",
+            "type": "literal"
+          }
+        },
+        "node_inputs": [
+          {
+            "name": "output",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "output",
+                "ref_node": "llm"
+              }
+            }
+          }
+        ],
+        "streamingOutput": false,
+        "terminatePlan": "useAnswerContent"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_1",
+      "source_node": "start",
+      "target_node": "llm",
+      "from": "start",
+      "to": "llm"
+    },
+    {
+      "id": "edge_2",
+      "source_node": "llm",
+      "target_node": "end",
+      "from": "llm",
+      "to": "end"
+    }
+  ],
+  "outputs": []
+}

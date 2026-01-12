@@ -1,0 +1,1565 @@
+{
+  "version": "2.0",
+  "name": "终极增量批量自动化Coze工作流系统",
+  "description": "基于DeepSeek设计的完整增量批量自动化Coze工作流，支持多存储平台、深层修复、自动化生成等高级功能",
+  "trigger": {
+    "type": "mixed",
+    "config": {
+      "schedules": [
+        {
+          "name": "每日全量处理",
+          "cron": "0 2 * * *",
+          "enabled": true,
+          "description": "每天凌晨2点执行全量数据处理"
+        },
+        {
+          "name": "每小时增量检查",
+          "cron": "0 * * * *",
+          "enabled": true,
+          "description": "每小时检查新数据"
+        },
+        {
+          "name": "实时监控",
+          "cron": "*/15 * * * *",
+          "enabled": false,
+          "description": "每15分钟监控一次（可选）"
+        }
+      ],
+      "webhook": {
+        "endpoint": "/api/webhook/ultimate-workflow",
+        "method": "POST",
+        "secret": "{{env.WEBHOOK_SECRET}}",
+        "rate_limit": 100,
+        "timeout": 30000
+      },
+      "manual": {
+        "enabled": true,
+        "description": "支持手动触发执行"
+      },
+      "event_driven": {
+        "enabled": true,
+        "events": ["data_change", "api_update", "file_upload"]
+      }
+    }
+  },
+  "environment_variables": [
+    {
+      "name": "STORAGE_TYPE",
+      "type": "string",
+      "required": false,
+      "default": "github",
+      "description": "存储类型：github, supabase, local_pg, hybrid"
+    },
+    {
+      "name": "GITHUB_TOKEN",
+      "type": "secret",
+      "required": false,
+      "description": "GitHub Personal Access Token"
+    },
+    {
+      "name": "GITHUB_REPO",
+      "type": "string",
+      "required": false,
+      "description": "GitHub仓库路径，格式：用户名/仓库名"
+    },
+    {
+      "name": "SUPABASE_URL",
+      "type": "string",
+      "required": false,
+      "description": "Supabase项目URL"
+    },
+    {
+      "name": "SUPABASE_KEY",
+      "type": "secret",
+      "required": false,
+      "description": "Supabase anon key"
+    },
+    {
+      "name": "LOCAL_PG_HOST",
+      "type": "string",
+      "required": false,
+      "default": "localhost",
+      "description": "本地PostgreSQL主机地址"
+    },
+    {
+      "name": "LOCAL_PG_PORT",
+      "type": "number",
+      "required": false,
+      "default": 5432,
+      "description": "本地PostgreSQL端口"
+    },
+    {
+      "name": "LOCAL_PG_DATABASE",
+      "type": "string",
+      "required": false,
+      "default": "postgres",
+      "description": "本地PostgreSQL数据库名称"
+    },
+    {
+      "name": "LOCAL_PG_USER",
+      "type": "string",
+      "required": false,
+      "default": "postgres",
+      "description": "本地PostgreSQL用户名"
+    },
+    {
+      "name": "LOCAL_PG_PASSWORD",
+      "type": "secret",
+      "required": false,
+      "description": "本地PostgreSQL密码"
+    },
+    {
+      "name": "BATCH_SIZE",
+      "type": "number",
+      "required": false,
+      "default": 100,
+      "description": "批量处理大小"
+    },
+    {
+      "name": "MAX_CONCURRENT",
+      "type": "number",
+      "required": false,
+      "default": 5,
+      "description": "最大并发数"
+    },
+    {
+      "name": "RETRY_COUNT",
+      "type": "number",
+      "required": false,
+      "default": 3,
+      "description": "重试次数"
+    },
+    {
+      "name": "RETRY_DELAY",
+      "type": "number",
+      "required": false,
+      "default": 5000,
+      "description": "重试延迟（毫秒）"
+    },
+    {
+      "name": "TIMEOUT_SECONDS",
+      "type": "number",
+      "required": false,
+      "default": 300,
+      "description": "超时时间（秒）"
+    },
+    {
+      "name": "ENABLE_DEEP_REPAIR",
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "description": "启用深层修复功能"
+    },
+    {
+      "name": "ENABLE_AUTO_GENERATION",
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "description": "启用自动化生成功能"
+    },
+    {
+      "name": "ENABLE_BATCH_PROCESSING",
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "description": "启用批量处理功能"
+    },
+    {
+      "name": "DATA_SOURCES",
+      "type": "json",
+      "required": false,
+      "default": "[{\"type\":\"api\",\"config\":{\"url\":\"https://api.example.com/data\"}}]",
+      "description": "数据源配置"
+    },
+    {
+      "name": "STORAGE_CONFIG",
+      "type": "json",
+      "required": false,
+      "default": "{\"type\":\"github\",\"table\":\"processed_data\"}",
+      "description": "存储配置"
+    },
+    {
+      "name": "NOTIFICATION_CONFIG",
+      "type": "json",
+      "required": false,
+      "default": "{\"types\":[\"github_issue\"]}",
+      "description": "通知配置"
+    },
+    {
+      "name": "WORKFLOW_TEMPLATES",
+      "type": "json",
+      "required": false,
+      "default": "{}",
+      "description": "工作流模板配置"
+    },
+    {
+      "name": "ERROR_WEBHOOK",
+      "type": "string",
+      "required": false,
+      "description": "错误通知Webhook URL"
+    },
+    {
+      "name": "MONITORING_ENDPOINT",
+      "type": "string",
+      "required": false,
+      "description": "监控端点URL"
+    },
+    {
+      "name": "LOG_LEVEL",
+      "type": "string",
+      "required": false,
+      "default": "info",
+      "description": "日志级别：debug, info, warn, error"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "name": "🚀 系统初始化与配置验证",
+      "type": "javascript",
+      "description": "完整的系统初始化，包括存储连接验证、配置检查、环境准备",
+      "code": "// 终极工作流系统初始化节点
+const axios = require('axios');
+
+class SystemInitializer {
+  constructor() {
+    this.config = {
+      storage_type: process.env.STORAGE_TYPE || 'github',
+      batch_size: parseInt(process.env.BATCH_SIZE) || 100,
+      max_concurrent: parseInt(process.env.MAX_CONCURRENT) || 5,
+      retry_count: parseInt(process.env.RETRY_COUNT) || 3,
+      timeout_seconds: parseInt(process.env.TIMEOUT_SECONDS) || 300,
+      enable_deep_repair: process.env.ENABLE_DEEP_REPAIR === 'true',
+      enable_auto_generation: process.env.ENABLE_AUTO_GENERATION === 'true',
+      enable_batch_processing: process.env.ENABLE_BATCH_PROCESSING === 'true',
+      log_level: process.env.LOG_LEVEL || 'info'
+    };
+  }
+
+  async validateStorageConnections() {
+    const results = {};
+    
+    // GitHub连接验证
+    results.github = await this.validateGitHubConnection();
+    
+    // Supabase连接验证
+    results.supabase = await this.validateSupabaseConnection();
+    
+    // 本地PostgreSQL连接验证
+    results.local_pg = await this.validateLocalPostgresConnection();
+    
+    // 根据选择的存储类型验证可用性
+    const selectedStorage = this.config.storage_type;
+    let storageAvailable = false;
+    
+    switch (selectedStorage) {
+      case 'github':
+        storageAvailable = results.github.connected;
+        break;
+      case 'supabase':
+        storageAvailable = results.supabase.connected;
+        break;
+      case 'local_pg':
+        storageAvailable = results.local_pg.connected;
+        break;
+      case 'hybrid':
+        storageAvailable = results.github.connected || results.supabase.connected || results.local_pg.connected;
+        break;
+      default:
+        storageAvailable = results.github.connected || results.supabase.connected;
+    }
+    
+    if (!storageAvailable) {
+      throw new Error(`所选存储类型 ${selectedStorage} 不可用，请检查环境变量配置`);
+    }
+    
+    return results;
+  }
+
+  async validateGitHubConnection() {
+    try {
+      if (!process.env.GITHUB_TOKEN || !process.env.GITHUB_REPO) {
+        return { connected: false, error: 'GitHub环境变量未配置' };
+      }
+      
+      const response = await axios.get(
+        `https://api.github.com/repos/${process.env.GITHUB_REPO}`,
+        {
+          headers: {
+            'Authorization': `token ${process.env.GITHUB_TOKEN}`,
+            'Accept': 'application/vnd.github.v3+json'
+          },
+          timeout: 10000
+        }
+      );
+      
+      // 验证仓库结构
+      await this.validateGitHubRepositoryStructure();
+      
+      return {
+        connected: true,
+        repo_info: response.data,
+        timestamp: new Date().toISOString()
+      };
+    } catch (error) {
+      return {
+        connected: false,
+        error: error.message,
+        timestamp: new Date().toISOString()
+      };
+    }
+  }
+
+  async validateGitHubRepositoryStructure() {
+    const requiredPaths = ['data/processed/', 'config/', 'logs/', 'templates/'];
+    
+    for (const path of requiredPaths) {
+      try {
+        await axios.get(
+          `https://api.github.com/repos/${process.env.GITHUB_REPO}/contents/${path}`,
+          {
+            headers: {
+              'Authorization': `token ${process.env.GITHUB_TOKEN}`
+            }
+          }
+        );
+      } catch (error) {
+        // 如果目录不存在，创建它
+        if (error.response?.status === 404) {
+          await this.createGitHubDirectory(path);
+        }
+      }
+    }
+  }
+
+  async createGitHubDirectory(path) {
+    const placeholderContent = JSON.stringify({ 
+      created_by: 'Coze Ultimate Workflow',
+      created_at: new Date().toISOString(),
+      purpose: 'Directory placeholder'
+    }, null, 2);
+    
+    try {
+      await axios.put(
+        `https://api.github.com/repos/${process.env.GITHUB_REPO}/contents/${path}.gitkeep`,
+        {
+          message: `Create directory structure: ${path}`,
+          content: Buffer.from(placeholderContent).toString('base64')
+        },
+        {
+          headers: {
+            'Authorization': `token ${process.env.GITHUB_TOKEN}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        }
+      );
+    } catch (error) {
+      console.warn(`无法创建目录 ${path}:`, error.message);
+    }
+  }
+
+  async validateSupabaseConnection() {
+    try {
+      if (!process.env.SUPABASE_URL || !process.env.SUPABASE_KEY) {
+        return { connected: false, error: 'Supabase环境变量未配置' };
+      }
+      
+      const { createClient } = require('@supabase/supabase-js');
+      const supabase = createClient(
+        process.env.SUPABASE_URL,
+        process.env.SUPABASE_KEY
+      );
+      
+      const { data, error } = await supabase
+        .from('information_schema.tables')
+        .select('table_name')
+        .limit(1);
+      
+      if (error) throw error;
+      
+      return {
+        connected: true,
+        database_info: { tables_count: data?.length || 0 },
+        timestamp: new Date().toISOString()
+      };
+    } catch (error) {
+      return {
+        connected: false,
+        error: error.message,
+        timestamp: new Date().toISOString()
+      };
+    }
+  }
+
+  async validateLocalPostgresConnection() {
+    try {
+      if (!process.env.LOCAL_PG_HOST || !process.env.LOCAL_PG_USER) {
+        return { connected: false, error: '本地PostgreSQL环境变量未配置' };
+      }
+      
+      // 由于Coze环境限制，我们进行基本的连接检查
+      const connectionConfig = {
+        host: process.env.LOCAL_PG_HOST,
+        port: process.env.LOCAL_PG_PORT || 5432,
+        database: process.env.LOCAL_PG_DATABASE || 'postgres',
+        user: process.env.LOCAL_PG_USER,
+        password: process.env.LOCAL_PG_PASSWORD
+      };
+      
+      console.log('本地PostgreSQL连接配置验证完成:', {
+        host: connectionConfig.host,
+        port: connectionConfig.port,
+        database: connectionConfig.database,
+        user: connectionConfig.user
+      });
+      
+      return {
+        connected: true,
+        config: connectionConfig,
+        note: '实际连接测试需要在有pg模块的环境中进行',
+        timestamp: new Date().toISOString()
+      };
+    } catch (error) {
+      return {
+        connected: false,
+        error: error.message,
+        timestamp: new Date().toISOString()
+      };
+    }
+  }
+
+  async validateConfiguration() {
+    const errors = [];
+    const warnings = [];
+    
+    // 验证批处理配置
+    if (this.config.batch_size < 1 || this.config.batch_size > 10000) {
+      errors.push('BATCH_SIZE必须在1-10000之间');
+    }
+    
+    if (this.config.max_concurrent < 1 || this.config.max_concurrent > 20) {
+      errors.push('MAX_CONCURRENT必须在1-20之间');
+    }
+    
+    if (this.config.retry_count < 0 || this.config.retry_count > 10) {
+      errors.push('RETRY_COUNT必须在0-10之间');
+    }
+    
+    // 验证日志级别
+    const validLogLevels = ['debug', 'info', 'warn', 'error'];
+    if (!validLogLevels.includes(this.config.log_level)) {
+      errors.push('LOG_LEVEL必须是debug、info、warn或error');
+    }
+    
+    // 验证存储类型
+    const validStorageTypes = ['github', 'supabase', 'local_pg', 'hybrid'];
+    if (!validStorageTypes.includes(this.config.storage_type)) {
+      errors.push('STORAGE_TYPE必须是github、supabase、local_pg或hybrid');
+    }
+    
+    return { errors, warnings };
+  }
+
+  async setupMonitoring() {
+    const monitoringConfig = {
+      enabled: !!process.env.MONITORING_ENDPOINT,
+      endpoint: process.env.MONITORING_ENDPOINT,
+      metrics: ['execution_time', 'success_rate', 'error_count', 'data_volume'],
+      alerts: {
+        high_error_rate: 0.1, // 10%错误率触发告警
+        long_execution_time: 300, // 5分钟执行时间触发告警
+        low_success_rate: 0.8 // 80%成功率触发告警
+      }
+    };
+    
+    return monitoringConfig;
+  }
+
+  async logInitialization(storageResults, configValidation, monitoringConfig) {
+    const logEntry = {
+      timestamp: new Date().toISOString(),
+      level: 'info',
+      component: 'system_initializer',
+      message: '系统初始化完成',
+      storage_connections: storageResults,
+      config_validation: configValidation,
+      monitoring_config: monitoringConfig,
+      system_config: this.config,
+      version: '2.0',
+      workflow_id: `workflow_${Date.now()}`
+    };
+    
+    console.log('系统初始化日志:', JSON.stringify(logEntry, null, 2));
+    
+    // 存储初始化日志
+    await this.storeInitializationLog(logEntry);
+    
+    return logEntry;
+  }
+
+  async storeInitializationLog(logEntry) {
+    try {
+      const storageType = process.env.STORAGE_TYPE || 'github';
+      
+      switch (storageType) {
+        case 'github':
+          await this.storeLogToGitHub(logEntry);
+          break;
+        case 'supabase':
+          await this.storeLogToSupabase(logEntry);
+          break;
+        case 'local_pg':
+          await this.storeLogToLocalPostgres(logEntry);
+          break;
+      }
+    } catch (error) {
+      console.error('存储初始化日志失败:', error.message);
+    }
+  }
+
+  async storeLogToGitHub(logEntry) {
+    if (!process.env.GITHUB_TOKEN || !process.env.GITHUB_REPO) return;
+    
+    try {
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const filePath = `logs/initialization/${timestamp}.json`;
+      
+      await axios.put(
+        `https://api.github.com/repos/${process.env.GITHUB_REPO}/contents/${filePath}`,
+        {
+          message: `Store initialization log: ${timestamp}`,
+          content: Buffer.from(JSON.stringify(logEntry, null, 2)).toString('base64')
+        },
+        {
+          headers: {
+            'Authorization': `token ${process.env.GITHUB_TOKEN}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        }
+      );
+    } catch (error) {
+      console.error('GitHub日志存储失败:', error.message);
+    }
+  }
+
+  async storeLogToSupabase(logEntry) {
+    if (!process.env.SUPABASE_URL || !process.env.SUPABASE_KEY) return;
+    
+    try {
+      const { createClient } = require('@supabase/supabase-js');
+      const supabase = createClient(
+        process.env.SUPABASE_URL,
+        process.env.SUPABASE_KEY
+      );
+      
+      await supabase.from('system_logs').insert({
+        level: logEntry.level,
+        component: logEntry.component,
+        message: logEntry.message,
+        data: logEntry,
+        timestamp: logEntry.timestamp
+      });
+    } catch (error) {
+      console.error('Supabase日志存储失败:', error.message);
+    }
+  }
+
+  async storeLogToLocalPostgres(logEntry) {
+    if (!process.env.LOCAL_PG_HOST || !process.env.LOCAL_PG_USER) return;
+    
+    console.log('本地PostgreSQL日志存储:', logEntry.message);
+    // 实际实现需要pg模块
+  }
+}
+
+async function main() {
+  const initializer = new SystemInitializer();
+  
+  console.log('🚀 开始系统初始化...');
+  
+  try {
+    // 验证存储连接
+    const storageResults = await initializer.validateStorageConnections();
+    console.log('存储连接验证完成:', storageResults);
+    
+    // 验证配置
+    const configValidation = await initializer.validateConfiguration();
+    if (configValidation.errors.length > 0) {
+      throw new Error(`配置验证失败: ${configValidation.errors.join(', ')}`);
+    }
+    
+    // 设置监控
+    const monitoringConfig = await initializer.setupMonitoring();
+    
+    // 记录初始化日志
+    const logEntry = await initializer.logInitialization(storageResults, configValidation, monitoringConfig);
+    
+    console.log('✅ 系统初始化完成');
+    
+    return {
+      initialization_successful: true,
+      storage_results: storageResults,
+      config_validation: configValidation,
+      monitoring_config: monitoringConfig,
+      system_config: initializer.config,
+      workflow_id: logEntry.workflow_id,
+      timestamp: new Date().toISOString()
+    };
+    
+  } catch (error) {
+    console.error('❌ 系统初始化失败:', error.message);
+    
+    // 记录错误日志
+    await initializer.logInitialization({
+      timestamp: new Date().toISOString(),
+      level: 'error',
+      component: 'system_initializer',
+      message: '系统初始化失败',
+      error: error.message,
+      stack: error.stack
+    }, { errors: [error.message], warnings: [] }, {});
+    
+    throw error;
+  }
+}
+
+main();",
+      "inputs": [],
+      "outputs": [
+        "initialization_successful",
+        "storage_results",
+        "config_validation",
+        "monitoring_config",
+        "system_config",
+        "workflow_id",
+        "timestamp"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "🔍 智能增量数据发现器",
+      "type": "javascript",
+      "description": "智能发现和获取增量数据，支持多种数据源和增量检测策略",
+      "code": "// 智能增量数据发现器节点
+const axios = require('axios');
+
+class SmartIncrementalDataDiscoverer {
+  constructor(config) {
+    this.config = config;
+    this.discoveryStrategies = {
+      timestamp: new TimestampDiscovery(),
+      hash: new HashDiscovery(),
+      version: new VersionDiscovery(),
+      content: new ContentDiscovery()
+    };
+  }
+
+  async discoverIncrementalData(lastProcessedAt, workflowId) {
+    const dataSources = JSON.parse(process.env.DATA_SOURCES || '[]');
+    const discoveredData = [];
+    const discoveryMetrics = [];
+    
+    for (const sourceConfig of dataSources) {
+      try {
+        console.log(`正在发现数据源: ${sourceConfig.type}`, sourceConfig.config);
+        
+        const startTime = Date.now();
+        const data = await this.discoverFromSource(sourceConfig, lastProcessedAt);
+        const endTime = Date.now();
+        
+        discoveredData.push(...data.items);
+        discoveryMetrics.push({
+          source_type: sourceConfig.type,
+          source_config: sourceConfig.config,
+          discovered_count: data.items.length,
+          incremental_count: data.incremental_count,
+          duplicate_count: data.duplicate_count,
+          discovery_time_ms: endTime - startTime,
+          strategy_used: data.strategy_used,
+          confidence_score: data.confidence_score
+        });
+        
+      } catch (error) {
+        console.error(`数据源发现失败: ${sourceConfig.type}`, error.message);
+        discoveryMetrics.push({
+          source_type: sourceConfig.type,
+          source_config: sourceConfig.config,
+          discovered_count: 0,
+          incremental_count: 0,
+          duplicate_count: 0,
+          discovery_time_ms: Date.now() - startTime,
+          error: error.message,
+          confidence_score: 0
+        });
+      }
+    }
+    
+    // 数据去重和合并
+    const deduplicatedData = await this.deduplicateData(discoveredData);
+    
+    // 数据质量评估
+    const qualityAssessment = await this.assessDataQuality(deduplicatedData);
+    
+    return {
+      discovered_data: deduplicatedData,
+      discovery_metrics: discoveryMetrics,
+      total_discovered: discoveredData.length,
+      total_incremental: deduplicatedData.length,
+      quality_assessment: qualityAssessment,
+      discovery_timestamp: new Date().toISOString(),
+      workflow_id: workflowId
+    };
+  }
+
+  async discoverFromSource(sourceConfig, lastProcessedAt) {
+    const discoverer = this.createDiscoverer(sourceConfig.type);
+    return await discoverer.discover(sourceConfig.config, lastProcessedAt);
+  }
+
+  createDiscoverer(type) {
+    switch (type) {
+      case 'api':
+        return new APIDataDiscoverer(this.discoveryStrategies);
+      case 'database':
+        return new DatabaseDataDiscoverer(this.discoveryStrategies);
+      case 'web':
+        return new WebDataDiscoverer(this.discoveryStrategies);
+      case 'file':
+        return new FileDataDiscoverer(this.discoveryStrategies);
+      case 'stream':
+        return new StreamDataDiscoverer(this.discoveryStrategies);
+      default:
+        throw new Error(`不支持的数据源类型: ${type}`);
+    }
+  }
+
+  async deduplicateData(data) {
+    const seen = new Set();
+    const deduplicated = [];
+    const duplicates = [];
+    
+    for (const item of data) {
+      const hash = this.generateDataHash(item);
+      
+      if (!seen.has(hash)) {
+        seen.add(hash);
+        deduplicated.push({
+          ...item,
+          _deduplication: {
+            hash: hash,
+            is_duplicate: false,
+            original_index: deduplicated.length
+          }
+        });
+      } else {
+        duplicates.push({
+          ...item,
+          _deduplication: {
+            hash: hash,
+            is_duplicate: true,
+            original_index: -1
+          }
+        });
+      }
+    }
+    
+    return {
+      items: deduplicated,
+      duplicates: duplicates,
+      deduplication_rate: (duplicates.length / data.length) * 100,
+      unique_count: deduplicated.length
+    };
+  }
+
+  generateDataHash(item) {
+    const content = JSON.stringify(item, Object.keys(item).sort());
+    return require('crypto').createHash('sha256').update(content).digest('hex');
+  }
+
+  async assessDataQuality(data) {
+    const assessment = {
+      completeness: this.assessCompleteness(data),
+      consistency: this.assessConsistency(data),
+      accuracy: this.assessAccuracy(data),
+      timeliness: this.assessTimeliness(data),
+      validity: this.assessValidity(data),
+      uniqueness: this.assessUniqueness(data)
+    };
+    
+    assessment.overall_score = Object.values(assessment).reduce((sum, metric) => sum + metric.score, 0) / Object.keys(assessment).length;
+    
+    return assessment;
+  }
+
+  assessCompleteness(data) {
+    const totalFields = data.reduce((sum, item) => sum + Object.keys(item).length, 0);
+    const nonNullFields = data.reduce((sum, item) => {
+      return sum + Object.values(item).filter(value => value !== null && value !== undefined && value !== '').length;
+    }, 0);
+    
+    const score = (nonNullFields / totalFields) * 100;
+    
+    return {
+      score: score,
+      completeness_rate: score,
+      missing_fields_count: totalFields - nonNullFields
+    };
+  }
+
+  assessConsistency(data) {
+    // 简化的数据一致性评估
+    const dataTypes = {};
+    let consistentCount = 0;
+    
+    data.forEach(item => {
+      Object.entries(item).forEach(([key, value]) => {
+        if (!dataTypes[key]) {
+          dataTypes[key] = typeof value;
+        } else if (dataTypes[key] === typeof value) {
+          consistentCount++;
+        }
+      });
+    });
+    
+    const score = (consistentCount / (data.length * Object.keys(dataTypes).length)) * 100;
+    
+    return {
+      score: score,
+      consistency_rate: score,
+      data_types: dataTypes
+    };
+  }
+
+  assessAccuracy(data) {
+    // 简化的数据准确性评估
+    let accurateCount = 0;
+    
+    data.forEach(item => {
+      // 检查邮箱格式
+      if (item.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(item.email)) {
+        accurateCount++;
+      }
+      
+      // 检查日期格式
+      if (item.created_at && !isNaN(Date.parse(item.created_at))) {
+        accurateCount++;
+      }
+      
+      // 检查数字范围
+      if (item.age && typeof item.age === 'number' && item.age > 0 && item.age < 150) {
+        accurateCount++;
+      }
+    });
+    
+    const score = (accurateCount / (data.length * 3)) * 100;
+    
+    return {
+      score: score,
+      accuracy_rate: score,
+      validation_checks: ['email_format', 'date_format', 'number_range']
+    };
+  }
+
+  assessTimeliness(data) {
+    const now = new Date();
+    const recentCount = data.filter(item => {
+      const createdAt = new Date(item.created_at || item.updated_at || item.timestamp);
+      const daysDiff = (now - createdAt) / (1000 * 60 * 60 * 24);
+      return daysDiff <= 7; // 7天内为及时数据
+    }).length;
+    
+    const score = (recentCount / data.length) * 100;
+    
+    return {
+      score: score,
+      timeliness_rate: score,
+      recent_data_count: recentCount
+    };
+  }
+
+  assessValidity(data) {
+    // 检查数据格式和约束
+    let validCount = 0;
+    
+    data.forEach(item => {
+      let isValid = true;
+      
+      // 必填字段检查
+      const requiredFields = ['id', 'name']; // 示例必填字段
+      for (const field of requiredFields) {
+        if (!item[field]) {
+          isValid = false;
+          break;
+        }
+      }
+      
+      if (isValid) validCount++;
+    });
+    
+    const score = (validCount / data.length) * 100;
+    
+    return {
+      score: score,
+      validity_rate: score,
+      valid_records_count: validCount
+    };
+  }
+
+  assessUniqueness(data) {
+    const uniqueHashes = new Set(data.map(item => this.generateDataHash(item)));
+    const uniquenessRate = (uniqueHashes.size / data.length) * 100;
+    
+    return {
+      score: uniquenessRate,
+      uniqueness_rate: uniquenessRate,
+      unique_records_count: uniqueHashes.size
+    };
+  }
+}
+
+// 基础发现策略类
+class DiscoveryStrategy {
+  constructor(name) {
+    this.name = name;
+  }
+  
+  async detectIncremental(items, lastProcessedAt) {
+    throw new Error('子类必须实现detectIncremental方法');
+  }
+}
+
+class TimestampDiscovery extends DiscoveryStrategy {
+  constructor() {
+    super('timestamp');
+  }
+  
+  async detectIncremental(items, lastProcessedAt) {
+    const incremental = items.filter(item => {
+      const itemTimestamp = new Date(item.created_at || item.updated_at || item.timestamp);
+      const lastProcessed = new Date(lastProcessedAt);
+      return itemTimestamp > lastProcessed;
+    });
+    
+    return {
+      incremental: incremental,
+      strategy: this.name,
+      confidence: 0.95,
+      incremental_count: incremental.length
+    };
+  }
+}
+
+class HashDiscovery extends DiscoveryStrategy {
+  constructor() {
+    super('hash');
+  }
+  
+  async detectIncremental(items, lastProcessedAt) {
+    // 基于内容哈希的增量检测
+    const hashes = new Set();
+    const incremental = [];
+    
+    for (const item of items) {
+      const hash = require('crypto').createHash('sha256')
+        .update(JSON.stringify(item)).digest('hex');
+      
+      if (!hashes.has(hash)) {
+        hashes.add(hash);
+        incremental.push({
+          ...item,
+          _discovery_hash: hash
+        });
+      }
+    }
+    
+    return {
+      incremental: incremental,
+      strategy: this.name,
+      confidence: 0.9,
+      incremental_count: incremental.length
+    };
+  }
+}
+
+class VersionDiscovery extends DiscoveryStrategy {
+  constructor() {
+    super('version');
+  }
+  
+  async detectIncremental(items, lastProcessedAt) {
+    const incremental = items.filter(item => {
+      const currentVersion = item.version || item._version || 0;
+      const lastVersion = parseInt(lastProcessedAt) || 0;
+      return currentVersion > lastVersion;
+    });
+    
+    return {
+      incremental: incremental,
+      strategy: this.name,
+      confidence: 0.85,
+      incremental_count: incremental.length
+    };
+  }
+}
+
+class ContentDiscovery extends DiscoveryStrategy {
+  constructor() {
+    super('content');
+  }
+  
+  async detectIncremental(items, lastProcessedAt) {
+    // 基于内容变化的增量检测
+    const incremental = items.filter(item => {
+      // 检查关键字段是否发生变化
+      const contentFields = ['content', 'data', 'payload', 'body'];
+      return contentFields.some(field => {
+        const fieldValue = item[field];
+        return fieldValue && typeof fieldValue === 'string' && fieldValue.length > 0;
+      });
+    });
+    
+    return {
+      incremental: incremental,
+      strategy: this.name,
+      confidence: 0.8,
+      incremental_count: incremental.length
+    };
+  }
+}
+
+// 具体数据源发现器
+class APIDataDiscoverer {
+  constructor(strategies) {
+    this.strategies = strategies;
+  }
+  
+  async discover(config, lastProcessedAt) {
+    const response = await axios.get(config.url, {
+      params: {
+        last_updated: lastProcessedAt,
+        limit: process.env.BATCH_SIZE || 100,
+        ...config.params
+      },
+      headers: config.headers || {},
+      timeout: 30000
+    });
+    
+    const items = Array.isArray(response.data) ? response.data : [response.data];
+    
+    // 应用多种增量检测策略
+    const strategyResults = await Promise.all(
+      Object.values(this.strategies).map(strategy => 
+        strategy.detectIncremental(items, lastProcessedAt)
+      )
+    );
+    
+    // 选择最佳策略结果
+    const bestStrategy = strategyResults.reduce((best, current) => 
+      current.confidence > best.confidence ? current : best
+    );
+    
+    return {
+      items: bestStrategy.incremental,
+      incremental_count: bestStrategy.incremental_count,
+      duplicate_count: items.length - bestStrategy.incremental_count,
+      strategy_used: bestStrategy.strategy,
+      confidence_score: bestStrategy.confidence
+    };
+  }
+}
+
+class DatabaseDataDiscoverer {
+  constructor(strategies) {
+    this.strategies = strategies;
+  }
+  
+  async discover(config, lastProcessedAt) {
+    const { createClient } = require('@supabase/supabase-js');
+    const supabase = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_KEY
+    );
+    
+    const { data, error } = await supabase
+      .from(config.table)
+      .select('*')
+      .gt(config.incremental_field || 'updated_at', lastProcessedAt)
+      .limit(process.env.BATCH_SIZE || 100);
+    
+    if (error) throw error;
+    
+    const items = data || [];
+    
+    const strategyResults = await Promise.all(
+      Object.values(this.strategies).map(strategy => 
+        strategy.detectIncremental(items, lastProcessedAt)
+      )
+    );
+    
+    const bestStrategy = strategyResults.reduce((best, current) => 
+      current.confidence > best.confidence ? current : best
+    );
+    
+    return {
+      items: bestStrategy.incremental,
+      incremental_count: bestStrategy.incremental_count,
+      duplicate_count: items.length - bestStrategy.incremental_count,
+      strategy_used: bestStrategy.strategy,
+      confidence_score: bestStrategy.confidence
+    };
+  }
+}
+
+class WebDataDiscoverer {
+  constructor(strategies) {
+    this.strategies = strategies;
+  }
+  
+  async discover(config, lastProcessedAt) {
+    const response = await axios.get(config.url, {
+      timeout: 30000,
+      headers: {
+        'User-Agent': 'Coze-Ultimate-Workflow/2.0'
+      }
+    });
+    
+    // 简化的网页数据提取
+    const items = [{
+      content: response.data,
+      scraped_at: new Date().toISOString(),
+      url: config.url,
+      status_code: response.status
+    }];
+    
+    const strategyResults = await Promise.all(
+      Object.values(this.strategies).map(strategy => 
+        strategy.detectIncremental(items, lastProcessedAt)
+      )
+    );
+    
+    const bestStrategy = strategyResults.reduce((best, current) => 
+      current.confidence > best.confidence ? current : best
+    );
+    
+    return {
+      items: bestStrategy.incremental,
+      incremental_count: bestStrategy.incremental_count,
+      duplicate_count: items.length - bestStrategy.incremental_count,
+      strategy_used: bestStrategy.strategy,
+      confidence_score: bestStrategy.confidence
+    };
+  }
+}
+
+class FileDataDiscoverer {
+  constructor(strategies) {
+    this.strategies = strategies;
+  }
+  
+  async discover(config, lastProcessedAt) {
+    // 文件数据发现（需要文件系统访问）
+    const items = [];
+    
+    // 这里简化处理，实际实现需要文件系统访问
+    console.log('文件数据源发现:', config);
+    
+    return {
+      items: items,
+      incremental_count: items.length,
+      duplicate_count: 0,
+      strategy_used: 'file',
+      confidence_score: 0.7
+    };
+  }
+}
+
+class StreamDataDiscoverer {
+  constructor(strategies) {
+    this.strategies = strategies;
+  }
+  
+  async discover(config, lastProcessedAt) {
+    // 流数据发现
+    const items = [];
+    
+    // 这里简化处理，实际实现需要流处理支持
+    console.log('流数据源发现:', config);
+    
+    return {
+      items: items,
+      incremental_count: items.length,
+      duplicate_count: 0,
+      strategy_used: 'stream',
+      confidence_score: 0.6
+    };
+  }
+}
+
+async function main(input) {
+  const discoverer = new SmartIncrementalDataDiscoverer();
+  
+  try {
+    const result = await discoverer.discoverIncrementalData(
+      input.last_processed_at,
+      input.workflow_id
+    );
+    
+    console.log('智能增量数据发现完成:', {
+      total_discovered: result.total_discovered,
+      total_incremental: result.total_incremental,
+      quality_score: result.quality_assessment.overall_score
+    });
+    
+    return result;
+    
+  } catch (error) {
+    console.error('增量数据发现失败:', error.message);
+    
+    return {
+      discovered_data: [],
+      discovery_metrics: [],
+      total_discovered: 0,
+      total_incremental: 0,
+      quality_assessment: { overall_score: 0 },
+      discovery_timestamp: new Date().toISOString(),
+      workflow_id: input.workflow_id,
+      error: error.message
+    };
+  }
+}
+
+main(input);",
+      "inputs": [
+        "last_processed_at",
+        "workflow_id"
+      ],
+      "outputs": [
+        "discovered_data",
+        "discovery_metrics",
+        "total_discovered",
+        "total_incremental",
+        "quality_assessment",
+        "discovery_timestamp",
+        "workflow_id"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "⚙️ 高级数据处理引擎",
+      "type": "javascript",
+      "description": "高级数据处理引擎，包含清洗、验证、转换、增强等完整功能",
+      "code": "// 高级数据处理引擎节点
+const axios = require('axios');
+
+class AdvancedDataProcessingEngine {
+  constructor(config) {
+    this.config = config;
+    this.processors = {
+      cleaner: new DataCleaner(),
+      validator: new DataValidator(),
+      transformer: new DataTransformer(),
+      enhancer: new DataEnhancer(),
+      normalizer: new DataNormalizer(),
+      enricher: new DataEnricher()
+    };
+  }
+
+  async processBatch(data, metrics) {
+    const processingResults = [];
+    const processingErrors = [];
+    const processingMetrics = [];
+    
+    const batchSize = parseInt(process.env.BATCH_SIZE) || 100;
+    const maxConcurrent = parseInt(process.env.MAX_CONCURRENT) || 5;
+    
+    console.log(`开始处理 ${data.length} 条数据，批量大小: ${batchSize}, 最大并发: ${maxConcurrent}`);
+    
+    // 分批处理数据
+    for (let i = 0; i < data.length; i += batchSize) {
+      const batch = data.slice(i, i + batchSize);
+      console.log(`处理批次 ${Math.floor(i / batchSize) + 1}/${Math.ceil(data.length / batchSize)}`);
+      
+      try {
+        const batchResult = await this.processBatchConcurrent(batch, maxConcurrent);
+        processingResults.push(...batchResult.processed);
+        processingErrors.push(...batchResult.errors);
+        processingMetrics.push({
+          batch_index: Math.floor(i / batchSize),
+          batch_size: batch.length,
+          processed_count: batchResult.processed.length,
+          error_count: batchResult.errors.length,
+          processing_time_ms: batchResult.processing_time,
+          memory_usage_mb: batchResult.memory_usage
+        });
+      } catch (error) {
+        console.error(`批次处理失败:`, error.message);
+        processingErrors.push({
+          batch_index: Math.floor(i / batchSize),
+          error: error.message,
+          stack: error.stack
+        });
+      }
+      
+      // 批次间延迟，避免过载
+      if (i + batchSize < data.length) {
+        await this.delay(1000);
+      }
+    }
+    
+    // 生成处理报告
+    const processingReport = this.generateProcessingReport(
+      processingResults,
+      processingErrors,
+      processingMetrics,
+      metrics
+    );
+    
+    return {
+      processed_data: processingResults,
+      processing_errors: processingErrors,
+      processing_metrics: processingMetrics,
+      processing_report: processingReport,
+      success_count: processingResults.length,
+      error_count: processingErrors.length,
+      success_rate: (processingResults.length / data.length) * 100,
+      batch_id: `batch_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      processing_timestamp: new Date().toISOString()
+    };
+  }
+
+  async processBatchConcurrent(batch, maxConcurrent) {
+    const startTime = Date.now();
+    const processed = [];
+    const errors = [];
+    
+    // 将批次分成更小的并发组
+    const concurrentGroups = this.createConcurrentGroups(batch, maxConcurrent);
+    
+    for (const group of concurrentGroups) {
+      const groupPromises = group.map(item => this.processItem(item));
+      const groupResults = await Promise.allSettled(groupPromises);
+      
+      groupResults.forEach((result, index) => {
+        if (result.status === 'fulfilled') {
+          processed.push(result.value);
+        } else {
+          errors.push({
+            item: group[index],
+            error: result.reason.message,
+            stack: result.reason.stack
+          });
+        }
+      });
+    }
+    
+    const endTime = Date.now();
+    const processingTime = endTime - startTime;
+    
+    // 估算内存使用（简化计算）
+    const memoryUsage = this.estimateMemoryUsage(processed, errors);
+    
+    return {
+      processed: processed,
+      errors: errors,
+      processing_time: processingTime,
+      memory_usage: memoryUsage
+    };
+  }
+
+  createConcurrentGroups(batch, maxConcurrent) {
+    const groups = [];
+    for (let i = 0; i < batch.length; i += maxConcurrent) {
+      groups.push(batch.slice(i, i + maxConcurrent));
+    }
+    return groups;
+  }
+
+  async processItem(item) {
+    try {
+      let processedItem = { ...item };
+      
+      // 1. 数据清洗
+      processedItem = await this.processors.cleaner.clean(processedItem);
+      
+      // 2. 数据验证
+      const validationResult = await this.processors.validator.validate(processedItem);
+      if (!validationResult.isValid) {
+        throw new Error(`数据验证失败: ${validationResult.errors.join(', ')}`);
+      }
+      
+      // 3. 数据转换
+      processedItem = await this.processors.transformer.transform(processedItem);
+      
+      // 4. 数据增强
+      processedItem = await this.processors.enhancer.enhance(processedItem);
+      
+      // 5. 数据规范化
+      processedItem = await this.processors.normalizer.normalize(processedItem);
+      
+      // 6. 数据丰富
+      processedItem = await this.processors.enricher.enrich(processedItem);
+      
+      // 添加处理元数据
+      processedItem._processing = {
+        processed_at: new Date().toISOString(),
+        processors_applied: Object.keys(this.processors),
+        validation_passed: validationResult.isValid,
+        processing_version: '2.0'
+      };
+      
+      return processedItem;
+      
+    } catch (error) {
+      // 错误处理和数据恢复
+      const recoveredItem = await this.attemptDataRecovery(item, error);
+      
+      if (recoveredItem) {
+        return recoveredItem;
+      } else {
+        throw error;
+      }
+    }
+  }
+
+  async attemptDataRecovery(item, error) {
+    console.log('尝试数据恢复:', error.message);
+    
+    try {
+      // 简化的数据恢复策略
+      const recoveredItem = {
+        ...item,
+        _recovery: {
+          original_error: error.message,
+          recovery_attempted: true,
+          recovery_timestamp: new Date().toISOString(),
+          recovery_strategy: 'partial_recovery'
+        }
+      };
+      
+      // 应用基本的清洗和验证
+      recoveredItem = await this.processors.cleaner.clean(recoveredItem);
+      const validationResult = await this.processors.validator.validate(recoveredItem);
+      
+      if (validationResult.isValid) {
+        return recoveredItem;
+      }
+      
+      return null;
+      
+    } catch (recoveryError) {
+      console.error('数据恢复失败:', recoveryError.message);
+      return null;
+    }
+  }
+
+  generateProcessingReport(processed, errors, metrics, originalMetrics) {
+    const report = {
+      summary: {
+        total_processed: processed.length + errors.length,
+        successful: processed.length,
+        failed: errors.length,
+        success_rate: (processed.length / (processed.length + errors.length)) * 100
+      },
+      quality_metrics: this.calculateQualityMetrics(processed),
+      performance_metrics: this.calculatePerformanceMetrics(metrics),
+      error_analysis: this.analyzeErrors(errors),
+      data_insights: this.generateDataInsights(processed),
+      recommendations: this.generateRecommendations(processed, errors, metrics),
+      timestamp: new Date().toISOString()
+    };
+    
+    return report;
+  }
+
+  calculateQualityMetrics(processed) {
+    const qualityScores = processed.map(item => {
+      return item._processing?.quality_score || this.calculateItemQualityScore(item);
+    });
+    
+    return {
+      average_quality_score: qualityScores.reduce((sum, score) => sum + score, 0) / qualityScores.length,
+      quality_score_distribution: this.calculateDistribution(qualityScores),
+      quality_improvement_rate: this.calculateQualityImprovement(processed)
+    };
+  }
+
+  calculateItemQualityScore(item) {
+    let score = 100;
+    
+    // 完整性检查
+    const nullFields = Object.values(item).filter(v => v === null || v === undefined).length;
+    score -= (nullFields / Object.keys(item).length) * 20;
+    
+    // 格式检查
+    if (item.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(item.email)) {
+      score -= 15;
+    }
+    
+    // 数据类型检查
+    if (item.age && (typeof item.age !== 'number' || item.age < 0 || item.age > 150)) {
+      score -= 10;
+    }
+    
+    return Math.max(0, score);
+  }
+
+  calculatePerformanceMetrics(metrics) {
+    const processingTimes = metrics.map(m => m.processing_time_ms);
+    const memoryUsages = metrics.map(m => m.memory_usage_mb);
+    
+    return {
+      average_processing_time_ms: processingTimes.reduce((sum, time) => sum + time, 0) / processingTimes.length,
+      total_processing_time_ms: processingTimes.reduce((sum, time) => sum + time, 0),
+      average_memory_usage_mb: memoryUsages.reduce((sum, memory) => sum + memory, 0) / memoryUsages.length,
+      peak_memory_usage_mb: Math.max(...memoryUsages),
+      throughput_items_per_second: this.calculateThroughput(metrics)
+    };
+  }
+
+  calculateThroughput(metrics) {
+    const totalItems = metrics.reduce((sum, m) => sum + m.processed_count, 0);
+    const totalTime = metrics.reduce((sum, m) => sum + m.processing_time_ms, 0);
+    return (totalItems / (totalTime / 1000)).toFixed(2);
+  }
+
+  analyzeErrors(errors) {
+    const errorTypes = {};
+    const errorMessages = {};
+    
+    errors.forEach(error => {
+      const errorType = this.categorizeError(error);
+      errorTypes[errorType] = (errorTypes[errorType] || 0) + 1;
+      
+      const errorMessage = error.error || 'Unknown error';
+      errorMessages[errorMessage] = (errorMessages[errorMessage] || 0) + 1;
+    });
+    
+    return {
+      error_types: errorTypes,
+      error_messages: errorMessages,
+      most_common_error: Object.keys(errorMessages).reduce((a, b) => 
+        errorMessages[a] > errorMessages[b] ? a : b, Object.keys(errorMessages)[0]
+      ),
+      error_rate: (errors.length / (errors.length + processed.length)) * 100
+    };
+  }
+
+  categorizeError(error) {
+    const errorMessage = error.error || '';
+    
+    if (errorMessage.includes('validation')) return 'validation_error';
+    if (errorMessage.includes('network')) return 'network_error';
+    if (errorMessage.includes('timeout')) return 'timeout_error';
+    if (errorMessage.includes('format')) return 'format_error';
+    if (errorMessage.includes('missing')) return 'missing_data_error';
+    
+    return 'unknown_error';
+  }
+
+  generateDataInsights(processed) {
+    const insights = {
+      data_volume: processed.length,
+      field_coverage: this.calculateFieldCoverage(processed),
+      data_patterns: this.identifyDataPatterns(processed),
+      anomalies: this.detectAnomalies(processed),
+      trends: this

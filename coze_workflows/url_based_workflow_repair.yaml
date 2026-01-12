@@ -1,0 +1,395 @@
+description: 基于URL的工作流修复系统，通过URL获取工作流内容，自动检测并修复工作流中的错误。
+edges:
+- id: edge_0
+  source_node: start_node
+  target_node: '162536'
+- id: edge_1
+  source_node: '162536'
+  target_node: '197721'
+- id: edge_2
+  source_node: '197721'
+  target_node: '1780866'
+- id: edge_3
+  source_node: '1780866'
+  target_node: end_node
+main:
+  commitId: ''
+  desc: 基于URL的工作流修复系统
+  flowMode: 3
+  icon: plugin_icon/chatflow-icon.png
+  id: 7482227437301858354
+  name: url_based_workflow_repair
+  version: ''
+metadata:
+  createdAt: '2026-01-09T00:00:00.000Z'
+  creator: coze_workflow_fixer
+  tags: ["url-based", "workflow", "repair"]
+  updatedAt: '2026-01-09T00:00:00.000Z'
+name: 基于URL的工作流修复系统
+nodes:
+- config: {}
+  id: start_node
+  name: 开始
+  parameters:
+    node_outputs:
+      input_url:
+        description: 需要处理的工作流URL
+        type: string
+        value: null
+  position:
+    x: 100
+    y: 100
+  title: 开始
+  type: start
+- config: {}
+  description: URL的内容
+  icon: https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code-v2.jpg
+  id: '162536'
+  name: 节点_2
+  parameters:
+    code: "import json
+import re
+import requests
+
+async def main(inputs):
+    \"\"\"异步主函数入口，处理输入参数并返回结果
+    
+    Args:
+        inputs (dict): 包含输入参数的字典
+        
+    Returns:
+        dict: 处理结果
+    \"\"\"    
+    # 1. 获取输入URL，清理格式
+    input_url = inputs.get('input_url', '').strip().strip('\"`')
+    
+    # 2. 发送请求获取URL内容
+    try:
+        response = requests.get(input_url, timeout=30)
+        response.raise_for_status()
+        
+        # 3. 检测内容类型
+        content_type = response.headers.get('content-type', '').split(';')[0]
+        
+        # 4. 构造并返回结果
+        return {
+            \"content\": response.text,
+            \"content_type\": [content_type]
+        }
+    except Exception as e:
+        return {
+            \"content\": f\"获取URL内容失败：{str(e)}\",
+            \"content_type\": [\"text/plain\"]
+        }"
+    language: 3
+    node_inputs:
+    - input:
+        value:
+          path: input_url
+          ref_node: start_node
+      name: input_url
+    node_outputs:
+      content:
+        description: URL的内容
+        type: string
+        value: null
+      content_type:
+        description: 内容类型
+        items:
+          type: string
+          value: null
+        type: list
+        value: null
+    settingOnError:
+      processType: 1
+      retryTimes: 0
+      timeoutMs: 60000
+  position:
+    x: 640
+    y: 26
+  title: URL内容获取节点
+  type: code
+  version: v2
+- config: {}
+  description: 调用大语言模型,使用变量和提示词生成回复
+  icon: `https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-LLM-v2.jpg`  
+  id: '197721'
+  name: 节点_3
+  parameters:
+    fcParamVar:
+      knowledgeFCParam: {}
+    llmParam:
+    - input:
+        type: integer
+        value: '1737521813'
+      name: modelType
+    - input:
+        type: string
+        value: 豆包·1.5·Pro·32k
+      name: modelName
+    - input:
+        type: string
+        value: balance
+      name: generationDiversity
+    - input:
+        type: float
+        value: '0.8'
+      name: temperature
+    - input:
+        type: integer
+        value: '4096'
+      name: maxTokens
+    - input:
+        type: boolean
+        value: false
+      name: spCurrentTime
+    - input:
+        type: boolean
+        value: false
+      name: spAntiLeak
+    - input:
+        type: boolean
+        value: false
+      name: prefixCache
+    - input:
+        type: integer
+        value: '2'
+      name: responseFormat
+    - input:
+        type: object
+        value: null
+      name: parameters
+    - input:
+        type: string
+        value: "请检测以下Coze工作流配置中的错误：
+     工作流配置：{{workflow_content}}
+     请严格按照JSON格式输出检测结果，不要添加任何额外的解释。"
+      name: prompt
+    - input:
+        type: boolean
+        value: false
+      name: enableChatHistory
+    - input:
+        type: integer
+        value: '3'
+      name: chatHistoryRound
+    - input:
+        type: string
+        value: ' 你是一个专业的Coze工作流错误检测专家。请分析输入的Coze工作流配置，找出所有可能导致工作流运行失败的错误，包括但不限于：节点逻辑衔接问题、插件权限配置错误、缺少错误重试机制、数据传递配置错误、代码节点输入输出不匹配、大模型提示词缺失等。请以JSON格式输出检测结果，包含以下字段：has_error（布尔值）、error_count（整数）、errors（数组，包含每个错误的type、location、description字段）、suggestions（数组，包含修复建议）。'
+      name: systemPrompt
+    - input:
+        type: string
+        value: ''
+      name: stableSystemPrompt
+    - input:
+        type: boolean
+        value: false
+      name: canContinue
+    - input:
+        type: string
+        value: ''
+      name: loopPromptVersion
+    - input:
+        type: string
+        value: ''
+      name: loopPromptName
+    - input:
+        type: string
+        value: ''
+      name: loopPromptId
+    node_inputs:
+    - input:
+        value:
+          path: content
+          ref_node: '162536'
+      name: workflow_content
+    node_outputs:
+      detection_resul:
+        description: 错误检测结果
+        type: string
+        value: null
+    settingOnError:
+      processType: 1
+      retryTimes: 0
+      timeoutMs: 180000
+  position:
+    x: 1100
+    y: 0
+  title: 工作流错误检测节点
+  type: llm
+  version: '3'
+- config: {}
+  description: 调用大语言模型,使用变量和提示词生成回复
+  icon: `https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-LLM-v2.jpg`  
+  id: '1780866'
+  name: 节点_4
+  parameters:
+    fcParamVar:
+      knowledgeFCParam: {}
+    llmParam:
+    - input:
+        type: integer
+        value: '1737521813'
+      name: modelType
+    - input:
+        type: string
+        value: 豆包·1.5·Pro·32k
+      name: modelName
+    - input:
+        type: string
+        value: balance
+      name: generationDiversity
+    - input:
+        type: float
+        value: '0.8'
+      name: temperature
+    - input:
+        type: integer
+        value: '4096'
+      name: maxTokens
+    - input:
+        type: boolean
+        value: false
+      name: spCurrentTime
+    - input:
+        type: boolean
+        value: false
+      name: spAntiLeak
+    - input:
+        type: boolean
+        value: false
+      name: prefixCache
+    - input:
+        type: integer
+        value: '2'
+      name: responseFormat
+    - input:
+        type: object
+        value: null
+      name: parameters
+    - input:
+        type: string
+        value: "请修复以下Coze工作流配置中的错误：
+     原始工作流配置：{{workflow_content}}
+     错误检测结果：{{detection_result}}
+
+          请严格返回修复后的完整工作流配置，不要添加任何额外的解释或说明。"
+      name: prompt
+    - input:
+        type: boolean
+        value: false
+      name: enableChatHistory
+    - input:
+        type: integer
+        value: '3'
+      name: chatHistoryRound
+    - input:
+        type: string
+        value: 你是一个专业的Coze工作流修复专家。请根据输入的错误检测结果，修复工作流配置中的所有错误。修复时请严格遵循以下规则：1. 保持原始工作流的核心逻辑不变；2.
+          修复所有检测到的错误；3. 确保修复后的配置符合Coze工作流的语法规范；4. 添加必要的错误处理机制，如重试节点；5. 确保节点间的数据传递配置正确；6.
+          修复后的配置必须能直接在Coze平台上运行；7. 所有修复都必须非常安全，不会引入新的问题。
+      name: systemPrompt
+    - input:
+        type: string
+        value: ''
+      name: stableSystemPrompt
+    - input:
+        type: boolean
+        value: false
+      name: canContinue
+    - input:
+        type: string
+        value: ''
+      name: loopPromptVersion
+    - input:
+        type: string
+        value: ''
+      name: loopPromptName
+    - input:
+        type: string
+        value: ''
+      name: loopPromptId
+    node_inputs:
+    - input:
+        value:
+          path: content
+          ref_node: '162536'
+      name: workflow_content
+    - input:
+        value:
+          path: detection_resul
+          ref_node: '197721'
+      name: detection_result
+    node_outputs:
+      fixed_workflow:
+        description: 修复后的工作流配置
+        type: string
+        value: null
+    settingOnError:
+      processType: 1
+      retryTimes: 0
+      timeoutMs: 180000
+  position:
+    x: 1560
+    y: 0
+  title: 工作流错误修复节点
+  type: llm
+  version: '3'
+- config: {}
+  description: 输出修复结果
+  icon: https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png
+  id: end_node
+  name: 结束
+  parameters:
+    content:
+      type: string
+      value:
+        content: |
+          ## 基于URL的工作流修复结果
+          
+          ### 原始URL：
+          {{input_url}}
+          
+          ### 错误检测结果：
+          ```json
+          {{detection_resul}}
+          ```
+          
+          ### 修复后的工作流：
+          ```yaml
+          {{fixed_workflow}}
+          ```
+        type: template
+    node_inputs:
+    - input:
+        value:
+          path: input_url
+          ref_node: start_node
+      name: input_url
+    - input:
+        value:
+          path: detection_resul
+          ref_node: '197721'
+      name: detection_resul
+    - input:
+        value:
+          path: fixed_workflow
+          ref_node: '1780866'
+      name: fixed_workflow
+    streamingOutput: false
+    terminatePlan: useAnswerContent
+  position:
+    x: 2000
+    y: 100
+  title: 结束
+  type: end
+outputs: []
+trigger:
+  name: 手动触发
+  type: manual
+type: Workflow
+version: 1.0.0
+viewport:
+  x: 0
+  y: 0
+  zoom: 1

@@ -1,0 +1,532 @@
+{
+  "id": "complex_development_workflow_001",
+  "name": "复杂开发工作流",
+  "description": "一个自动化的开发工作流，包含工作流生成和Spring Boot代码生成两条分支",
+  "mode": "workflow",
+  "type": "workflow",
+  "version": "1.0.0",
+  "schema_version": "1.0.0",
+  "trigger": {
+    "name": "手动触发",
+    "type": "manual"
+  },
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 0.8
+  },
+  "metadata": {
+    "createdAt": "2026-01-10T10:00:00.000Z",
+    "updatedAt": "2026-01-10T10:00:00.000Z",
+    "creator": "coze_workflow_expert",
+    "tags": ["complex", "development", "automation"]
+  },
+  "nodes": [
+    {
+      "id": "start_node",
+      "name": "开始",
+      "title": "开始",
+      "description": "工作流入口节点",
+      "type": "start",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png",
+      "position": {
+        "x": 50,
+        "y": 100
+      },
+      "config": {},
+      "parameters": {
+        "node_outputs": {
+          "workflow_input": {
+            "required": true,
+            "type": "string",
+            "value": null
+          },
+          "spring_boot_input": {
+            "required": true,
+            "type": "string",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "url_content_extract",
+      "name": "URL内容提取节点",
+      "title": "URL内容提取节点",
+      "description": "从指定URL提取内容",
+      "type": "api",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Api.png",
+      "position": {
+        "x": 250,
+        "y": 80
+      },
+      "config": {},
+      "parameters": {
+        "apiParam": [
+          {
+            "name": "apiID",
+            "input": {
+              "type": "string",
+              "value": "url_content_extract_api"
+            }
+          },
+          {
+            "name": "apiName",
+            "input": {
+              "type": "string",
+              "value": "url_content_extract"
+            }
+          }
+        ],
+        "node_inputs": [
+          {
+            "name": "url",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "workflow_input",
+                "ref_node": "start_node"
+              }
+            }
+          }
+        ],
+        "node_outputs": {
+          "extracted_content": {
+            "type": "string",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "workflow_template_render",
+      "name": "工作流模板渲染节点",
+      "title": "工作流模板渲染节点",
+      "description": "渲染工作流模板",
+      "type": "llm",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-LLM.png",
+      "position": {
+        "x": 450,
+        "y": 80
+      },
+      "config": {},
+      "parameters": {
+        "llmParam": [
+          {
+            "name": "modelName",
+            "input": {
+              "type": "string",
+              "value": "豆包·Function call模型"
+            }
+          },
+          {
+            "name": "prompt",
+            "input": {
+              "type": "string",
+              "value": "根据以下内容渲染工作流模板：{{extracted_content}}"
+            }
+          }
+        ],
+        "node_inputs": [
+          {
+            "name": "extracted_content",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "extracted_content",
+                "ref_node": "url_content_extract"
+              }
+            }
+          }
+        ],
+        "node_outputs": {
+          "rendered_template": {
+            "type": "string",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "workflow_code_generate",
+      "name": "工作流代码生成节点",
+      "title": "工作流代码生成节点",
+      "description": "生成工作流代码",
+      "type": "code",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code.png",
+      "position": {
+        "x": 650,
+        "y": 80
+      },
+      "config": {},
+      "parameters": {
+        "codeParam": [
+          {
+            "name": "language",
+            "input": {
+              "type": "string",
+              "value": "json"
+            }
+          },
+          {
+            "name": "code",
+            "input": {
+              "type": "string",
+              "value": "// 生成工作流代码\nconst workflowCode = generateWorkflowCode('{{rendered_template}}');\nreturn { workflow_code: workflowCode };"
+            }
+          }
+        ],
+        "node_inputs": [
+          {
+            "name": "rendered_template",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "rendered_template",
+                "ref_node": "workflow_template_render"
+              }
+            }
+          }
+        ],
+        "node_outputs": {
+          "workflow_code": {
+            "type": "string",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "code_processing",
+      "name": "代码处理节点",
+      "title": "代码处理节点",
+      "description": "处理生成的代码",
+      "type": "code",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code.png",
+      "position": {
+        "x": 850,
+        "y": 80
+      },
+      "config": {},
+      "parameters": {
+        "codeParam": [
+          {
+            "name": "language",
+            "input": {
+              "type": "string",
+              "value": "javascript"
+            }
+          },
+          {
+            "name": "code",
+            "input": {
+              "type": "string",
+              "value": "// 处理代码\nconst processedCode = processCode('{{workflow_code}}');\nreturn { processed_code: processedCode };"
+            }
+          }
+        ],
+        "node_inputs": [
+          {
+            "name": "workflow_code",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "workflow_code",
+                "ref_node": "workflow_code_generate"
+              }
+            }
+          }
+        ],
+        "node_outputs": {
+          "processed_code": {
+            "type": "string",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "spring_boot_generate",
+      "name": "Spring Boot代码生成节点",
+      "title": "Spring Boot代码生成节点",
+      "description": "生成Spring Boot代码",
+      "type": "code",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code.png",
+      "position": {
+        "x": 250,
+        "y": 220
+      },
+      "config": {},
+      "parameters": {
+        "codeParam": [
+          {
+            "name": "language",
+            "input": {
+              "type": "string",
+              "value": "java"
+            }
+          },
+          {
+            "name": "code",
+            "input": {
+              "type": "string",
+              "value": "// 生成Spring Boot代码\nconst springBootCode = generateSpringBootCode('{{spring_boot_input}}');\nreturn { spring_boot_code: springBootCode };"
+            }
+          }
+        ],
+        "node_inputs": [
+          {
+            "name": "spring_boot_input",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "spring_boot_input",
+                "ref_node": "start_node"
+              }
+            }
+          }
+        ],
+        "node_outputs": {
+          "spring_boot_code": {
+            "type": "string",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "workflow_config",
+      "name": "工作流配置节点",
+      "title": "工作流配置节点",
+      "description": "配置工作流",
+      "type": "config",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Setting.png",
+      "position": {
+        "x": 450,
+        "y": 220
+      },
+      "config": {},
+      "parameters": {
+        "node_inputs": [
+          {
+            "name": "spring_boot_code",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "spring_boot_code",
+                "ref_node": "spring_boot_generate"
+              }
+            }
+          }
+        ],
+        "node_outputs": {
+          "workflow_config": {
+            "type": "object",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "generate_build_config",
+      "name": "自动生成编译配置节点",
+      "title": "自动生成编译配置节点",
+      "description": "生成编译配置文件",
+      "type": "code",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Code.png",
+      "position": {
+        "x": 650,
+        "y": 220
+      },
+      "config": {},
+      "parameters": {
+        "codeParam": [
+          {
+            "name": "language",
+            "input": {
+              "type": "string",
+              "value": "yaml"
+            }
+          },
+          {
+            "name": "code",
+            "input": {
+              "type": "string",
+              "value": "// 生成编译配置\nconst buildConfig = generateBuildConfig('{{workflow_config}}');\nreturn { build_config: buildConfig };"
+            }
+          }
+        ],
+        "node_inputs": [
+          {
+            "name": "workflow_config",
+            "input": {
+              "type": "object",
+              "value": {
+                "path": "workflow_config",
+                "ref_node": "workflow_config"
+              }
+            }
+          }
+        ],
+        "node_outputs": {
+          "build_config": {
+            "type": "string",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "thread_merge",
+      "name": "线程合并节点",
+      "title": "线程合并节点",
+      "description": "合并两个分支的执行结果",
+      "type": "merge",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Merge.png",
+      "position": {
+        "x": 850,
+        "y": 220
+      },
+      "config": {},
+      "parameters": {
+        "node_inputs": [
+          {
+            "name": "build_config",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "build_config",
+                "ref_node": "generate_build_config"
+              }
+            }
+          },
+          {
+            "name": "processed_code",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "processed_code",
+                "ref_node": "code_processing"
+              }
+            }
+          }
+        ],
+        "node_outputs": {
+          "merged_result": {
+            "type": "object",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "end_node",
+      "name": "结束",
+      "title": "结束",
+      "description": "工作流出口节点",
+      "type": "end",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png",
+      "position": {
+        "x": 1050,
+        "y": 150
+      },
+      "config": {},
+      "parameters": {
+        "content": {
+          "type": "string",
+          "value": {
+            "content": "工作流执行完成！合并结果：{{merged_result}}",
+            "type": "literal"
+          }
+        },
+        "node_inputs": [
+          {
+            "name": "merged_result",
+            "input": {
+              "type": "object",
+              "value": {
+                "path": "merged_result",
+                "ref_node": "thread_merge"
+              }
+            }
+          }
+        ],
+        "streamingOutput": false,
+        "terminatePlan": "useAnswerContent"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_1",
+      "source_node": "start_node",
+      "target_node": "url_content_extract",
+      "from": "start_node",
+      "to": "url_content_extract"
+    },
+    {
+      "id": "edge_2",
+      "source_node": "url_content_extract",
+      "target_node": "workflow_template_render",
+      "from": "url_content_extract",
+      "to": "workflow_template_render"
+    },
+    {
+      "id": "edge_3",
+      "source_node": "workflow_template_render",
+      "target_node": "workflow_code_generate",
+      "from": "workflow_template_render",
+      "to": "workflow_code_generate"
+    },
+    {
+      "id": "edge_4",
+      "source_node": "workflow_code_generate",
+      "target_node": "code_processing",
+      "from": "workflow_code_generate",
+      "to": "code_processing"
+    },
+    {
+      "id": "edge_5",
+      "source_node": "code_processing",
+      "target_node": "thread_merge",
+      "from": "code_processing",
+      "to": "thread_merge"
+    },
+    {
+      "id": "edge_6",
+      "source_node": "start_node",
+      "target_node": "spring_boot_generate",
+      "from": "start_node",
+      "to": "spring_boot_generate"
+    },
+    {
+      "id": "edge_7",
+      "source_node": "spring_boot_generate",
+      "target_node": "workflow_config",
+      "from": "spring_boot_generate",
+      "to": "workflow_config"
+    },
+    {
+      "id": "edge_8",
+      "source_node": "workflow_config",
+      "target_node": "generate_build_config",
+      "from": "workflow_config",
+      "to": "generate_build_config"
+    },
+    {
+      "id": "edge_9",
+      "source_node": "generate_build_config",
+      "target_node": "thread_merge",
+      "from": "generate_build_config",
+      "to": "thread_merge"
+    },
+    {
+      "id": "edge_10",
+      "source_node": "thread_merge",
+      "target_node": "end_node",
+      "from": "thread_merge",
+      "to": "end_node"
+    }
+  ],
+  "outputs": []
+}

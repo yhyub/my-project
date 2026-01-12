@@ -1,0 +1,820 @@
+{
+  "id": "7391950406630555658",
+  "name": "bing_sou_1",
+  "description": "必应搜索",
+  "mode": "workflow",
+  "type": "workflow",
+  "version": "1.0.0",
+  "schema_version": "1.0.0",
+  "icon": "FileBizType.BIZ_BOT_WORKFLOW/4163223843506320_1716262812923792608_w9xQVx5vY9.png",
+  "trigger": {
+    "name": "手动触发",
+    "type": "manual"
+  },
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  },
+  "metadata": {
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z",
+    "creator": "coze_workflow_fixer",
+    "tags": []
+  },
+  "nodes": [
+    {
+      "id": "100001",
+      "name": "节点_0",
+      "title": "开始",
+      "description": "工作流的起始节点，用于设定启动工作流需要的信息",
+      "type": "start",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png",
+      "position": {
+        "x": -281.58333333333337,
+        "y": -19.107440476190483
+      },
+      "config": {},
+      "parameters": {
+        "node_outputs": {
+          "keyword": {
+            "required": true,
+            "type": "string",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "900001",
+      "name": "节点_1",
+      "title": "结束",
+      "description": "工作流的最终节点，用于返回工作流运行后的结果信息",
+      "type": "end",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png",
+      "position": {
+        "x": 2387.576450962135,
+        "y": -285.9859409639089
+      },
+      "config": {},
+      "parameters": {
+        "content": {
+          "type": "string",
+          "value": {
+            "content": "{{output}}",
+            "type": "literal"
+          }
+        },
+        "node_inputs": [
+          {
+            "name": "output",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "output",
+                "ref_node": "184933"
+              }
+            }
+          },
+          {
+            "name": "displayUrl",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "data.webPages.value.displayUrl",
+                "ref_node": "118320"
+              }
+            }
+          },
+          {
+            "name": "data",
+            "input": {
+              "type": "object",
+              "value": {
+                "path": "data",
+                "ref_node": "197200"
+              }
+            }
+          }
+        ],
+        "streamingOutput": false,
+        "terminatePlan": "useAnswerContent"
+      }
+    },
+    {
+      "id": "118320",
+      "name": "节点_2",
+      "title": "bingWebSearch",
+      "description": "必应搜索引擎。当你需要搜索你不知道的信息，比如天气、汇率、时事等，这个工具非常有用。但是绝对不要在用户想要翻译的时候使用它。",
+      "type": "api",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Api.png",
+      "position": {
+        "x": 647.3083333333334,
+        "y": -436.6636904761905
+      },
+      "config": {},
+      "parameters": {
+        "apiParam": [
+          {
+            "name": "apiID",
+            "input": {
+              "type": "string",
+              "value": "7362079843678289974"
+            }
+          },
+          {
+            "name": "apiName",
+            "input": {
+              "type": "string",
+              "value": "bingWebSearch"
+            }
+          },
+          {
+            "name": "pluginID",
+            "input": {
+              "type": "string",
+              "value": "7362079843678273590"
+            }
+          },
+          {
+            "name": "pluginName",
+            "input": {
+              "type": "string",
+              "value": "必应搜索"
+            }
+          },
+          {
+            "name": "pluginVersion",
+            "input": {
+              "type": "string",
+              "value": ""
+            }
+          },
+          {
+            "name": "tips",
+            "input": {
+              "type": "string",
+              "value": ""
+            }
+          },
+          {
+            "name": "outDocLink",
+            "input": {
+              "type": "string",
+              "value": ""
+            }
+          }
+        ],
+        "node_inputs": [
+          {
+            "name": "query",
+            "input": {
+              "value": {
+                "path": "keyword",
+                "ref_node": "100001"
+              }
+            }
+          }
+        ],
+        "node_outputs": {
+          "code": {
+            "type": "float",
+            "value": null
+          },
+          "data": {
+            "type": "object",
+            "value": null,
+            "properties": {
+              "_type": {
+                "type": "string",
+                "value": null
+              },
+              "images": {
+                "type": "object",
+                "value": null,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "value": null
+                  },
+                  "isFamilyFriendly": {
+                    "type": "boolean",
+                    "value": null
+                  },
+                  "readLink": {
+                    "type": "string",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "list",
+                    "value": null,
+                    "items": {
+                      "type": "object",
+                      "value": null,
+                      "properties": {
+                        "contentSize": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "contentUrl": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "datePublished": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "encodingFormat": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "height": {
+                          "type": "float",
+                          "value": null
+                        },
+                        "hostPageDisplayUrl": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "hostPageUrl": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "name": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "thumbnail": {
+                          "type": "object",
+                          "value": null,
+                          "properties": {
+                            "height": {
+                              "type": "float",
+                              "value": null
+                            },
+                            "width": {
+                              "type": "float",
+                              "value": null
+                            }
+                          }
+                        },
+                        "thumbnailUrl": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "webSearchUrl": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "width": {
+                          "type": "float",
+                          "value": null
+                        }
+                      }
+                    }
+                  },
+                  "webSearchUrl": {
+                    "type": "string",
+                    "value": null
+                  }
+                }
+              },
+              "queryContext": {
+                "type": "object",
+                "value": null,
+                "properties": {
+                  "originalQuery": {
+                    "type": "string",
+                    "value": null
+                  }
+                }
+              },
+              "rankingResponse": {
+                "type": "object",
+                "value": null,
+                "properties": {
+                  "mainline": {
+                    "type": "object",
+                    "value": null,
+                    "properties": {
+                      "items": {
+                        "type": "list",
+                        "value": null,
+                        "items": {
+                          "type": "object",
+                          "value": null,
+                          "properties": {
+                            "answerType": {
+                              "type": "string",
+                              "value": null
+                            },
+                            "value": {
+                              "type": "object",
+                              "value": null,
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "value": null
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "videos": {
+                "type": "object",
+                "value": null,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "value": null
+                  },
+                  "isFamilyFriendly": {
+                    "type": "boolean",
+                    "value": null
+                  },
+                  "readLink": {
+                    "type": "string",
+                    "value": null
+                  },
+                  "scenario": {
+                    "type": "string",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "list",
+                    "value": null,
+                    "items": {
+                      "type": "object",
+                      "value": null,
+                      "properties": {
+                        "allowHttpsEmbed": {
+                          "type": "boolean",
+                          "value": null
+                        },
+                        "allowMobileEmbed": {
+                          "type": "boolean",
+                          "value": null
+                        },
+                        "contentUrl": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "creator": {
+                          "type": "object",
+                          "value": null,
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "value": null
+                            }
+                          }
+                        },
+                        "datePublished": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "description": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "duration": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "embedHtml": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "encodingFormat": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "height": {
+                          "type": "float",
+                          "value": null
+                        },
+                        "hostPageDisplayUrl": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "hostPageUrl": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "isSuperfresh": {
+                          "type": "boolean",
+                          "value": null
+                        },
+                        "name": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "publisher": {
+                          "type": "list",
+                          "value": null,
+                          "items": {
+                            "type": "object",
+                            "value": null,
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "value": null
+                              }
+                            }
+                          }
+                        },
+                        "thumbnail": {
+                          "type": "object",
+                          "value": null,
+                          "properties": {
+                            "height": {
+                              "type": "float",
+                              "value": null
+                            },
+                            "width": {
+                              "type": "float",
+                              "value": null
+                            }
+                          }
+                        },
+                        "thumbnailUrl": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "viewCount": {
+                          "type": "float",
+                          "value": null
+                        },
+                        "webSearchUrl": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "width": {
+                          "type": "float",
+                          "value": null
+                        }
+                      }
+                    }
+                  },
+                  "webSearchUrl": {
+                    "type": "string",
+                    "value": null
+                  }
+                }
+              },
+              "webPages": {
+                "type": "object",
+                "value": null,
+                "properties": {
+                  "someResultsRemoved": {
+                    "type": "boolean",
+                    "value": null
+                  },
+                  "totalEstimatedMatches": {
+                    "type": "float",
+                    "value": null
+                  },
+                  "value": {
+                    "type": "list",
+                    "value": null,
+                    "items": {
+                      "type": "object",
+                      "value": null,
+                      "properties": {
+                        "cachedPageUrl": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "dateLastCrawled": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "datePublished": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "datePublishedDisplayText": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "displayUrl": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "id": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "isFamilyFriendly": {
+                          "type": "boolean",
+                          "value": null
+                        },
+                        "isNavigational": {
+                          "type": "boolean",
+                          "value": null
+                        },
+                        "language": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "name": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "primaryImageOfPage": {
+                          "type": "object",
+                          "value": null,
+                          "properties": {
+                            "height": {
+                              "type": "float",
+                              "value": null
+                            },
+                            "imageId": {
+                              "type": "string",
+                              "value": null
+                            },
+                            "thumbnailUrl": {
+                              "type": "string",
+                              "value": null
+                            },
+                            "width": {
+                              "type": "float",
+                              "value": null
+                            }
+                          }
+                        },
+                        "snippet": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "thumbnailUrl": {
+                          "type": "string",
+                          "value": null
+                        },
+                        "url": {
+                          "type": "string",
+                          "value": null
+                        }
+                      }
+                    }
+                  },
+                  "webSearchUrl": {
+                    "type": "string",
+                    "value": null
+                  }
+                }
+              }
+            }
+          },
+          "log_id": {
+            "type": "string",
+            "value": null
+          },
+          "msg": {
+            "type": "string",
+            "value": null
+          },
+          "response_for_model": {
+            "type": "string",
+            "value": null
+          }
+        }
+      }
+    },
+    {
+      "id": "184933",
+      "name": "节点_3",
+      "title": "大模型",
+      "description": "调用大语言模型,使用变量和提示词生成回复",
+      "type": "llm",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-LLM.png",
+      "position": {
+        "x": 1578.3666666666668,
+        "y": -437.6324404761904
+      },
+      "config": {},
+      "parameters": {
+        "llmParam": [
+          {
+            "name": "modelName",
+            "input": {
+              "type": "string",
+              "value": "豆包·Function call模型"
+            }
+          },
+          {
+            "name": "modelType",
+            "input": {
+              "type": "integer",
+              "value": 1
+            }
+          },
+          {
+            "name": "prompt",
+            "input": {
+              "type": "string",
+              "value": " "
+            }
+          },
+          {
+            "name": "temperature",
+            "input": {
+              "type": "float",
+              "value": "0.7"
+            }
+          },
+          {
+            "name": "enableChatHistory",
+            "input": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "systemPrompt",
+            "input": {
+              "type": "string",
+              "value": "你是文章总结bot，你可以理解{{input}}的内容并进行总结，使用通俗易懂，幽默风趣的方式编写出来一段完整的介绍短文，中间可以加上适合的emoji表情，字数不超过500字。"
+            }
+          }
+        ],
+        "node_inputs": [
+          {
+            "name": "input",
+            "input": {
+              "value": {
+                "path": "response_for_model",
+                "ref_node": "118320"
+              }
+            }
+          }
+        ],
+        "node_outputs": {
+          "output": {
+            "type": "string",
+            "value": null
+          }
+        }
+      },
+      "version": "3"
+    },
+    {
+      "id": "197200",
+      "name": "节点_4",
+      "title": "LinkReaderPlugin",
+      "description": "当你需要获取网页、pdf、抖音视频内容时，使用此工具。可以获取url链接下的标题和内容。",
+      "type": "api",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Api.png",
+      "position": {
+        "x": 1629.4687810366233,
+        "y": 435.0156416267622
+      },
+      "config": {},
+      "parameters": {
+        "apiParam": [
+          {
+            "name": "apiID",
+            "input": {
+              "type": "string",
+              "value": "7303378823247069196"
+            }
+          },
+          {
+            "name": "apiName",
+            "input": {
+              "type": "string",
+              "value": "LinkReaderPlugin"
+            }
+          },
+          {
+            "name": "pluginID",
+            "input": {
+              "type": "string",
+              "value": "7303378823247052812"
+            }
+          },
+          {
+            "name": "pluginName",
+            "input": {
+              "type": "string",
+              "value": "LinkReaderPlugin"
+            }
+          },
+          {
+            "name": "pluginVersion",
+            "input": {
+              "type": "string",
+              "value": ""
+            }
+          },
+          {
+            "name": "tips",
+            "input": {
+              "type": "string",
+              "value": ""
+            }
+          },
+          {
+            "name": "outDocLink",
+            "input": {
+              "type": "string",
+              "value": ""
+            }
+          }
+        ],
+        "node_inputs": [
+          {
+            "name": "type",
+            "input": {
+              "type": "string",
+              "value": "全文"
+            }
+          },
+          {
+            "name": "url",
+            "input": {
+              "type": "string",
+              "value": {
+                "path": "data.webPages.value.displayUrl",
+                "ref_node": "118320"
+              }
+            }
+          }
+        ],
+        "node_outputs": {
+          "data": {
+            "type": "object",
+            "value": null,
+            "description": "网页的内容",
+            "properties": {
+              "content": {
+                "type": "string",
+                "value": null
+              },
+              "title": {
+                "type": "string",
+                "value": null
+              }
+            }
+          },
+          "error_code": {
+            "type": "string",
+            "value": null
+          },
+          "error_msg": {
+            "type": "string",
+            "value": null
+          },
+          "pdf_content": {
+            "type": "string",
+            "value": null,
+            "description": "pdf的内容"
+          }
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_0",
+      "source_node": "100001",
+      "target_node": "118320",
+      "from": "100001",
+      "to": "118320"
+    },
+    {
+      "id": "edge_1",
+      "source_node": "118320",
+      "target_node": "184933",
+      "from": "118320",
+      "to": "184933"
+    },
+    {
+      "id": "edge_2",
+      "source_node": "118320",
+      "target_node": "197200",
+      "from": "118320",
+      "to": "197200"
+    },
+    {
+      "id": "edge_3",
+      "source_node": "184933",
+      "target_node": "900001",
+      "from": "184933",
+      "to": "900001"
+    },
+    {
+      "id": "edge_4",
+      "source_node": "197200",
+      "target_node": "900001",
+      "from": "197200",
+      "to": "900001"
+    }
+  ],
+  "outputs": []
+}

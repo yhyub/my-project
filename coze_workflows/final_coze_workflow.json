@@ -1,0 +1,189 @@
+{
+  "version": "1.0.0",
+  "type": "workflow",
+  "name": "deepseek",
+  "description": "回答问题    多模态工具  编程代码开发  程序制作",
+  "trigger": {
+    "name": "手动触发",
+    "type": "manual"
+  },
+  "nodes": [
+    {
+      "id": "100001",
+      "name": "节点_0",
+      "title": "开始",
+      "type": "start",
+      "description": "工作流的起始节点，用于设定启动工作流需要的信息",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start-v2.jpg",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "parameters": {
+        "node_outputs": {
+          "CONVERSATION_NAME": {
+            "default_value": "Default",
+            "description": "本次请求绑定的会话，会自动写入消息、会从该会话读对话历史。",
+            "type": "string",
+            "value": null
+          },
+          "USER_INPUT": {
+            "type": "string",
+            "value": null
+          }
+        }
+      },
+      "config": {}
+    },
+    {
+      "id": "900001",
+      "name": "节点_1",
+      "title": "结束",
+      "type": "end",
+      "description": "工作流的最终节点，用于返回工作流运行后的结果信息",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End-v2.jpg",
+      "position": {
+        "x": 1000,
+        "y": 0
+      },
+      "parameters": {
+        "content": {
+          "type": "string",
+          "value": {
+            "type": "literal"
+          }
+        },
+        "node_inputs": [
+          {
+            "name": "output",
+            "input": {
+              "type": "string",
+              "value": {
+                "ref_node": "106635",
+                "path": "output"
+              }
+            }
+          }
+        ],
+        "streamingOutput": true,
+        "terminatePlan": "useAnswerContent"
+      },
+      "config": {}
+    },
+    {
+      "id": "106635",
+      "name": "节点_2",
+      "title": "文本处理",
+      "type": "llm",
+      "description": "用于处理多个字符串类型变量的格式",
+      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-StrConcat-v2.jpg",
+      "position": {
+        "x": 487.76615017090467,
+        "y": -13
+      },
+      "parameters": {
+        "method": "concat",
+        "concatParams": [
+          {
+            "name": "concatResult",
+            "input": {
+              "type": "string",
+              "value": ""
+            }
+          },
+          {
+            "name": "arrayItemConcatChar",
+            "input": {
+              "type": "string",
+              "value": "，"
+            }
+          },
+          {
+            "name": "allArrayItemConcatChars",
+            "input": {
+              "type": "list",
+              "items": {
+                "type": "object",
+                "value": null
+              },
+              "value": [
+                {
+                  "isDefault": true,
+                  "label": "换行",
+                  "value": "\n  \n            "
+                },
+                {
+                  "isDefault": true,
+                  "label": "制表符",
+                  "value": "\t"
+                },
+                {
+                  "isDefault": true,
+                  "label": "句号",
+                  "value": "。"
+                },
+                {
+                  "isDefault": true,
+                  "label": "逗号",
+                  "value": "，"
+                },
+                {
+                  "isDefault": true,
+                  "label": "分号",
+                  "value": "；"
+                },
+                {
+                  "isDefault": true,
+                  "label": "空格",
+                  "value": " "
+                }
+              ]
+            }
+          }
+        ],
+        "node_inputs": [
+          {
+            "name": "String1",
+            "input": {
+              "value": {
+                "ref_node": "100001",
+                "path": "USER_INPUT"
+              }
+            }
+          }
+        ],
+        "node_outputs": {
+          "output": {
+            "type": "string",
+            "required": true,
+            "value": null
+          }
+        }
+      },
+      "config": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_0",
+      "source_node": "100001",
+      "target_node": "106635",
+      "from": "100001",
+      "to": "106635"
+    },
+    {
+      "id": "edge_1",
+      "source_node": "106635",
+      "target_node": "900001",
+      "from": "106635",
+      "to": "900001"
+    }
+  ],
+  "viewport": {
+    "x": 0,
+    "y": 0,
+    "zoom": 1
+  },
+  "metadata": {
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "202

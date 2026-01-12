@@ -1,0 +1,377 @@
+description: 自动修复的工作流
+edges:
+- id: edge_0
+  source_node: start_node
+  target_node: upload_node
+- id: edge_1
+  source_node: upload_node
+  target_node: parse_node
+- id: edge_2
+  source_node: parse_node
+  target_node: analyze_node
+- id: edge_3
+  source_node: analyze_node
+  target_node: fix_node
+- id: edge_4
+  source_node: fix_node
+  target_node: validate_node
+- id: edge_5
+  source_node: validate_node
+  target_node: end_node
+main:
+  commitId: ''
+  desc: 回答问题    多模态工具  编程代码开发  程序制作
+  flowMode: 3
+  icon: plugin_icon/chatflow-icon.png
+  id: 7482227437301858354
+  name: deepseek
+  version: ''
+metadata:
+  createdAt: '2025-01-01T00:00:00.000Z'
+  creator: coze_workflow_fixer
+  tags: ["auto-fix", "workflow", "repair"]
+  updatedAt: '2025-01-01T00:00:00.000Z'
+name: 修复后的工作流
+nodes:
+- config: {}
+  id: start_node
+  name: 开始
+  parameters:
+    node_outputs:
+      BOT_USER_INPUT:
+        description: 用户输入的工作流文件或描述
+        type: string
+        value: null
+  position:
+    x: 100
+    y: 100
+  title: 开始
+  type: start
+- config: {}
+  id: upload_node
+  name: 工作流上传
+  description: 上传需要修复的工作流文件
+  icon: https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Upload.png
+  parameters:
+    uploadParam:
+    - input:
+        type: string
+        value: workflow
+      name: fileType
+    - input:
+        type: integer
+        value: 10
+      name: maxFileSize
+    node_outputs:
+      workflow_file:
+        description: 上传的工作流文件
+        type: file
+        value: null
+  position:
+    x: 250
+    y: 100
+  title: 工作流上传
+  type: upload
+- config: {}
+  id: parse_node
+  name: 工作流解析
+  description: 解析上传的工作流文件
+  icon: https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Parse.png
+  parameters:
+    codeParam:
+    - input:
+        type: string
+        value: |
+          const yaml = require('js-yaml');
+          
+          async function parseWorkflow(fileContent) {
+            try {
+              // Parse YAML content
+              const workflow = yaml.load(fileContent);
+              return {
+                success: true,
+                workflow: workflow,
+                message: '工作流解析成功'
+              };
+            } catch (error) {
+              return {
+                success: false,
+                error: error.message,
+                message: '工作流解析失败'
+              };
+            }
+          }
+          
+          return parseWorkflow({{workflow_file.content}});
+      name: script
+    node_inputs:
+    - input:
+        value:
+          path: workflow_file
+          ref_node: upload_node
+      name: workflow_file
+    node_outputs:
+      parsed_workflow:
+        description: 解析后的工作流
+        type: object
+        value: null
+  position:
+    x: 400
+    y: 100
+  title: 工作流解析
+  type: code
+- config: {}
+  id: analyze_node
+  name: 工作流分析
+  description: 分析工作流中的问题
+  icon: https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Analyze.png
+  parameters:
+    llmParam:
+    - input:
+        type: string
+        value: GLM-4
+      name: modelName
+    - input:
+        type: float
+        value: 0.7
+      name: temperature
+    - input:
+        type: integer
+        value: 2000
+      name: maxTokens
+    - input:
+        type: string
+        value: |
+          你是一个工作流修复专家，请分析以下工作流文件，找出其中的问题，并提供修复建议：
+          
+          {{parsed_workflow.workflow}}
+          
+          请按照以下格式输出：
+          ```
+          问题分析：
+          1. 问题1：描述
+          2. 问题2：描述
+          ...
+          
+          修复建议：
+          1. 修复方案1：描述
+          2. 修复方案2：描述
+          ...
+          ```
+      name: systemPrompt
+    node_inputs:
+    - input:
+        value:
+          path: parsed_workflow
+          ref_node: parse_node
+      name: parsed_workflow
+    node_outputs:
+      analysis_result:
+        description: 工作流分析结果
+        type: string
+        value: null
+  position:
+    x: 550
+    y: 100
+  title: 工作流分析
+  type: llm
+- config: {}
+  id: fix_node
+  name: 工作流修复
+  description: 根据分析结果修复工作流
+  icon: https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Fix.png
+  parameters:
+    llmParam:
+    - input:
+        type: string
+        value: GLM-4
+      name: modelName
+    - input:
+        type: float
+        value: 0.5
+      name: temperature
+    - input:
+        type: integer
+        value: 5000
+      name: maxTokens
+    - input:
+        type: string
+        value: |
+          你是一个工作流修复专家，请根据以下分析结果修复工作流：
+          
+          原始工作流：
+          {{parsed_workflow.workflow}}
+          
+          分析结果：
+          {{analysis_result}}
+          
+          请直接输出修复后的完整工作流YAML内容，不要添加任何其他说明。
+      name: systemPrompt
+    node_inputs:
+    - input:
+        value:
+          path: parsed_workflow
+          ref_node: parse_node
+      name: parsed_workflow
+    - input:
+        value:
+          path: analysis_result
+          ref_node: analyze_node
+      name: analysis_result
+    node_outputs:
+      fixed_workflow:
+        description: 修复后的工作流
+        type: string
+        value: null
+  position:
+    x: 700
+    y: 100
+  title: 工作流修复
+  type: llm
+- config: {}
+  id: validate_node
+  name: 工作流验证
+  description: 验证修复后的工作流
+  icon: https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Validate.png
+  parameters:
+    codeParam:
+    - input:
+        type: string
+        value: |
+          const yaml = require('js-yaml');
+          
+          async function validateWorkflow(workflowYaml) {
+            try {
+              // Validate YAML syntax
+              const workflow = yaml.load(workflowYaml);
+              
+              // Basic validation checks
+              const errors = [];
+              
+              // Check if required fields exist
+              if (!workflow.name) {
+                errors.push('缺少工作流名称');
+              }
+              
+              if (!workflow.nodes) {
+                errors.push('缺少节点定义');
+              } else {
+                // Check if start and end nodes exist
+                const hasStartNode = workflow.nodes.some(node => node.type === 'start');
+                const hasEndNode = workflow.nodes.some(node => node.type === 'end');
+                
+                if (!hasStartNode) {
+                  errors.push('缺少开始节点');
+                }
+                
+                if (!hasEndNode) {
+                  errors.push('缺少结束节点');
+                }
+              }
+              
+              if (!workflow.edges) {
+                errors.push('缺少边定义');
+              }
+              
+              return {
+                success: errors.length === 0,
+                errors: errors,
+                workflow: workflow,
+                message: errors.length === 0 ? '工作流验证成功' : `工作流验证失败，发现 ${errors.length} 个问题`
+              };
+            } catch (error) {
+              return {
+                success: false,
+                errors: [error.message],
+                message: '工作流验证失败，语法错误'
+              };
+            }
+          }
+          
+          return validateWorkflow({{fixed_workflow}});
+      name: script
+    node_inputs:
+    - input:
+        value:
+          path: fixed_workflow
+          ref_node: fix_node
+      name: fixed_workflow
+    node_outputs:
+      validation_result:
+        description: 工作流验证结果
+        type: object
+        value: null
+  position:
+    x: 850
+    y: 100
+  title: 工作流验证
+  type: code
+- config: {}
+  id: end_node
+  name: 结束
+  description: 输出修复结果
+  icon: https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png
+  parameters:
+    content:
+      type: string
+      value:
+        content: |
+          ## 工作流修复结果
+          
+          {{#if validation_result.success}}
+          ✅ 工作流修复成功！
+          
+          ### 修复内容：
+          {{analysis_result}}
+          
+          ### 修复后的工作流：
+          ```yaml
+          {{fixed_workflow}}
+          ```
+          {{else}}
+          ❌ 工作流修复失败！
+          
+          ### 失败原因：
+          {{validation_result.message}}
+          
+          {{#if validation_result.errors}}
+          ### 具体错误：
+          {{#each validation_result.errors}}
+          - {{this}}
+          {{/each}}
+          {{/if}}
+          {{/if}}
+        type: template
+    node_inputs:
+    - input:
+        value:
+          path: analysis_result
+          ref_node: analyze_node
+      name: analysis_result
+    - input:
+        value:
+          path: fixed_workflow
+          ref_node: fix_node
+      name: fixed_workflow
+    - input:
+        value:
+          path: validation_result
+          ref_node: validate_node
+      name: validation_result
+    streamingOutput: false
+    terminatePlan: useAnswerContent
+  position:
+    x: 1000
+    y: 100
+  title: 结束
+  type: end
+outputs: []
+trigger:
+  name: 手动触发
+  type: manual
+type: Workflow
+version: 1.0.0
+viewport:
+  x: 0
+  y: 0
+  zoom: 1
